@@ -1,10 +1,8 @@
-import React from "react";
-import "./style.css";
-
+// Form
 
 export function Form(props) {
   return (
-    <form method="POST" action={props.action}>
+    <form method="POST" action={props.route}>
       {props.children}
     </form>
   )
@@ -29,29 +27,17 @@ export function TextArea(props) {
 export function Dropdown(props) {
   return (
     <div>
-      <select {...props}>
+      <section {...props}>
         {props.children}
-      </select>
+      </section>
     </div>
   )
 }
 
-// Buttons
-export function FormBtn(props) {
+export function Submit(props) {
   return (
-    <button {...props} style={{ float: "right", marginBottom: 10 }} className="btn btn-success">
+    <button {...props} type="submit" >
       {props.children}
     </button>
   );
 }
-
-export function LogoutBtn(props) {
-  return (
-    <button {...props} style={{ float: "right", marginBottom: 10 }} className="btn btn-danger">
-      {props.children}
-    </button>
-  );
-}
-
-
-
