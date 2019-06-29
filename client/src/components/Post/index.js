@@ -1,38 +1,56 @@
 import React, { useState } from "react";
-import { Form, Input, TextArea, Dropdown } from "../Form";
+import { Form, Input, Dropdown } from "../Form";
 import { Classes, Performances, Auditions, Rental } from "../PostType";
 
 function Post(props) {
 
-  // expected from props:
-  // post route
-  // user info foriegn key
-
+  // setup hook
   const [postType, setPostType] = useState();
-  const postTypeInputs;
 
-  switch(postType) {
-    case "classes":
-      return postTypeInputs = <Classes />;
-      break;
+  // handle change event
+  function handleSelectChange(event) {
+    // set value
+    setPostType(event.target.value);
+  }
 
-    case "performances":
-      return postTypeInputs = <Performances />;
-      break;
+  // conditional rendering
+  function renderInputs() {
+    switch (postType) {
+      case "classes":
+        return <Classes />;
+        break;
 
-    case "auditions":
-      return postTypeInputs = <Auditions />;
-      break;
+      case "performances":
+        return <Performances />;
+        break;
 
-    case "rental":
-      return postTypeInputs = <Rental />;
-      break;
+      case "auditions":
+        return <Auditions />;
+        break;
+
+      case "rental":
+        return <Rental />;
+        break;
+    }
   }
 
   return (
-    <Form action={props.route}>
+    // form with POST method and route adjusting to postType value
+    <Form
+      method="POST"
+      action={"/post/" + postType}>
 
-      <Dropdown name="post-type">
+      <Input
+        name="user-id"
+        type="text"
+        //value={props.user.id}
+        hidden
+      />
+
+      <Dropdown
+        id="post-type"
+        onChange={handleSelectChange}
+      >
         <option>New Post:</option>
         <option value="classes">Classes</option>
         <option value="performances">Performances</option>
@@ -40,34 +58,9 @@ function Post(props) {
         <option value="rental">Rental Space</option>
       </Dropdown>
 
-      <Input
-        name="date"
-        type="date"
-      />
-      <Input
-        name="time"
-        type="time"
-      />
-      <Input
-        name="location"
-        type="text"
-        placeholder="Location"
-      />
-      <Input
-        name="link"
-        type="text"
-        placeholder="Website Link"
-      />
+      {renderInputs()}
 
-      {postTypeInputs}
-
-      <Input 
-        type="submit"
-        value="Submit"
-        className="btn"
-      />
-
-    </Form>
+    </ Form>
   )
 }
 

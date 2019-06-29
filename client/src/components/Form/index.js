@@ -4,7 +4,7 @@ import "./style.css";
 
 export function Form(props) {
   return (
-    <form method="POST" action={props.action}>
+    <form {...props}>
       {props.children}
     </form>
   )
@@ -21,15 +21,15 @@ export function Input(props) {
 export function TextArea(props) {
   return (
     <div className="form-group">
-      <textarea className="form-control" rows="20" {...props} />
+      <textarea className="form-control" rows="10" {...props} />
     </div>
   );
 }
 
 export function Dropdown(props) {
   return (
-    <div>
-      <select {...props}>
+    <div className="form-group">
+      <select className="form-control" {...props}>
         {props.children}
       </select>
     </div>
