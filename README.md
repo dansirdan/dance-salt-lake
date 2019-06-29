@@ -1,0 +1,1 @@
+This is going to be boiler plate code for a sequelize, node, react, full authentication and encryption environment.

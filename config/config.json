@@ -1,0 +1,24 @@
+{
+  "development": {
+    "username": null,
+    "password": null,
+    "database": "react_example",
+    "host": "localhost",
+    "port": 3306,
+    "dialect": "mysql"
+  },
+  "test": {
+    "username": null,
+    "password": null,
+    "database": "react_example",
+    "host": "127.0.0.1",
+    "dialect": "mysql"
+  },
+  "production": {
+    "username": null,
+    "password": null,
+    "database": "database_production",
+    "host": "127.0.0.1",
+    "dialect": "mysql"
+  }
+}
