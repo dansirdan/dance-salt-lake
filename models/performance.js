@@ -58,6 +58,10 @@ module.exports = function (sequelize, DataTypes) {
         notEmpty: true
       }
     },
+    url: {
+      type: DataTypes.STRING,
+      allowNull: false
+    },
     special: {
       type: DataTypes.STRING,
       allowNull: true

@@ -70,7 +70,11 @@ module.exports = function (sequelize, DataTypes) {
         isAfter: DataTypes.NOW,
         notEmpty: true
       }
-    }
+    },
+    url: {
+      type: DataTypes.STRING,
+      allowNull: false
+    },
   });
 
   Class.associate = (models) => {

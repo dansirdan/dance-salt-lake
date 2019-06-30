@@ -61,7 +61,11 @@ module.exports = function (sequelize, DataTypes) {
         isAfter: DataTypes.NOW,
         notEmpty: true
       }
-    }
+    },
+    url: {
+      type: DataTypes.STRING,
+      allowNull: false
+    },
   });
 
   Audition.associate = (models) => {

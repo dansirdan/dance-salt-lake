@@ -25,6 +25,10 @@ module.exports = function (sequelize, DataTypes) {
       type: DataTypes.INTEGER,
       allowNull: false
     },
+    url: {
+      type: DataTypes.STRING,
+      allowNull: false
+    },
     number_of_people: {
       type: DataTypes.INTEGER,
       allowNull: false,

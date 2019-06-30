@@ -118,7 +118,7 @@ export function Rental() {
         placeholder="Number of People"
       />
       <Input
-        name="link"
+        name="url"
         type="text"
         placeholder="Webpage Link"
       />
@@ -174,7 +174,7 @@ function dateTimeLocation() {
         placeholder="Address"
       />
       <Input
-        name="link"
+        name="url"
         type="text"
         placeholder="Webpage Link"
       />
