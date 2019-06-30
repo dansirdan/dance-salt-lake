@@ -22,7 +22,7 @@ app.use(passport.session());
 require("./routes/api-routes.js")(app);
 
 const syncOptions = {
-  force: false
+  force: true
 };
 
 if (process.env.NODE_ENV === "production") {
