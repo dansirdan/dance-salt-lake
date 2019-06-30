@@ -1,6 +1,6 @@
 module.exports = function (sequelize, DataTypes) {
 
-  var DefaultEvent = sequelize.define("DefaultEvent", {
+  const Class = sequelize.define("Class", {
     title: {
       type: DataTypes.STRING,
       allowNull: false,
@@ -8,6 +8,15 @@ module.exports = function (sequelize, DataTypes) {
         len: [1],
         notEmpty: true
       }
+    },
+    style: {
+      type: DataTypes.STRING,
+      allowNull: false
+    },
+    master: {
+      type: DataTypes.BOOLEAN,
+      allowNull: false,
+      defaultValue: false
     },
     description: {
       type: DataTypes.STRING,
@@ -17,13 +26,29 @@ module.exports = function (sequelize, DataTypes) {
         notEmpty: true
       }
     },
-    location: {
+    instructorName: {
+      type: DataTypes.STRING,
+      allowNull: false
+    },
+    photoLink: {
       type: DataTypes.STRING,
       allowNull: false,
       validate: {
-        len: [1],
-        notEmpty: true
+        notEmpty: true,
+        isUrl: true
       }
+    },
+    length: {
+      type: DataTypes.STRING,
+      allowNull: false
+    },
+    level: {
+      type: DataTypes.STRING,
+      allowNull: false
+    },
+    payment: {
+      type: DataTypes.STRING,
+      allowNull: false
     },
     time: {
       type: DataTypes.TIME,
@@ -41,28 +66,11 @@ module.exports = function (sequelize, DataTypes) {
         isAfter: DataTypes.NOW,
         notEmpty: true
       }
-    },
-    number_of_people: {
-      type: DataTypes.INTEGER,
-      allowNull: false,
-      validate: {
-        min: 1,
-        notEmpty: true,
-        isInt: true
-      }
-    },
-    category_type: {
-      type: DataTypes.STRING,
-      allowNull: false,
-      validate: {
-        notEmpty: true,
-        len: [1]
-      }
     }
   });
 
-  DefaultEvent.associate = (models) => {
-    DefaultEvent.belongsToMany(models.User, { through: "DefaultEventUser" });
+  Class.associate = (models) => {
+    Class.belongsToMany(models.User, { through: "ClassUser" });
   };
-  return DefaultEvent;
+  return Class;
 };
