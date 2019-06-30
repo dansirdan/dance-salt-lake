@@ -65,7 +65,11 @@ module.exports = function (sequelize, DataTypes) {
   });
 
   Performance.associate = (models) => {
-    Performance.belongsToMany(models.User, { through: "PerformanceUser" });
+    Performance.belongsTo(models.User, {
+      foreignKey: {
+        allowNull: false
+      }
+    });
   };
   return Performance;
 };

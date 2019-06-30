@@ -65,15 +65,27 @@ module.exports = function (sequelize, DataTypes) {
   });
 
   User.associate = (models) => {
-    User.belongsToMany(models.Class, { through: "ClassUser" });
+    User.hasMany(models.Class, {
+      onDelete: "cascade"
+    });
   };
 
   User.associate = (models) => {
-    User.belongsToMany(models.Performance, { through: "PerformanceUser" });
+    User.hasMany(models.Performance, {
+      onDelete: "cascade"
+    });
   };
 
   User.associate = (models) => {
-    User.belongsToMany(models.Audition, { through: "AuditionUser" });
+    User.hasMany(models.Audition, {
+      onDelete: "cascade"
+    });
+  };
+
+  User.associate = (models) => {
+    User.hasMany(models.Space, {
+      onDelete: "cascade"
+    });
   };
 
   User.prototype.validPassword = function (password) {

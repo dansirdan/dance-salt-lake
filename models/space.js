@@ -37,7 +37,11 @@ module.exports = function (sequelize, DataTypes) {
   });
 
   Space.associate = (models) => {
-    Space.belongsToMany(models.User, { through: "SpaceUser" });
+    Space.belongsTo(models.User, {
+      foreignKey: {
+        allowNull: false
+      }
+    });
   };
   return Space;
 };
