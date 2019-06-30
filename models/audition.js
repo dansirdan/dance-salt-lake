@@ -21,6 +21,14 @@ module.exports = function (sequelize, DataTypes) {
         notEmpty: true
       }
     },
+    text: {
+      type: DataTypes.STRING,
+      allowNull: false,
+      validate: {
+        len: [1],
+        notEmpty: true
+      }
+    },
     address: {
       type: DataTypes.STRING,
       allowNull: false
@@ -69,7 +77,11 @@ module.exports = function (sequelize, DataTypes) {
   });
 
   Audition.associate = (models) => {
-    Audition.belongsToMany(models.User, { through: "AuditionUser" });
+    Audition.belongsTo(models.User, {
+      foreignKey: {
+        allowNull: false
+      }
+    });
   };
 
   return Audition;

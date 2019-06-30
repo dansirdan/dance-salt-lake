@@ -78,7 +78,11 @@ module.exports = function (sequelize, DataTypes) {
   });
 
   Class.associate = (models) => {
-    Class.belongsToMany(models.User, { through: "ClassUser" });
+    Class.belongsTo(models.User, {
+      foreignKey: {
+        allowNull: false
+      }
+    });
   };
   return Class;
 };
