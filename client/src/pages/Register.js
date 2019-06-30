@@ -21,7 +21,6 @@ class Register extends Component {
         console.log(data);
       }).catch(err => console.log(err));
     }
-
   }
 
   handleInputChange = event => {
@@ -37,6 +36,35 @@ class Register extends Component {
         <Jumbotron>
           <h5>Register Below:</h5>
           <form>
+            <Input
+              value={this.state.password}
+              onChange={this.handleInputChange}
+              name="name"
+              type="type"
+              placeholder="name"
+            />
+            <Input
+              value={this.state.password}
+              onChange={this.handleInputChange}
+              name="logo"
+              type="type"
+              placeholder="Link to Logo"
+            />
+            <Input
+              value={this.state.password}
+              onChange={this.handleInputChange}
+              name="website"
+              type="type"
+              placeholder="Link to Website"
+            />
+            <Input
+              value={this.state.password}
+              onChange={this.handleInputChange}
+              name="address"
+              type="type"
+              placeholder="Address"
+            />
+            {/* boolean */}
             <Input
               value={this.state.email}
               onChange={this.handleInputChange}
