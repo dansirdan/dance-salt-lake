@@ -5,21 +5,18 @@ import { Input, TextArea, Dropdown } from "../Form";
 export function Classes() {
   return (
     <>
+      {dateTimeLocation()}
       <Input
-        name="instructor"
+        name="instructorName"
         type="text"
         placeholder="Instructor"
-      />
-      <Input
-        name="instructor-image"
-        type="text"
-        placeholder="Image link"
       />
       <Input
         name="style"
         type="text"
         placeholder="Dance Style"
       />
+      {/* master boolean checkbox */}
       <Dropdown name="level">
         <option>Level</option>
         <option value="beginner">Beginner</option>
@@ -27,17 +24,7 @@ export function Classes() {
         <option value="advanced">Advanced</option>
         <option value="all-levels">All Levels</option>
       </Dropdown>
-      <Input
-        name="class-length"
-        type="text"
-        placeholder="Class Duration"
-      />
-      {dateTimeLocation()}
-      <Input
-        name="payment-method"
-        type="text"
-        placeholder="Payment Method"
-      />
+     
       <Input
         type="submit"
         value="Submit"
@@ -58,14 +45,9 @@ export function Performances() {
         placeholder="Ticket Price"
       />
       <Input
-        name="performance-image"
+        name="special"
         type="text"
-        placeholder="Image Link"
-      />
-      <TextArea
-        name="performance-notes"
-        type="text"
-        placeholder="Notes:"
+        placeholder="Special"
       />
       <Input
         type="submit"
@@ -81,20 +63,19 @@ export function Auditions() {
   return (
     <>
       {dateTimeLocation()}
-      <Input
-        name="openings"
-        type="number"
-        placeholder="Number of Openings"
+      <Input 
+        name="lookingFor"
+        type="text"
+        placeholder="Looking For"
       />
-      <Dropdown>
+      <Dropdown name="gig">
         <option>Gig Type</option>
         <option value="contract">Contract</option>
         <option value="project">Project Based</option>
         <option value="fulltime">Fulltime</option>
       </Dropdown>
-
       <TextArea
-        name="audtion-notes"
+        name="audtioNotes"
         type="text"
         placeholder="Notes"
       />
@@ -112,12 +93,17 @@ export function Rental() {
   return (
     <>
       <Input
+        name="name"
+        type="text"
+        placeholder="Name"
+      />
+      <Input
         name="location"
         type="text"
         placeholder="Location"
       />
       <Input
-        name="sqfootage"
+        name="squareFootage"
         type="number"
         placeholder="Square Footage"
       />
@@ -125,6 +111,11 @@ export function Rental() {
         name="rate"
         type="number"
         placeholder="Price"
+      />
+      <Input
+        name="number_of_people"
+        type="text"
+        placeholder="Number of People"
       />
       <Input
         name="link"
@@ -145,6 +136,26 @@ function dateTimeLocation() {
   return (
     <>
       <Input
+        name="title"
+        type="text"
+        placeholder="Title"
+      />
+      <TextArea
+        name="description"
+        type="text"
+        placeholder="description"
+      />
+      <Input
+        name="photoLink"
+        type="text"
+        placeholder="Image link"
+      />
+      <Input
+        name="length"
+        type="text"
+        placeholder="Duration"
+      />
+      <Input
         name="date"
         type="date"
       />
@@ -153,9 +164,14 @@ function dateTimeLocation() {
         type="time"
       />
       <Input
-        name="location"
+        name="payment"
         type="text"
-        placeholder="Location"
+        placeholder="Payment Method"
+      />
+      <Input
+        name="address"
+        type="text"
+        placeholder="Address"
       />
       <Input
         name="link"
