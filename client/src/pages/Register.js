@@ -6,8 +6,13 @@ const axios = require("axios");
 class Register extends Component {
 
   state = {
-    email: "",
-    password: ""
+    name: '',
+    logo: '',
+    website: '',
+    address: '',
+    phone: '',
+    email: '',
+    password: ''
   }
 
   handleRegister = event => {
@@ -37,32 +42,39 @@ class Register extends Component {
           <h5>Register Below:</h5>
           <form>
             <Input
-              value={this.state.password}
+              value={this.state.name}
               onChange={this.handleInputChange}
               name="name"
-              type="type"
-              placeholder="name"
+              type="text"
+              placeholder="Organization/Artist"
             />
             <Input
-              value={this.state.password}
+              value={this.state.logo}
               onChange={this.handleInputChange}
               name="logo"
-              type="type"
+              type="text"
               placeholder="Link to Logo"
             />
             <Input
-              value={this.state.password}
+              value={this.state.website}
               onChange={this.handleInputChange}
               name="website"
-              type="type"
+              type="text"
               placeholder="Link to Website"
             />
             <Input
-              value={this.state.password}
+              value={this.state.address}
               onChange={this.handleInputChange}
               name="address"
-              type="type"
+              type="text"
               placeholder="Address"
+            />
+            <Input
+              value={this.state.phone}
+              onChange={this.handleInputChange}
+              name="phone"
+              type="tel"
+              placeholder="Phone Number"
             />
             {/* boolean */}
             <Input
