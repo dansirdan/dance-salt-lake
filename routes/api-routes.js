@@ -1,5 +1,6 @@
 const db = require("../models");
 const passport = require("../config/passport");
+const controllers = require("../controllers");
 
 module.exports = function (app) {
 
@@ -34,4 +35,9 @@ module.exports = function (app) {
       });
     }
   });
+
+  app.post("/api/audition", controllers.audition.create);
+  app.post("/api/class", controllers.klass.create);
+  app.post("/api/performance", controllers.performance.create);
+  app.post("/api/space", controllers.space.create);
 };

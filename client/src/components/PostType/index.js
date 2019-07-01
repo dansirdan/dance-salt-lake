@@ -28,7 +28,7 @@ export function Classes() {
       <Input
         type="submit"
         value="Submit"
-        className="btn"
+        className="btn"d
       />
     </>
   )
@@ -114,7 +114,7 @@ export function Rental() {
       />
       <Input
         name="number_of_people"
-        type="text"
+        type="num"
         placeholder="Number of People"
       />
       <Input
@@ -158,6 +158,7 @@ function dateTimeLocation() {
       <Input
         name="date"
         type="date"
+        value="2019-07-01"
       />
       <Input
         name="time"

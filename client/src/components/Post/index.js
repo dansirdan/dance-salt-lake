@@ -16,19 +16,19 @@ function Post(props) {
   // conditional rendering
   function renderInputs() {
     switch (postType) {
-      case "classes":
+      case "class":
         return <Classes />;
         break;
 
-      case "performances":
+      case "performance":
         return <Performances />;
         break;
 
-      case "auditions":
+      case "audition":
         return <Auditions />;
         break;
 
-      case "rental":
+      case "space":
         return <Rental />;
         break;
     }
@@ -38,12 +38,12 @@ function Post(props) {
     // form with POST method and route adjusting to postType value
     <Form
       method="POST"
-      action={"/post/" + postType}>
+      action={"/api/" + postType}>
 
       <Input
         name="user-id"
         type="text"
-        //value={props.user.id}
+        value={1}
         hidden
       />
 
@@ -52,10 +52,10 @@ function Post(props) {
         onChange={handleSelectChange}
       >
         <option>New Post:</option>
-        <option value="classes">Classes</option>
-        <option value="performances">Performances</option>
-        <option value="auditions">Auditions</option>
-        <option value="rental">Rental Space</option>
+        <option value="class">Classes</option>
+        <option value="performance">Performances</option>
+        <option value="audition">Auditions</option>
+        <option value="space">Rental Space</option>
       </Dropdown>
 
       {renderInputs()}

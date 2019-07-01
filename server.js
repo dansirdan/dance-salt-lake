@@ -33,7 +33,7 @@ app.get("*", (req, res) => {
   res.sendFile(path.join(__dirname, "./client/build/index.htnl"));
 });
 
-db.sequelize.sync(syncOptions).then(function () {
+// db.sequelize.sync(syncOptions).then(function () {
   app.listen(PORT, function () {
     console.log(
       "==> 🌎 Listening on port %s. Visit http://localhost:%s/ in your browser.",
@@ -41,4 +41,4 @@ db.sequelize.sync(syncOptions).then(function () {
       PORT
     );
   });
-});
+// });
