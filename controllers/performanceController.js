@@ -19,6 +19,12 @@ module.exports = {
     
   
   // ============= Un-tested =============
+  findOne: function (req, res) {
+    db.Performance
+      .findOne({ where: { id: req.params.id }})
+      .then(data => res.json(data))
+      .catch(err => res.status(422).json(err));
+  },
   update: function (req, res) {
     db.Performance
       .update(req.body, { where: { id: req.params.id } }) 

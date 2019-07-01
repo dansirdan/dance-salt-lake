@@ -1,5 +1,5 @@
 import React from "react";
-import { Input, TextArea, Dropdown } from "../Form";
+import { Input, TextArea, Checkbox, Dropdown } from "../Form";
 
 // Function for class inputs
 export function Classes() {
@@ -17,6 +17,10 @@ export function Classes() {
         placeholder="Dance Style"
       />
       {/* master boolean checkbox */}
+      <Checkbox 
+        name="master"
+        lable="Master Class"
+      />
       <Dropdown name="level">
         <option>Level</option>
         <option value="beginner">Beginner</option>
@@ -158,7 +162,7 @@ function dateTimeLocation() {
       <Input
         name="date"
         type="date"
-        value="2019-07-01"
+        value="2019-07-01" //remove after texting
       />
       <Input
         name="time"

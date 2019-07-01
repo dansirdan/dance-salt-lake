@@ -1,6 +1,4 @@
 import React from "react";
-import "./style.css";
-
 
 export function Form(props) {
   return (
@@ -36,6 +34,14 @@ export function Dropdown(props) {
   )
 }
 
+export function Checkbox(props) {
+  return (
+    <div className="form-group form-check">
+      <input type="checkbox" className="form-check-input" id={props.name} {...props} />
+      <label for={props.name}>{props.lable}</label>
+    </div>
+  )
+}
 // Buttons
 export function FormBtn(props) {
   return (

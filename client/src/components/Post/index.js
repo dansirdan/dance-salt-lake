@@ -43,7 +43,7 @@ function Post(props) {
       <Input
         name="user-id"
         type="text"
-        value={1}
+        //value={props.user.id}
         hidden
       />
 
