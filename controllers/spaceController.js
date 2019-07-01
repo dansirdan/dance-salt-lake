@@ -7,12 +7,17 @@ module.exports = {
       .then(data => res.json(data))
       .catch(err => res.status(422).json(err));
   },
-  read: function (req, res) {
+  findAll: function (req, res) {
     db.Space
       .findAll({})
       .then(data => res.json(data))
       .catch(err => res.status(422).json(err));
   },
+  // TODO: research how to write queries for user filters
+  // find one
+  
+  
+  // ============= Un-tested =============
   update: function (req, res) {
     db.Space
       .update(req.body, { where: { id: req.params.id } })

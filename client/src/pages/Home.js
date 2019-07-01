@@ -2,6 +2,7 @@ import React from "react";
 import Jumbotron from "../components/Jumbotron"
 import { Link } from "react-router-dom";
 import Post from "../components/Post"
+import Example from "../components/Example" 
 
 function Home() {
   return (
@@ -18,6 +19,7 @@ function Home() {
         </p>
       </Jumbotron>
       <Post />
+      <Example />
     </div>
   )
 }

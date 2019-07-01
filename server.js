@@ -19,6 +19,7 @@ app.use(
 app.use(passport.initialize());
 app.use(passport.session());
 
+// require("./routes/api-routes.js");
 require("./routes/api-routes.js")(app);
 
 const syncOptions = {
@@ -30,7 +31,7 @@ if (process.env.NODE_ENV === "production") {
 }
 
 app.get("*", (req, res) => {
-  res.sendFile(path.join(__dirname, "./client/build/index.htnl"));
+  res.sendFile(path.join(__dirname, "./client/build/index.html"));
 });
 
 // db.sequelize.sync(syncOptions).then(function () {

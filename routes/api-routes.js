@@ -36,8 +36,15 @@ module.exports = function (app) {
     }
   });
 
-  app.post("/api/audition", controllers.audition.create);
-  app.post("/api/class", controllers.klass.create);
-  app.post("/api/performance", controllers.performance.create);
+  app.post("/api/auditions", controllers.audition.create);
+  app.get("/api/auditions", controllers.audition.findAll);
+
+  app.post("/api/classes", controllers.klass.create);
+  app.get("/api/classes", controllers.klass.findAll);
+
+  app.post("/api/performances", controllers.performance.create);
+  app.get("/api/performances", controllers.performance.findAll);
+
   app.post("/api/space", controllers.space.create);
+  app.get("/api/space", controllers.space.findAll);
 };
