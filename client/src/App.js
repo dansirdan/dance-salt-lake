@@ -9,6 +9,10 @@ import {
 import Home from "./pages/Home";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
+import Class from "./pages/Class";
+import Performance from "./pages/Performance";
+import Audition from "./pages/Audition";
+import Space from "./pages/Space";
 import UsersHome from "./pages/UsersHome";
 import NavBar from "./components/NavBar";
 import NoMatch from "./pages/NoMatch";
@@ -64,6 +68,38 @@ class App extends Component {
                       handleAuth={this.handleAuth}
                     />
                   )
+              )}
+            />
+            <Route
+              exact path="/class"
+              render={(props) => (
+                <Class {...props}
+
+                />
+              )}
+            />
+            <Route
+              exact path="/audition"
+              render={(props) => (
+                <Audition {...props}
+
+                />
+              )}
+            />
+            <Route
+              exact path="/performance"
+              render={(props) => (
+                <Performance {...props}
+
+                />
+              )}
+            />
+            <Route
+              exact path="/space"
+              render={(props) => (
+                <Space {...props}
+
+                />
               )}
             />
             <Route

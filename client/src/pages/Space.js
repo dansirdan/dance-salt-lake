@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { List, SpaceListItem } from "../components/List";
-import { Container, Row, Col } from "./components/Grid";
+import { Container, Row, Col } from "../components/Grid";
 
 class Space extends Component {
   state = {
@@ -23,11 +23,12 @@ class Space extends Component {
                   {this.state.spaces.map(space => {
                     return (
                       <SpaceListItem
-                        key={space.title}
-                        title={space.title}
-                        href={space.href}
-                        ingredients={space.ingredients}
-                        thumbnail={space.thumbnail}
+                        key={space.id}
+                        name={space.name}
+                        rate={space.rate}
+                        location={space.location}
+                        squareFootage={space.squareFootage}
+                        numPeople={space.numPeople}
                       />
                     );
                   })}

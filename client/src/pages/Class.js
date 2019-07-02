@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import Calendar from "../components/Calendar";
 import { List, ClassListItem } from "../components/List";
-import { Container, Row, Col } from "./components/Grid";
+import { Container, Row, Col } from "../components/Grid";
 
 class Class extends Component {
   state = {
@@ -29,11 +29,19 @@ class Class extends Component {
                     {this.state.classes.map(klass => {
                       return (
                         <ClassListItem
-                          key={klass.title}
+                          key={klass.id}
                           title={klass.title}
-                          href={klass.href}
-                          ingredients={klass.ingredients}
-                          thumbnail={klass.thumbnail}
+                          style={klass.style}
+                          master={klass.master}
+                          description={klass.description}
+                          address={klass.address}
+                          instructorName={klass.instructorName}
+                          photoLink={klass.photoLink}
+                          length={klass.length}
+                          level={klass.level}
+                          payment={klass.payment}
+                          time={klass.time}
+                          date={klass.date}
                         />
                       )
                     })}

@@ -11,24 +11,30 @@ export function List({ children }) {
 
 // ClassListItem renders a bootstrap list item containing data from the recipe api call
 export function ClassListItem({
-  thumbnail = "https://placehold.it/300x300",
   title,
-  ingredients,
-  href
+  style,
+  master,
+  description,
+  address,
+  instructorName,
+  photoLink = "https://placehold.it/300x300",
+  length,
+  level,
+  payment,
+  time,
+  date
 }) {
   return (
     <li className="list-group-item">
       <Container>
         <Row>
           <Col size="xs-4 sm-2">
-            <Thumbnail src={thumbnail} />
+            <Thumbnail src={photoLink} />
           </Col>
           <Col size="xs-8 sm-9">
             <h3>{title}</h3>
-            <p>Ingredients: {ingredients}</p>
-            <a rel="noreferrer noopener" target="_blank" href={href}>
-              Go to recipe!
-            </a>
+            <h5>{style}</h5>
+            <p>{description}</p>
           </Col>
         </Row>
       </Container>
@@ -38,24 +44,27 @@ export function ClassListItem({
 
 // AuditionListItem renders a bootstrap list item containing data from the recipe api call
 export function AuditionListItem({
-  thumbnail = "https://placehold.it/300x300",
   title,
-  ingredients,
-  href
+  lookingFor,
+  description,
+  text,
+  address,
+  gig,
+  photoLink = "https://placehold.it/300x300",
+  length,
+  payment,
+  time,
+  date
 }) {
   return (
     <li className="list-group-item">
       <Container>
         <Row>
           <Col size="xs-4 sm-2">
-            <Thumbnail src={thumbnail} />
+            <Thumbnail src={photoLink} />
           </Col>
           <Col size="xs-8 sm-9">
             <h3>{title}</h3>
-            <p>Ingredients: {ingredients}</p>
-            <a rel="noreferrer noopener" target="_blank" href={href}>
-              Go to recipe!
-            </a>
           </Col>
         </Row>
       </Container>
@@ -65,24 +74,25 @@ export function AuditionListItem({
 
 // PerformanceListItem renders a bootstrap list item containing data from the recipe api call
 export function PerformanceListItem({
-  thumbnail = "https://placehold.it/300x300",
   title,
-  ingredients,
-  href
+  description,
+  address,
+  photoLink = "https://placehold.it/300x300",
+  length,
+  payment,
+  time,
+  date,
+  special
 }) {
   return (
     <li className="list-group-item">
       <Container>
         <Row>
           <Col size="xs-4 sm-2">
-            <Thumbnail src={thumbnail} />
+            <Thumbnail src={photoLink} />
           </Col>
           <Col size="xs-8 sm-9">
             <h3>{title}</h3>
-            <p>Ingredients: {ingredients}</p>
-            <a rel="noreferrer noopener" target="_blank" href={href}>
-              Go to recipe!
-            </a>
           </Col>
         </Row>
       </Container>
@@ -92,24 +102,22 @@ export function PerformanceListItem({
 
 // SpaceListItem renders a bootstrap list item containing data from the recipe api call
 export function SpaceListItem({
-  thumbnail = "https://placehold.it/300x300",
-  title,
-  ingredients,
-  href
+  name,
+  rate,
+  location,
+  squareFootage,
+  numPeople
 }) {
   return (
     <li className="list-group-item">
       <Container>
         <Row>
-          <Col size="xs-4 sm-2">
-            <Thumbnail src={thumbnail} />
-          </Col>
           <Col size="xs-8 sm-9">
-            <h3>{title}</h3>
-            <p>Ingredients: {ingredients}</p>
-            <a rel="noreferrer noopener" target="_blank" href={href}>
-              Go to recipe!
-            </a>
+            <h3>{name}</h3>
+            <p>Rate: {rate}</p>
+            <p>Location: {location}</p>
+            <p>Sq Ft: {squareFootage}</p>
+            <p>Number of People allowed: {numPeople}</p>
           </Col>
         </Row>
       </Container>
