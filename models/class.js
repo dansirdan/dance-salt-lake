@@ -26,6 +26,10 @@ module.exports = function (sequelize, DataTypes) {
         notEmpty: true
       }
     },
+    address: {
+      type: DataTypes.STRING,
+      allowNull: false
+    },
     instructorName: {
       type: DataTypes.STRING,
       allowNull: false

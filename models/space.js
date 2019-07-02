@@ -25,7 +25,7 @@ module.exports = function (sequelize, DataTypes) {
       type: DataTypes.INTEGER,
       allowNull: false
     },
-    number_of_people: {
+    numPeople: {
       type: DataTypes.INTEGER,
       allowNull: false,
       validate: {

@@ -11,15 +11,30 @@ class NavBar extends Component {
             <Link className="navbar-brand" to="/">
               Home
             </Link>
+            <Link className="navbar-brand" to="/class">
+              Class
+            </Link>
+            <Link className="navbar-brand" to="/performance">
+              Performance
+            </Link>
+            <Link className="navbar-brand" to="/audition">
+              Audition
+            </Link>
             <Link className="navbar-brand" to="/usershome">
               Users Home
             </Link>
           </div>
         ) : (
             <div>
-              <Link className="navbar-brand" to="/">
-                Home
-              </Link>
+              <Link className="navbar-brand" to="/class">
+                Class
+            </Link>
+              <Link className="navbar-brand" to="/performance">
+                Performance
+            </Link>
+              <Link className="navbar-brand" to="/audition">
+                Audition
+            </Link>
               <Link className="navbar-brand" to="/register">
                 Register
               </Link>
