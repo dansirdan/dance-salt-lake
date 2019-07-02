@@ -1,28 +1,26 @@
 import React from "react";
 import Thumbnail from "../Thumbnail";
 import { Container, Row, Col } from "../Grid";
+import { FormBtn } from "../Form"
 
-// Exporting both ClassList and ClassListItem from this file
-
-// ClassList renders a bootstrap list item
 export function List({ children }) {
   return <ul className="list-group">{children}</ul>;
 }
 
-// ClassListItem renders a bootstrap list item containing data from the recipe api call
 export function ClassListItem({
   title,
   style,
-  master,
+  // master,
   description,
-  address,
+  // address,
   instructorName,
   photoLink = "https://placehold.it/300x300",
-  length,
+  // length,
   level,
-  payment,
-  time,
-  date
+  // payment,
+  // time,
+  // date,
+  onClick
 }) {
   return (
     <li className="list-group-item">
@@ -33,8 +31,13 @@ export function ClassListItem({
           </Col>
           <Col size="xs-8 sm-9">
             <h3>{title}</h3>
-            <h5>{style}</h5>
-            <p>{description}</p>
+            <h5>Teacher: {instructorName}</h5>
+            <h5>Style: {style}</h5>
+            <h5>Level: {level}</h5>
+            <p>Description: {description}</p>
+            <FormBtn
+              onClick={onClick}
+            />
           </Col>
         </Row>
       </Container>
@@ -42,19 +45,20 @@ export function ClassListItem({
   );
 }
 
-// AuditionListItem renders a bootstrap list item containing data from the recipe api call
 export function AuditionListItem({
   title,
   lookingFor,
   description,
-  text,
-  address,
-  gig,
+  // text,
+  // address,
+  // gig,
   photoLink = "https://placehold.it/300x300",
-  length,
-  payment,
-  time,
-  date
+  // length,
+  // payment,
+  // time,
+  date,
+  // link,
+  onClick
 }) {
   return (
     <li className="list-group-item">
@@ -65,6 +69,12 @@ export function AuditionListItem({
           </Col>
           <Col size="xs-8 sm-9">
             <h3>{title}</h3>
+            <h5>Date: {date}</h5>
+            <h5>Looking for: {lookingFor}</h5>
+            <p>Description: {description}</p>
+            <FormBtn
+              onClick={onClick}
+            />
           </Col>
         </Row>
       </Container>
@@ -72,17 +82,17 @@ export function AuditionListItem({
   );
 }
 
-// PerformanceListItem renders a bootstrap list item containing data from the recipe api call
 export function PerformanceListItem({
   title,
   description,
-  address,
+  // address,
   photoLink = "https://placehold.it/300x300",
-  length,
-  payment,
+  // length,
+  // payment,
   time,
   date,
-  special
+  // special,
+  onClick
 }) {
   return (
     <li className="list-group-item">
@@ -93,6 +103,12 @@ export function PerformanceListItem({
           </Col>
           <Col size="xs-8 sm-9">
             <h3>{title}</h3>
+            <h5>Presenting Company/Artist: </h5>
+            <h5>{date} and {time}</h5>
+            <p>Description: {description}</p>
+            <FormBtn
+              onClick={onClick}
+            />
           </Col>
         </Row>
       </Container>
@@ -100,7 +116,6 @@ export function PerformanceListItem({
   );
 }
 
-// SpaceListItem renders a bootstrap list item containing data from the recipe api call
 export function SpaceListItem({
   name,
   rate,
