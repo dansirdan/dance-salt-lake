@@ -16,16 +16,16 @@ function Post(props) {
   // conditional rendering
   function renderInputs() {
     switch (postType) {
+      case "auditions":
+        return <Auditions />;
+        break;
+
       case "classes":
         return <Classes />;
         break;
 
       case "performances":
         return <Performances />;
-        break;
-
-      case "auditions":
-        return <Auditions />;
         break;
 
       case "space":

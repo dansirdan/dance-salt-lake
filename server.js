@@ -3,6 +3,7 @@ const bodyParser = require("body-parser");
 const session = require("express-session");
 const passport = require("./config/passport");
 const path = require("path");
+const routes = require("./routes");
 require("dotenv").config();
 
 const PORT = process.env.PORT || 3001;
@@ -20,7 +21,8 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 // require("./routes/api-routes.js");
-require("./routes/api-routes.js")(app);
+// require("./routes/api-routes")(app);
+app.use(routes);
 
 const syncOptions = {
   force: true
@@ -30,9 +32,9 @@ if (process.env.NODE_ENV === "production") {
   app.use(express.static("client/build"));
 }
 
-app.get("*", (req, res) => {
-  res.sendFile(path.join(__dirname, "./client/build/index.html"));
-});
+// app.get("*", (req, res) => {
+//   res.sendFile(path.join(__dirname, "./client/build/index.html"));
+// });
 
 // db.sequelize.sync(syncOptions).then(function () {
   app.listen(PORT, function () {
