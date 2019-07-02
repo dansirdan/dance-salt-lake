@@ -38,13 +38,17 @@ module.exports = function (app) {
 
   app.post("/api/auditions", controllers.audition.create);
   app.get("/api/auditions", controllers.audition.findAll);
+  app.get("/api/auditions/:id", controllers.audition.findOne);
 
   app.post("/api/classes", controllers.klass.create);
   app.get("/api/classes", controllers.klass.findAll);
+  app.get("/api/classes/:id", controllers.klass.findOne);
 
   app.post("/api/performances", controllers.performance.create);
   app.get("/api/performances", controllers.performance.findAll);
+  app.get("/api/performances/:id", controllers.performance.findOne);
 
   app.post("/api/space", controllers.space.create);
   app.get("/api/space", controllers.space.findAll);
+  app.get("/api/space/:id", controllers.space.findOne);
 };

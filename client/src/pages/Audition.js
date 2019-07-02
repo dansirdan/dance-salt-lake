@@ -4,6 +4,7 @@ import Button from "react-bootstrap/Button"
 import Calendar from "../components/Calendar";
 import { List, AuditionListItem } from "../components/List";
 import { Container, Row, Col } from "../components/Grid";
+import API from "../utils/API"
 
 class Audition extends Component {
   constructor(props, context) {
@@ -26,15 +27,23 @@ class Audition extends Component {
     })
   }
 
+  /**
+   * the getSinglePost method takes two argument which create the route path
+   * when we get to that point, the onClick method should return a list item id
+   */
+
   handleShow() {
     // single query of an audition's id to populate state and then show more info.
-    this.setState({
-      show: true
-    })
+    
+    API.getSinglePost("auditions", 1) //--hard coded post id
+      .then(res => this.setState({ moreInfo: res.data, show: true }))
+      .catch(err => console.log(err));
   }
 
-  componentDidMount() {
-
+  componentDidMount() {    
+    API.getPosts("auditions")
+      .then(res => this.setState({ auditions: res.data }))
+      .catch(err => console.log(err));
   }
 
   render() {
@@ -92,6 +101,7 @@ class Audition extends Component {
           </Modal.Header>
           <Modal.Body>
             Test Text in a modal
+            {this.state.moreInfo.title}
           </Modal.Body>
           <Modal.Footer>
             <Button variant="secondary" onClick={this.handleClose}>

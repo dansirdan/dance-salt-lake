@@ -18,7 +18,7 @@ import API from "../../utils/API"
 class Results extends Component {
 
   state = {
-    postType: "performances",
+    postType: "auditions",
     results: []
   }
 

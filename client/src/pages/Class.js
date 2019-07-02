@@ -2,13 +2,16 @@ import React, { Component } from 'react';
 import Calendar from "../components/Calendar";
 import { List, ClassListItem } from "../components/List";
 import { Container, Row, Col } from "../components/Grid";
+import API from "../utils/API"
 
 class Class extends Component {
   state = {
     classes: []
   }
   componentDidMount() {
-
+    API.getPosts("classes")
+      .then(res => this.setState({ classes: res.data }))
+      .catch(err => console.log(err));
   }
 
   render() {

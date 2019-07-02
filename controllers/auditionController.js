@@ -26,7 +26,7 @@ module.exports = {
  // ============= Un-tested =============
   findOne: function (req, res) {  
     db.Audition
-      .findOne({ where: { is: req.params.id }})
+      .findOne({ where: { id: req.params.id }})
       .then(data => res.json(data))
       .catch(err => res.status(422).json(err));
   },

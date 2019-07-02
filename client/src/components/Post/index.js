@@ -16,15 +16,15 @@ function Post(props) {
   // conditional rendering
   function renderInputs() {
     switch (postType) {
-      case "class":
+      case "classes":
         return <Classes />;
         break;
 
-      case "performance":
+      case "performances":
         return <Performances />;
         break;
 
-      case "audition":
+      case "auditions":
         return <Auditions />;
         break;
 
@@ -52,9 +52,9 @@ function Post(props) {
         onChange={handleSelectChange}
       >
         <option>New Post:</option>
-        <option value="audition">Auditions</option>
-        <option value="class">Classes</option>
-        <option value="performance">Performances</option>
+        <option value="auditions">Auditions</option>
+        <option value="classes">Classes</option>
+        <option value="performances">Performances</option>
         <option value="space">Rental Space</option>
       </Dropdown>
 

@@ -162,7 +162,7 @@ function dateTimeLocation() {
       <Input
         name="date"
         type="date"
-        defaultValue="2019-07-01" //remove after texting
+        defaultValue="2019-07-01" //remove after testing
       />
       <Input
         name="time"
