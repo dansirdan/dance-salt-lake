@@ -29,7 +29,7 @@ module.exports = function (sequelize, DataTypes) {
       type: DataTypes.STRING,
       // allowNull: false
     },
-    number_of_people: {
+    numPeople: {
       type: DataTypes.INTEGER,
       // allowNull: false,
       // validate: {
