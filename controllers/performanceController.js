@@ -14,7 +14,6 @@ module.exports = {
       .catch(err => res.status(422).json(err));
   },
   // TODO: research how to write queries for user filters
-  // find one
   // find by date
     
   

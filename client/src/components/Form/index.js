@@ -38,7 +38,7 @@ export function Checkbox(props) {
   return (
     <div className="form-group form-check">
       <input type="checkbox" className="form-check-input" id={props.name} {...props} />
-      <label for={props.name}>{props.lable}</label>
+      <label htmlFor={props.name}>{props.lable}</label>
     </div>
   )
 }

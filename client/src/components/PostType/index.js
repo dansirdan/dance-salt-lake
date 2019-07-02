@@ -32,7 +32,7 @@ export function Classes() {
       <Input
         type="submit"
         value="Submit"
-        className="btn"d
+        className="btn"
       />
     </>
   )
@@ -147,7 +147,7 @@ function dateTimeLocation() {
       <TextArea
         name="description"
         type="text"
-        placeholder="description"
+        placeholder="Description"
       />
       <Input
         name="photoLink"
@@ -162,7 +162,7 @@ function dateTimeLocation() {
       <Input
         name="date"
         type="date"
-        value="2019-07-01" //remove after texting
+        defaultValue="2019-07-01" //remove after texting
       />
       <Input
         name="time"
