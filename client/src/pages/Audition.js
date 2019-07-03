@@ -15,7 +15,20 @@ class Audition extends Component {
     this.state = {
       auditions: [],
       show: false,
-      moreInfo: {}
+      moreInfo: {
+        title: "",
+        lookingFor: "",
+        description: "",
+        text: "",
+        address: "",
+        gig: "",
+        photoLink: "",
+        length: "",
+        payment: "",
+        time: "",
+        date: "",
+        link: ""
+      }
     }
   }
 
@@ -67,6 +80,7 @@ class Audition extends Component {
                           payment={audition.payment}
                           time={audition.time}
                           date={audition.date}
+                          link={audition.link}
                           onClick={this.handleShow}
                         />
                       )
@@ -77,9 +91,9 @@ class Audition extends Component {
             </Col>
           </Row>
         </Container>
-        <Button variant="primary" onClick={this.handleShow}>
+        {/* <Button variant="primary" onClick={this.handleShow}>
           Launch demo modal
-        </Button>
+        </Button> */}
         <Modal
           show={this.state.show}
           onHide={this.handleClose}
@@ -88,10 +102,21 @@ class Audition extends Component {
           centered
         >
           <Modal.Header closeButton>
-            <Modal.Title>Test</Modal.Title>
+            <Modal.Title>
+              Audition Info
+            </Modal.Title>
           </Modal.Header>
           <Modal.Body>
-            Test Text in a modal
+            <h2>{this.state.moreInfo.title}</h2>
+            <h5>description</h5>
+            <p>{this.state.moreInfo.description}</p>
+            <p>Address: {this.state.moreInfo.address}</p>
+            <p>Gig Type: {this.state.moreInfo.gig}</p>
+            <p>Length: {this.state.moreInfo.length}</p>
+            <p>Payment: {this.state.moreInfo.payment}</p>
+            <p>Time: {this.state.moreInfo.time}</p>
+            <p>Date: {this.state.moreInfo.date}</p>
+            <p>Link: {this.state.moreInfo.link}</p>
           </Modal.Body>
           <Modal.Footer>
             <Button variant="secondary" onClick={this.handleClose}>
