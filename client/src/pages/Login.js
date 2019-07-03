@@ -21,7 +21,7 @@ class Login extends Component {
     let currentUser;
 
     if (this.state.email && this.state.password) {
-      axios.post("/login", {
+      axios.post("/api/auth/login", {
         email: this.state.email,
         password: this.state.password
       }).then(data => {

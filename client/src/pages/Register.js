@@ -19,7 +19,7 @@ class Register extends Component {
     event.preventDefault();
 
     if (this.state.email && this.state.password) {
-      axios.post("/signup", {
+      axios.post("/api/auth/signup", {
         email: this.state.email,
         password: this.state.password
       }).then(function (data) {

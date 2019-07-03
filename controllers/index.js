@@ -1,6 +1,6 @@
-module.exports.audition = require("./auditionController")
-module.exports.klass = require("./classController")
-module.exports.performance = require("./performanceController")
-module.exports.space = require("./spaceController")
-module.exports.auth = require("./authController")
+module.exports = require("./auditionController")
+module.exports = require("./classController")
+module.exports = require("./performanceController")
+module.exports = require("./spaceController")
+module.exports = require("./authController")
 
