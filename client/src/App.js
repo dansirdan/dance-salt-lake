@@ -16,6 +16,7 @@ import Space from "./pages/Space";
 import UsersHome from "./pages/UsersHome";
 import NavBar from "./components/NavBar";
 import NoMatch from "./pages/NoMatch";
+import Hero from "./components/Hero";
 import './App.css';
 
 class App extends Component {
@@ -47,6 +48,7 @@ class App extends Component {
           <NavBar
             isAuthed={this.state.isAuthenticated}
           />
+          <Hero />
           <Switch>
             <Route
               exact path="/"

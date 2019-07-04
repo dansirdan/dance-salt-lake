@@ -18,19 +18,16 @@ function Post(props) {
     switch (postType) {
       case "auditions":
         return <Auditions />;
-        break;
 
       case "classes":
         return <Classes />;
-        break;
 
       case "performances":
         return <Performances />;
-        break;
 
       case "space":
         return <Rental />;
-        break;
+      default:
     }
   }
 
