@@ -4,6 +4,7 @@ import Button from "react-bootstrap/Button"
 import Calendar from "../components/Calendar";
 import { List, ClassListItem } from "../components/List";
 import { Container, Row, Col } from "../components/Grid";
+import API from "../utils/API"
 
 class Class extends Component {
   constructor(props, context) {
@@ -47,7 +48,9 @@ class Class extends Component {
   }
 
   componentDidMount() {
-
+    API.getPosts("classes")
+      .then(res => this.setState({ classes: res.data }))
+      .catch(err => console.log(err));
   }
 
   render() {

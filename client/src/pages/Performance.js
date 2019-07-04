@@ -4,6 +4,7 @@ import Modal from "react-bootstrap/Modal"
 import Button from "react-bootstrap/Button"
 import { List, PerformanceListItem } from "../components/List";
 import { Container, Row, Col } from "../components/Grid";
+import API from "../utils/API"
 
 class Performance extends Component {
   constructor(props, context) {
@@ -44,7 +45,9 @@ class Performance extends Component {
   }
 
   componentDidMount() {
-
+    API.getPosts("performances")
+      .then(res => this.setState({ performances: res.data }))
+      .catch(err => console.log(err));
   }
 
   render() {

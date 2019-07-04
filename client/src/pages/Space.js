@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { List, SpaceListItem } from "../components/List";
 import { Container, Row, Col } from "../components/Grid";
+import API from "../utils/API"
 
 class Space extends Component {
   state = {
@@ -8,7 +9,9 @@ class Space extends Component {
   }
 
   componentDidMount() {
-
+    API.getPosts("space")
+      .then(res => this.setState({ spaces: res.data }))
+      .catch(err => console.log(err));
   }
 
   render() {
