@@ -47,13 +47,13 @@ class Audition extends Component {
 
   handleShow() {
     // single query of an audition's id to populate state and then show more info.
-    
+
     API.getSinglePost("auditions", 1) //--hard coded post id
       .then(res => this.setState({ moreInfo: res.data, show: true }))
       .catch(err => console.log(err));
   }
 
-  componentDidMount() {    
+  componentWillMount() {
     API.getPosts("auditions")
       .then(res => this.setState({ auditions: res.data }))
       .catch(err => console.log(err));
