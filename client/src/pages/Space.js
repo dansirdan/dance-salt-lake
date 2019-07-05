@@ -8,7 +8,9 @@ class Space extends Component {
     spaces: []
   }
 
-  componentDidMount() {
+  componentWillMount() {
+    this.props.handleLogo();
+
     API.getPosts("space")
       .then(res => this.setState({ spaces: res.data }))
       .catch(err => console.log(err));

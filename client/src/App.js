@@ -3,8 +3,7 @@ import {
   BrowserRouter as Router,
   Route,
   Switch,
-  Redirect,
-  // withRouter
+  Redirect
 } from "react-router-dom";
 import Home from "./pages/Home";
 import Login from "./pages/Login";
@@ -16,14 +15,38 @@ import Space from "./pages/Space";
 import UsersHome from "./pages/UsersHome";
 import NavBar from "./components/NavBar";
 import NoMatch from "./pages/NoMatch";
-// import Hero from "./components/Hero";
+import AnimateHeight from "react-animate-height";
+import LargeLogo from "./components/LargeLogo";
 import './App.css';
 
 class App extends Component {
 
   state = {
-    isAuthenticated: false,
+    isAuthenticated: true,
+    largeLogo: false,
     userInfo: ""
+  }
+
+  handleLogo = () => {
+
+    if (window.location.pathname !== "" || "/") {
+      this.setState({ largeLogo: false })
+    }
+    this.handleAnimate();
+
+  }
+
+  handleShow = () => {
+    this.setState({ largeLogo: true })
+    this.handleAnimate()
+  }
+
+  handleAnimate = () => {
+    if (this.state.largeLogo) {
+      this.setState({ height: 'auto' })
+    } else {
+      this.setState({ height: 0 })
+    }
   }
 
   handleAuth = (bool, emailUser) => {
@@ -42,13 +65,22 @@ class App extends Component {
   }
 
   render() {
+    const { largeLogo } = this.state;
+
     return (
       <Router>
         <div>
+          <AnimateHeight
+            duration={2000}
+            height={largeLogo ? 'auto' : 0}
+            easing={'ease'}
+          >
+            <LargeLogo />
+          </AnimateHeight>
           <NavBar
             isAuthed={this.state.isAuthenticated}
+            tinyLogo={!this.state.largeLogo}
           />
-          {/* <Hero /> */}
           <Switch>
             <Route
               exact path="/"
@@ -56,6 +88,7 @@ class App extends Component {
                 <Home {...props}
                   isAuthed={this.state.isAuthenticated}
                   handleAuth={this.handleAuth}
+                  handleShow={this.handleShow}
                 />
               )}
             />
@@ -68,6 +101,7 @@ class App extends Component {
                     <Login {...props}
                       isAuthed={this.state.isAuthenticated}
                       handleAuth={this.handleAuth}
+                      handleLogo={this.handleLogo}
                     />
                   )
               )}
@@ -76,7 +110,7 @@ class App extends Component {
               exact path="/class"
               render={(props) => (
                 <Class {...props}
-
+                  handleLogo={this.handleLogo}
                 />
               )}
             />
@@ -84,7 +118,7 @@ class App extends Component {
               exact path="/audition"
               render={(props) => (
                 <Audition {...props}
-
+                  handleLogo={this.handleLogo}
                 />
               )}
             />
@@ -92,7 +126,7 @@ class App extends Component {
               exact path="/performance"
               render={(props) => (
                 <Performance {...props}
-
+                  handleLogo={this.handleLogo}
                 />
               )}
             />
@@ -100,7 +134,7 @@ class App extends Component {
               exact path="/space"
               render={(props) => (
                 <Space {...props}
-
+                  handleLogo={this.handleLogo}
                 />
               )}
             />
@@ -113,6 +147,7 @@ class App extends Component {
                     <Register {...props}
                       isAuthed={this.state.isAuthenticated}
                       handleAuth={this.handleAuth}
+                      handleLogo={this.handleLogo}
                     />
                   )
               )}
@@ -126,6 +161,7 @@ class App extends Component {
                     isAuthed={this.state.isAuthenticated}
                     handleAuth={this.handleAuth}
                     onClick={this.handleLogout}
+                    handleLogo={() => this.handleLogo()}
                   />
                 ) : (
                     <Redirect to="/login" />

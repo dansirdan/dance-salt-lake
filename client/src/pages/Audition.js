@@ -54,6 +54,8 @@ class Audition extends Component {
   }
 
   componentWillMount() {
+    this.props.handleLogo();
+
     API.getPosts("auditions")
       .then(res => this.setState({ auditions: res.data }))
       .catch(err => console.log(err));

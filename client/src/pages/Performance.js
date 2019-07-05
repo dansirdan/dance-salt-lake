@@ -44,7 +44,9 @@ class Performance extends Component {
     })
   }
 
-  componentDidMount() {
+  componentWillMount() {
+    this.props.handleLogo();
+
     API.getPosts("performances")
       .then(res => this.setState({ performances: res.data }))
       .catch(err => console.log(err));

@@ -47,7 +47,9 @@ class Class extends Component {
     })
   }
 
-  componentDidMount() {
+  componentWillMount() {
+    this.props.handleLogo();
+
     API.getPosts("classes")
       .then(res => this.setState({ classes: res.data }))
       .catch(err => console.log(err));

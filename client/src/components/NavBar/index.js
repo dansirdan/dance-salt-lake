@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Link } from "react-router-dom";
+import image from "./tinyPlaceholder.JPG";
 
 class NavBar extends Component {
 
@@ -8,9 +9,13 @@ class NavBar extends Component {
       <nav className="navbar navbar-expand-lg navbar-dark bg-primary">
         {this.props.isAuthed ? (
           <div>
-            <Link className="navbar-brand" to="/">
-              Home
-            </Link>
+            {this.props.tinyLogo ?
+              <Link className="navbar-brand" to="/">
+                <img src={image} alt="dance-sale-lake" />
+              </Link>
+              :
+              <div></div>
+            }
             <Link className="navbar-brand" to="/class">
               Class
             </Link>
@@ -26,15 +31,22 @@ class NavBar extends Component {
           </div>
         ) : (
             <div>
+              {this.props.tinyLogo ?
+                <Link className="navbar-brand" to="/">
+                  <img src={image} alt="placeholder" />
+                </Link>
+                :
+                <div></div>
+              }
               <Link className="navbar-brand" to="/class">
                 Class
-            </Link>
+              </Link>
               <Link className="navbar-brand" to="/performance">
                 Performance
-            </Link>
+              </Link>
               <Link className="navbar-brand" to="/audition">
                 Audition
-            </Link>
+              </Link>
               <Link className="navbar-brand" to="/register">
                 Register
               </Link>
