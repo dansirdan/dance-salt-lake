@@ -28,6 +28,9 @@ class NavBar extends Component {
             <Link className="navbar-brand" to="/usershome">
               Users Home
             </Link>
+            <Link className="navbar-brand" to="/about">
+              About
+            </Link>
           </div>
         ) : (
             <div>

@@ -1,4 +1,7 @@
 import React, { Component } from "react";
+import {
+  Link
+} from "react-router-dom";
 import { Container, Row, Col } from "../components/Grid";
 import { ClassesPreview, PerformancesPreview, AuditionPreview } from "../components/Preview";
 import Post from "../components/Post"
@@ -16,7 +19,7 @@ class Home extends Component {
       <div>
         <Hero />
         <Container>
-          <Hero />
+          {/* <Hero /> */}
           <Row>
             <Col size="md-4">
               <ClassesPreview />
@@ -25,7 +28,18 @@ class Home extends Component {
               <PerformancesPreview />
             </Col>
             <Col size="md-4">
-              <AuditionPreview />
+              <Row>
+                <Col size="md-12">
+                  <AuditionPreview />
+                </Col>
+              </Row>
+              <Row>
+                <Col size="md-12">
+                  <Link className="btn btn-primary" to="/space">
+                    Check Out Some Spaces
+                </Link>
+                </Col>
+              </Row>
             </Col>
           </Row>
           <Post />

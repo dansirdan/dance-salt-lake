@@ -6,6 +6,7 @@ import {
   Redirect
 } from "react-router-dom";
 import Home from "./pages/Home";
+import About from "./pages/About";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
 import Class from "./pages/Class";
@@ -23,7 +24,7 @@ class App extends Component {
 
   state = {
     isAuthenticated: true,
-    largeLogo: false,
+    largeLogo: true,
     userInfo: ""
   }
 
@@ -139,6 +140,14 @@ class App extends Component {
               )}
             />
             <Route
+              exact path="/about"
+              render={(props) => (
+                <About {...props}
+                  handleLogo={this.handleLogo}
+                />
+              )}
+            />
+            <Route
               exact path="/register"
               render={(props) => (
                 this.state.isAuthenticated ? (
@@ -161,7 +170,7 @@ class App extends Component {
                     isAuthed={this.state.isAuthenticated}
                     handleAuth={this.handleAuth}
                     onClick={this.handleLogout}
-                    handleLogo={() => this.handleLogo()}
+                    handleLogo={this.handleLogo}
                   />
                 ) : (
                     <Redirect to="/login" />

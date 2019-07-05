@@ -3,6 +3,11 @@ import Jumbotron from "../components/Jumbotron"
 import { LogoutBtn } from "../components/Form";
 
 class UsersHome extends Component {
+
+  componentWillMount() {
+    this.props.handleLogo();
+  }
+
   render() {
     return (
       <div className="container">
