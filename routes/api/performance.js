@@ -10,4 +10,7 @@ router.route("/:id")
   .put(performanceController.update)
   .delete(performanceController.delete)
 
+router.route("/date/:date")
+  .get(performanceController.findByDate)
+
 module.exports = router;

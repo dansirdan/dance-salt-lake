@@ -74,7 +74,7 @@ export function RegisterNav() {
 export function DropdownNavSO() {
   return (
     <Dropdown>
-      <Dropdown.Toggle caret color="primary">
+      <Dropdown.Toggle caret="true" color="primary">
         Account
       </Dropdown.Toggle>
       <Dropdown.Menu>
@@ -102,7 +102,7 @@ export function DropdownNavSO() {
 export function DropdownNavSI() {
   return (
     <Dropdown>
-      <Dropdown.Toggle caret color="primary">
+      <Dropdown.Toggle caret="true" color="primary">
         Account
       </Dropdown.Toggle>
       <Dropdown.Menu>

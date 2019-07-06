@@ -3,8 +3,11 @@ import Modal from "react-bootstrap/Modal";
 import Button from "react-bootstrap/Button";
 import { List, AuditionListItem } from "../components/List";
 import { Container, Row, Col } from "../components/Grid";
+import Jumbotron from "../components/Jumbotron"
 import Calendar from "react-calendar";
+import QueryDropDown from "../components/QueryDrop";
 import API from "../utils/API";
+import moment from "moment";
 
 class Audition extends Component {
   constructor(props, context) {
@@ -34,28 +37,34 @@ class Audition extends Component {
     }
   }
 
-  onChange = date => this.setState({ date })
+  onChange = date => this.setState({ date });
 
+  onClickDay = value => {
+    let date = moment(value).format('YYYY-MM-DD')
+    API.getQueryPosts("auditions", "date", date) //--hard coded post id
+      .then(res => this.setState({ auditions: res.data }))
+      .catch(err => console.log(err));
+  };
 
   handleClose() {
     this.setState({
       show: false,
       moreInfo: {}
     })
-  }
+  };
 
   /**
    * the getSinglePost method takes two argument which create the route path
    * when we get to that point, the onClick method should return a list item id
    */
 
-  handleShow() {
+  handleShow = id => {
     // single query of an audition's id to populate state and then show more info.
 
-    API.getSinglePost("auditions", 1) //--hard coded post id
+    API.getSinglePost("auditions", id) //--hard coded post id
       .then(res => this.setState({ moreInfo: res.data, show: true }))
       .catch(err => console.log(err));
-  }
+  };
 
   componentWillMount() {
     this.props.handleLogo();
@@ -63,18 +72,35 @@ class Audition extends Component {
     API.getPosts("auditions")
       .then(res => this.setState({ auditions: res.data }))
       .catch(err => console.log(err));
-  }
+  };
 
   render() {
     return (
       <Container fluid>
-        <Calendar
-          onChange={this.onChange}
-          value={this.state.date}
-        />
+        <Jumbotron>
+          <Container fluid>
+            <Row>
+              <Col size="md-2" />
+              <Col size="md-3">
+                <QueryDropDown>
+
+                </QueryDropDown>
+              </Col>
+              <Col size="md-1" />
+              <Col size="md-4">
+                <Calendar
+                  onChange={this.onChange}
+                  value={this.state.date}
+                  onClickDay={this.onClickDay}
+                />
+              </Col>
+              <Col size="md-2" />
+            </Row>
+          </Container>
+        </Jumbotron>
         <Container fluid>
-          <Row>
-            <Col size="xs-12">
+          <Row className="justify-content-center">
+            <Col size="md-12">
               {!this.state.auditions.length ? (
                 <h1 className="text-center">No Auditions to Display</h1>
               ) : (
@@ -95,7 +121,7 @@ class Audition extends Component {
                           time={audition.time}
                           date={audition.date}
                           link={audition.link}
-                          onClick={this.handleShow}
+                          onClick={() => this.handleShow(audition.id)}
                         />
                       )
                     })}

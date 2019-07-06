@@ -3,8 +3,11 @@ import Modal from "react-bootstrap/Modal"
 import Button from "react-bootstrap/Button"
 import { List, PerformanceListItem } from "../components/List";
 import { Container, Row, Col } from "../components/Grid";
+import QueryDropDown from "../components/QueryDrop";
+import Jumbotron from "../components/Jumbotron";
 import Calendar from 'react-calendar';
 import API from "../utils/API"
+import moment from "moment";
 
 class Performance extends Component {
   constructor(props, context) {
@@ -32,7 +35,12 @@ class Performance extends Component {
   }
 
   onChange = date => this.setState({ date })
-
+  onClickDay = value => {
+    let date = moment(value).format('YYYY-MM-DD')
+    API.getQueryPosts("performances", "date", date)
+      .then(res => this.setState({ performances: res.data }))
+      .catch(err => console.log(err));
+  };
 
   handleClose() {
     this.setState({
@@ -41,12 +49,13 @@ class Performance extends Component {
     })
   }
 
-  handleShow() {
+  handleShow = id => {
     // single query of an audition's id to populate state and then show more info.
-    this.setState({
-      show: true
-    })
-  }
+
+    API.getSinglePost("performances", id) //--hard coded post id
+      .then(res => this.setState({ moreInfo: res.data, show: true }))
+      .catch(err => console.log(err));
+  };
 
   componentWillMount() {
     this.props.handleLogo();
@@ -59,10 +68,27 @@ class Performance extends Component {
   render() {
     return (
       <Container fluid>
-        <Calendar
-          onChange={this.onChange}
-          value={this.state.date}
-        />
+        <Jumbotron>
+          <Container fluid>
+            <Row>
+              <Col size="md-2" />
+              <Col size="md-3">
+                <QueryDropDown>
+
+                </QueryDropDown>
+              </Col>
+              <Col size="md-1" />
+              <Col size="md-4">
+                <Calendar
+                  onChange={this.onChange}
+                  value={this.state.date}
+                  onClickDay={this.onClickDay}
+                />
+              </Col>
+              <Col size="md-2" />
+            </Row>
+          </Container>
+        </Jumbotron>
         <Container fluid>
           <Row>
             <Col size="xs-12">
@@ -83,7 +109,7 @@ class Performance extends Component {
                           time={performance.time}
                           date={performance.date}
                           special={performance.special}
-                          onClick={this.handleShow}
+                          onClick={() => this.handleShow(performance.id)}
                         />
                       )
                     })}

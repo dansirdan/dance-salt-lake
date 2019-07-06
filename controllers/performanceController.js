@@ -13,10 +13,15 @@ module.exports = {
       .then(data => res.json(data))
       .catch(err => res.status(422).json(err));
   },
-  // TODO: research how to write queries for user filters
-  // find by date
+  // ============= Find By ===============
+  // ============ Un-Tested ==============
+  findByDate: function(req, res) {
+    db.Performance
+      .findAll({ where: { date: req.params.date }})
+      .then(data => res.json(data))
+      .catch(err => res.status(422).json(err));
+  },
     
-  
   // ============= Un-tested =============
   findOne: function (req, res) {
     db.Performance

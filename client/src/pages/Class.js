@@ -3,8 +3,11 @@ import Modal from "react-bootstrap/Modal"
 import Button from "react-bootstrap/Button"
 import { List, ClassListItem } from "../components/List";
 import { Container, Row, Col } from "../components/Grid";
+import Jumbotron from "../components/Jumbotron"
+import QueryDropDown from "../components/QueryDrop";
 import Calendar from 'react-calendar';
 import API from "../utils/API"
+import moment from "moment";
 
 class Class extends Component {
   constructor(props, context) {
@@ -35,6 +38,12 @@ class Class extends Component {
   }
 
   onChange = date => this.setState({ date })
+  onClickDay = value => {
+    let date = moment(value).format('YYYY-MM-DD')
+    API.getQueryPosts("classes", "date", date)
+      .then(res => this.setState({ classes: res.data }))
+      .catch(err => console.log(err));
+  };
 
   handleClose() {
     this.setState({
@@ -43,12 +52,13 @@ class Class extends Component {
     })
   }
 
-  handleShow() {
+  handleShow = id => {
     // single query of an audition's id to populate state and then show more info.
-    this.setState({
-      show: true
-    })
-  }
+
+    API.getSinglePost("classes", id) //--hard coded post id
+      .then(res => this.setState({ moreInfo: res.data, show: true }))
+      .catch(err => console.log(err));
+  };
 
   componentWillMount() {
     this.props.handleLogo();
@@ -61,10 +71,27 @@ class Class extends Component {
   render() {
     return (
       <Container fluid>
-        <Calendar
-          onChange={this.onChange}
-          value={this.state.date}
-        />
+        <Jumbotron>
+          <Container fluid>
+            <Row>
+              <Col size="md-2" />
+              <Col size="md-3">
+                <QueryDropDown>
+
+                </QueryDropDown>
+              </Col>
+              <Col size="md-1" />
+              <Col size="md-4">
+                <Calendar
+                  onChange={this.onChange}
+                  value={this.state.date}
+                  onClickDay={this.onClickDay}
+                />
+              </Col>
+              <Col size="md-2" />
+            </Row>
+          </Container>
+        </Jumbotron>
         <Container fluid>
           <Row>
             <Col size="xs-12">
@@ -88,7 +115,7 @@ class Class extends Component {
                           payment={klass.payment}
                           time={klass.time}
                           date={klass.date}
-                          onClick={this.handleShow}
+                          onClick={() => this.handleShow(klass.id)}
                         />
                       )
                     })}
