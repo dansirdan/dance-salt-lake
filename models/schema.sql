@@ -77,7 +77,7 @@ VALUES
 "6 Month Contract",
 "http://lorempixel.com/640/480",
 "http://fakeaudition.com",
- 60m,
+ 60,
 "Cash",
 current_time(),
 current_date(),
@@ -114,7 +114,7 @@ VALUES
 "6 Weeks",
 "http://lorempixel.com/640/480",
 "http://fakeaudition.com",
- 60m,
+ 60,
 "Cash",
 current_time(),
 current_date(),
@@ -151,7 +151,7 @@ VALUES
 "1 Year Contract",
 "http://lorempixel.com/640/480",
 "http://fakeaudition.com",
- 60m,
+ 60,
 "none",
 current_time(),
 current_date(),
@@ -255,7 +255,7 @@ INSERT INTO `react_example`.`classes`
 `updatedAt`,
 `UserId`)
 VALUES
-(1,
+(3,
 "Improvisation",
 "Contact Improv",
 1,
@@ -303,7 +303,7 @@ VALUES
 current_time(),
 current_date(),
 "http://fakeaudition.com",
-"Lorem Ipsumm something special"
+"Lorem Ipsumm something special",
 CURRENT_TIMESTAMP,
 CURRENT_TIMESTAMP,
 1);

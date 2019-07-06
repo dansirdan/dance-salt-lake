@@ -41,7 +41,9 @@ export function ClassListItem({
             <p>Description: {description}</p>
             <FormBtn
               onClick={onClick}
-            />
+            >
+              Show More
+            </FormBtn>
           </Col>
         </Row>
       </Container>
@@ -78,7 +80,9 @@ export function AuditionListItem({
             <p>Description: {description}</p>
             <FormBtn
               onClick={onClick}
-            />
+            >
+              Show More
+            </FormBtn>
           </Col>
         </Row>
       </Container>
@@ -112,7 +116,9 @@ export function PerformanceListItem({
             <p>Description: {description}</p>
             <FormBtn
               onClick={onClick}
-            />
+            >
+              Show More
+            </FormBtn>
           </Col>
         </Row>
       </Container>

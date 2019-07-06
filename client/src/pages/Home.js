@@ -4,7 +4,6 @@ import {
 } from "react-router-dom";
 import { Container, Row, Col } from "../components/Grid";
 import { ClassesPreview, PerformancesPreview, AuditionPreview } from "../components/Preview";
-import Post from "../components/Post"
 import Hero from "../components/Hero";
 
 class Home extends Component {
@@ -19,7 +18,6 @@ class Home extends Component {
       <div>
         <Hero />
         <Container>
-          {/* <Hero /> */}
           <Row>
             <Col size="md-4">
               <ClassesPreview />
@@ -42,7 +40,6 @@ class Home extends Component {
               </Row>
             </Col>
           </Row>
-          <Post />
         </Container>
       </div >
     )

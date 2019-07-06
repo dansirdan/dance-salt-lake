@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
-import Calendar from "../components/Calendar"
 import Modal from "react-bootstrap/Modal"
 import Button from "react-bootstrap/Button"
 import { List, PerformanceListItem } from "../components/List";
 import { Container, Row, Col } from "../components/Grid";
+import Calendar from 'react-calendar';
 import API from "../utils/API"
 
 class Performance extends Component {
@@ -16,6 +16,7 @@ class Performance extends Component {
     this.state = {
       performances: [],
       show: false,
+      date: new Date(),
       moreInfo: {
         title: "",
         description: "",
@@ -29,6 +30,9 @@ class Performance extends Component {
       }
     }
   }
+
+  onChange = date => this.setState({ date })
+
 
   handleClose() {
     this.setState({
@@ -55,11 +59,10 @@ class Performance extends Component {
   render() {
     return (
       <Container fluid>
-        <Calendar>
-          <h1 className="display-4">Performance Calendar</h1>
-          <p className="lead">This is a fake div to represent our calendar and query fine-tuner.</p>
-          <hr className="my-4" />
-        </Calendar>
+        <Calendar
+          onChange={this.onChange}
+          value={this.state.date}
+        />
         <Container fluid>
           <Row>
             <Col size="xs-12">

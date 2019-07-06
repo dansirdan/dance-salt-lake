@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
-import { List, ListItem } from "../List";
 import { Container, Row, Col } from "../Grid";
 import Thumbnail from "../Thumbnail";
 import Card from "react-bootstrap/Card";
+import Accordion from "react-bootstrap/Accordion";
 import "./style.css";
 import API from "../../utils/API"
 
@@ -11,6 +11,7 @@ import API from "../../utils/API"
 // Class Preview shows 3 Items always
 export class ClassesPreview extends Component {
 
+  // declaring state to store class data
   state = {
     classData: []
   }
@@ -20,14 +21,10 @@ export class ClassesPreview extends Component {
 
     API.getPosts("classes")
       .then(res => {
-        // for-loop to only grab three classes
-        if (res.data.length > 3) {
-          for (let i = 0; i < 3; i++) {
-            threeClasses.push(res.data[i]);
-          }
+        for (let i = 0; i < 3; i++) {
+          threeClasses.push(res.data[i]);
         }
         this.setState({ classData: threeClasses })
-        console.log(this.state.classData);
       })
       .catch(err => console.log(err));
 
@@ -37,27 +34,30 @@ export class ClassesPreview extends Component {
     return (
       <div>
         <h1>CLASSES</h1>
-        <List>
-          {this.state.classData.map(klass => {
-            return (
-              <ListItem key={klass.id}>
+
+        {this.state.classData.map(klass => {
+          return (
+            <Card key={klass.id}>
+              <Card.Header>Teacher / Style / Level</Card.Header>
+              <Card.Body>
+                <Card.Title>{klass.instructorName} / {klass.style} / {klass.level}</Card.Title>
                 <Container>
                   <Row>
                     <Col size="md-4">
                       <Thumbnail src={klass.photoLink} />
                     </Col>
                     <Col size="md-8">
-                      <h3>{klass.title}</h3>
-                      <h5>Teacher: {klass.instructorName}</h5>
-                      <h5>Style: {klass.style}</h5>
-                      <h5>Level: {klass.level}</h5>
+                      <Card.Text>
+                        {klass.description}
+                      </Card.Text>
                     </Col>
                   </Row>
                 </Container>
-              </ListItem>
-            )
-          })}
-        </List>
+              </Card.Body>
+            </Card>
+          )
+        })}
+
       </div>
     )
   }
@@ -76,7 +76,7 @@ export class PerformancesPreview extends Component {
 
     API.getPosts("performances")
       .then(res => {
-        RNG = Math.floor(Math.random() * res.data.length) - 1;
+        RNG = Math.floor(Math.random() * res.data.length);
         randomPerformance = res.data[RNG]
         API.getSinglePost("performances", randomPerformance.id)
           .then(res => {
@@ -92,11 +92,11 @@ export class PerformancesPreview extends Component {
       <div>
         <h1>PERFORMANCES</h1>
         <Card>
-          <Card.Img variant="top" src={this.state.performanceData.performanceData ? this.state.performanceData.photoLink : "http://placehold.it/200x200"} />
+          <Card.Img variant="top" src={this.state.performanceData.performanceData !== "" ? this.state.performanceData.photoLink : "http://placehold.it/200x200"} />
           <Card.Body>
-            <Card.Title>{this.state.performanceData.title ? this.state.performanceData.title : "No Performance to show"}</Card.Title>
+            <Card.Title>{this.state.performanceData.title !== "" ? this.state.performanceData.title : "No Performance to show"}</Card.Title>
             <Card.Text>
-              {this.state.performanceData.description ? this.state.performanceData.description : "There are no current performances within our database..."}
+              {this.state.performanceData.description !== "" ? this.state.performanceData.description : "There are no current performances within our database..."}
             </Card.Text>
           </Card.Body>
         </Card>
@@ -115,13 +115,13 @@ export class AuditionPreview extends Component {
   componentWillMount() {
     let threeAuditions = [];
 
-    API.getPosts("classes")
+    API.getPosts("auditions")
       .then(res => {
         for (let i = 0; i < 3; i++) {
           threeAuditions.push(res.data[i]);
         }
-        this.setState({ classData: threeAuditions })
-        console.log(this.state.classData);
+        this.setState({ auditionData: threeAuditions })
+        console.log(this.state.auditionData[0].id)
       })
       .catch(err => console.log(err));
   }
@@ -130,25 +130,26 @@ export class AuditionPreview extends Component {
     return (
       <div>
         <h1>AUDITIONS</h1>
-        <List>
+        <Accordion defaultActiveKey="1">
           {this.state.auditionData.map(audition => {
             return (
-              <ListItem key={audition.id}>
-                <Container>
-                  <Row>
-                    <Col size="md-4">
-                      <Thumbnail src={audition.photoLink} />
-                    </Col>
-                    <Col size="md-8">
-                      <h3>{audition.title}</h3>
-                      <h5>{audition.time} @ {audition.address}</h5>
-                    </Col>
-                  </Row>
-                </Container>
-              </ListItem>
+              <Card key={audition.id}>
+                <Accordion.Toggle as={Card.Header} eventKey={audition.id} caret>
+                  <h3>{audition.title}</h3>
+                </Accordion.Toggle>
+                <Accordion.Collapse eventKey={audition.id}>
+                  <Card.Body>
+                    <Card.Text>
+                      <p><b>Time:</b> {audition.time}</p>
+                      <p><b>Place:</b> {audition.address}</p>
+                      <p><b>Description:</b> {audition.description}</p>
+                    </Card.Text>
+                  </Card.Body>
+                </Accordion.Collapse>
+              </Card>
             )
           })}
-        </List>
+        </Accordion>
       </div>
     )
   }

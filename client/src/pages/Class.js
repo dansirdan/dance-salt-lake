@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import Modal from "react-bootstrap/Modal"
 import Button from "react-bootstrap/Button"
-import Calendar from "../components/Calendar";
 import { List, ClassListItem } from "../components/List";
 import { Container, Row, Col } from "../components/Grid";
+import Calendar from 'react-calendar';
 import API from "../utils/API"
 
 class Class extends Component {
@@ -16,6 +16,7 @@ class Class extends Component {
     this.state = {
       classes: [],
       show: false,
+      date: new Date(),
       moreInfo: {
         title: "",
         style: "",
@@ -32,6 +33,8 @@ class Class extends Component {
       }
     }
   }
+
+  onChange = date => this.setState({ date })
 
   handleClose() {
     this.setState({
@@ -58,11 +61,10 @@ class Class extends Component {
   render() {
     return (
       <Container fluid>
-        <Calendar>
-          <h1 className="display-4">Class Calendar</h1>
-          <p className="lead">This is a fake div to represent our calendar and query fine-tuner.</p>
-          <hr className="my-4" />
-        </Calendar>
+        <Calendar
+          onChange={this.onChange}
+          value={this.state.date}
+        />
         <Container fluid>
           <Row>
             <Col size="xs-12">

@@ -14,7 +14,7 @@ import Performance from "./pages/Performance";
 import Audition from "./pages/Audition";
 import Space from "./pages/Space";
 import UsersHome from "./pages/UsersHome";
-import NavBar from "./components/NavBar";
+import MainNav from "./components/MainNav";
 import NoMatch from "./pages/NoMatch";
 import AnimateHeight from "react-animate-height";
 import LargeLogo from "./components/LargeLogo";
@@ -23,7 +23,7 @@ import './App.css';
 class App extends Component {
 
   state = {
-    isAuthenticated: true,
+    isAuthenticated: false,
     largeLogo: true,
     userInfo: ""
   }
@@ -78,7 +78,7 @@ class App extends Component {
           >
             <LargeLogo />
           </AnimateHeight>
-          <NavBar
+          <MainNav
             isAuthed={this.state.isAuthenticated}
             tinyLogo={!this.state.largeLogo}
           />
