@@ -8,11 +8,15 @@ import Hero from "../components/Hero";
 
 class Home extends Component {
 
-  // Will trigger the larger logo to appear
+  // lifecycle method to trigger the Large Logo animation
   componentDidMount() {
     this.props.handleShow();
   }
 
+  // TO DO:
+  // 1. Decide where to put the space rental button
+  // 2. Design the Component
+  // 3. Place it somewhere HERE
   render() {
     return (
       <div>
@@ -33,6 +37,7 @@ class Home extends Component {
               </Row>
               <Row>
                 <Col size="md-12">
+                  {/* HERE */}
                   <Link className="btn btn-primary" to="/space">
                     Check Out Some Spaces
                 </Link>

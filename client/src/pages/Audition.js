@@ -37,15 +37,27 @@ class Audition extends Component {
     }
   }
 
+  // React-Calendar Method for setting the current date of the calendar
   onChange = date => this.setState({ date });
 
+  // React-Calendar Method for querying on the clicked day
   onClickDay = value => {
-    let date = moment(value).format('YYYY-MM-DD')
-    API.getQueryPosts("auditions", "date", date) //--hard coded post id
-      .then(res => this.setState({ auditions: res.data }))
-      .catch(err => console.log(err));
+    let param = moment(value).format('YYYY-MM-DD')
+    this.queryCall("auditions", "date", param)
   };
 
+  /**
+  * the queryCall (getQueryPosts) method takes THREE argument which create the route path
+  * when we get to that point, the onClick method should return data on the 
+  * audition(path)/date(subType)"2019/07/05"/QUERY
+  */
+  queryCall = (postType, subType, param) => {
+    API.getQueryPosts(postType, subType, param)
+      .then(res => this.setState({ auditions: res.data }))
+      .catch(err => console.log(err));
+  }
+
+  // React-Modal method for closing and clearing the data
   handleClose() {
     this.setState({
       show: false,
@@ -66,6 +78,7 @@ class Audition extends Component {
       .catch(err => console.log(err));
   };
 
+  // lifecycle method to prepare for the logo change and do an API call
   componentWillMount() {
     this.props.handleLogo();
 
@@ -82,9 +95,9 @@ class Audition extends Component {
             <Row>
               <Col size="md-2" />
               <Col size="md-3">
-                <QueryDropDown>
-
-                </QueryDropDown>
+                <QueryDropDown
+                  queryCall={this.queryCall}
+                />
               </Col>
               <Col size="md-1" />
               <Col size="md-4">
@@ -131,9 +144,6 @@ class Audition extends Component {
             </Col>
           </Row>
         </Container>
-        {/* <Button variant="primary" onClick={this.handleShow}>
-          Launch demo modal
-        </Button> */}
         <Modal
           show={this.state.show}
           onHide={this.handleClose}

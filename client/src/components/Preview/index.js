@@ -16,6 +16,11 @@ export class ClassesPreview extends Component {
     classData: []
   }
 
+  // lifecycle method to trigger an API CALL
+  // stores the first 3 classes in the database currently
+  // TO DO:
+  // 1. define the query based off the date, time, master class, etc. CHOOSE
+  // 2. the route is defined already
   componentWillMount() {
     let threeClasses = [];
 
@@ -27,12 +32,11 @@ export class ClassesPreview extends Component {
         this.setState({ classData: threeClasses })
       })
       .catch(err => console.log(err));
-
   }
 
   render() {
     return (
-      <div>
+      <>
         <h1>CLASSES</h1>
 
         {this.state.classData.map(klass => {
@@ -58,7 +62,7 @@ export class ClassesPreview extends Component {
           )
         })}
 
-      </div>
+      </>
     )
   }
 }
@@ -66,10 +70,15 @@ export class ClassesPreview extends Component {
 // Performance Preview will show a random performance from the database
 export class PerformancesPreview extends Component {
 
+  // declaring state to store performance data
   state = {
     performanceData: {}
   }
 
+  // lifecycle method to trigger an API CALL
+  // stores a random performance from the database and displays it
+  // TO DO:
+  // 1. test with multiple performances in the DB
   componentWillMount() {
     let RNG;
     let randomPerformance;
@@ -108,10 +117,15 @@ export class PerformancesPreview extends Component {
 // audition preview will show 3 audition items as well
 export class AuditionPreview extends Component {
 
+  // declaring state to store audition data
   state = {
     auditionData: []
   }
 
+  // lifecycle method to trigger an API CALL
+  // stores the first 3 auditions in the database currently
+  // TO DO:
+  // 1. figure out how to have one tab already open
   componentWillMount() {
     let threeAuditions = [];
 
@@ -134,16 +148,23 @@ export class AuditionPreview extends Component {
           {this.state.auditionData.map(audition => {
             return (
               <Card key={audition.id}>
-                <Accordion.Toggle as={Card.Header} eventKey={audition.id} caret>
+                <Accordion.Toggle as={Card.Header} eventKey={audition.id} caret="true">
                   <h3>{audition.title}</h3>
                 </Accordion.Toggle>
                 <Accordion.Collapse eventKey={audition.id}>
                   <Card.Body>
                     <Card.Text>
-                      <p><b>Time:</b> {audition.time}</p>
-                      <p><b>Place:</b> {audition.address}</p>
-                      <p><b>Description:</b> {audition.description}</p>
+                      <b>Time:</b> {audition.time}
                     </Card.Text>
+                    <Card.Text>
+                      <b>Place:</b> {audition.address}
+
+                    </Card.Text>
+                    <Card.Text>
+                      <b>Description:</b> {audition.description}
+
+                    </Card.Text>
+
                   </Card.Body>
                 </Accordion.Collapse>
               </Card>

@@ -1,10 +1,10 @@
 import React from "react";
 import {
-  Link,
-  NavLink
+  Link
 } from "react-router-dom";
 import image from "./tinyPlaceholder.JPG";
 import Dropdown from 'react-bootstrap/Dropdown'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 export function TinyLogo() {
   return (
@@ -71,27 +71,22 @@ export function RegisterNav() {
 };
 
 // dropdown nav for signed out users
+// Component AS another component similar to naming a <a> tag with a button class
 export function DropdownNavSO() {
   return (
     <Dropdown>
       <Dropdown.Toggle caret="true" color="primary">
-        Account
+        <FontAwesomeIcon icon="check-square" />
       </Dropdown.Toggle>
       <Dropdown.Menu>
-        <Dropdown.Item>
-          <NavLink as={Dropdown.Item} to="/login">
-            Login
-          </NavLink>
+        <Dropdown.Item as={Link} to="/login">
+          Login
         </Dropdown.Item>
-        <Dropdown.Item>
-          <NavLink as={Dropdown.Item} to="/register">
-            Register
-          </NavLink>
+        <Dropdown.Item as={Link} to="/register">
+          Register
         </Dropdown.Item>
-        <Dropdown.Item>
-          <NavLink as={Dropdown.Item} to="/logout">
-            Logout
-          </NavLink>
+        <Dropdown.Item as={Link} to="/logout">
+          Logout
         </Dropdown.Item>
       </Dropdown.Menu>
     </Dropdown>
@@ -102,19 +97,13 @@ export function DropdownNavSO() {
 export function DropdownNavSI() {
   return (
     <Dropdown>
-      <Dropdown.Toggle caret="true" color="primary">
-        Account
-      </Dropdown.Toggle>
+      <Dropdown.Toggle caret="true" color="primary" />
       <Dropdown.Menu>
-        <Dropdown.Item>
-          <NavLink as={Dropdown.Item} to="/usershome">
-            Account Page
-          </NavLink>
+        <Dropdown.Item as={Link} to="/usershome">
+          Account Page
         </Dropdown.Item>
-        <Dropdown.Item>
-          <NavLink as={Dropdown.Item} to="/logout">
-            Logout
-          </NavLink>
+        <Dropdown.Item as={Link} to="/logout">
+          Logout
         </Dropdown.Item>
       </Dropdown.Menu>
     </Dropdown>

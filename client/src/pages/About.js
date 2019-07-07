@@ -3,10 +3,17 @@ import { Container, Row, Col } from "../components/Grid";
 
 class About extends Component {
 
+  // lifecycle method to handle Large Logo
   componentWillMount() {
     this.props.handleLogo();
   }
 
+  // TO DO:
+  // 1. Discuss Content
+  // 2. Insert Bios y/n
+  // 3. Grab a photo from each
+  // 4. Style
+  // 5. Extra
   render() {
     return (
       <Container fluid>
