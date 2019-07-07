@@ -69,7 +69,6 @@ class Audition extends Component {
    * the getSinglePost method takes two argument which create the route path
    * when we get to that point, the onClick method should return a list item id
    */
-
   handleShow = id => {
     // single query of an audition's id to populate state and then show more info.
 
