@@ -5,10 +5,16 @@
   "private": true,
   "proxy": "http://localhost:3001/",
   "dependencies": {
+    "@fortawesome/fontawesome-svg-core": "^1.2.19",
+    "@fortawesome/free-solid-svg-icons": "^5.9.0",
+    "@fortawesome/react-fontawesome": "^0.1.4",
     "bootstrap": "^4.3.1",
     "react": "^16.6.3",
+    "react-animate-height": "^2.0.15",
     "react-bootstrap": "^1.0.0-beta.9",
+    "react-calendar": "^2.19.0",
     "react-dom": "^16.6.3",
+    "react-motion": "^0.5.2",
     "react-scripts": "^2.1.1"
   },
   "scripts": {

@@ -7,6 +7,10 @@ export function List({ children }) {
   return <ul className="list-group">{children}</ul>;
 }
 
+export function ListItem({ children }) {
+  return <li className="list-group-item">{children}</li>;
+}
+
 export function ClassListItem({
   title,
   style,
@@ -37,7 +41,9 @@ export function ClassListItem({
             <p>Description: {description}</p>
             <FormBtn
               onClick={onClick}
-            />
+            >
+              Show More
+            </FormBtn>
           </Col>
         </Row>
       </Container>
@@ -74,7 +80,9 @@ export function AuditionListItem({
             <p>Description: {description}</p>
             <FormBtn
               onClick={onClick}
-            />
+            >
+              Show More
+            </FormBtn>
           </Col>
         </Row>
       </Container>
@@ -108,7 +116,9 @@ export function PerformanceListItem({
             <p>Description: {description}</p>
             <FormBtn
               onClick={onClick}
-            />
+            >
+              Show More
+            </FormBtn>
           </Col>
         </Row>
       </Container>
