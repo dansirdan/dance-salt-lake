@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import Nav from "react-bootstrap/Nav";
+import Navbar from "react-bootstrap/Navbar";
 import {
   TinyLogo,
   ClassNav,
@@ -8,44 +9,36 @@ import {
   AboutNav,
   DropdownNavSO,
   DropdownNavSI
-
 } from "../Links";
-import Navbar from "react-bootstrap/Navbar";
+import "./style.css"
 
 class MainNav extends Component {
 
   render() {
+
     return (
       <div>
-        {this.props.isAuthed ? (
-          <Navbar bg="light" expand="lg">
-            {this.props.tinyLogo ? <TinyLogo /> : <div />}
-            <Navbar.Toggle aria-controls="basic-navbar-nav" />
-            <Navbar.Collapse id="basic-navbar-nav">
-              <Nav className="mr-auto">
-                <ClassNav />
-                <PerformanceNav />
-                <AuditionNav />
+        <Navbar expand="lg">
+          {this.props.tinyLogo ? <TinyLogo /> : <div />}
+          <Navbar.Toggle aria-controls="basic-navbar-nav" />
+          <Navbar.Collapse id="basic-navbar-nav">
+            <Nav>
+              <ClassNav />
+              <PerformanceNav />
+              <AuditionNav />
+
+              {this.props.isAuthed ? (
                 <DropdownNavSI />
-              </Nav>
-            </Navbar.Collapse>
-          </Navbar>
-        ) : (
-            <Navbar bg="light" expand="lg">
-              {this.props.tinyLogo ? <TinyLogo /> : <div />}
-              <Navbar.Toggle aria-controls="basic-navbar-nav" />
-              <Navbar.Collapse id="basic-navbar-nav">
-                <Nav className="mr-auto">
-                  <ClassNav />
-                  <PerformanceNav />
-                  <AuditionNav />
+              ) : (
+                <>
                   <AboutNav />
                   <DropdownNavSO />
-                </Nav>
-              </Navbar.Collapse>
-            </Navbar>
-          )
-        }
+                </>
+                )}
+
+            </Nav>
+          </Navbar.Collapse>
+        </Navbar>
       </div>
     );
   }

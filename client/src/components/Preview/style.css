@@ -1,3 +1,49 @@
-h1 {
-  text-align: center;
+.card {
+  border: none;
 }
+.card-header {
+  background-color: #fff;
+}
+.card-header:hover {
+  background-color: rgba(0, 0, 0, .04);
+}
+.preview h3 {
+  text-align: center;
+  padding-bottom: 1rem;
+}
+.audition-header {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+}
+.audition-header .date {
+  border: 1px solid #eee;
+  width: 4rem;
+  height: 4rem;
+}
+.audition-header .day,
+.audition-header .month {
+  margin: 0;
+  text-align: center;
+} 
+.audition-header .day {
+  font-size: 2rem;
+}
+.audition-header .month { 
+  margin: -10px;
+}
+.audition-header .details { 
+  margin: 1rem;
+} 
+.audition-header h6 { 
+  margin-bottom: 0;   
+}
+.audition-header p { 
+  color: #888;
+  font-size: .8rem;
+  margin: 0;
+}
+.audition-header span { 
+  color: #888;
+} 

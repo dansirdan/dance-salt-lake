@@ -22,29 +22,37 @@ class Home extends Component {
       <div>
         <Hero />
         <Container>
+          <div className="preview">
+            
+            <Row>
+              <Col size="md-4">
+                <ClassesPreview />
+              </Col>
+
+              <Col size="md-4">
+                <PerformancesPreview />
+              </Col>
+
+              <Col size="md-4">
+                <Row>
+                  <Col size="md-12">
+                    <AuditionPreview />
+                  </Col>
+                </Row>
+              </Col>
+
+            </Row>
+          </div>
+
           <Row>
-            <Col size="md-4">
-              <ClassesPreview />
-            </Col>
-            <Col size="md-4">
-              <PerformancesPreview />
-            </Col>
-            <Col size="md-4">
-              <Row>
-                <Col size="md-12">
-                  <AuditionPreview />
-                </Col>
-              </Row>
-              <Row>
-                <Col size="md-12">
-                  {/* HERE */}
-                  <Link className="btn btn-primary" to="/space">
-                    Check Out Some Spaces
+            <Col size="md-12">
+              {/* HERE */}
+              <Link className="btn btn-primary" to="/space">
+                Check Out Some Spaces
                 </Link>
-                </Col>
-              </Row>
             </Col>
           </Row>
+
         </Container>
       </div >
     )

@@ -74,7 +74,7 @@ export function RegisterNav() {
 // Component AS another component similar to naming a <a> tag with a button class
 export function DropdownNavSO() {
   return (
-    <Dropdown>
+    <Dropdown alignRight>
       <Dropdown.Toggle caret="true" color="primary">
         <FontAwesomeIcon icon="check-square" />
       </Dropdown.Toggle>
@@ -96,7 +96,7 @@ export function DropdownNavSO() {
 // dropdown nav for signed in users
 export function DropdownNavSI() {
   return (
-    <Dropdown>
+    <Dropdown alignRight>
       <Dropdown.Toggle caret="true" color="primary" />
       <Dropdown.Menu>
         <Dropdown.Item as={Link} to="/usershome">

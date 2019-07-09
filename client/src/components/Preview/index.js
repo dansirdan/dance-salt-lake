@@ -5,6 +5,9 @@ import Card from "react-bootstrap/Card";
 import Accordion from "react-bootstrap/Accordion";
 import "./style.css";
 import API from "../../utils/API"
+import moment from "moment";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faCircle, faPlus  } from '@fortawesome/free-solid-svg-icons'
 
 // using state and componentWillMount lifecycle methods
 // each preview item makes a call to the API before mounting
@@ -37,7 +40,7 @@ export class ClassesPreview extends Component {
   render() {
     return (
       <>
-        <h1>CLASSES</h1>
+        <h3>Classes</h3>
 
         {this.state.classData.map(klass => {
           return (
@@ -99,7 +102,7 @@ export class PerformancesPreview extends Component {
   render() {
     return (
       <div>
-        <h1>PERFORMANCES</h1>
+        <h3>Perfomances</h3>
         <Card>
           <Card.Img variant="top" src={this.state.performanceData.performanceData !== "" ? this.state.performanceData.photoLink : "http://placehold.it/200x200"} />
           <Card.Body>
@@ -126,6 +129,7 @@ export class AuditionPreview extends Component {
   // stores the first 3 auditions in the database currently
   // TO DO:
   // 1. figure out how to have one tab already open
+  // 2. Write function to retrieve name of the month
   componentWillMount() {
     let threeAuditions = [];
 
@@ -143,13 +147,26 @@ export class AuditionPreview extends Component {
   render() {
     return (
       <div>
-        <h1>AUDITIONS</h1>
+        <h3>Auditions</h3>
         <Accordion defaultActiveKey="1">
           {this.state.auditionData.map(audition => {
             return (
               <Card key={audition.id}>
                 <Accordion.Toggle as={Card.Header} eventKey={audition.id} caret="true">
-                  <h3>{audition.title}</h3>
+                  <div className="audition-header">
+                    <div className="date">
+                      <p className="day">{moment(audition.date).format("DD")}</p>
+                      <h6 className="month">{moment(audition.date).format("MMM")}</h6>
+                    </div>
+                    <div className="details">
+                      <h6>{audition.title}</h6>
+                      <p>{audition.address}</p>
+                    </div>
+                    <span className="fa-layers fa-fw">
+                      <FontAwesomeIcon icon={faCircle} />
+                      <FontAwesomeIcon icon={faPlus} inverse transform="shrink-6" />
+                    </span>
+                  </div>
                 </Accordion.Toggle>
                 <Accordion.Collapse eventKey={audition.id}>
                   <Card.Body>
