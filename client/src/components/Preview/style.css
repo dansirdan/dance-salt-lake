@@ -1,15 +1,29 @@
 .card {
   border: none;
 }
+.card-body .container,
+.card-body .col {
+  padding: 0;
+}
 .card-header {
   background-color: #fff;
 }
 .card-header:hover {
   background-color: rgba(0, 0, 0, .04);
 }
-.preview h3 {
+.preview h3,
+.preview h5 {
   text-align: center;
   padding-bottom: 1rem;
+}
+.class-preview .details {
+  margin: .5rem 0;
+}
+.class-description {
+  margin: 1rem;
+}
+.performance-preview p {
+  text-align: center;
 }
 .audition-header {
   display: flex;
@@ -29,14 +43,17 @@
 } 
 .audition-header .day {
   font-size: 2rem;
+  color: #222;
 }
 .audition-header .month { 
   margin: -10px;
 }
+.class-preview .details 
 .audition-header .details { 
   margin: 1rem;
 } 
-.audition-header h6 { 
+.audition-header h6,
+.class-preview .details h6 { 
   margin-bottom: 0;   
 }
 .audition-header p { 
@@ -47,3 +64,9 @@
 .audition-header span { 
   color: #888;
 } 
+.banner {
+  border: 1px solid #eee;
+  padding: 80px;
+  margin: 80px 80px;
+  text-align: center;
+}

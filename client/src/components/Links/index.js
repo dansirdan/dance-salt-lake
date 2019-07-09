@@ -1,7 +1,5 @@
-import React from "react";
-import {
-  Link
-} from "react-router-dom";
+import React, { Component } from "react";
+import { Link } from "react-router-dom";
 import image from "./tinyPlaceholder.JPG";
 import Dropdown from 'react-bootstrap/Dropdown'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -74,9 +72,10 @@ export function RegisterNav() {
 // Component AS another component similar to naming a <a> tag with a button class
 export function DropdownNavSO() {
   return (
-    <Dropdown alignRight>
-      <Dropdown.Toggle caret="true" color="primary">
+    <Dropdown alignRight id="dropdown-btn">
+      <Dropdown.Toggle>
         <FontAwesomeIcon icon="check-square" />
+        Create Account
       </Dropdown.Toggle>
       <Dropdown.Menu>
         <Dropdown.Item as={Link} to="/login">
@@ -84,9 +83,6 @@ export function DropdownNavSO() {
         </Dropdown.Item>
         <Dropdown.Item as={Link} to="/register">
           Register
-        </Dropdown.Item>
-        <Dropdown.Item as={Link} to="/logout">
-          Logout
         </Dropdown.Item>
       </Dropdown.Menu>
     </Dropdown>
@@ -96,8 +92,10 @@ export function DropdownNavSO() {
 // dropdown nav for signed in users
 export function DropdownNavSI() {
   return (
-    <Dropdown alignRight>
-      <Dropdown.Toggle caret="true" color="primary" />
+    <Dropdown alignRight id="dropdown-btn">
+      <Dropdown.Toggle caret="true" color="primary">
+        Account
+      </Dropdown.Toggle>
       <Dropdown.Menu>
         <Dropdown.Item as={Link} to="/usershome">
           Account Page

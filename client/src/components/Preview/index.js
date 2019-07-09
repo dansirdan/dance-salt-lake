@@ -3,11 +3,12 @@ import { Container, Row, Col } from "../Grid";
 import Thumbnail from "../Thumbnail";
 import Card from "react-bootstrap/Card";
 import Accordion from "react-bootstrap/Accordion";
+import { Link } from "react-router-dom";
 import "./style.css";
 import API from "../../utils/API"
 import moment from "moment";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faCircle, faPlus  } from '@fortawesome/free-solid-svg-icons'
+import { faCircle, faPlus } from '@fortawesome/free-solid-svg-icons'
 
 // using state and componentWillMount lifecycle methods
 // each preview item makes a call to the API before mounting
@@ -39,25 +40,34 @@ export class ClassesPreview extends Component {
 
   render() {
     return (
-      <>
+      <div className="class-preview">
         <h3>Classes</h3>
 
         {this.state.classData.map(klass => {
           return (
             <Card key={klass.id}>
-              <Card.Header>Teacher / Style / Level</Card.Header>
               <Card.Body>
-                <Card.Title>{klass.instructorName} / {klass.style} / {klass.level}</Card.Title>
                 <Container>
                   <Row>
                     <Col size="md-4">
                       <Thumbnail src={klass.photoLink} />
                     </Col>
                     <Col size="md-8">
-                      <Card.Text>
-                        {klass.description}
-                      </Card.Text>
+                      <div className="details">
+                        <div>
+                          <h6>{klass.instructorName} Lastname</h6>
+                          <p><span className="light-text">{klass.style}</span></p>
+                          <h6><span className="accent-text">{klass.level}</span></h6>
+                        </div>
+                      </div>
                     </Col>
+                    <Row>
+                      <Col size="md-12">
+                        <div className="class-description">
+                          <p><span className="light-text">{klass.description}</span></p>
+                        </div>
+                      </Col>
+                    </Row>
                   </Row>
                 </Container>
               </Card.Body>
@@ -65,7 +75,7 @@ export class ClassesPreview extends Component {
           )
         })}
 
-      </>
+      </div>
     )
   }
 }
@@ -101,15 +111,15 @@ export class PerformancesPreview extends Component {
 
   render() {
     return (
-      <div>
+      <div className="performance-preview">
         <h3>Perfomances</h3>
         <Card>
           <Card.Img variant="top" src={this.state.performanceData.performanceData !== "" ? this.state.performanceData.photoLink : "http://placehold.it/200x200"} />
           <Card.Body>
-            <Card.Title>{this.state.performanceData.title !== "" ? this.state.performanceData.title : "No Performance to show"}</Card.Title>
-            <Card.Text>
+            <h5>{this.state.performanceData.title !== "" ? this.state.performanceData.title : "No Performance to show"}</h5>
+            <p><span className="light-text">
               {this.state.performanceData.description !== "" ? this.state.performanceData.description : "There are no current performances within our database..."}
-            </Card.Text>
+            </span></p>
           </Card.Body>
         </Card>
       </div>
@@ -129,7 +139,7 @@ export class AuditionPreview extends Component {
   // stores the first 3 auditions in the database currently
   // TO DO:
   // 1. figure out how to have one tab already open
-  // 2. Write function to retrieve name of the month
+
   componentWillMount() {
     let threeAuditions = [];
 
@@ -149,7 +159,9 @@ export class AuditionPreview extends Component {
       <div>
         <h3>Auditions</h3>
         <Accordion defaultActiveKey="1">
-          {this.state.auditionData.map(audition => {
+          {this.state.auditionData.map((audition, index) => {
+            console.log(index);
+
             return (
               <Card key={audition.id}>
                 <Accordion.Toggle as={Card.Header} eventKey={audition.id} caret="true">
@@ -160,7 +172,7 @@ export class AuditionPreview extends Component {
                     </div>
                     <div className="details">
                       <h6>{audition.title}</h6>
-                      <p>{audition.address}</p>
+                      <p><span className="light-text">{audition.address}</span></p>
                     </div>
                     <span className="fa-layers fa-fw">
                       <FontAwesomeIcon icon={faCircle} />
@@ -191,4 +203,17 @@ export class AuditionPreview extends Component {
       </div>
     )
   }
+}
+
+export function SpaceBanner() {
+  return (
+    <div className="banner">
+      <h4>Need a Studio?</h4>
+      <p>Click here to view available rental spaces</p>
+      <Link className="btn btn-primary" to="/space" >
+        View
+    </Link >
+
+    </div>
+  )
 }

@@ -1,9 +1,7 @@
 import React, { Component } from "react";
-import {
-  Link
-} from "react-router-dom";
 import { Container, Row, Col } from "../components/Grid";
-import { ClassesPreview, PerformancesPreview, AuditionPreview } from "../components/Preview";
+import { Link } from "react-router-dom";
+import { ClassesPreview, PerformancesPreview, AuditionPreview, SpaceBanner } from "../components/Preview";
 import Hero from "../components/Hero";
 
 class Home extends Component {
@@ -46,10 +44,7 @@ class Home extends Component {
 
           <Row>
             <Col size="md-12">
-              {/* HERE */}
-              <Link className="btn btn-primary" to="/space">
-                Check Out Some Spaces
-                </Link>
+              <SpaceBanner />
             </Col>
           </Row>
 
