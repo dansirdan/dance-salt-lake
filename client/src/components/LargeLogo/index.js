@@ -8,6 +8,7 @@ function LargeLogo() {
     <Container fluid>
       <div className="row h-100 justify-content-center align-items-center">
         <img className="large-logo" src={image} alt="large-placeholder" />
+
       </div>
     </Container>
   )
