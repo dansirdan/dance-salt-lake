@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
-import Modal from "react-bootstrap/Modal"
-import Button from "react-bootstrap/Button"
+import MoreInfo from "../components/MoreInfo";
 import { List, ClassListItem } from "../components/List";
 import { Container, Row, Col } from "../components/Grid";
 import Jumbotron from "../components/Jumbotron"
@@ -139,38 +138,12 @@ class Class extends Component {
             </Col>
           </Row>
         </Container>
-        {/* <Button variant="primary" onClick={this.handleShow}>
-          Launch demo modal
-        </Button> */}
-        <Modal
+        <MoreInfo
+          page="Class"
           show={this.state.show}
           onHide={this.handleClose}
-          size="lg"
-          aria-labelledby="contained-modal-title-vcenter"
-          centered
-        >
-          <Modal.Header closeButton>
-            <Modal.Title>
-              Class Info
-            </Modal.Title>
-          </Modal.Header>
-          <Modal.Body>
-            <h2>{this.state.moreInfo.title}</h2>
-            <h5>description</h5>
-            <p>{this.state.moreInfo.description}</p>
-            <p>Address: {this.state.moreInfo.address}</p>
-            <p>Instructor: {this.state.moreInfo.instructorName}</p>
-            <p>Length: {this.state.moreInfo.length}</p>
-            <p>Payment: {this.state.moreInfo.payment}</p>
-            <p>Time: {this.state.moreInfo.time}</p>
-            <p>Date: {this.state.moreInfo.date}</p>
-          </Modal.Body>
-          <Modal.Footer>
-            <Button variant="secondary" onClick={this.handleClose}>
-              Close
-            </Button>
-          </Modal.Footer>
-        </Modal>
+          moreInfo={this.state.moreInfo}
+        />
       </Container>
     );
   }

@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import MoreInfo from "../components/MoreInfo";
 import {
   Link
 } from "react-router-dom";
@@ -7,11 +8,36 @@ import { ClassesPreview, PerformancesPreview, AuditionPreview } from "../compone
 import Hero from "../components/Hero";
 
 class Home extends Component {
+  constructor(props, context) {
+    super(props, context);
 
-  // lifecycle method to trigger the Large Logo animation
-  componentDidMount() {
-    this.props.handleShow();
+    this.handleShow = this.handleShow.bind(this);
+    this.handleClose = this.handleClose.bind(this);
+
+    this.state = {
+      performances: [],
+      show: false,
+      date: new Date(),
+      moreInfo: {},
+      queryType: ""
+    }
   }
+
+  // React-Modal method for closing and clearing the data
+  handleClose() {
+    this.setState({
+      show: false,
+      moreInfo: {}
+    })
+  }
+
+  handleShow = (str, obj) => {
+    this.setState({
+      queryType: str,
+      moreInfo: obj,
+      show: true
+    })
+  };
 
   // TO DO:
   // 1. Decide where to put the space rental button
@@ -24,20 +50,25 @@ class Home extends Component {
         <Container>
           <Row>
             <Col size="md-4">
-              <ClassesPreview />
+              <ClassesPreview
+                handleShow={() => this.handleShow}
+              />
             </Col>
             <Col size="md-4">
-              <PerformancesPreview />
+              <PerformancesPreview
+                handleShow={() => this.handleShow}
+              />
             </Col>
             <Col size="md-4">
               <Row>
                 <Col size="md-12">
-                  <AuditionPreview />
+                  <AuditionPreview
+                    handleShow={() => this.handleShow}
+                  />
                 </Col>
               </Row>
               <Row>
                 <Col size="md-12">
-                  {/* HERE */}
                   <Link className="btn btn-primary" to="/space">
                     Check Out Some Spaces
                 </Link>
@@ -45,6 +76,12 @@ class Home extends Component {
               </Row>
             </Col>
           </Row>
+          <MoreInfo
+            page={this.state.query}
+            show={this.state.show}
+            onHide={this.handleClose}
+            moreInfo={this.state.moreInfo}
+          />
         </Container>
       </div >
     )

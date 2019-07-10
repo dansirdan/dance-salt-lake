@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Container, Row, Col } from "../Grid";
 import Thumbnail from "../Thumbnail";
+import Button from "react-bootstrap/Button";
 import Card from "react-bootstrap/Card";
 import Accordion from "react-bootstrap/Accordion";
 import "./style.css";
@@ -11,7 +12,6 @@ import API from "../../utils/API"
 // Class Preview shows 3 Items always
 export class ClassesPreview extends Component {
 
-  // declaring state to store class data
   state = {
     classData: []
   }
@@ -54,6 +54,9 @@ export class ClassesPreview extends Component {
                       <Card.Text>
                         {klass.description}
                       </Card.Text>
+                      <Button onClick={this.props.handleShow("Class", klass)}>
+                        Show Class
+                      </Button>
                     </Col>
                   </Row>
                 </Container>
@@ -107,6 +110,9 @@ export class PerformancesPreview extends Component {
             <Card.Text>
               {this.state.performanceData.description !== "" ? this.state.performanceData.description : "There are no current performances within our database..."}
             </Card.Text>
+            <Button onClick={this.props.handleShow("Performance", this.state.performanceData)}>
+              Show Class
+            </Button>
           </Card.Body>
         </Card>
       </div>
@@ -164,7 +170,9 @@ export class AuditionPreview extends Component {
                       <b>Description:</b> {audition.description}
 
                     </Card.Text>
-
+                    <Button onClick={this.props.handleShow("Audition", audition)}>
+                      Show Class
+                      </Button>
                   </Card.Body>
                 </Accordion.Collapse>
               </Card>

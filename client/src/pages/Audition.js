@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
-import Modal from "react-bootstrap/Modal";
-import Button from "react-bootstrap/Button";
+import MoreInfo from '../components/MoreInfo';
 import { List, AuditionListItem } from "../components/List";
 import { Container, Row, Col } from "../components/Grid";
 import Jumbotron from "../components/Jumbotron"
@@ -143,36 +142,12 @@ class Audition extends Component {
             </Col>
           </Row>
         </Container>
-        <Modal
+        <MoreInfo
+          page="Audition"
           show={this.state.show}
           onHide={this.handleClose}
-          size="lg"
-          aria-labelledby="contained-modal-title-vcenter"
-          centered
-        >
-          <Modal.Header closeButton>
-            <Modal.Title>
-              Audition Info
-            </Modal.Title>
-          </Modal.Header>
-          <Modal.Body>
-            <h2>{this.state.moreInfo.title}</h2>
-            <h5>description</h5>
-            <p>{this.state.moreInfo.description}</p>
-            <p>Address: {this.state.moreInfo.address}</p>
-            <p>Gig Type: {this.state.moreInfo.gig}</p>
-            <p>Length: {this.state.moreInfo.length}</p>
-            <p>Payment: {this.state.moreInfo.payment}</p>
-            <p>Time: {this.state.moreInfo.time}</p>
-            <p>Date: {this.state.moreInfo.date}</p>
-            <p>Link: {this.state.moreInfo.link}</p>
-          </Modal.Body>
-          <Modal.Footer>
-            <Button variant="secondary" onClick={this.handleClose}>
-              Close
-            </Button>
-          </Modal.Footer>
-        </Modal>
+          moreInfo={this.state.moreInfo}
+        />
       </Container>
     );
   }
