@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
+import MoreInfo from "../MoreInfo";
 import { Container, Row, Col } from "../Grid";
+import { FormBtn } from "../Form"
 import Thumbnail from "../Thumbnail";
 import Button from "react-bootstrap/Button";
 import Card from "react-bootstrap/Card";
@@ -11,9 +13,13 @@ import API from "../../utils/API"
 // each preview item makes a call to the API before mounting
 // Class Preview shows 3 Items always
 export class ClassesPreview extends Component {
+  constructor(props, context) {
+    super(props, context);
 
-  state = {
-    classData: []
+    this.state = {
+      classData: [],
+      moreInfo: {}
+    }
   }
 
   // lifecycle method to trigger an API CALL
@@ -33,6 +39,25 @@ export class ClassesPreview extends Component {
       })
       .catch(err => console.log(err));
   }
+
+  handleClose() {
+    this.setState({
+      show: false,
+      moreInfo: {}
+    })
+  }
+
+  handleShow = id => {
+    // single query of an audition's id to populate state and then show more info.
+
+    let query = "classes"
+    API.getSinglePost(query, id) //--hard coded post id
+      .then(res => {
+        this.setState({ moreInfo: res.data })
+        this.props.returnData(res.data, "Class")
+      })
+      .catch(err => console.log(err));
+  };
 
   render() {
     return (
@@ -54,9 +79,11 @@ export class ClassesPreview extends Component {
                       <Card.Text>
                         {klass.description}
                       </Card.Text>
-                      <Button onClick={this.props.handleShow("Class", klass)}>
+                      <FormBtn
+                        onClick={() => this.handleShow(klass.id)}
+                      >
                         Show Class
-                      </Button>
+                      </FormBtn>
                     </Col>
                   </Row>
                 </Container>
@@ -64,7 +91,12 @@ export class ClassesPreview extends Component {
             </Card>
           )
         })}
-
+        <MoreInfo
+          page={this.state.query}
+          show={this.state.show}
+          onHide={this.handleClose}
+          moreInfo={this.state.moreInfo}
+        />
       </>
     )
   }
@@ -72,12 +104,31 @@ export class ClassesPreview extends Component {
 
 // Performance Preview will show a random performance from the database
 export class PerformancesPreview extends Component {
+  constructor(props, context) {
+    super(props, context);
 
-  // declaring state to store performance data
-  state = {
-    performanceData: {}
+    this.state = {
+      performanceData: {}
+    }
   }
 
+  handleClose() {
+    this.setState({
+      show: false,
+      moreInfo: {}
+    })
+  }
+
+  handleShow = id => {
+    // single query of an audition's id to populate state and then show more info.
+    let query = "performances"
+    API.getSinglePost(query, id) //--hard coded post id
+      .then(res => {
+        this.setState({ moreInfo: res.data })
+        this.props.returnData(res.data, "Performance")
+      })
+      .catch(err => console.log(err));
+  };
   // lifecycle method to trigger an API CALL
   // stores a random performance from the database and displays it
   // TO DO:
@@ -110,12 +161,14 @@ export class PerformancesPreview extends Component {
             <Card.Text>
               {this.state.performanceData.description !== "" ? this.state.performanceData.description : "There are no current performances within our database..."}
             </Card.Text>
-            <Button onClick={this.props.handleShow("Performance", this.state.performanceData)}>
-              Show Class
-            </Button>
+            <FormBtn
+              onClick={() => this.handleShow(this.state.performanceData.id)}
+            >
+              Show Performance
+                      </FormBtn>
           </Card.Body>
         </Card>
-      </div>
+      </div >
     )
   }
 }
@@ -128,6 +181,23 @@ export class AuditionPreview extends Component {
     auditionData: []
   }
 
+  handleClose() {
+    this.setState({
+      show: false,
+      moreInfo: {}
+    })
+  }
+
+  handleShow = id => {
+    // single query of an audition's id to populate state and then show more info.
+    let query = "auditions"
+    API.getSinglePost(query, id) //--hard coded post id
+      .then(res => {
+        this.setState({ moreInfo: res.data })
+        this.props.returnData(res.data, "Audition")
+      })
+      .catch(err => console.log(err));
+  };
   // lifecycle method to trigger an API CALL
   // stores the first 3 auditions in the database currently
   // TO DO:
@@ -170,9 +240,11 @@ export class AuditionPreview extends Component {
                       <b>Description:</b> {audition.description}
 
                     </Card.Text>
-                    <Button onClick={this.props.handleShow("Audition", audition)}>
+                    <FormBtn
+                      onClick={() => this.handleShow(audition.id)}
+                    >
                       Show Class
-                      </Button>
+                      </FormBtn>
                   </Card.Body>
                 </Accordion.Collapse>
               </Card>

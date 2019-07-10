@@ -6,12 +6,13 @@ import {
 import { Container, Row, Col } from "../components/Grid";
 import { ClassesPreview, PerformancesPreview, AuditionPreview } from "../components/Preview";
 import Hero from "../components/Hero";
+import API from "../utils/API"
 
 class Home extends Component {
   constructor(props, context) {
     super(props, context);
 
-    this.handleShow = this.handleShow.bind(this);
+    this.returnData = this.returnData.bind(this);
     this.handleClose = this.handleClose.bind(this);
 
     this.state = {
@@ -19,7 +20,7 @@ class Home extends Component {
       show: false,
       date: new Date(),
       moreInfo: {},
-      queryType: ""
+      query: ""
     }
   }
 
@@ -31,12 +32,16 @@ class Home extends Component {
     })
   }
 
-  handleShow = (str, obj) => {
-    this.setState({
-      queryType: str,
-      moreInfo: obj,
-      show: true
-    })
+  returnData = (data, query) => {
+    // single query of an audition's id to populate state and then show more info.
+    console.log(query)
+    if (data) {
+      this.setState({
+        moreInfo: data,
+        show: true,
+        query: query
+      })
+    }
   };
 
   // TO DO:
@@ -51,19 +56,19 @@ class Home extends Component {
           <Row>
             <Col size="md-4">
               <ClassesPreview
-                handleShow={() => this.handleShow}
+                returnData={this.returnData}
               />
             </Col>
             <Col size="md-4">
               <PerformancesPreview
-                handleShow={() => this.handleShow}
+                returnData={this.returnData}
               />
             </Col>
             <Col size="md-4">
               <Row>
                 <Col size="md-12">
                   <AuditionPreview
-                    handleShow={() => this.handleShow}
+                    returnData={this.returnData}
                   />
                 </Col>
               </Row>
