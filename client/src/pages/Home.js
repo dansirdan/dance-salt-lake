@@ -6,7 +6,6 @@ import {
 import { Container, Row, Col } from "../components/Grid";
 import { ClassesPreview, PerformancesPreview, AuditionPreview } from "../components/Preview";
 import Hero from "../components/Hero";
-import API from "../utils/API"
 
 class Home extends Component {
   constructor(props, context) {
@@ -20,7 +19,7 @@ class Home extends Component {
       show: false,
       date: new Date(),
       moreInfo: {},
-      query: ""
+      page: ""
     }
   }
 
@@ -32,14 +31,14 @@ class Home extends Component {
     })
   }
 
-  returnData = (data, query) => {
-    // single query of an audition's id to populate state and then show more info.
-    console.log(query)
+  returnData = (data, page) => {
+    // single page of an audition's id to populate state and then show more info.
+    console.log(page)
     if (data) {
       this.setState({
         moreInfo: data,
         show: true,
-        query: query
+        page: page
       })
     }
   };
@@ -82,7 +81,7 @@ class Home extends Component {
             </Col>
           </Row>
           <MoreInfo
-            page={this.state.query}
+            page={this.state.page}
             show={this.state.show}
             onHide={this.handleClose}
             moreInfo={this.state.moreInfo}
