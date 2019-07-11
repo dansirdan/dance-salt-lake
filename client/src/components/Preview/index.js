@@ -30,7 +30,7 @@ export class ClassesPreview extends Component {
 
     API.getPosts("classes")
       .then(res => {
-        for (let i = 0; i < 3; i++) {
+        for (let i = 0; i < 2; i++) {
           threeClasses.push(res.data[i]);
         }
         this.setState({ classData: threeClasses })
@@ -51,19 +51,20 @@ export class ClassesPreview extends Component {
                   <Row>
                     <Col size="md-4">
                       <Thumbnail src={klass.photoLink} />
+                      
                     </Col>
                     <Col size="md-8">
                       <div className="details">
                         <div>
-                          <h6>{klass.instructorName} Lastname</h6>
-                          <p><span className="light-text">{klass.style}</span></p>
-                          <h6><span className="accent-text">{klass.level}</span></h6>
+                          <h6><span className="light-text">{klass.style}</span></h6>
+                          <p><span>{klass.level}</span></p>
                         </div>
                       </div>
                     </Col>
                     <Row>
                       <Col size="md-12">
                         <div className="class-description">
+                          <p className="accent-text">{klass.instructorName} Lastname</p>
                           <p><span className="light-text">{klass.description}</span></p>
                         </div>
                       </Col>
@@ -156,7 +157,7 @@ export class AuditionPreview extends Component {
 
   render() {
     return (
-      <div>
+      <div className="audition-preview">
         <h3>Auditions</h3>
         <Accordion defaultActiveKey="1">
           {this.state.auditionData.map((audition, index) => {
@@ -208,7 +209,7 @@ export class AuditionPreview extends Component {
 export function SpaceBanner() {
   return (
     <div className="banner">
-      <h4>Need a Studio?</h4>
+      <h4>Looking for studio space?</h4>
       <p>Click here to view available rental spaces</p>
       <Link className="btn btn-primary" to="/space" >
         View

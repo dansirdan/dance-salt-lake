@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import { Container, Row, Col } from "../components/Grid";
-import { Link } from "react-router-dom";
 import { ClassesPreview, PerformancesPreview, AuditionPreview, SpaceBanner } from "../components/Preview";
 import Hero from "../components/Hero";
 

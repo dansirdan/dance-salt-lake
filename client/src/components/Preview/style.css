@@ -25,6 +25,10 @@
 .performance-preview p {
   text-align: center;
 }
+.audition-preview .card-body {
+  background-color: rgba(0, 0, 0, .04);
+  border-bottom: 1px solid rgba(0,0,0,.125);
+}
 .audition-header {
   display: flex;
   flex-direction: row;

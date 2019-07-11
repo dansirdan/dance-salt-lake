@@ -4,7 +4,7 @@ import Button from "react-bootstrap/Button"
 import { List, PerformanceListItem } from "../components/List";
 import { Container, Row, Col } from "../components/Grid";
 import QueryDropDown from "../components/QueryDrop";
-import Jumbotron from "../components/Jumbotron";
+import { Jumbotron } from "../components/Sections";
 import Calendar from 'react-calendar';
 import API from "../utils/API"
 import moment from "moment";

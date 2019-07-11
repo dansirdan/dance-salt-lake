@@ -39,12 +39,14 @@ export function ClassListItem({
             <h5>Style: {style}</h5>
             <h5>Level: {level}</h5>
             <p>Description: {description}</p>
-            <FormBtn
-              onClick={onClick}
-            >
-              Show More
-            </FormBtn>
           </Col>
+          <Col size="sm-1">
+          <FormBtn
+            onClick={onClick}
+          >
+            View
+            </FormBtn>
+            </Col>
         </Row>
       </Container>
     </li>

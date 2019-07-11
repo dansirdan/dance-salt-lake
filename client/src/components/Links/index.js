@@ -3,11 +3,15 @@ import { Link } from "react-router-dom";
 import image from "./tinyPlaceholder.JPG";
 import Dropdown from 'react-bootstrap/Dropdown'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import "./style.css"
 
 export function TinyLogo() {
   return (
     <Link className="navbar-brand" to="/">
-      <img src={image} alt="dance-sale-lake" />
+      <div className="logo">
+        <h1>Dance</h1>
+        <h2>Salt Lake</h2>
+      </div>
     </Link>
   )
 };

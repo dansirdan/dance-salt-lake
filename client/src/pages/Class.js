@@ -3,7 +3,7 @@ import Modal from "react-bootstrap/Modal"
 import Button from "react-bootstrap/Button"
 import { List, ClassListItem } from "../components/List";
 import { Container, Row, Col } from "../components/Grid";
-import Jumbotron from "../components/Jumbotron"
+import { Jumbotron } from "../components/Sections"
 import QueryDropDown from "../components/QueryDrop";
 import Calendar from 'react-calendar';
 import API from "../utils/API"
@@ -108,7 +108,7 @@ class Class extends Component {
         </Jumbotron>
         <Container fluid>
           <Row>
-            <Col size="xs-12">
+            <Col size="md-12">
               {!this.state.classes.length ? (
                 <h1 className="text-center">No Classes to Display</h1>
               ) : (
