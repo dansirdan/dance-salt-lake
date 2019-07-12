@@ -1,11 +1,10 @@
 import React, { Component } from "react";
-import API from "../../utils/"
-import { userInfo } from "os";
+import API from "../../utils/API"
 const AuthContext = React.createContext();
 
 class AuthProvider extends Component {
   state = {
-    isAuth: false,
+    isAuth: true,
     user: {}
   }
 

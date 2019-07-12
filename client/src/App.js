@@ -1,10 +1,6 @@
-import React, { Component } from 'react';
-import {
-  BrowserRouter as Router,
-  Route,
-  Switch,
-  Redirect
-} from "react-router-dom";
+import React, { Component } from 'react'
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
+import { AuthProvider } from './components/AuthContext'
 import Home from "./pages/Home";
 import About from "./pages/About";
 import Login from "./pages/Login";
@@ -20,13 +16,12 @@ import AnimateHeight from "react-animate-height";
 import LargeLogo from "./components/LargeLogo";
 import './App.css';
 
+import ProtectedRoute from './components/ProtectedRoute'
+
 class App extends Component {
 
-  // declaring state
   state = {
-    isAuthed: false,
     largeLogo: true,
-    userInfo: ""
   }
 
   // function for toggling the Large Logo on/off
@@ -52,149 +47,106 @@ class App extends Component {
     }
   }
 
-  // function to save logged in user data
-  // TO DO:
-  // 1. id first
-  // 2. test
-  // 3. name, email, etc 
-  handleAuth = (bool, emailUser) => {
-    this.setState({
-      isAuthed: bool,
-      userInfo: emailUser
-    })
-  }
-
-  // function to set state to auth: false
-  handleLogout = (event) => {
-    event.preventDefault();
-    this.setState({
-      isAuthed: false,
-      userInfo: ""
-    })
-  }
-
-  // render function
   render() {
-    const {
-      largeLogo,
-      isAuthed,
-      userInfo
-    } = this.state;
-
     return (
-      <Router>
-        <>
-          <AnimateHeight
-            duration={2000}
-            height={largeLogo ? 'auto' : 0}
-            easing={'ease'}
-          >
-            <LargeLogo />
-          </AnimateHeight>
-          <MainNav
-            isAuthed={isAuthed}
-            tinyLogo={!this.state.largeLogo}
-          />
-          <Switch>
-            <Route
-              exact path="/"
-              render={(props) => (
-                <Home {...props}
-                  isAuthed={isAuthed}
-                  handleAuth={this.handleAuth}
-                  handleShow={this.handleShow}
-                />
-              )}
+      <div>
+        <Router>
+          <AuthProvider>
+            <AnimateHeight
+              duration={2000}
+              height={this.state.largeLogo ? 'auto' : 0}
+              easing={'ease'}
+            >
+              <LargeLogo />
+            </AnimateHeight>
+            <MainNav
+              tinyLogo={!this.state.largeLogo}
             />
-            <Route
-              exact path="/login"
-              render={(props) => (
-                isAuthed ? (
-                  <Redirect to="/usershome" />
-                ) : (
-                    <Login {...props}
-                      isAuthed={isAuthed}
-                      handleAuth={this.handleAuth}
-                      handleLogo={this.handleLogo}
-                    />
-                  )
-              )}
-            />
-            <Route
-              exact path="/class"
-              render={(props) => (
-                <Class {...props}
-                  handleLogo={this.handleLogo}
-                />
-              )}
-            />
-            <Route
-              exact path="/audition"
-              render={(props) => (
-                <Audition {...props}
-                  handleLogo={this.handleLogo}
-                />
-              )}
-            />
-            <Route
-              exact path="/performance"
-              render={(props) => (
-                <Performance {...props}
-                  handleLogo={this.handleLogo}
-                />
-              )}
-            />
-            <Route
-              exact path="/space"
-              render={(props) => (
-                <Space {...props}
-                  handleLogo={this.handleLogo}
-                />
-              )}
-            />
-            <Route
-              exact path="/about"
-              render={(props) => (
-                <About {...props}
-                  handleLogo={this.handleLogo}
-                />
-              )}
-            />
-            <Route
-              exact path="/register"
-              render={(props) => (
-                isAuthed ? (
-                  <Redirect to="/usershome" />
-                ) : (
-                    <Register {...props}
-                      isAuthed={isAuthed}
-                      handleAuth={this.handleAuth}
-                      handleLogo={this.handleLogo}
-                    />
-                  )
-              )}
-            />
-            <Route
-              exact path="/usershome"
-              render={(props) => (
-                isAuthed ? (
+            <Switch>
+              <ProtectedRoute
+                exact path="/usershome"
+                component={UsersHome}
+                render={(props) => (
                   <UsersHome {...props}
-                    userInfo={userInfo}
-                    isAuthed={isAuthed}
-                    handleAuth={this.handleAuth}
-                    onClick={this.handleLogout}
                     handleLogo={this.handleLogo}
                   />
-                ) : (
-                    <Redirect to="/login" />
-                  )
-              )}
-            />
-            <Route component={NoMatch} />
-          </Switch>
-        </>
-      </Router>
-    );
+                )}
+
+              />
+              <Route
+                exact path="/"
+                render={(props) => (
+                  <Home {...props}
+                    handleLogo={this.handleLogo}
+                  />
+                )}
+              />
+              <Route
+                exact path="/class"
+                render={(props) => (
+                  <Class {...props}
+                    handleLogo={this.handleLogo}
+                  />
+                )}
+              />
+              <Route
+                exact path="/audition"
+                render={(props) => (
+                  <Audition {...props}
+                    handleLogo={this.handleLogo}
+                  />
+                )}
+              />
+              <Route
+                exact path="/performance"
+                render={(props) => (
+                  <Performance {...props}
+                    handleLogo={this.handleLogo}
+                  />
+                )}
+              />
+              <Route
+                exact path="/space"
+                render={(props) => (
+                  <Space {...props}
+                    handleLogo={this.handleLogo}
+                  />
+                )}
+              />
+              <Route
+                exact path="/about"
+                component={About}
+                handleLogo={this.handleLogo}
+
+              />
+              <Route
+                exact path="/login"
+                render={(props) => (
+                  <Login {...props}
+                    handleLogo={this.handleLogo}
+                  />
+                )}
+              />
+              <Route
+                exact path="/register"
+                render={(props) => (
+                  <Register {...props}
+                    handleLogo={this.handleLogo}
+                  />
+                )}
+              />
+              <Route
+                render={(props) => (
+                  <NoMatch {...props}
+                    handleLogo={this.handleLogo}
+                  />
+                )}
+              />
+            </Switch>
+          </AuthProvider>
+        </Router>
+      </div>
+    )
   }
 }
 
