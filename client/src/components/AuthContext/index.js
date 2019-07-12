@@ -1,8 +1,13 @@
 import React, { Component } from "react";
-const AuthContext = React.createContext()
+import API from "../../utils/"
+import { userInfo } from "os";
+const AuthContext = React.createContext();
 
 class AuthProvider extends Component {
-  state = { isAuth: false }
+  state = {
+    isAuth: false,
+    user: {}
+  }
 
   constructor() {
     super()
@@ -10,12 +15,26 @@ class AuthProvider extends Component {
     this.login = this.login.bind(this)
   }
 
-  login() {
-    setTimeout(() => this.setState({ isAuth: true }))
+  login(userInfo) {
+    let { email, password } = this.state.user;
+    if (email && password) {
+      API.auth("login/", userInfo)
+        .then(res => {
+          console.log(res);
+          setTimeout(() => this.setState({ isAuth: true }))
+        })
+        .catch(err => {
+          console.log("error")
+          console.log(err)
+        })
+    }
   }
 
   logout() {
-    this.setState({ isAuth: false })
+    this.setState({
+      isAuth: false,
+      user: {}
+    })
   }
 
   render() {

@@ -66,51 +66,51 @@ class App extends Component {
               <ProtectedRoute
                 path="/usershome"
                 component={UsersHome}
-                handleLog={this.handleLogo}
+                handleLogo={this.handleLogo}
               />
               <Route
                 path="/"
                 component={Home}
-                handleLog={this.handleLogo}
+                handleLogo={this.handleLogo}
               />
               <Route
                 path="/class"
                 component={Class}
-                handleLog={this.handleLogo}
+                handleLogo={this.handleLogo}
 
               />
               <Route
                 path="/audition"
                 component={Audition}
-                handleLog={this.handleLogo}
+                handleLogo={this.handleLogo}
 
               />
               <Route
                 path="/performance"
                 component={Performance}
-                handleLog={this.handleLogo}
+                handleLogo={this.handleLogo}
 
               />
               <Route
                 path="/space"
                 component={Space}
-                handleLog={this.handleLogo}
+                handleLogo={this.handleLogo}
 
               />
               <Route
                 path="/about"
                 component={About}
-                handleLog={this.handleLogo}
+                handleLogo={this.handleLogo}
 
               />
               <Route
                 path="/register"
                 component={Register}
-                handleLog={this.handleLogo}
+                handleLogo={this.handleLogo}
 
               />
               <Route component={NoMatch}
-                handleLog={this.handleLogo}
+                handleLogo={this.handleLogo}
               />
             </Switch>
           </AuthProvider>
