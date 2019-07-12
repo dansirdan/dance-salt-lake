@@ -6,14 +6,13 @@ const axios = require("axios");
 class Login extends Component {
 
   state = {
-    email: "dan@gmail.com",
+    email: "dm@gmail.com",
     password: "dansirdan"
   }
 
   authenticateStuff = (bool, emailUser) => {
     this.props.handleAuth(bool, emailUser);
   }
-
 
   handleLogin = event => {
     event.preventDefault();

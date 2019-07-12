@@ -24,7 +24,7 @@ class App extends Component {
 
   // declaring state
   state = {
-    isAuthenticated: false,
+    isAuthed: false,
     largeLogo: true,
     userInfo: ""
   }
@@ -59,7 +59,7 @@ class App extends Component {
   // 3. name, email, etc 
   handleAuth = (bool, emailUser) => {
     this.setState({
-      isAuthenticated: bool,
+      isAuthed: bool,
       userInfo: emailUser
     })
   }
@@ -68,7 +68,7 @@ class App extends Component {
   handleLogout = (event) => {
     event.preventDefault();
     this.setState({
-      isAuthenticated: false,
+      isAuthed: false,
       userInfo: ""
     })
   }
@@ -77,7 +77,7 @@ class App extends Component {
   render() {
     const {
       largeLogo,
-      isAuthenticated,
+      isAuthed,
       userInfo
     } = this.state;
 
@@ -92,7 +92,7 @@ class App extends Component {
             <LargeLogo />
           </AnimateHeight>
           <MainNav
-            isAuthed={isAuthenticated}
+            isAuthed={isAuthed}
             tinyLogo={!this.state.largeLogo}
           />
           <Switch>
@@ -100,7 +100,7 @@ class App extends Component {
               exact path="/"
               render={(props) => (
                 <Home {...props}
-                  isAuthed={isAuthenticated}
+                  isAuthed={isAuthed}
                   handleAuth={this.handleAuth}
                   handleShow={this.handleShow}
                 />
@@ -109,11 +109,11 @@ class App extends Component {
             <Route
               exact path="/login"
               render={(props) => (
-                isAuthenticated ? (
+                isAuthed ? (
                   <Redirect to="/usershome" />
                 ) : (
                     <Login {...props}
-                      isAuthed={isAuthenticated}
+                      isAuthed={isAuthed}
                       handleAuth={this.handleAuth}
                       handleLogo={this.handleLogo}
                     />
@@ -163,11 +163,11 @@ class App extends Component {
             <Route
               exact path="/register"
               render={(props) => (
-                isAuthenticated ? (
+                isAuthed ? (
                   <Redirect to="/usershome" />
                 ) : (
                     <Register {...props}
-                      isAuthed={isAuthenticated}
+                      isAuthed={isAuthed}
                       handleAuth={this.handleAuth}
                       handleLogo={this.handleLogo}
                     />
@@ -177,10 +177,10 @@ class App extends Component {
             <Route
               exact path="/usershome"
               render={(props) => (
-                isAuthenticated ? (
+                isAuthed ? (
                   <UsersHome {...props}
                     userInfo={userInfo}
-                    isAuthed={isAuthenticated}
+                    isAuthed={isAuthed}
                     handleAuth={this.handleAuth}
                     onClick={this.handleLogout}
                     handleLogo={this.handleLogo}
