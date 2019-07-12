@@ -45,11 +45,11 @@ class App extends Component {
 
   // function to create height animate with npm react package
   handleAnimate = () => {
-    if (this.state.largeLogo) {
-      this.setState({ height: 'auto' })
-    } else {
-      this.setState({ height: 0 })
-    }
+    // if (this.state.largeLogo) {
+    //   this.setState({ height: 'auto' })
+    // } else {
+    //   this.setState({ height: 0 })
+    // }
   }
 
   // function to save logged in user data
@@ -84,13 +84,13 @@ class App extends Component {
     return (
       <Router>
         <>
-          <AnimateHeight
+          {/* <AnimateHeight
             duration={2000}
             height={largeLogo ? 'auto' : 0}
             easing={'ease'}
           >
             <LargeLogo />
-          </AnimateHeight>
+          </AnimateHeight> */}
           <MainNav
             isAuthed={isAuthenticated}
             tinyLogo={!this.state.largeLogo}

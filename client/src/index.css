@@ -33,7 +33,7 @@ h5 {
 }
 h6 {
   font-weight: 600;
-  font-size: .8rem;
+  font-size: 1rem;
 }
 .light-text {
   color: #666;
@@ -41,6 +41,48 @@ h6 {
 }
 .accent-text {
   color: #7ca5c5;
+}
+.no-margin > p{
+  margin: 0;
+}
+.badge {
+  color: #fff;
+  background-color: #7ca5c5;
+  display: inline-block;
+  padding: .35em .5em;
+  font-size: 75%;
+  font-weight: 700;
+  line-height: 1;
+  text-align: center;
+  white-space: nowrap;
+  vertical-align: baseline;
+  border-radius: .25rem;
+  transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+}
+.btn {
+  text-transform: uppercase;
+  font-size: .8rem;
+}
+.btn-primary {
+  color: #fff;
+  background-color: #7ca5c5;
+  border-color: #7ca5c5;
+}
+.btn-primary:hover {
+  color: #fff;
+  background-color: #5692c1;
+  border-color: #5692c1;
+}
+.btn-success {
+  background-color: #fff;
+  border-color: #7ca5c5;
+  color: #7ca5c5;
+
+}
+.btn-success:hover {
+  color: #fff;
+  background-color: #7ca5c5;
+  border-color: #7ca5c5;
 }
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",

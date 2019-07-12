@@ -4,8 +4,7 @@ import { List, AuditionListItem } from "../components/List";
 import { Container, Col } from "../components/Grid";
 import CalendarSection from "../components/Calendar";
 import API from "../utils/API";
-
-
+import moment from "moment";
 
 class Audition extends Component {
   constructor(props, context) {
@@ -55,6 +54,7 @@ class Audition extends Component {
       .catch(err => console.log(err));
   };
 
+  // method for passing query results from calendar component to page
   handleQuery = results => {
     this.setState({ auditions: results });    
   }
@@ -75,10 +75,10 @@ class Audition extends Component {
           handleQuery={this.handleQuery}
         />
         <Container fluid>
-          <Row className="justify-content-center">
+          <Row>
             <Col size="md-12">
               {!this.state.auditions.length ? (
-                <h1 className="text-center">No Auditions to Display</h1>
+                <h5 className="text-center">No Auditions to Display</h5>
               ) : (
                   <List>
                     {this.state.auditions.map(audition => {

@@ -51,19 +51,18 @@ export class ClassesPreview extends Component {
                   <Row>
                     <Col size="md-4">
                       <Thumbnail src={klass.photoLink} />
-                      
                     </Col>
                     <Col size="md-8">
-                      <div className="details">
+                      <div className="details no-margin">
                         <div>
-                          <h6><span className="light-text">{klass.style}</span></h6>
-                          <p><span>{klass.level}</span></p>
+                          <h6>{klass.style}</h6><span className="badge">{klass.level}</span>                          
+                          <p>{moment(klass.date).format("MMM Do, h:mm A")}</p>
                         </div>
                       </div>
                     </Col>
                     <Row>
                       <Col size="md-12">
-                        <div className="class-description">
+                        <div className="class-description no-margin">
                           <p className="accent-text">{klass.instructorName} Lastname</p>
                           <p><span className="light-text">{klass.description}</span></p>
                         </div>

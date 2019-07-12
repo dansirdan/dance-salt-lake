@@ -17,8 +17,11 @@
   padding-bottom: 1rem;
 }
 .class-preview .details {
-  margin: .5rem 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
+
 .class-description {
   margin: 1rem;
 }

@@ -1,0 +1,13 @@
+.list {
+  border: none;
+  margin-bottom: 2rem;
+}
+.class-list_title {
+  display: flex;
+  justify-content: end;
+  align-items: self-start;
+}
+.list .badge {
+  margin: .3rem 1rem;
+}
+
