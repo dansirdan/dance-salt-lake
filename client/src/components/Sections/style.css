@@ -1,6 +1,5 @@
-.calendar-container {
+.calendar-wrapper {
   width: 100%;
-  height: 50vh;
   padding: 5rem;
   background-color: #eee;
   margin-bottom: 10rem;

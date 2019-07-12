@@ -14,7 +14,7 @@ import Performance from "./pages/Performance";
 import Audition from "./pages/Audition";
 import Space from "./pages/Space";
 import UsersHome from "./pages/UsersHome";
-import MainNav from "./components/MainNav";
+import { MainNav } from "./components/Nav";
 import NoMatch from "./pages/NoMatch";
 import AnimateHeight from "react-animate-height";
 import LargeLogo from "./components/LargeLogo";
@@ -84,13 +84,13 @@ class App extends Component {
     return (
       <Router>
         <>
-          <AnimateHeight
+          {/* <AnimateHeight
             duration={2000}
             height={largeLogo ? 'auto' : 0}
             easing={'ease'}
           >
             <LargeLogo />
-          </AnimateHeight>
+          </AnimateHeight> */}
           <MainNav
             isAuthed={isAuthenticated}
             tinyLogo={!this.state.largeLogo}

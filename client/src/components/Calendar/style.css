@@ -1,0 +1,26 @@
+.calendar-section_content {
+  background-color: #ddd;
+  padding: 2rem;
+}
+.react-calendar {
+  width: 100%;
+  max-width: 480px
+}
+.react-calendar__navigation {
+  height: 55px;
+  border-bottom: 1px solid #eee;
+}
+.react-calendar__navigation__label {
+  font-family: 'Raleway', sans-serif;
+  text-transform: uppercase;
+  font-weight: 400;
+}
+.react-calendar__month-view__days button {
+  border: .5px solid #eee;
+}
+.react-calendar__tile {
+  height: 4rem;
+  width: 4rem;
+  font-size: 1.5rem;
+  color: #222;
+}

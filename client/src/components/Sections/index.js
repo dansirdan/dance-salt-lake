@@ -14,7 +14,7 @@ export function Jumbotron({ children }) {
 
 export function Section({ children }) {
   return (
-    <section className="calendar-container">
+    <section className="calendar-wrapper">
       {children}
     </section>
   );

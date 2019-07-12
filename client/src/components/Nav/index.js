@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import {Container, Nav, Navbar} from "react-bootstrap";
+import { Container, Nav, Navbar } from "react-bootstrap";
+import moment from "moment";
 
 import {
   TinyLogo,
@@ -12,7 +13,7 @@ import {
 } from "../Links";
 import "./style.css"
 
-class MainNav extends Component {
+export class MainNav extends Component {
 
   render() {
 
@@ -30,10 +31,10 @@ class MainNav extends Component {
               {this.props.isAuthed ? (
                 <DropdownNavSI />
               ) : (
-                <>
-                  <AboutNav />
-                  <DropdownNavSO />
-                </>
+                  <>
+                    <AboutNav />
+                    <DropdownNavSO />
+                  </>
                 )}
 
             </Nav>
@@ -44,4 +45,10 @@ class MainNav extends Component {
   }
 }
 
-export default MainNav;
+export function Footer() {
+  return (
+    <footer>
+      <p>&copy</p>
+    </footer>
+  )
+}

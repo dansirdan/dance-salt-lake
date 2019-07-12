@@ -23,8 +23,8 @@ class CalendarSection extends Component {
   // React-Calendar Method for querying on the clicked day
   onClickDay = value => {
     let param = moment(value).format('YYYY-MM-DD')
-    this.queryCall(this.props.path, "date", param)   
-    
+    this.queryCall(this.props.path, "date", param)
+
   };
 
   /**
@@ -36,8 +36,8 @@ class CalendarSection extends Component {
     API.getQueryPosts(postType, subType, param)
       .then(res => {
         this.setState({ results: res.data })
-        this.props.handleQuery(this.state.results)        
-    })
+        this.props.handleQuery(this.state.results)
+      })
       .catch(err => console.log(err));
   }
 
@@ -45,23 +45,24 @@ class CalendarSection extends Component {
     return (
       <Section>
         <Container fluid>
-          <Row className="justify-content-md-center">
+          <div className="calendar-section_content">
+            <Row className="justify-content-md-center">
+              <Col md="3">
+                <QueryDropDown
+                  queryCall={this.queryCall}
+                />
+              </Col>
+              {/* <Col size="md-1" /> */}
+              <Col md="5">
+                <Calendar
+                  onChange={this.onChange}
+                  value={this.state.date}
+                  onClickDay={this.onClickDay}
+                />
+              </Col>
 
-            <Col md="3">
-              <QueryDropDown
-                queryCall={this.queryCall}
-              />
-            </Col>
-            {/* <Col size="md-1" /> */}
-            <Col md="5">
-              <Calendar
-                onChange={this.onChange}
-                value={this.state.date}
-                onClickDay={this.onClickDay}
-              />
-            </Col>
-
-          </Row>
+            </Row>
+          </div>
         </Container>
       </Section >
     )
