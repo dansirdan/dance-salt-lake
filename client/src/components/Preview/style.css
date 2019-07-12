@@ -1,3 +1,4 @@
+/* CARD */
 .card {
   border: none;
 }
@@ -11,23 +12,26 @@
 .card-header:hover {
   background-color: rgba(0, 0, 0, .04);
 }
+/* TYPOGRAPHY */
 .preview h3,
 .preview h5 {
   text-align: center;
   padding-bottom: 1rem;
 }
+/* CLASS */
 .class-preview .details {
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
-
 .class-description {
   margin: 1rem;
 }
+/* PERFORMANCE */
 .performance-preview p {
   text-align: center;
 }
+/* AUDITION */
 .audition-preview .card-body {
   background-color: rgba(0, 0, 0, .04);
   border-bottom: 1px solid rgba(0,0,0,.125);
@@ -71,9 +75,11 @@
 .audition-header span { 
   color: #888;
 } 
+/* SPACE */
 .banner {
   border: 1px solid #eee;
   padding: 80px;
   margin: 80px 80px;
   text-align: center;
+  border: 2px solid #7ca5c5;
 }

@@ -55,7 +55,8 @@ export class ClassesPreview extends Component {
                     <Col size="md-8">
                       <div className="details no-margin">
                         <div>
-                          <h6>{klass.style}</h6><span className="badge">{klass.level}</span>                          
+                          <h6>{klass.style}</h6>
+                          <span className="badge">{klass.level}</span>
                           <p>{moment(klass.date).format("MMM Do, h:mm A")}</p>
                         </div>
                       </div>
@@ -117,6 +118,7 @@ export class PerformancesPreview extends Component {
           <Card.Img variant="top" src={this.state.performanceData.performanceData !== "" ? this.state.performanceData.photoLink : "http://placehold.it/200x200"} />
           <Card.Body>
             <h5>{this.state.performanceData.title !== "" ? this.state.performanceData.title : "No Performance to show"}</h5>
+            <p>{moment(this.state.performanceData.date).format("MMM Do YYYY, h:mm A")}</p>
             <p><span className="light-text">
               {this.state.performanceData.description !== "" ? this.state.performanceData.description : "There are no current performances within our database..."}
             </span></p>

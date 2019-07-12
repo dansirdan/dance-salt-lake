@@ -35,6 +35,9 @@ h6 {
   font-weight: 600;
   font-size: 1rem;
 }
+.navbar {
+  padding: 0 5rem;
+}
 .light-text {
   color: #666;
   font-size: 1rem;
@@ -83,6 +86,16 @@ h6 {
   color: #fff;
   background-color: #7ca5c5;
   border-color: #7ca5c5;
+}
+.btn-primary:not(:disabled):not(.disabled):active, 
+.btn-success:not(:disabled):not(.disabled):active {
+  color: #fff;
+  background-color: #5692c1;
+  border-color: #5692c1;
+}
+.btn-primary:focus,
+.btn-success:focus {
+  box-shadow: 0 0 0 0.2rem rgba(124,165,197, .5)
 }
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
