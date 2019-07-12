@@ -19,7 +19,7 @@ class MainNav extends Component {
     return (
 
       <AuthConsumer>
-        {({ isAuth, login, logout }) => (
+        {({ isAuth }) => (
           <div>
             {isAuth ? (
               <Navbar bg="light" expand="lg">
