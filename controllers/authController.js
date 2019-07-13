@@ -2,19 +2,19 @@ const db = require("../models");
 
 module.exports = {
   login: function (req, res) {
-    res.json("/usershome");
+    res.json("this was successful")
   },
   signup: function (req, res) {
     db.User.create({
       email: req.body.email,
       password: req.body.password
     })
-    .then(function () {
-      res.redirect(307, "/");
-    })
-    .catch(function (err) {
-      res.json(err);
-    });
+      .then(function () {
+        res.redirect(307, "/");
+      })
+      .catch(function (err) {
+        res.json(err);
+      });
   },
   logout: function (req, res) {
     req.logout();

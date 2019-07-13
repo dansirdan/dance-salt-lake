@@ -7,7 +7,7 @@ const passport = require("../config/passport");
 // router.use("/auth", authRoutes);
 router.use("/api", apiRoutes);
 
-router.use(function(req, res) {
+router.use(function (req, res) {
   res.sendFile(path.join(__dirname, "../client/build/index.html"));
 });
 

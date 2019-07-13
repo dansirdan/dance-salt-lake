@@ -1,17 +1,17 @@
 const router = require("express").Router();
-const passport = require("../../config/passport");
 const authController = require("../../controllers/authController");
+const passport = require("../../config/passport");
 
 router.route("/login")
-  .post(authController.login)
+  .post(passport.authenticate("local"), authController.login)
 
-router.route("/signup", passport.authenticate("local"))
+router.route("/signup")
   .post(authController.signup)
 
 router.route("/logout")
   .get(authController.logout)
 
-router.route("/user_data")
+router.route("/user")
   .get(authController.user)
 
 module.exports = router;

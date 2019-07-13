@@ -10,7 +10,10 @@ export default {
   getQueryPosts: function (postType, subType, param) {
     return axios.get("/api/" + postType + "/" + subType + "/" + param)
   },
-  auth: function (logReg, userInfo) {
-    return axios.post("/api/auth/" + logReg, userInfo)
+  auth: function (authRoute, user) {
+    return axios.post("/api/auth/" + authRoute, user)
+  },
+  user: function () {
+    return axios.get("/api/auth/user")
   }
 }

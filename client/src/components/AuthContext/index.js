@@ -1,10 +1,11 @@
 import React, { Component } from "react";
 import API from "../../utils/API"
 const AuthContext = React.createContext();
+const axios = require("axios");
 
 class AuthProvider extends Component {
   state = {
-    isAuth: true,
+    isAuth: false,
     user: {}
   }
 
@@ -14,19 +15,22 @@ class AuthProvider extends Component {
     this.login = this.login.bind(this)
   }
 
-  login(userInfo) {
-    let { email, password } = this.state.user;
-    if (email && password) {
-      API.auth("login/", userInfo)
-        .then(res => {
-          console.log(res);
-          setTimeout(() => this.setState({ isAuth: true }))
-        })
-        .catch(err => {
-          console.log("error")
-          console.log(err)
-        })
-    }
+  login(user) {
+
+    API.auth("login", user)
+      .then(res => {
+        console.log(res);
+        API.user()
+          .then(dbUser => {
+            console.log(dbUser.data)
+            setTimeout(() => this.setState({ isAuth: true, user: dbUser.data }), 1000)
+          })
+      })
+      .catch(err => {
+        console.log("error")
+        console.log(err)
+      })
+
   }
 
   logout() {
@@ -41,6 +45,7 @@ class AuthProvider extends Component {
       <AuthContext.Provider
         value={{
           isAuth: this.state.isAuth,
+          user: this.state.user,
           login: this.login,
           logout: this.logout
         }}
