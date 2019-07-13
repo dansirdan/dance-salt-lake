@@ -54,7 +54,6 @@ export class ClassesPreview extends Component {
                         <div>
                           <h6>{klass.title}</h6>
                           <p className="accent-text">{klass.instructorName} Lastname</p>
-                          {/* <span className="badge">{klass.level}</span> */}
                           <p>{moment(klass.date).format("MMM Do, h:mm A")}</p>
                         </div>
                       </div>

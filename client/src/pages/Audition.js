@@ -70,7 +70,7 @@ class Audition extends Component {
 
   render() {
     return (
-      <div>
+      <>
         <CalendarSection 
           path="auditions"
           handleQuery={this.handleQuery}
@@ -115,6 +115,7 @@ class Audition extends Component {
           </Row>
 
         </Container>
+
         <Modal
           show={this.state.show}
           onHide={this.handleClose}
@@ -145,7 +146,7 @@ class Audition extends Component {
             </Button>
           </Modal.Footer>
         </Modal>
-      </div>
+      </>
     );
   }
 }
