@@ -1,0 +1,20 @@
+.list {
+  border: none;
+  margin-bottom: 2rem;
+}
+.class-list_title,
+.space-list_title {
+  display: flex;
+  justify-content: end;
+  align-items: self-start;
+}
+.space-list_details {
+  display: flex;
+}
+.space-list_details > p {
+  margin-right: 1rem; 
+}
+.list .badge {
+  margin: .3rem 1rem;
+}
+

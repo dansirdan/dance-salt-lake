@@ -1,7 +1,10 @@
 import React from "react";
 import Thumbnail from "../Thumbnail";
+import { Badge } from "react-bootstrap";
 import { Container, Row, Col } from "../Grid";
-import { FormBtn } from "../Form"
+import { FormBtn } from "../Form";
+import moment from "moment";
+import "./style.css"
 
 export function List({ children }) {
   return <ul className="list-group">{children}</ul>;
@@ -14,7 +17,7 @@ export function ListItem({ children }) {
 export function ClassListItem({
   title,
   style,
-  // master,
+  master,
   description,
   // address,
   instructorName,
@@ -23,29 +26,37 @@ export function ClassListItem({
   level,
   // payment,
   // time,
-  // date,
+  date,
   onClick
 }) {
   return (
-    <li className="list-group-item">
+    <li className="list-group-item list class-list">
       <Container>
+
         <Row>
           <Col size="xs-4 sm-2">
             <Thumbnail src={photoLink} />
           </Col>
+
           <Col size="xs-8 sm-9">
-            <h3>{title}</h3>
-            <h5>Teacher: {instructorName}</h5>
-            <h5>Style: {style}</h5>
-            <h5>Level: {level}</h5>
-            <p>Description: {description}</p>
-            <FormBtn
-              onClick={onClick}
-            >
-              Show More
-            </FormBtn>
+            <div className="class-list_title">
+              <h3>{title}</h3>
+              <span className="badge">{level}</span>
+              <span className="badge">{master}</span>
+            </div>
+            <div className="no-margin">
+              <h6>{moment(date).format("MMM Do YYYY, h:mm A")}</h6>
+              <p>Style: {style}</p>
+            </div>
+            <p>Instructed by {instructorName}</p>
+            <p>{description}</p>
+          </Col>
+
+          <Col size="sm-1">
+            <FormBtn onClick={onClick}>View</FormBtn>
           </Col>
         </Row>
+
       </Container>
     </li>
   );
@@ -67,22 +78,23 @@ export function AuditionListItem({
   onClick
 }) {
   return (
-    <li className="list-group-item">
+    <li className="list-group-item list audition-list">
       <Container>
         <Row>
           <Col size="xs-4 sm-2">
             <Thumbnail src={photoLink} />
           </Col>
           <Col size="xs-8 sm-9">
-            <h3>{title}</h3>
-            <h5>Date: {date}</h5>
-            <h5>Looking for: {lookingFor}</h5>
-            <p>Description: {description}</p>
-            <FormBtn
-              onClick={onClick}
-            >
-              Show More
-            </FormBtn>
+            <div className="audition-list_title">
+              <h3>{title}</h3>
+              <h6>{moment(date).format("MMM Do YYYY, h:mm A")}</h6>
+            </div>
+            <p>Looking for: {lookingFor}</p>
+            <p>{description}</p>
+          </Col>
+
+          <Col size="sm-1">
+            <FormBtn onClick={onClick}>View</FormBtn>
           </Col>
         </Row>
       </Container>
@@ -103,7 +115,7 @@ export function PerformanceListItem({
   onClick
 }) {
   return (
-    <li className="list-group-item">
+    <li className="list-group-item list performance-list">
       <Container>
         <Row>
           <Col size="xs-4 sm-2">
@@ -111,14 +123,13 @@ export function PerformanceListItem({
           </Col>
           <Col size="xs-8 sm-9">
             <h3>{title}</h3>
-            <h5>Presenting Company/Artist: </h5>
-            <h5>{date} and {time}</h5>
+            {/* <h5>Presenting Company/Artist: </h5> */}
+            <h6>{moment(date).format("MMM Do YYYY, h:mm A")}</h6>
             <p>Description: {description}</p>
-            <FormBtn
-              onClick={onClick}
-            >
-              Show More
-            </FormBtn>
+          </Col>
+
+          <Col size="sm-1">
+            <FormBtn onClick={onClick}>View</FormBtn>
           </Col>
         </Row>
       </Container>
@@ -131,19 +142,36 @@ export function SpaceListItem({
   rate,
   location,
   squareFootage,
-  numPeople
+  numPeople,
+  photoLink,
+  description,
+  email
 }) {
   return (
-    <li className="list-group-item">
+    <li className="list-group-item list space-list">
       <Container>
+
         <Row>
-          <Col size="xs-8 sm-9">
-            <h3>{name}</h3>
-            <p>Rate: {rate}</p>
-            <p>Location: {location}</p>
-            <p>Sq Ft: {squareFootage}</p>
-            <p>Number of People allowed: {numPeople}</p>
+          <Col size="xs-4 sm-2">
+            <Thumbnail src={photoLink} />
           </Col>
+
+          <Col size="xs-8 sm-9">
+            <div className="space-list_title">
+              <h3>{name}</h3>
+              <p className="badge">${rate}</p>
+            </div>
+            <div className="space-list_details">
+              <p className="sm-text">{location}</p>
+              <p className="sm-text">Max Capacity: {numPeople}</p>
+              <p className="sm-text">{squareFootage}sq. ft</p>
+            </div>
+            <p>{description}</p>
+          </Col>
+          <Col size="sm-1">
+            <FormBtn href="mailto:{email}">Contact</FormBtn>
+          </Col>
+
         </Row>
       </Container>
     </li>

@@ -1,11 +1,9 @@
 import React, { Component } from 'react';
-import Modal from "react-bootstrap/Modal"
-import Button from "react-bootstrap/Button"
+import { Modal, Button, Row, Col } from "react-bootstrap"
 import { List, ClassListItem } from "../components/List";
-import { Container, Row, Col } from "../components/Grid";
-import Jumbotron from "../components/Jumbotron"
-import QueryDropDown from "../components/QueryDrop";
-import Calendar from 'react-calendar';
+import { Container } from "../components/Grid";
+import CalendarSection from "../components/Calendar";
+import { SpaceBanner } from "../components/Preview";
 import API from "../utils/API"
 import moment from "moment";
 
@@ -37,26 +35,6 @@ class Class extends Component {
     }
   }
 
-  // React-Calendar Method for setting the current date of the calendar
-  onChange = date => this.setState({ date })
-
-  // React-Calendar Method for querying on the clicked day
-  onClickDay = value => {
-    let param = moment(value).format('YYYY-MM-DD')
-    this.queryCall("classes", "date", param)
-  };
-
-  /**
-  * the getQueryPosts method takes THREE argument which create the route path
-  * when we get to that point, the onClick method should return data on the
-  * classes(path)/date(subType)"2019/07/05"/QUERY
-  */
-  queryCall = (postType, subType, param) => {
-    API.getQueryPosts(postType, subType, param)
-      .then(res => this.setState({ classes: res.data }))
-      .catch(err => console.log(err));
-  }
-
   // React-Modal method for closing and clearing the data
   handleClose() {
     this.setState({
@@ -73,6 +51,10 @@ class Class extends Component {
       .catch(err => console.log(err));
   };
 
+  // method for passing query results from calendar component to page
+  handleQuery = results => {
+    this.setState({ classes: results });
+  }
   // lifecycle method to prepare for the logo change and do an API call
   componentWillMount() {
     this.props.handleLogo();
@@ -84,33 +66,16 @@ class Class extends Component {
 
   render() {
     return (
-      <Container fluid>
-        <Jumbotron>
-          <Container fluid>
-            <Row>
-              <Col size="md-2" />
-              <Col size="md-3">
-                <QueryDropDown
-                  queryCall={this.queryCall}
-                />
-              </Col>
-              <Col size="md-1" />
-              <Col size="md-4">
-                <Calendar
-                  onChange={this.onChange}
-                  value={this.state.date}
-                  onClickDay={this.onClickDay}
-                />
-              </Col>
-              <Col size="md-2" />
-            </Row>
-          </Container>
-        </Jumbotron>
+      <div>
+      <CalendarSection
+        path="classes"
+        handleQuery={this.handleQuery}
+      />
         <Container fluid>
           <Row>
-            <Col size="xs-12">
+            <Col size="md-12">
               {!this.state.classes.length ? (
-                <h1 className="text-center">No Classes to Display</h1>
+                <h5 className="text-center">No Classes to Display</h5>
               ) : (
                   <List>
                     {this.state.classes.map(klass => {
@@ -138,10 +103,14 @@ class Class extends Component {
               }
             </Col>
           </Row>
+
+          <Row className="justify-content-lg-center">
+            <Col md="8">
+              <SpaceBanner />
+            </Col>
+          </Row>
+
         </Container>
-        {/* <Button variant="primary" onClick={this.handleShow}>
-          Launch demo modal
-        </Button> */}
         <Modal
           show={this.state.show}
           onHide={this.handleClose}
@@ -171,7 +140,7 @@ class Class extends Component {
             </Button>
           </Modal.Footer>
         </Modal>
-      </Container>
+      </div>
     );
   }
 }

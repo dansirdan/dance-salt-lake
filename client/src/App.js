@@ -14,7 +14,7 @@ import Performance from "./pages/Performance";
 import Audition from "./pages/Audition";
 import Space from "./pages/Space";
 import UsersHome from "./pages/UsersHome";
-import MainNav from "./components/MainNav";
+import { MainNav, Footer } from "./components/Nav";
 import NoMatch from "./pages/NoMatch";
 import AnimateHeight from "react-animate-height";
 import LargeLogo from "./components/LargeLogo";
@@ -51,6 +51,7 @@ class App extends Component {
       this.setState({ height: 0 })
     }
   }
+
 
   // function to save logged in user data
   // TO DO:
@@ -192,6 +193,7 @@ class App extends Component {
             />
             <Route component={NoMatch} />
           </Switch>
+          <Footer />
         </>
       </Router>
     );

@@ -1,3 +1,100 @@
-h1 {
+/* CARD */
+.card {
+  border: none;
+}
+.card-body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.card-body .container,
+.card-body .col {
+  padding: 0;
+}
+.card-header {
+  background-color: #fff;
+}
+.card-header:hover {
+  background-color: rgba(0, 0, 0, .04);
+}
+/* TYPOGRAPHY */
+.preview h3 {
+  margin: 3rem 0;
+}
+.preview h3,
+.preview h5 {
   text-align: center;
+  padding-bottom: 1rem;
+}
+/* CLASS */
+.class-preview .details {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.class-description {
+  margin: 1rem;
+}
+/* PERFORMANCE */
+.performance-preview p {
+  text-align: center;
+}
+.performance-preview .btn {
+  margin: 1.5rem;
+}
+/* AUDITION */
+.audition-preview .card-body {
+  background-color: rgba(0, 0, 0, .04);
+  border-bottom: 1px solid rgba(0,0,0,.125);
+}
+.audition-header .date {
+  border: 1px solid #eee;
+  width: 4rem;
+  height: 4rem;
+}
+.audition-header .day,
+.audition-header .month {
+  margin: 0;
+  text-align: center;
+  line-height: 1.4;
+} 
+.audition-header .day {
+  font-size: 2rem;
+  color: #222;
+}
+.audition-header .month { 
+  margin-top: -10px;
+}
+.class-preview .details 
+.audition-header .details { 
+  margin: 1rem;
+} 
+.audition-header h6,
+.class-preview .details h6 { 
+  margin-bottom: 0;   
+}
+.audition-header p { 
+  color: #888;
+  font-size: .8rem;
+  margin: 0;
+}
+.audition-header span { 
+  color: #888;
+} 
+/* SPACE */
+.banner {
+  border: 1px solid #eee;
+  padding: 80px;
+  margin: 80px 0;
+  text-align: center;
+  border: 2px solid #7ca5c5;
+}
+
+@media (max-width: 992px) {
+  .preview h3 {
+    border-bottom: 1px solid #ddd;
+    border-top: 1px solid #ddd;
+    padding: 1rem;
+  }
+
 }

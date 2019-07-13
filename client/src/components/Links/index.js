@@ -1,15 +1,19 @@
-import React from "react";
-import {
-  Link
-} from "react-router-dom";
+import React, { Component } from "react";
+import { Link } from "react-router-dom";
+import { Input, FormBtn } from "../Form";
 import image from "./tinyPlaceholder.JPG";
 import Dropdown from 'react-bootstrap/Dropdown'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import Login from "../Login"
+import "./style.css"
 
 export function TinyLogo() {
   return (
     <Link className="navbar-brand" to="/">
-      <img src={image} alt="dance-sale-lake" />
+      <div className="logo">
+        <h1>Dance</h1>
+        <h2>Salt Lake</h2>
+      </div>
     </Link>
   )
 };
@@ -74,19 +78,15 @@ export function RegisterNav() {
 // Component AS another component similar to naming a <a> tag with a button class
 export function DropdownNavSO() {
   return (
-    <Dropdown>
-      <Dropdown.Toggle caret="true" color="primary">
+    <Dropdown alignRight id="dropdown-btn">
+      <Dropdown.Toggle>
         <FontAwesomeIcon icon="check-square" />
+        Create Account
       </Dropdown.Toggle>
       <Dropdown.Menu>
-        <Dropdown.Item as={Link} to="/login">
-          Login
-        </Dropdown.Item>
+        <Login />
         <Dropdown.Item as={Link} to="/register">
           Register
-        </Dropdown.Item>
-        <Dropdown.Item as={Link} to="/logout">
-          Logout
         </Dropdown.Item>
       </Dropdown.Menu>
     </Dropdown>
@@ -96,8 +96,10 @@ export function DropdownNavSO() {
 // dropdown nav for signed in users
 export function DropdownNavSI() {
   return (
-    <Dropdown>
-      <Dropdown.Toggle caret="true" color="primary" />
+    <Dropdown alignRight id="dropdown-btn">
+      <Dropdown.Toggle caret="true">
+        Account
+      </Dropdown.Toggle>
       <Dropdown.Menu>
         <Dropdown.Item as={Link} to="/usershome">
           Account Page

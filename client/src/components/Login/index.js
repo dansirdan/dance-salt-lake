@@ -1,6 +1,5 @@
 import React, { Component } from "react";
-import { Jumbotron } from "../components/Sections";
-import { Input, FormBtn } from "../components/Form";
+import { Input, FormBtn } from "../Form";
 const axios = require("axios");
 
 class Login extends Component {
@@ -51,8 +50,7 @@ class Login extends Component {
 
     return (
       <div className="container">
-        <Jumbotron>
-          <h5>Login Below:</h5>
+
           <form>
             <Input
               value={this.state.email}
@@ -74,10 +72,10 @@ class Login extends Component {
           </FormBtn>
           </form>
 
-        </Jumbotron>
       </div>
     )
   }
 }
 
 export default Login;
+
