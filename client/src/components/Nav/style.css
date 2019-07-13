@@ -1,10 +1,17 @@
-nav {
-  height: 55px;
+/* MAIN NAV */
+.nav-wrapper {
   border-top: 1px solid #eee;
   border-bottom: 1px solid #eee;
   background-color: #fff;
-  max-width: 1700px;
+  width: 100%;
+}
+nav {
+  max-width: 1650px;
+  height: 60px;
   margin: 0 auto;
+}
+.navbar {
+  padding: 0 2.5rem;
 }
 .navbar-nav {
   margin: 0 auto;
@@ -17,10 +24,31 @@ nav {
 }
 .navbar-nav .dropdown {
   position: absolute;
-  right: 5rem;
+  right: 2.5rem;
 }
 #dropdown-btn .btn-primary {
+  margin-right: 0;
   color: #888;
   background-color: #fff;
   border: none;
+}
+#dropdown-btn .dropdown-menu {
+  width: 18rem;
+  padding-top: 1rem;
+}
+.sticky {
+  transition: all 0.1s ease-in;
+  position: fixed;
+  top: 0;
+  z-index: 99;
+}
+
+/* FOOTER */
+footer {
+  text-align: center;
+  margin-top: 5rem;
+  height: 100%;
+  padding: 1rem;
+  padding-top: 1.5rem;
+  background-color: #ddd;
 }

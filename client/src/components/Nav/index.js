@@ -12,34 +12,64 @@ import {
   DropdownNavSI
 } from "../Links";
 import "./style.css"
+import { normalize } from 'path';
 
 export class MainNav extends Component {
+
+  // state = {
+  //   activeClass: ""
+  // }
+
+  handleScroll = () => {
+    const nav = document.querySelector(".nav-wrapper");
+    const hero = document.querySelector(".hero");
+
+    const navTop = nav.offsetTop;
+    const navBottom = nav.offsetBottom;
+    const heroTop = hero.offsetTop;
+
+    if (window.scrollY > navTop) {
+      nav.classList.add("sticky");
+      // document.body.style.paddingTop = nav.offsetHeight + 'px';
+    } else {
+      console.log(navTop, heroTop);
+      
+      nav.classList.remove("sticky");
+      // document.body.style.paddingTop = 0;
+    }
+  }
+  // componentDidMount() {
+  //   window.addEventListener('scroll', this.handleScroll);
+  // }
+
 
   render() {
 
     return (
-      <div>
-        <Navbar expand="lg">
-          {this.props.tinyLogo ? <TinyLogo /> : <div />}
-          <Navbar.Toggle aria-controls="basic-navbar-nav" />
-          <Navbar.Collapse id="basic-navbar-nav">
-            <Nav>
-              <ClassNav />
-              <PerformanceNav />
-              <AuditionNav />
+      <div className="nav-wrapper">
+        <Container fluid>
+          <Navbar expand="lg">
+            {this.props.tinyLogo ? <TinyLogo /> : <div />}
+            <Navbar.Toggle aria-controls="basic-navbar-nav" />
+            <Navbar.Collapse id="basic-navbar-nav">
+              <Nav>
+                <ClassNav />
+                <PerformanceNav />
+                <AuditionNav />
 
-              {this.props.isAuthed ? (
-                <DropdownNavSI />
-              ) : (
-                  <>
-                    <AboutNav />
-                    <DropdownNavSO />
-                  </>
-                )}
+                {this.props.isAuthed ? (
+                  <DropdownNavSI />
+                ) : (
+                    <>
+                      <AboutNav />
+                      <DropdownNavSO />
+                    </>
+                  )}
 
-            </Nav>
-          </Navbar.Collapse>
-        </Navbar>
+              </Nav>
+            </Navbar.Collapse>
+          </Navbar>
+        </Container>
       </div>
     );
   }
@@ -48,7 +78,7 @@ export class MainNav extends Component {
 export function Footer() {
   return (
     <footer>
-      <p>&copy</p>
+      <p className="sm-text">&copy; Copyright {moment(Date()).format("YYYY")}</p>
     </footer>
   )
 }

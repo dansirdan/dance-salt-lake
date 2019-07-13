@@ -37,6 +37,30 @@ module.exports = function (sequelize, DataTypes) {
       //   notEmpty: true,
       //   isInt: true
       // }
+    },
+    photoLink: {
+      type: DataTypes.STRING,
+      // allowNull: false,
+      // validate: {
+      //   notEmpty: true,
+      //   isUrl: true
+      // }
+    },
+    description: {
+      type: DataTypes.STRING,
+      // allowNull: false,
+      // validate: {
+      //   len: [1],
+      //   notEmpty: true
+      // }
+    },
+    email: {
+      type: DataTypes.STRING,
+      allowNull: true,
+      validate: {
+        unique: true,
+        isEmail: true
+      }
     }
   });
 

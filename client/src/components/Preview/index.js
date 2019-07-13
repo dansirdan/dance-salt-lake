@@ -1,14 +1,11 @@
 import React, { Component } from 'react';
-import { Container, Row, Col } from "../Grid";
+import { Container } from "../Grid";
 import Thumbnail from "../Thumbnail";
-import Card from "react-bootstrap/Card";
-import Accordion from "react-bootstrap/Accordion";
+import { Card, Accordion, Button, Row, Col } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import "./style.css";
 import API from "../../utils/API"
 import moment from "moment";
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faCircle, faPlus } from '@fortawesome/free-solid-svg-icons'
 
 // using state and componentWillMount lifecycle methods
 // each preview item makes a call to the API before mounting
@@ -49,10 +46,10 @@ export class ClassesPreview extends Component {
               <Card.Body>
                 <Container>
                   <Row>
-                    <Col size="md-4">
+                    <Col sm="3" md="3" lg="4">
                       <Thumbnail src={klass.photoLink} />
                     </Col>
-                    <Col size="md-8">
+                    <Col sm="9" md="9" lg="8">
                       <div className="details no-margin">
                         <div>
                           <h6>{klass.title}</h6>
@@ -63,7 +60,7 @@ export class ClassesPreview extends Component {
                       </div>
                     </Col>
                     <Row>
-                      <Col size="md-12">
+                      <Col md="12">
                         <div className="class-description no-margin">
                           <p><span className="light-text">{klass.description}</span></p>
                         </div>
@@ -111,17 +108,23 @@ export class PerformancesPreview extends Component {
   }
 
   render() {
+    let performance = this.state.performanceData;
+
     return (
       <div className="performance-preview">
         <h3>Perfomances</h3>
+
         <Card>
-          <Card.Img variant="top" src={this.state.performanceData.performanceData !== "" ? this.state.performanceData.photoLink : "http://placehold.it/200x200"} />
+          <Card.Img variant="top" src={performance.performanceData !== "" ? performance.photoLink : "http://placehold.it/200x200"} />
           <Card.Body>
-            <h5>{this.state.performanceData.title !== "" ? this.state.performanceData.title : "No Performance to show"}</h5>
-            <p>{moment(this.state.performanceData.date).format("MMM Do YYYY, h:mm A")}</p>
+            <h5>{performance.title !== "" ? performance.title : "No Performance to show"}</h5>
+            <p>{moment(performance.date).format("MMM Do YYYY, h:mm A")}</p>
             <p><span className="light-text">
-              {this.state.performanceData.description !== "" ? this.state.performanceData.description : "There are no current performances within our database..."}
+              {performance.description !== "" ? performance.description : "There are no current performances within our database..."}
             </span></p>
+            <p>{performance.address}</p>
+            <h6>${performance.price}</h6>
+            <Button variant="success" href={performance.url}>Get Tickets</Button>
           </Card.Body>
         </Card>
       </div>
@@ -139,8 +142,6 @@ export class AuditionPreview extends Component {
 
   // lifecycle method to trigger an API CALL
   // stores the first 3 auditions in the database currently
-  // TO DO:
-  // 1. figure out how to have one tab already open
 
   componentWillMount() {
     let threeAuditions = [];
@@ -157,43 +158,42 @@ export class AuditionPreview extends Component {
   }
 
   render() {
+
     return (
       <div className="audition-preview">
         <h3>Auditions</h3>
-        <Accordion defaultActiveKey="1">
+
+        <Accordion defaultActiveKey="0">
           {this.state.auditionData.map((audition, index) => {
-            console.log(index);
 
             return (
               <Card key={audition.id}>
-                <Accordion.Toggle as={Card.Header} eventKey={audition.id} caret="true">
+                <Accordion.Toggle as={Card.Header} eventKey={index.toString()} caret="true">
+
                   <div className="audition-header">
-                    <div className="date">
-                      <p className="day">{moment(audition.date).format("DD")}</p>
-                      <h6 className="month">{moment(audition.date).format("MMM")}</h6>
-                    </div>
-                    <div className="details">
-                      <h6>{audition.title}</h6>
-                      <p><span className="light-text">{audition.address}</span></p>
-                    </div>
-                    <span className="fa-layers fa-fw">
-                      <FontAwesomeIcon icon={faCircle} />
-                      <FontAwesomeIcon icon={faPlus} inverse transform="shrink-6" />
-                    </span>
+                    <Row>
+                      <Col lg="4" sm="4">
+                        <div className="date">
+                          <p className="day">{moment(audition.date).format("DD")}</p>
+                          <h6 className="month">{moment(audition.date).format("MMM")}</h6>
+                        </div>
+                      </Col>
+                      <Col lg="8" sm="8">
+                        <div className="details">
+                          <h6>{audition.title}</h6>
+                          <p><span className="light-text">{audition.address}</span></p>
+                        </div>
+                      </Col>
+                    </Row>
                   </div>
                 </Accordion.Toggle>
-                <Accordion.Collapse eventKey={audition.id}>
+                <Accordion.Collapse eventKey={index.toString()}>
                   <Card.Body>
                     <Card.Text>
-                      <b>Time:</b> {audition.time}
+                      <b>Start Time:</b> {moment(audition.time, "HH:mm:ss").format("h:mm A")}
                     </Card.Text>
-                    <Card.Text>
-                      <b>Place:</b> {audition.address}
-
-                    </Card.Text>
-                    <Card.Text>
-                      <b>Description:</b> {audition.description}
-
+                    <Card.Text className="light-text">
+                      {audition.description}
                     </Card.Text>
 
                   </Card.Body>

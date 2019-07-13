@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
-import { Modal, Button, Row } from "react-bootstrap"
+import { Modal, Button, Row, Col } from "react-bootstrap"
 import { List, ClassListItem } from "../components/List";
-import { Container, Col } from "../components/Grid";
+import { Container } from "../components/Grid";
 import CalendarSection from "../components/Calendar";
+import { SpaceBanner } from "../components/Preview";
 import API from "../utils/API"
 import moment from "moment";
 
@@ -102,6 +103,13 @@ class Class extends Component {
               }
             </Col>
           </Row>
+
+          <Row className="justify-content-lg-center">
+            <Col md="8">
+              <SpaceBanner />
+            </Col>
+          </Row>
+
         </Container>
         <Modal
           show={this.state.show}

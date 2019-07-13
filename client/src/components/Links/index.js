@@ -1,8 +1,10 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
+import { Input, FormBtn } from "../Form";
 import image from "./tinyPlaceholder.JPG";
 import Dropdown from 'react-bootstrap/Dropdown'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import Login from "../Login"
 import "./style.css"
 
 export function TinyLogo() {
@@ -82,9 +84,7 @@ export function DropdownNavSO() {
         Create Account
       </Dropdown.Toggle>
       <Dropdown.Menu>
-        <Dropdown.Item as={Link} to="/login">
-          Login
-        </Dropdown.Item>
+        <Login />
         <Dropdown.Item as={Link} to="/register">
           Register
         </Dropdown.Item>
@@ -97,7 +97,7 @@ export function DropdownNavSO() {
 export function DropdownNavSI() {
   return (
     <Dropdown alignRight id="dropdown-btn">
-      <Dropdown.Toggle caret="true" color="primary">
+      <Dropdown.Toggle caret="true">
         Account
       </Dropdown.Toggle>
       <Dropdown.Menu>

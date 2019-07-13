@@ -22,15 +22,15 @@ class Home extends Component {
           <div className="preview">
             
             <Row>
-              <Col size="md-4">
+              <Col size="md-12 lg-4">
                 <ClassesPreview />
               </Col>
 
-              <Col size="md-4">
+              <Col size="md-12 lg-4">
                 <PerformancesPreview />
               </Col>
 
-              <Col size="md-4">
+              <Col size="md-12 lg-4">
                 <Row>
                   <Col size="md-12">
                     <AuditionPreview />

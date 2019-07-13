@@ -1,5 +1,5 @@
--- DROP DATABASE IF EXISTS react_example;
--- CREATE DATABASE react_example;
+DROP DATABASE IF EXISTS react_example;
+CREATE DATABASE react_example;
 
 USE react_example;
 
@@ -318,6 +318,9 @@ INSERT INTO `react_example`.`spaces`
 `squareFootage`,
 `url`,
 `numPeople`,
+`photoLink`,
+`description`,
+`email`,
 `createdAt`,
 `updatedAt`,
 `UserId`)
@@ -329,6 +332,9 @@ VALUES
 50,
 "http://fakeaudition.com",
 25,
+"http://lorempixel.com/640/480",
+"Laborumort excepteur. Proident deserunt ullamco elit duis mollit sint dolore mollit dolor excepteur enim elit veniam officia.",
+"asdf@email.com",
 CURRENT_TIMESTAMP,
 CURRENT_TIMESTAMP,
 1);

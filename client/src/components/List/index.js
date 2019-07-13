@@ -48,8 +48,8 @@ export function ClassListItem({
               <h6>{moment(date).format("MMM Do YYYY, h:mm A")}</h6>
               <p>Style: {style}</p>
             </div>
-              <p>Instructed by {instructorName}</p>
-              <p>{description}</p>
+            <p>Instructed by {instructorName}</p>
+            <p>{description}</p>
           </Col>
 
           <Col size="sm-1">
@@ -85,10 +85,10 @@ export function AuditionListItem({
             <Thumbnail src={photoLink} />
           </Col>
           <Col size="xs-8 sm-9">
-          <div className="audition-list_title">
-            <h3>{title}</h3>
-            <h6>{moment(date).format("MMM Do YYYY, h:mm A")}</h6>
-          </div>
+            <div className="audition-list_title">
+              <h3>{title}</h3>
+              <h6>{moment(date).format("MMM Do YYYY, h:mm A")}</h6>
+            </div>
             <p>Looking for: {lookingFor}</p>
             <p>{description}</p>
           </Col>
@@ -142,19 +142,36 @@ export function SpaceListItem({
   rate,
   location,
   squareFootage,
-  numPeople
+  numPeople,
+  photoLink,
+  description,
+  email
 }) {
   return (
     <li className="list-group-item list space-list">
       <Container>
+
         <Row>
-          <Col size="xs-8 sm-9">
-            <h3>{name}</h3>
-            <p>Rate: {rate}</p>
-            <p>Location: {location}</p>
-            <p>Sq Ft: {squareFootage}</p>
-            <p>Number of People allowed: {numPeople}</p>
+          <Col size="xs-4 sm-2">
+            <Thumbnail src={photoLink} />
           </Col>
+
+          <Col size="xs-8 sm-9">
+            <div className="space-list_title">
+              <h3>{name}</h3>
+              <p className="badge">${rate}</p>
+            </div>
+            <div className="space-list_details">
+              <p className="sm-text">{location}</p>
+              <p className="sm-text">Max Capacity: {numPeople}</p>
+              <p className="sm-text">{squareFootage}sq. ft</p>
+            </div>
+            <p>{description}</p>
+          </Col>
+          <Col size="sm-1">
+            <FormBtn href="mailto:{email}">Contact</FormBtn>
+          </Col>
+
         </Row>
       </Container>
     </li>

@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
-import { Modal, Button, Row } from "react-bootstrap";
+import { Modal, Button, Row, Col } from "react-bootstrap";
 import { List, AuditionListItem } from "../components/List";
-import { Container, Col } from "../components/Grid";
+import { Container } from "../components/Grid";
 import CalendarSection from "../components/Calendar";
+import { SpaceBanner } from "../components/Preview";
 import API from "../utils/API";
 import moment from "moment";
 
@@ -76,7 +77,7 @@ class Audition extends Component {
         />
         <Container fluid>
           <Row>
-            <Col size="md-12">
+            <Col className="justify-content-center" lg="12">
               {!this.state.auditions.length ? (
                 <h5 className="text-center">No Auditions to Display</h5>
               ) : (
@@ -106,6 +107,13 @@ class Audition extends Component {
               }
             </Col>
           </Row>
+
+          <Row className="justify-content-lg-center">
+            <Col md="8">
+              <SpaceBanner />
+            </Col>
+          </Row>
+
         </Container>
         <Modal
           show={this.state.show}
