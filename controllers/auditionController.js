@@ -15,9 +15,9 @@ module.exports = {
   },
   // ============= Find By ===============
   // ============ Un-Tested ==============
-  findByDate: function (req, res) {
+  findByDate: function (req, res) {   
     db.Audition
-      .findAll({ where: { date: req.params.date } })
+      .findAll({ where: req.params })
       .then(data => res.json(data))
       .catch(err => res.status(422).json(err));
   },

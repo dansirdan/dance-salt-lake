@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
-import { Container, Row, Col } from "../Grid";
-import { FormBtn } from "../Form"
+import { Container } from "../Grid";
 import Thumbnail from "../Thumbnail";
-import Card from "react-bootstrap/Card";
-import Accordion from "react-bootstrap/Accordion";
+import { Card, Accordion, Button, Row, Col } from "react-bootstrap";
+import { Link } from "react-router-dom";
 import "./style.css";
 import API from "../../utils/API"
+import moment from "moment";
 
 // using state and componentWillMount lifecycle methods
 // each preview item makes a call to the API before mounting
@@ -55,37 +55,42 @@ export class ClassesPreview extends Component {
 
   render() {
     return (
-      <>
-        <h1>CLASSES</h1>
+      <div className="class-preview">
+        <h3>Classes</h3>
 
         {this.state.classData.map(klass => {
           return (
             <Card key={klass.id}>
-              <Card.Header>Teacher / Style / Level</Card.Header>
               <Card.Body>
-                <Card.Title>{klass.instructorName} / {klass.style} / {klass.level}</Card.Title>
                 <Container>
                   <Row>
-                    <Col size="md-4">
+                    <Col sm="3" md="3" lg="4">
                       <Thumbnail src={klass.photoLink} />
                     </Col>
-                    <Col size="md-8">
-                      <Card.Text>
-                        {klass.description}
-                      </Card.Text>
-                      <FormBtn
-                        onClick={() => this.handleShow(klass.id)}
-                      >
-                        Show Class
-                      </FormBtn>
+                    <Col sm="9" md="9" lg="8">
+                      <div className="details no-margin">
+                        <div>
+                          <h6>{klass.title}</h6>
+                          <p className="accent-text">{klass.instructorName} Lastname</p>
+                          <p>{moment(klass.date).format("MMM Do, h:mm A")}</p>
+                        </div>
+                      </div>
                     </Col>
+                    <Row>
+                      <Col md="12">
+                        <div className="class-description no-margin">
+                          <p><span className="light-text">{klass.description}</span></p>
+                        </div>
+                      </Col>
+                    </Row>
                   </Row>
                 </Container>
               </Card.Body>
             </Card>
           )
         })}
-      </>
+
+      </div>
     )
   }
 }
@@ -136,21 +141,23 @@ export class PerformancesPreview extends Component {
   }
 
   render() {
+    let performance = this.state.performanceData;
+
     return (
-      <div>
-        <h1>PERFORMANCES</h1>
+      <div className="performance-preview">
+        <h3>Perfomances</h3>
+
         <Card>
-          <Card.Img variant="top" src={this.state.performanceData.performanceData !== "" ? this.state.performanceData.photoLink : "http://placehold.it/200x200"} />
+          <Card.Img variant="top" src={performance.performanceData !== "" ? performance.photoLink : "http://placehold.it/200x200"} />
           <Card.Body>
-            <Card.Title>{this.state.performanceData.title !== "" ? this.state.performanceData.title : "No Performance to show"}</Card.Title>
-            <Card.Text>
-              {this.state.performanceData.description !== "" ? this.state.performanceData.description : "There are no current performances within our database..."}
-            </Card.Text>
-            <FormBtn
-              onClick={() => this.handleShow(this.state.performanceData.id)}
-            >
-              More
-            </FormBtn>
+            <h5>{performance.title !== "" ? performance.title : "No Performance to show"}</h5>
+            <p>{moment(performance.date).format("MMM Do YYYY, h:mm A")}</p>
+            <p><span className="light-text">
+              {performance.description !== "" ? performance.description : "There are no current performances within our database..."}
+            </span></p>
+            <p>{performance.address}</p>
+            <h6>${performance.price}</h6>
+            <Button variant="success" href={performance.url}>Get Tickets</Button>
           </Card.Body>
         </Card>
       </div >
@@ -186,8 +193,7 @@ export class AuditionPreview extends Component {
   };
   // lifecycle method to trigger an API CALL
   // stores the first 3 auditions in the database currently
-  // TO DO:
-  // 1. figure out how to have one tab already open
+
   componentWillMount() {
     let threeAuditions = [];
 
@@ -202,28 +208,42 @@ export class AuditionPreview extends Component {
   }
 
   render() {
+
     return (
-      <div>
-        <h1>AUDITIONS</h1>
-        <Accordion defaultActiveKey="1">
-          {this.state.auditionData.map(audition => {
+      <div className="audition-preview">
+        <h3>Auditions</h3>
+
+        <Accordion defaultActiveKey="0">
+          {this.state.auditionData.map((audition, index) => {
+
             return (
               <Card key={audition.id}>
-                <Accordion.Toggle as={Card.Header} eventKey={audition.id} caret="true">
-                  <h3>{audition.title}</h3>
+                <Accordion.Toggle as={Card.Header} eventKey={index.toString()} caret="true">
+
+                  <div className="audition-header">
+                    <Row>
+                      <Col lg="4" md="2" sm="4">
+                        <div className="date">
+                          <p className="day">{moment(audition.date).format("DD")}</p>
+                          <h6 className="month">{moment(audition.date).format("MMM")}</h6>
+                        </div>
+                      </Col>
+                      <Col lg="8" md="10" sm="8">
+                        <div className="details">
+                          <h6>{audition.title}</h6>
+                          <p><span className="light-text">{audition.address}</span></p>
+                        </div>
+                      </Col>
+                    </Row>
+                  </div>
                 </Accordion.Toggle>
-                <Accordion.Collapse eventKey={audition.id}>
+                <Accordion.Collapse eventKey={index.toString()}>
                   <Card.Body>
                     <Card.Text>
-                      <b>Time:</b> {audition.time}
+                      <b>Start Time:</b> {moment(audition.time, "HH:mm:ss").format("h:mm A")}
                     </Card.Text>
-                    <Card.Text>
-                      <b>Place:</b> {audition.address}
-
-                    </Card.Text>
-                    <Card.Text>
-                      <b>Description:</b> {audition.description}
-
+                    <Card.Text className="light-text">
+                      {audition.description}
                     </Card.Text>
                     <FormBtn
                       onClick={() => this.handleShow(audition.id)}
@@ -239,4 +259,17 @@ export class AuditionPreview extends Component {
       </div>
     )
   }
+}
+
+export function SpaceBanner() {
+  return (
+    <div className="banner">
+      <h4>Looking for studio space?</h4>
+      <p>Click here to view available rental spaces</p>
+      <Link className="btn btn-primary" to="/space" >
+        View
+    </Link >
+
+    </div>
+  )
 }

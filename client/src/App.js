@@ -10,7 +10,7 @@ import Performance from "./pages/Performance";
 import Audition from "./pages/Audition";
 import Space from "./pages/Space";
 import UsersHome from "./pages/UsersHome";
-import MainNav from "./components/MainNav";
+import { MainNav, Footer } from "./components/Nav";
 import NoMatch from "./pages/NoMatch";
 import AnimateHeight from "react-animate-height";
 import LargeLogo from "./components/LargeLogo";
@@ -49,103 +49,101 @@ class App extends Component {
 
   render() {
     return (
-      <div>
-        <Router>
-          <AuthProvider>
-            <AnimateHeight
-              duration={2000}
-              height={this.state.largeLogo ? 'auto' : 0}
-              easing={'ease'}
-            >
-              <LargeLogo />
-            </AnimateHeight>
-            <MainNav
-              tinyLogo={!this.state.largeLogo}
+      <Router>
+        <AuthProvider>
+          <AnimateHeight
+            duration={2000}
+            height={this.state.largeLogo ? 'auto' : 0}
+            easing={'ease'}
+          >
+            <LargeLogo />
+          </AnimateHeight>
+          <MainNav
+            tinyLogo={!this.state.largeLogo}
+          />
+          <Switch>
+            <ProtectedRoute
+              exact path="/usershome"
+              component={UsersHome}
+              render={(props) => (
+                <UsersHome {...props}
+                  handleLogo={this.handleLogo}
+                />
+              )}
             />
-            <Switch>
-              <ProtectedRoute
-                exact path="/usershome"
-                component={UsersHome}
-                render={(props) => (
-                  <UsersHome {...props}
-                    handleLogo={this.handleLogo}
-                  />
-                )}
+            <Route
+              exact path="/"
+              render={(props) => (
+                <Home {...props}
+                  handleLogo={this.handleLogo}
+                />
+              )}
+            />
+            <Route
+              exact path="/class"
+              render={(props) => (
+                <Class {...props}
+                  handleLogo={this.handleLogo}
+                />
+              )}
+            />
+            <Route
+              exact path="/audition"
+              render={(props) => (
+                <Audition {...props}
+                  handleLogo={this.handleLogo}
+                />
+              )}
+            />
+            <Route
+              exact path="/performance"
+              render={(props) => (
+                <Performance {...props}
+                  handleLogo={this.handleLogo}
+                />
+              )}
+            />
+            <Route
+              exact path="/space"
+              render={(props) => (
+                <Space {...props}
+                  handleLogo={this.handleLogo}
+                />
+              )}
+            />
+            <Route
+              exact path="/about"
+              component={About}
+              handleLogo={this.handleLogo}
 
-              />
-              <Route
-                exact path="/"
-                render={(props) => (
-                  <Home {...props}
-                    handleLogo={this.handleLogo}
-                  />
-                )}
-              />
-              <Route
-                exact path="/class"
-                render={(props) => (
-                  <Class {...props}
-                    handleLogo={this.handleLogo}
-                  />
-                )}
-              />
-              <Route
-                exact path="/audition"
-                render={(props) => (
-                  <Audition {...props}
-                    handleLogo={this.handleLogo}
-                  />
-                )}
-              />
-              <Route
-                exact path="/performance"
-                render={(props) => (
-                  <Performance {...props}
-                    handleLogo={this.handleLogo}
-                  />
-                )}
-              />
-              <Route
-                exact path="/space"
-                render={(props) => (
-                  <Space {...props}
-                    handleLogo={this.handleLogo}
-                  />
-                )}
-              />
-              <Route
-                exact path="/about"
-                component={About}
-                handleLogo={this.handleLogo}
-
-              />
-              <Route
-                exact path="/login"
-                render={(props) => (
-                  <Login {...props}
-                    handleLogo={this.handleLogo}
-                  />
-                )}
-              />
-              <Route
-                exact path="/register"
-                render={(props) => (
-                  <Register {...props}
-                    handleLogo={this.handleLogo}
-                  />
-                )}
-              />
-              <Route
-                render={(props) => (
-                  <NoMatch {...props}
-                    handleLogo={this.handleLogo}
-                  />
-                )}
-              />
-            </Switch>
-          </AuthProvider>
-        </Router>
-      </div>
+            />
+            <Route
+              exact path="/login"
+              render={(props) => (
+                <Login {...props}
+                  handleLogo={this.handleLogo}
+                />
+              )}
+            />
+            <Route
+              exact path="/register"
+              render={(props) => (
+                <Register {...props}
+                  handleLogo={this.handleLogo}
+                />
+              )}
+            />
+            <Route
+              render={(props) => (
+                <NoMatch {...props}
+                  handleLogo={this.handleLogo}
+                />
+              )}
+            />
+          </Switch>
+        </AuthProvider>
+        <Footer />
+      </Router>
     )
   }
 }

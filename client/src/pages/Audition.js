@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 import MoreInfo from '../components/MoreInfo';
+import { Row, Col } from "react-bootstrap";
 import { List, AuditionListItem } from "../components/List";
-import { Container, Row, Col } from "../components/Grid";
-import Jumbotron from "../components/Jumbotron"
-import Calendar from "react-calendar";
-import QueryDropDown from "../components/QueryDrop";
+import { Container } from "../components/Grid";
+import CalendarSection from "../components/Calendar";
+import { SpaceBanner } from "../components/Preview";
 import API from "../utils/API";
 import moment from "moment";
 
@@ -18,7 +18,7 @@ class Audition extends Component {
     this.state = {
       auditions: [],
       show: false,
-      date: new Date(),
+      // date: new Date(),
       moreInfo: {
         title: "",
         lookingFor: "",
@@ -34,26 +34,6 @@ class Audition extends Component {
         link: ""
       }
     }
-  }
-
-  // React-Calendar Method for setting the current date of the calendar
-  onChange = date => this.setState({ date });
-
-  // React-Calendar Method for querying on the clicked day
-  onClickDay = value => {
-    let param = moment(value).format('YYYY-MM-DD')
-    this.queryCall("auditions", "date", param)
-  };
-
-  /**
-  * the queryCall (getQueryPosts) method takes THREE argument which create the route path
-  * when we get to that point, the onClick method should return data on the 
-  * audition(path)/date(subType)"2019/07/05"/QUERY
-  */
-  queryCall = (postType, subType, param) => {
-    API.getQueryPosts(postType, subType, param)
-      .then(res => this.setState({ auditions: res.data }))
-      .catch(err => console.log(err));
   }
 
   // React-Modal method for closing and clearing the data
@@ -76,6 +56,10 @@ class Audition extends Component {
       .catch(err => console.log(err));
   };
 
+  // method for passing query results from calendar component to page
+  handleQuery = results => {
+    this.setState({ auditions: results });
+  }
   // lifecycle method to prepare for the logo change and do an API call
   componentWillMount() {
     this.props.handleLogo();
@@ -87,33 +71,16 @@ class Audition extends Component {
 
   render() {
     return (
-      <Container fluid>
-        <Jumbotron>
-          <Container fluid>
-            <Row>
-              <Col size="md-2" />
-              <Col size="md-3">
-                <QueryDropDown
-                  queryCall={this.queryCall}
-                />
-              </Col>
-              <Col size="md-1" />
-              <Col size="md-4">
-                <Calendar
-                  onChange={this.onChange}
-                  value={this.state.date}
-                  onClickDay={this.onClickDay}
-                />
-              </Col>
-              <Col size="md-2" />
-            </Row>
-          </Container>
-        </Jumbotron>
+      <>
+        <CalendarSection
+          path="auditions"
+          handleQuery={this.handleQuery}
+        />
         <Container fluid>
-          <Row className="justify-content-center">
-            <Col size="md-12">
+          <Row>
+            <Col className="justify-content-center" lg="12">
               {!this.state.auditions.length ? (
-                <h1 className="text-center">No Auditions to Display</h1>
+                <h5 className="text-center">No Auditions to Display</h5>
               ) : (
                   <List>
                     {this.state.auditions.map(audition => {
@@ -141,6 +108,13 @@ class Audition extends Component {
               }
             </Col>
           </Row>
+
+          <Row className="justify-content-lg-center">
+            <Col md="8">
+              <SpaceBanner />
+            </Col>
+          </Row>
+
         </Container>
         <MoreInfo
           page="Audition"
@@ -148,8 +122,9 @@ class Audition extends Component {
           onHide={this.handleClose}
           moreInfo={this.state.moreInfo}
         />
-      </Container>
+      </>
     );
+
   }
 }
 

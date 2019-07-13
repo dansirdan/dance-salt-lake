@@ -1,13 +1,17 @@
 header {
+  margin-bottom: 100px;
+  padding-bottom: 55px;
+}
+.hero {
   position: relative;
   background-color: black;
-  height: 75vh;
+  height: 50vh; 
   min-height: 25rem;
   width: 100%;
   overflow: hidden;
 }
 
-header video {
+.hero video {
   position: absolute;
   top: 50%;
   left: 50%;
@@ -22,12 +26,12 @@ header video {
   transform: translateX(-50%) translateY(-50%);
 }
 
-header .container {
+.hero .container {
   position: relative;
   z-index: 2;
 }
 
-header .overlay {
+.hero .overlay {
   position: absolute;
   top: 0;
   left: 0;
@@ -39,10 +43,10 @@ header .overlay {
 }
 
 @media (pointer: coarse) and (hover: none) {
-  header {
+  .hero {
     background: url('https://source.unsplash.com/XT5OInaElMw/1600x900') black no-repeat center center scroll;
   }
-  header video {
+  .hero video {
     display: none;
   }
 }

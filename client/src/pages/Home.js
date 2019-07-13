@@ -1,10 +1,8 @@
 import React, { Component } from "react";
 import MoreInfo from "../components/MoreInfo";
-import {
-  Link
-} from "react-router-dom";
-import { Container, Row, Col } from "../components/Grid";
-import { ClassesPreview, PerformancesPreview, AuditionPreview } from "../components/Preview";
+import { Row, Col } from "react-bootstrap";
+import { Container } from "../components/Grid";
+import { ClassesPreview, PerformancesPreview, AuditionPreview, SpaceBanner } from "../components/Preview";
 import Hero from "../components/Hero";
 
 class Home extends Component {
@@ -52,32 +50,31 @@ class Home extends Component {
       <div>
         <Hero />
         <Container>
-          <Row>
-            <Col size="md-4">
-              <ClassesPreview
-                returnData={this.returnData}
-              />
-            </Col>
-            <Col size="md-4">
-              <PerformancesPreview
-                returnData={this.returnData}
-              />
-            </Col>
-            <Col size="md-4">
-              <Row>
-                <Col size="md-12">
-                  <AuditionPreview
-                    returnData={this.returnData}
-                  />
-                </Col>
-              </Row>
-              <Row>
-                <Col size="md-12">
-                  <Link className="btn btn-primary" to="/space">
-                    Check Out Some Spaces
-                </Link>
-                </Col>
-              </Row>
+          <div className="preview">
+
+            <Row>
+              <Col md="12" lg="4">
+                <ClassesPreview />
+              </Col>
+
+              <Col md="12" lg="4">
+                <PerformancesPreview />
+              </Col>
+
+              <Col md="12" lg="4">
+                <Row>
+                  <Col md="12">
+                    <AuditionPreview />
+                  </Col>
+                </Row>
+              </Col>
+
+            </Row>
+          </div>
+
+          <Row className="justify-content-md-center">
+            <Col md="10">
+              <SpaceBanner />
             </Col>
           </Row>
           <MoreInfo
