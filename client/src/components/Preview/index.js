@@ -172,13 +172,13 @@ export class AuditionPreview extends Component {
 
                   <div className="audition-header">
                     <Row>
-                      <Col lg="4" sm="4">
+                      <Col lg="4" md="2"sm="4">
                         <div className="date">
                           <p className="day">{moment(audition.date).format("DD")}</p>
                           <h6 className="month">{moment(audition.date).format("MMM")}</h6>
                         </div>
                       </Col>
-                      <Col lg="8" sm="8">
+                      <Col lg="8" md="10" sm="8">
                         <div className="details">
                           <h6>{audition.title}</h6>
                           <p><span className="light-text">{audition.address}</span></p>

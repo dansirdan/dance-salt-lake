@@ -1,5 +1,6 @@
 import React, { Component } from "react";
-import { Container, Row, Col } from "../components/Grid";
+import { Row, Col } from "react-bootstrap";
+import { Container } from "../components/Grid";
 import { ClassesPreview, PerformancesPreview, AuditionPreview, SpaceBanner } from "../components/Preview";
 import Hero from "../components/Hero";
 
@@ -22,17 +23,17 @@ class Home extends Component {
           <div className="preview">
             
             <Row>
-              <Col size="md-12 lg-4">
+              <Col md="12" lg="4">
                 <ClassesPreview />
               </Col>
 
-              <Col size="md-12 lg-4">
+              <Col md="12" lg="4">
                 <PerformancesPreview />
               </Col>
 
-              <Col size="md-12 lg-4">
+              <Col md="12" lg="4">
                 <Row>
-                  <Col size="md-12">
+                  <Col md="12">
                     <AuditionPreview />
                   </Col>
                 </Row>
@@ -41,8 +42,8 @@ class Home extends Component {
             </Row>
           </div>
 
-          <Row>
-            <Col size="md-12">
+          <Row className="justify-content-md-center">
+            <Col md="10">
               <SpaceBanner />
             </Col>
           </Row>

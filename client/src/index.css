@@ -3,6 +3,9 @@ body {
   -moz-osx-font-smoothing: grayscale;
   font-family: Arial, Helvetica, sans-serif
 }
+p {
+  line-height: 1.7;
+}
 h1,
 h2,
 h3,
@@ -104,4 +107,10 @@ h6 {
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
+}
+
+/* ABOUT SECTION */
+.about-section {
+  margin-top: 6rem;
+  justify-content: space-between;
 }
