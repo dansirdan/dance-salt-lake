@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import { Input, FormBtn } from "../Form";
 import image from "./tinyPlaceholder.JPG";
-import Dropdown from 'react-bootstrap/Dropdown'
+import { NavDropdown, Nav, Dropdown } from 'react-bootstrap'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import Login from "../Login"
 import "./style.css"
@@ -20,57 +20,57 @@ export function TinyLogo() {
 
 export function ClassNav() {
   return (
-    <Link className="navbar-brand" to="/class">
+    <Nav.Link href="/class">
       Class
-    </Link>
+    </Nav.Link>
   )
 };
 
 export function PerformanceNav() {
   return (
-    <Link className="navbar-brand" to="/performance">
+    <Nav.Link href="/performance">
       Performance
-    </Link>
+    </Nav.Link>
   )
 };
 
 export function AuditionNav() {
   return (
-    <Link className="navbar-brand" to="/audition">
+    <Nav.Link href="/audition">
       Audition
-    </Link>
+    </Nav.Link>
   )
 };
 
 export function UsersHomeNav() {
   return (
-    <Link className="navbar-brand" to="/usershome">
+    <Nav.Link href="/usershome">
       Users Home
-    </Link>
+    </Nav.Link>
   )
 };
 
 export function AboutNav() {
   return (
-    <Link className="navbar-brand" to="/about">
+    <Nav.Link href="/about">
       About
-    </Link>
+    </Nav.Link>
   )
 };
 
 export function LoginNav() {
   return (
-    <Link className="navbar-brand" to="/login">
+    <Nav.Link href="/login">
       Login
-    </Link>
+    </Nav.Link>
   )
 };
 
 export function RegisterNav() {
   return (
-    <Link className="navbar-brand" to="/register">
+    <Nav.Link href="/register">
       Register
-    </Link>
+    </Nav.Link>
   )
 };
 
@@ -78,36 +78,28 @@ export function RegisterNav() {
 // Component AS another component similar to naming a <a> tag with a button class
 export function DropdownNavSO() {
   return (
-    <Dropdown alignRight id="dropdown-btn">
-      <Dropdown.Toggle>
-        <FontAwesomeIcon icon="check-square" />
-        Create Account
-      </Dropdown.Toggle>
-      <Dropdown.Menu>
+    <NavDropdown title="Create Account" alignRight id="dropdown-btn">
+
+      <NavDropdown.Item as="div">
         <Login />
-        <Dropdown.Item as={Link} to="/register">
-          Register
-        </Dropdown.Item>
-      </Dropdown.Menu>
-    </Dropdown>
+      </NavDropdown.Item>
+      <NavDropdown.Divider />
+      <NavDropdown.Item href="/register">Register</NavDropdown.Item>
+        
+    </NavDropdown>
+
   )
 }
 
 // dropdown nav for signed in users
 export function DropdownNavSI() {
   return (
-    <Dropdown alignRight id="dropdown-btn">
-      <Dropdown.Toggle caret="true">
-        Account
-      </Dropdown.Toggle>
-      <Dropdown.Menu>
-        <Dropdown.Item as={Link} to="/usershome">
-          Account Page
-        </Dropdown.Item>
-        <Dropdown.Item as={Link} to="/logout">
-          Logout
-        </Dropdown.Item>
-      </Dropdown.Menu>
-    </Dropdown>
+    <NavDropdown title="Account" alignRight id="dropdown-btn">
+
+      <NavDropdown.Item href="/usershome">Manage Account</NavDropdown.Item>
+      <NavDropdown.Divider />
+      <NavDropdown.Item href="/logout">Logout</NavDropdown.Item>    
+
+    </NavDropdown>
   )
 }

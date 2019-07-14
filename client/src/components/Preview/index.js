@@ -45,11 +45,11 @@ export class ClassesPreview extends Component {
             <Card key={klass.id}>
               <Card.Body>
                 <Container>
-                  <Row>
-                    <Col sm="3" md="3" lg="4">
+                  <Row className="justify-content-xs-center">
+                    <Col lg="4" md="3" xs="6">
                       <Thumbnail src={klass.photoLink} />
                     </Col>
-                    <Col sm="9" md="9" lg="8">
+                    <Col lg="8" md xs="6">
                       <div className="details no-margin">
                         <div>
                           <h6>{klass.title}</h6>
@@ -168,16 +168,15 @@ export class AuditionPreview extends Component {
             return (
               <Card key={audition.id}>
                 <Accordion.Toggle as={Card.Header} eventKey={index.toString()} caret="true">
-
                   <div className="audition-header">
                     <Row>
-                      <Col lg="4" md="2"sm="4">
+                      <Col lg="4" md="2" xs="3">
                         <div className="date">
                           <p className="day">{moment(audition.date).format("DD")}</p>
                           <h6 className="month">{moment(audition.date).format("MMM")}</h6>
                         </div>
                       </Col>
-                      <Col lg="8" md="10" sm="8">
+                      <Col lg="8" md="10" xs>
                         <div className="details">
                           <h6>{audition.title}</h6>
                           <p><span className="light-text">{audition.address}</span></p>

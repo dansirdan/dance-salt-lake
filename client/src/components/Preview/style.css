@@ -65,9 +65,9 @@
 .audition-header .month { 
   margin-top: -10px;
 }
-.class-preview .details 
+.class-preview .details, 
 .audition-header .details { 
-  margin: 1rem;
+  margin:  .5rem 0;
 } 
 .audition-header h6,
 .class-preview .details h6 { 
@@ -98,3 +98,10 @@
   }
 
 }
+
+@media (max-width: 576px) { 
+  .banner {
+    padding: 8vw;
+  }
+}
+

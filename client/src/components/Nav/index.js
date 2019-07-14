@@ -16,39 +16,13 @@ import { normalize } from 'path';
 
 export class MainNav extends Component {
 
-  // state = {
-  //   activeClass: ""
-  // }
-
-  handleScroll = () => {
-    const nav = document.querySelector(".nav-wrapper");
-    const hero = document.querySelector(".hero");
-
-    const navTop = nav.offsetTop;
-    const navBottom = nav.offsetBottom;
-    const heroTop = hero.offsetTop;
-
-    if (window.scrollY > navTop) {
-      nav.classList.add("sticky");
-      // document.body.style.paddingTop = nav.offsetHeight + 'px';
-    } else {
-      console.log(navTop, heroTop);
-      
-      nav.classList.remove("sticky");
-      // document.body.style.paddingTop = 0;
-    }
-  }
-  // componentDidMount() {
-  //   window.addEventListener('scroll', this.handleScroll);
-  // }
-
 
   render() {
 
     return (
       <div className="nav-wrapper">
         <Container fluid>
-          <Navbar expand="lg">
+          <Navbar collapseOnSelect expand="lg" variant="light">
             {this.props.tinyLogo ? <TinyLogo /> : <div />}
             <Navbar.Toggle aria-controls="basic-navbar-nav" />
             <Navbar.Collapse id="basic-navbar-nav">
