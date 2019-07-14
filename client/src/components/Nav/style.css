@@ -31,14 +31,39 @@ nav .nav-item {
 }
 .nav-item .dropdown-item {
   width: max-content;
-  padding-top: 1rem;
 }
 .dropdown .navbar-nav a {
   margin: 0;
 }
 .login {
+  margin-top: 1rem;
   margin-bottom: 3rem;
+}
+.register-link .dropdown-item {
+  text-align: center;
+  width: 100%
 }    
+.register-link .dropdown-item.btn {
+  width: 6rem;
+  margin: 1rem auto;
+  padding: .5em;
+}
+.dropdown-menu.show {
+  margin-bottom: 2rem;
+}
+
+/* REMOVE DEFAULT STYLING */
+.dropdown-item.active, 
+.dropdown-item:active {
+    color: #fff;
+    text-decoration: none;
+    background-color: #eee;
+}
+.dropdown-item:focus, .dropdown-item:hover {
+    color: #16181b;
+    text-decoration: none;
+    background-color: #fff;
+}
 
 /* FOOTER */
 footer {

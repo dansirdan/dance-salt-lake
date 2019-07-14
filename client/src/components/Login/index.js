@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { Input, FormBtn } from "../Form";
+import { NavDropdown } from 'react-bootstrap';
 const axios = require("axios");
 
 class Login extends Component {
@@ -52,24 +53,30 @@ class Login extends Component {
       <div className="container login">
 
           <form>
+          <NavDropdown.Item as="div">
             <Input
               value={this.state.email}
               onChange={this.handleInputChange}
               name="email"
               placeholder="Email (required)"
             />
+          </NavDropdown.Item>
+          <NavDropdown.Item>
             <Input
               value={this.state.password}
               onChange={this.handleInputChange}
               name="password"
               placeholder="Password (required)"
             />
+          </NavDropdown.Item>
+          <NavDropdown.Item>
             <FormBtn
               disabled={!(this.state.email && this.state.password)}
               onClick={this.handleLogin}
             >
               Login
-          </FormBtn>
+            </FormBtn>
+          </NavDropdown.Item>
           </form>
 
       </div>

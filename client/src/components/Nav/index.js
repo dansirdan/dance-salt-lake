@@ -22,7 +22,7 @@ export class MainNav extends Component {
     return (
       <div className="nav-wrapper">
         <Container fluid>
-          <Navbar collapseOnSelect expand="lg" variant="light">
+          <Navbar expand="lg" variant="light">
             {this.props.tinyLogo ? <TinyLogo /> : <div />}
             <Navbar.Toggle aria-controls="basic-navbar-nav" />
             <Navbar.Collapse id="basic-navbar-nav">

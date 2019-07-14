@@ -42,7 +42,7 @@ class Home extends Component {
             </Row>
           </div>
 
-          <Row className="justify-content-md-center">
+          <Row className="justify-content-center">
             <Col md="10">
               <SpaceBanner />
             </Col>

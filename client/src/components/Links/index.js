@@ -2,10 +2,10 @@ import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import { Input, FormBtn } from "../Form";
 import image from "./tinyPlaceholder.JPG";
-import { NavDropdown, Nav, Dropdown } from 'react-bootstrap'
+import { NavDropdown, Nav, Dropdown, Button } from 'react-bootstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import Login from "../Login"
-import "./style.css"
+import Login from "../Login";
+import "./style.css";
 
 export function TinyLogo() {
   return (
@@ -78,13 +78,15 @@ export function RegisterNav() {
 // Component AS another component similar to naming a <a> tag with a button class
 export function DropdownNavSO() {
   return (
-    <NavDropdown title="Create Account" alignRight id="dropdown-btn">
-
-      <NavDropdown.Item as="div">
-        <Login />
-      </NavDropdown.Item>
+    <NavDropdown as={Dropdown} title="Create Account" alignRight id="dropdown-btn">
+      <Login />
       <NavDropdown.Divider />
-      <NavDropdown.Item href="/register">Register</NavDropdown.Item>
+      <div className="register-link">
+        <NavDropdown.Item as="p">
+          Need and account? <br />Click here to register
+        </NavDropdown.Item>
+        <NavDropdown.Item as={Button} href="/register">Register</NavDropdown.Item>
+      </div>
         
     </NavDropdown>
 
