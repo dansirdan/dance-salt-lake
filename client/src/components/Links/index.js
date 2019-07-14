@@ -94,7 +94,7 @@ export function DropdownNavSO() {
 }
 
 // dropdown nav for signed in users
-export function DropdownNavSI() {
+export function DropdownNavSI(props) {
   return (
     <Dropdown alignRight id="dropdown-btn">
       <Dropdown.Toggle caret="true">
@@ -104,7 +104,7 @@ export function DropdownNavSI() {
         <Dropdown.Item as={Link} to="/usershome">
           Account Page
         </Dropdown.Item>
-        <Dropdown.Item as={Link} to="/logout">
+        <Dropdown.Item as={Link} onClick={() => props.logout()}>
           Logout
         </Dropdown.Item>
       </Dropdown.Menu>

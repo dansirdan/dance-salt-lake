@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Container } from "../Grid";
 import Thumbnail from "../Thumbnail";
 import { Card, Accordion, Button, Row, Col } from "react-bootstrap";
+import { FormBtn } from "../Form";
 import { Link } from "react-router-dom";
 import "./style.css";
 import API from "../../utils/API"
@@ -248,8 +249,8 @@ export class AuditionPreview extends Component {
                     <FormBtn
                       onClick={() => this.handleShow(audition.id)}
                     >
-                      Show Class
-                      </FormBtn>
+                      Show Audition
+                    </FormBtn>
                   </Card.Body>
                 </Accordion.Collapse>
               </Card>

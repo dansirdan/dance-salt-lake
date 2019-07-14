@@ -21,6 +21,10 @@ class Home extends Component {
     }
   }
 
+  componentWillMount() {
+    this.props.handleShow();
+  }
+
   // React-Modal method for closing and clearing the data
   handleClose() {
     this.setState({
@@ -64,7 +68,10 @@ class Home extends Component {
               <Col md="12" lg="4">
                 <Row>
                   <Col md="12">
-                    <AuditionPreview />
+                    <AuditionPreview
+                      returnData={this.returnData}
+                      page="Audition"
+                    />
                   </Col>
                 </Row>
               </Col>
@@ -78,7 +85,7 @@ class Home extends Component {
             </Col>
           </Row>
           <MoreInfo
-            page={this.state.page}
+            page="Audition"
             show={this.state.show}
             onHide={this.handleClose}
             moreInfo={this.state.moreInfo}

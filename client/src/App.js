@@ -75,7 +75,7 @@ class App extends Component {
               exact path="/"
               render={(props) => (
                 <Home {...props}
-                  handleLogo={this.handleLogo}
+                  handleShow={this.handleShow}
                 />
               )}
             />
@@ -113,9 +113,11 @@ class App extends Component {
             />
             <Route
               exact path="/about"
-              component={About}
-              handleLogo={this.handleLogo}
-
+              render={(props) => (
+                <About {...props}
+                  handleLogo={this.handleLogo}
+                />
+              )}
             />
             <Route
               exact path="/login"
