@@ -50,7 +50,7 @@ class Audition extends Component {
   handleShow = id => {
     // single query of an audition's id to populate state and then show more info.
 
-    API.getSinglePost("auditions", id) //--hard coded post id
+    API.getSinglePost("auditions", id) 
       .then(res => this.setState({ moreInfo: res.data, show: true }))
       .catch(err => console.log(err));
   };
@@ -74,6 +74,7 @@ class Audition extends Component {
         <CalendarSection 
           path="auditions"
           handleQuery={this.handleQuery}
+          results={this.state.auditions}
         />
         <Container fluid>
           <Row>

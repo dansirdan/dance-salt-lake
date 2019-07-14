@@ -7,7 +7,10 @@ export default {
   getSinglePost: function (postType, id) {
     return axios.get("/api/" + postType + "/" + id)
   },
-  getQueryPosts: function (postType, subType, param) {   
-    return axios.get("/api/" + postType + "/" + subType + "/" + param)
+  getQueryPosts: function (postType, param) {   
+    return axios.get("/api/" + postType + "/filter/")
   }
+  // getQueryPosts: function (postType, subType, param) {   
+  //   return axios.get("/api/" + postType + "/" + subType + "/" + param)
+  // }
 }

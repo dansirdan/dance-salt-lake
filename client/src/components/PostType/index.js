@@ -16,7 +16,6 @@ export function Classes() {
         type="text"
         placeholder="Dance Style"
       />
-      {/* master boolean checkbox */}
       <Checkbox 
         name="master"
         lable="Master Class"

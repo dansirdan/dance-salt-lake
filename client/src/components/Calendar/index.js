@@ -3,6 +3,7 @@ import { Container, Row, Col } from "react-bootstrap";
 import { Section } from "../Sections";
 import Calendar from "react-calendar";
 import QueryDropDown from "../QueryDrop";
+import Filter from "../Filters";
 import API from "../../utils/API";
 import moment from "moment";
 import "./style.css"
@@ -14,6 +15,7 @@ class CalendarSection extends Component {
     this.state = {
       results: [],
       date: new Date(),
+
     }
   }
 
@@ -22,8 +24,12 @@ class CalendarSection extends Component {
 
   // React-Calendar Method for querying on the clicked day
   onClickDay = value => {
-    let param = moment(value).format('YYYY-MM-DD')
-    this.queryCall(this.props.path, "date", param)
+    let param = {}
+    param.date = moment(value).format('YYYY-MM-DD')
+    let query = JSON.stringify(param)
+    console.log(query);
+    
+    this.queryCall(this.props.path, query)
 
   };
 
@@ -32,27 +38,40 @@ class CalendarSection extends Component {
   * when we get to that point, the onClick method should return data on the 
   * audition(path)/date(subType)"2019/07/05"/QUERY
   */
-  queryCall = (postType, subType, param) => {
-    API.getQueryPosts(postType, subType, param)
+  queryCall = (postType, param) => {
+    API.getQueryPosts(postType, param)
       .then(res => {
         this.setState({ results: res.data })
         this.props.handleQuery(this.state.results)
       })
       .catch(err => console.log(err));
   }
+  // queryCall = (postType, subType, param) => {
+  //   API.getQueryPosts(postType, subType, param)
+  //     .then(res => {
+  //       this.setState({ results: res.data })
+  //       this.props.handleQuery(this.state.results)
+  //     })
+  //     .catch(err => console.log(err));
+  // }
 
   render() {
+    
     return (
       <Section>
         <Container fluid>
           <div className="calendar-section_content">
             <Row className="justify-content-md-center">
               <Col md="3">
-                <QueryDropDown
+                {/* <QueryDropDown
+                  queryCall={this.queryCall}
+                /> */}
+                <Filter
+                  {...this.props}
                   queryCall={this.queryCall}
                 />
               </Col>
-              {/* <Col size="md-1" /> */}
+              
               <Col md="5">
                 <Calendar
                   onChange={this.onChange}
@@ -64,7 +83,7 @@ class CalendarSection extends Component {
             </Row>
           </div>
         </Container>
-      </Section >
+      </Section>
     )
   }
 }

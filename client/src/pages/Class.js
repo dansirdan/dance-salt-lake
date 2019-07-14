@@ -70,6 +70,7 @@ class Class extends Component {
       <CalendarSection
         path="classes"
         handleQuery={this.handleQuery}
+        results={this.state.classes}
       />
         <Container fluid>
           <Row>

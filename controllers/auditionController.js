@@ -15,36 +15,44 @@ module.exports = {
   },
   // ============= Find By ===============
   // ============ Un-Tested ==============
-  findByDate: function (req, res) {   
+  findAllWhere: function (req, res) {  
+    console.log(req.params);
+     
     db.Audition
-      .findAll({ where: req.params })
+      .findAll( req.params )
       .then(data => res.json(data))
       .catch(err => res.status(422).json(err));
   },
-  findByGender: function (req, res) {
-    db.Audition
-      .findAll({ where: { gender: req.params.gender } })
-      .then(data => res.json(data))
-      .catch(err => res.status(422).json(err));
-  },
-  findByStyle: function (req, res) {
-    db.Audition
-      .findAll({ where: { style: req.params.style } })
-      .then(data => res.json(data))
-      .catch(err => res.status(422).json(err));
-  },
-  findByLocation: function (req, res) {
-    db.Audition
-      .findAll({ where: { adress: req.params.address } })
-      .then(data => res.json(data))
-      .catch(err => res.status(422).json(err));
-  },
-  findByGig: function (req, res) {
-    db.Audition
-      .findAll({ where: { gig: req.params.gig } })
-      .then(data => res.json(data))
-      .catch(err => res.status(422).json(err));
-  },
+  // findByDate: function (req, res) {   
+  //   db.Audition
+  //     .findAll({ where: req.params })
+  //     .then(data => res.json(data))
+  //     .catch(err => res.status(422).json(err));
+  // },
+  // findByGender: function (req, res) {
+  //   db.Audition
+  //     .findAll({ where: { gender: req.params.gender } })
+  //     .then(data => res.json(data))
+  //     .catch(err => res.status(422).json(err));
+  // },
+  // findByStyle: function (req, res) {
+  //   db.Audition
+  //     .findAll({ where: { style: req.params.style } })
+  //     .then(data => res.json(data))
+  //     .catch(err => res.status(422).json(err));
+  // },
+  // findByLocation: function (req, res) {
+  //   db.Audition
+  //     .findAll({ where: { adress: req.params.address } })
+  //     .then(data => res.json(data))
+  //     .catch(err => res.status(422).json(err));
+  // },
+  // findByGig: function (req, res) {
+  //   db.Audition
+  //     .findAll({ where: { gig: req.params.gig } })
+  //     .then(data => res.json(data))
+  //     .catch(err => res.status(422).json(err));
+  // },
 
   // ============= Un-tested =============
   findOne: function (req, res) {

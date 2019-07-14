@@ -7,6 +7,7 @@
 }
 nav {
   max-width: 1650px;
+  min-height: 60px;
   margin: 0 auto;
 }
 .navbar {
@@ -19,12 +20,9 @@ nav {
 nav .nav-item {
   font-size: .9rem;
   font-weight: 500;
-  margin: 0 1.5rem;
+  /* margin: 0 1.5rem; */
 }
-.navbar-nav .dropdown {
-  position: absolute;
-  right: 2.5rem;
-}
+
 nav .nav-item {
   margin-right: 0;
   color: #888;
@@ -55,5 +53,12 @@ footer {
 @media (max-width: 576px) { 
   .navbar {
     padding: 0;
+  }
+}
+@media (min-width: 992px) { 
+  .navbar-nav .dropdown {
+    position: absolute;
+    right: 2.5rem;
+    margin: 0 1.5rem;
   }
 }

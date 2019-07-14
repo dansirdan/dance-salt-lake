@@ -10,17 +10,20 @@ router.route("/:id")
   .put(auditionController.update)
   .delete(auditionController.delete)
 
-router.route("/date/:date")
-  .get(auditionController.findByDate)
+router.route("/filter/")
+  .get(auditionController.findAllWhere)
 
-router.route("/gender/:gender")
-  .get(auditionController.findByGender)
+// router.route("/date/:date")
+//   .get(auditionController.findByDate)
 
-router.route("/style/:style")
-  .get(auditionController.findByStyle)
+// router.route("/gender/:gender")
+//   .get(auditionController.findByGender)
 
-router.route("/location/:location")
-  .get(auditionController.findByLocation)
+// router.route("/style/:style")
+//   .get(auditionController.findByStyle)
+
+// router.route("/location/:location")
+//   .get(auditionController.findByLocation)
 
 
 module.exports = router;
