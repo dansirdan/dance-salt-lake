@@ -7,13 +7,12 @@ function Filter(props) {
   switch (props.path) {
     case "auditions":
       return <AuditionFilter {...props} />
-      break;
+      
     case "classes":
       return <ClassFilter {...props} />
-      break;
+      
     default:
       return <></>
-      break;
   }
 }
 

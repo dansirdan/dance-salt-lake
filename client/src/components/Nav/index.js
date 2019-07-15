@@ -12,7 +12,6 @@ import {
   DropdownNavSI
 } from "../Links";
 import "./style.css"
-import { normalize } from 'path';
 
 export class MainNav extends Component {
 

@@ -1,9 +1,6 @@
-import React, { Component } from "react";
+import React from "react";
 import { Link } from "react-router-dom";
-import { Input, FormBtn } from "../Form";
-import image from "./tinyPlaceholder.JPG";
 import { NavDropdown, Nav, Dropdown, Button } from 'react-bootstrap';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import Login from "../Login";
 import "./style.css";
 
