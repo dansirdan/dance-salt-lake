@@ -16,6 +16,7 @@ class Class extends Component {
     this.state = {
       classes: [],
       show: false,
+      activeDates: [],
       date: new Date(),
       moreInfo: {
         title: "",
@@ -57,9 +58,13 @@ class Class extends Component {
   // lifecycle method to prepare for the logo change and do an API call
   componentWillMount() {
     this.props.handleLogo();
+    let activeDates = []; 
 
     API.getPosts("classes")
-      .then(res => this.setState({ classes: res.data }))
+      .then(res => {
+        activeDates = [...new Set(res.data.map(x => x.date))]
+        this.setState({ classes: res.data, activeDates: activeDates })
+      })
       .catch(err => console.log(err));
   }
 
@@ -70,6 +75,7 @@ class Class extends Component {
         path="classes"
         handleQuery={this.handleQuery}
         results={this.state.classes}
+        active={this.state.activeDates}
       />
         <Container fluid>
           <Row>

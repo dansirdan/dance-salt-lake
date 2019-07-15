@@ -15,16 +15,20 @@ class CalendarSection extends Component {
     this.state = {
       results: [],
       date: new Date(),
-      activeDates: ["2019-07-13", "2019-07-16"] // hard coded
+      activeDates: ["2019-07-14", "2019-07-16"],
+      // activeDates: []
+    };
+  }
+
+  componentDidUpdate() {
+    if (this.state.activeDates !== this.props.active) {
+      console.log("not the same");
+
+      this.setState({ activeDates: this.props.active })
     }
   }
 
-  componentDidMount() {
-    const activeDates = [...new Set(this.props.results.map(x => x.date))]
-    this.setState({ activeDates: activeDates })
-    
-  }
-  
+
   // React-Calendar Method for setting the current date of the calendar
   onChange = date => this.setState({ date });
 
@@ -36,17 +40,17 @@ class CalendarSection extends Component {
 
     // this.queryCall(this.props.path, query)
   };
-  
+
   tileContent = ({ date, view }) => {
     let active = this.state.activeDates
+    // console.log("tileContent", active);
+    
     let day = moment(date).format('YYYY-MM-DD')
-      
+
     if (view === 'month' && active.includes(day)) {
       return <div className="active-date"></div>
-      }
+    }
   }
-
-
 
   /**
   * the queryCall (getQueryPosts) method takes THREE argument which create the route path
@@ -71,7 +75,8 @@ class CalendarSection extends Component {
   // }
 
   render() {
-    // console.log(this.props.results);
+    console.log(this.state.activeDates);
+    console.log(this.props.active);
 
     return (
       <Section>
@@ -98,6 +103,7 @@ class CalendarSection extends Component {
           </div>
         </Container>
       </Section>
+
     )
   }
 }
