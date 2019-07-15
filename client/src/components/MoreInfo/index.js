@@ -68,16 +68,12 @@ class MoreInfo extends Component {
                     </Col>
                   </Row>
                   <Row>
-                    <p><span className="light-text">OFFERING: {gig}</span></p>
-                  </Row>
-                  <Row>
-                    <p><span className="light-text">DATE: {moment(date).format("MMM Do YYYY")}</span></p>
-                  </Row>
-                  <Row>
-                    <p><span className="light-text">TIME: {moment(time, "HH:mm:ss").format("h:mm A")}</span></p>
-                  </Row>
-                  <Row>
-                    <p><span className="light-text">LENGTH: {length} minutes</span></p>
+                    <Col>
+                      <p><span className="light-text">OFFERING: {gig}</span></p>
+                      <p><span className="light-text">DATE: {moment(date).format("MMM Do YYYY")}</span></p>
+                      <p><span className="light-text">TIME: {moment(time, "HH:mm:ss").format("h:mm A")}</span></p>
+                      <p><span className="light-text">LENGTH: {length} minutes</span></p>
+                    </Col>
                   </Row>
                 </Col>
                 <Col md="4">
@@ -196,17 +192,6 @@ class MoreInfo extends Component {
               </Row>
             </Container>
           </Modal.Body>
-          // <Modal.Body>
-          //   <h2>{title}</h2>
-          //   <h5>description</h5>
-          //   <p>{description}</p>
-          //   <p>Address: {address}</p>
-          //   <p>Length: {length}</p>
-          //   <p>Payment: {payment}</p>
-          //   <p>Time: {time}</p>
-          //   <p>Date: {date}</p>
-          //   <p>Special: {special}</p>
-          // </Modal.Body>
         )
       default:
         return (<></>)

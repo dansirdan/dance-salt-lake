@@ -3,7 +3,6 @@ import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
 import { AuthProvider } from './components/AuthContext'
 import Home from "./pages/Home";
 import About from "./pages/About";
-import Login from "./pages/Login";
 import Register from "./pages/Register";
 import Class from "./pages/Class";
 import Performance from "./pages/Performance";
@@ -115,14 +114,6 @@ class App extends Component {
               exact path="/about"
               render={(props) => (
                 <About {...props}
-                  handleLogo={this.handleLogo}
-                />
-              )}
-            />
-            <Route
-              exact path="/login"
-              render={(props) => (
-                <Login {...props}
                   handleLogo={this.handleLogo}
                 />
               )}

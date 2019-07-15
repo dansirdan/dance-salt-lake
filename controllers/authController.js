@@ -23,6 +23,7 @@ module.exports = {
   user: function (req, res) {
     if (!req.user) {
       res.json({});
+      console.log("No User")
     }
     else {
       res.json({

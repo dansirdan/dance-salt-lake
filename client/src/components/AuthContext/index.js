@@ -15,6 +15,18 @@ class AuthProvider extends Component {
     this.login = this.login.bind(this)
   }
 
+  componentDidMount() {
+    console.log("this ran")
+    API.user()
+      .then(dbUser => {
+        console.log(dbUser.data)
+        setTimeout(() => this.setState({ isAuth: true, user: dbUser.data }), 1000)
+      })
+      .catch(err => {
+        console.log("error", err)
+      })
+  }
+
   login(user) {
 
     API.auth("login", user)
@@ -25,10 +37,12 @@ class AuthProvider extends Component {
             console.log(dbUser.data)
             setTimeout(() => this.setState({ isAuth: true, user: dbUser.data }), 1000)
           })
+          .catch(err => {
+            console.log("error", err)
+          })
       })
       .catch(err => {
-        console.log("error")
-        console.log(err)
+        console.log("error", err)
       })
 
   }

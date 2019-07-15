@@ -29,7 +29,6 @@ class Login extends Component {
       <div className="container">
         <AuthConsumer>
           {({ login }) => (
-
             <form>
               <Input
                 value={this.state.email}
