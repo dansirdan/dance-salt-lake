@@ -63,8 +63,11 @@ class About extends Component {
             </Col>
             <Col md="1" />
           </Row>
-          <Row className="about-section">
-            <Col md="1" />
+
+          <Row className="about-section flex-row-reverse">
+            <Col md="4" className="about-section__img--second">
+              <img src="http://placehold.it/400x400" className="img-fluid rounded-circle" alt="aboutus" />
+            </Col>
             <Col md="6">
               <h2 className="">Jessica Bramwell</h2>
               <br />
@@ -78,10 +81,8 @@ class About extends Component {
                 Lorem laboris Lorem non in. Lorem laboris Lorem non in.
             </p>
             </Col>
-            <Col md="4" className="about-section__img--second">
-              <img src="http://placehold.it/400x400" className="img-fluid rounded-circle" alt="aboutus" />
-            </Col>
-                      </Row>
+            <Col md="1" />
+          </Row>
         </Container>
 
       </div>

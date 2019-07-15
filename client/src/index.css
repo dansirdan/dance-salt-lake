@@ -117,3 +117,9 @@ code {
   margin-top: 6rem;
   justify-content: space-between;
 }
+@media (max-width: 768px) { 
+  .about-section__img--first,
+  .about-section__img--second {
+    margin: 1rem 5rem 3rem;
+  }
+}
