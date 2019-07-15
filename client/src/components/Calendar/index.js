@@ -70,7 +70,7 @@ class CalendarSection extends Component {
                   {...this.props}
                   queryCall={this.queryCall}
                 />              
-          
+
                 <Calendar
                   onChange={this.onChange}
                   value={this.state.date}
