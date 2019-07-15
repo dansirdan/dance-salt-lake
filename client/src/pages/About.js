@@ -34,7 +34,7 @@ class About extends Component {
                 there is the schedule for each organization's performance calendar.
             </p>
               <p className="align-text-right">-Dan Mont-Eton</p>
-              <hr class="my-4" />
+              <hr className="my-4" />
               <p className="lead text-black">
                 That's where we come in. Dance Salt Lake displays all of Salt Lake's regional dance information
                 for aspiring dancers throughout the valley. Individual Artists and Organizations may sign up for
@@ -56,7 +56,7 @@ class About extends Component {
                 Lorem laboris Lorem non in.
                 Lorem laboris Lorem non in.
             </p>
-              <hr class="my-4" />
+              <hr className="my-4" />
               <p className="lead text-black">
                 Lorem laboris Lorem non in. Lorem laboris Lorem non in.
             </p>
@@ -73,7 +73,7 @@ class About extends Component {
                 Lorem laboris Lorem non in.
                 Lorem laboris Lorem non in.
             </p>
-              <hr class="my-4" />
+              <hr className="my-4" />
               <p className="lead text-black">
                 Lorem laboris Lorem non in. Lorem laboris Lorem non in.
             </p>
@@ -81,7 +81,7 @@ class About extends Component {
             <Col md="4" className="about-section__img--second">
               <img src="http://placehold.it/400x400" className="img-fluid rounded-circle" alt="aboutus" />
             </Col>
-                      </Row>
+          </Row>
         </Container>
 
       </div>

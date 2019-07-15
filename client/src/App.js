@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
-import { AuthProvider } from './components/AuthContext'
+import { BrowserRouter as Router, Route, Switch, Redirect } from 'react-router-dom'
+import { AuthProvider, AuthConsumer } from './components/AuthContext'
 import Home from "./pages/Home";
 import About from "./pages/About";
 import Register from "./pages/Register";
@@ -61,15 +61,6 @@ class App extends Component {
             tinyLogo={!this.state.largeLogo}
           />
           <Switch>
-            <ProtectedRoute
-              exact path="/usershome"
-              component={UsersHome}
-              render={(props) => (
-                <UsersHome {...props}
-                  handleLogo={this.handleLogo}
-                />
-              )}
-            />
             <Route
               exact path="/"
               render={(props) => (
@@ -126,6 +117,26 @@ class App extends Component {
                 />
               )}
             />
+            {/* WORKS JUST LIKE PROTECTED ROUTE */}
+            <AuthConsumer>
+              {({ isAuth }) => (
+                <Route
+                  render={props =>
+                    isAuth ? <UsersHome {...props} handleLogo={this.handleLogo} /> : <Redirect to="/" />
+                  }
+                />
+              )}
+            </AuthConsumer>
+            {/* <ProtectedRoute
+              exact path="/usershome"
+              component={UsersHome}
+              render={(props) => (
+                <UsersHome {...props}
+                  handleLogo={this.handleLogo}
+                />
+              )}
+            /> */}
+            {/* CURRENTLY NOT WORKING AS INTENDED AS A COMPONENT */}
             <Route
               render={(props) => (
                 <NoMatch {...props}

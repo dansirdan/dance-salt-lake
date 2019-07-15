@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
+import { AuthConsumer } from "../AuthContext";
 import { Input, FormBtn } from "../Form";
 import image from "./tinyPlaceholder.JPG";
 import Dropdown from 'react-bootstrap/Dropdown'
@@ -94,7 +95,8 @@ export function DropdownNavSO() {
 }
 
 // dropdown nav for signed in users
-export function DropdownNavSI(props) {
+export function DropdownNavSI() {
+
   return (
     <Dropdown alignRight id="dropdown-btn">
       <Dropdown.Toggle caret="true">
@@ -104,9 +106,13 @@ export function DropdownNavSI(props) {
         <Dropdown.Item as={Link} to="/usershome">
           Account Page
         </Dropdown.Item>
-        <Dropdown.Item as={Link} onClick={() => props.logout()}>
-          Logout
-        </Dropdown.Item>
+        <AuthConsumer>
+          {({ logout }) => (
+            <Dropdown.Item onClick={logout}>
+              Logout
+            </Dropdown.Item>
+          )}
+        </AuthConsumer>
       </Dropdown.Menu>
     </Dropdown>
   )

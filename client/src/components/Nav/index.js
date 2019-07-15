@@ -50,9 +50,8 @@ export class MainNav extends Component {
       <div className="nav-wrapper">
         <Container fluid>
           <AuthConsumer>
-            {({ login, isAuth, user, logout }) => (
-
-              <Navbar expand="lg">
+            {({ isAuth }) => (
+              < Navbar expand="lg">
                 {this.props.tinyLogo ? <TinyLogo /> : <div />}
                 <Navbar.Toggle aria-controls="basic-navbar-nav" />
                 <Navbar.Collapse id="basic-navbar-nav">
@@ -62,7 +61,8 @@ export class MainNav extends Component {
                     <AuditionNav />
 
                     {isAuth ? (
-                      <DropdownNavSI />
+                      <DropdownNavSI
+                      />
                     ) : (
                         <>
                           <AboutNav />
@@ -98,7 +98,7 @@ export class MainNav extends Component {
             </Navbar.Collapse>
           </Navbar> */}
         </Container>
-      </div>
+      </div >
     );
   }
 }

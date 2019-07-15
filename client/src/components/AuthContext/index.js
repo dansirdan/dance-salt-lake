@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import API from "../../utils/API"
 const AuthContext = React.createContext();
-const axios = require("axios");
 
 class AuthProvider extends Component {
   state = {
@@ -15,12 +14,17 @@ class AuthProvider extends Component {
     this.login = this.login.bind(this)
   }
 
-  componentDidMount() {
+  sessions() {
+
     console.log("this ran")
     API.user()
       .then(dbUser => {
         console.log(dbUser.data)
-        setTimeout(() => this.setState({ isAuth: true, user: dbUser.data }), 1000)
+        if (!dbUser.data.email || !dbUser.data.id) {
+          console.log("No sessions user");
+        } else {
+          setTimeout(this.setState({ isAuth: true, user: dbUser.data }))
+        }
       })
       .catch(err => {
         console.log("error", err)
@@ -61,7 +65,8 @@ class AuthProvider extends Component {
           isAuth: this.state.isAuth,
           user: this.state.user,
           login: this.login,
-          logout: this.logout
+          logout: this.logout,
+          sessions: this.sessions
         }}
       >
         {this.props.children}
