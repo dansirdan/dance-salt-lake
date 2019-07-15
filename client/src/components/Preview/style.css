@@ -27,6 +27,10 @@
   padding-bottom: 1rem;
 }
 /* CLASS */
+.class-preview .card:hover {
+
+  background-color: rgba(0, 0, 0, .04);
+}
 .class-preview .details {
   display: flex;
   justify-content: space-between;

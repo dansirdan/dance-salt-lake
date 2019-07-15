@@ -104,6 +104,9 @@ h6 {
 .btn-success:focus {
   box-shadow: 0 0 0 0.2rem rgba(124,165,197, .5)
 }
+input[type="checkbox"] {
+  transform: scale(1.3);
+}
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;

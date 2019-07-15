@@ -59,26 +59,23 @@ class CalendarSection extends Component {
     
     return (
       <Section>
-        <Container fluid>
+        <Container>
           <div className="calendar-section_content">
-            <Row className="justify-content-md-center">
-              <Col md="3">
+            <Row className="justify-content-around align-items-center">
+           
                 {/* <QueryDropDown
                   queryCall={this.queryCall}
                 /> */}
                 <Filter
                   {...this.props}
                   queryCall={this.queryCall}
-                />
-              </Col>
-              
-              <Col md="5">
+                />              
+          
                 <Calendar
                   onChange={this.onChange}
                   value={this.state.date}
                   onClickDay={this.onClickDay}
-                />
-              </Col>
+                />   
 
             </Row>
           </div>

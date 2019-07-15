@@ -20,9 +20,10 @@ nav {
 nav .nav-item {
   font-size: .9rem;
   font-weight: 500;
-  /* margin: 0 1.5rem; */
 }
-
+.nav-link {
+  margin: 0 1.5rem;
+}
 nav .nav-item {
   margin-right: 0;
   color: #888;
