@@ -5,7 +5,6 @@ import { Container } from "../components/Grid";
 import CalendarSection from "../components/Calendar";
 import { SpaceBanner } from "../components/Preview";
 import API from "../utils/API"
-import moment from "moment";
 
 class Class extends Component {
   constructor(props, context) {

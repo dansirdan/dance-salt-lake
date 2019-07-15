@@ -51,7 +51,7 @@ export class MainNav extends Component {
 export function Footer() {
   return (
     <footer>
-      <p className="sm-text">&copy; Copyright {moment(Date()).format("YYYY")}</p>
+      <p className="sm-text">&copy; Copyright {moment(new Date()).format("YYYY")}</p>
     </footer>
   )
 }

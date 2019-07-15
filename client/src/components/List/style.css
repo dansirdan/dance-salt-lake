@@ -5,7 +5,7 @@
 .class-list_title,
 .space-list_title {
   display: flex;
-  justify-content: end;
+  justify-content: flex-end;
   align-items: self-start;
 }
 .space-list_details {
