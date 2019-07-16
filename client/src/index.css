@@ -38,6 +38,9 @@ h6 {
   font-weight: 600;
   font-size: 1rem;
 }
+ul, li {
+  display: block;
+}
 .navbar {
   padding: 0 5rem;
 }

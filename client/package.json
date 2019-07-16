@@ -9,6 +9,7 @@
     "@fortawesome/free-solid-svg-icons": "^5.9.0",
     "@fortawesome/react-fontawesome": "^0.1.4",
     "bootstrap": "^4.3.1",
+    "google-maps-react": "^2.0.2",
     "react": "^16.6.3",
     "react-animate-height": "^2.0.15",
     "react-bootstrap": "^1.0.0-beta.9",

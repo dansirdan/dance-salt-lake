@@ -15,7 +15,8 @@ import AnimateHeight from "react-animate-height";
 import LargeLogo from "./components/LargeLogo";
 import './App.css';
 
-import ProtectedRoute from './components/ProtectedRoute'
+// CURRENTLY NOT WORKING USING A DIFFERENT METHOD THAT DOES WORK
+// import ProtectedRoute from './components/ProtectedRoute'
 
 class App extends Component {
 
