@@ -51,7 +51,7 @@ class Login extends Component {
       <div className="container login">
 
           <form>
-          <Dropdown.Item as="div">
+          {/* <Dropdown.Item as="div"> */}
             <Input
               autoFocus
               value={this.state.email}
@@ -59,15 +59,15 @@ class Login extends Component {
               name="email"
               placeholder="Email (required)"
             />
-          </Dropdown.Item>
-          <Dropdown.Item as="div">
+          {/* </Dropdown.Item> */}
+          {/* <Dropdown.Item as="div"> */}
             <Input
               value={this.state.password}
               onChange={this.handleInputChange}
               name="password"
               placeholder="Password (required)"
             />
-          </Dropdown.Item>
+          {/* </Dropdown.Item> */}
           <Dropdown.Item as="div">
             <FormBtn
               disabled={!(this.state.email && this.state.password)}

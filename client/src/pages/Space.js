@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import { List, SpaceListItem } from "../components/List";
-import { Container, Row, Col } from "../components/Grid";
-import { Section } from "../components/Sections";
+import { Container, Row, Col } from "react-bootstrap";
+// import { Container, Row, Col } from "../components/Grid";
+import { Banner } from "../components/Sections";
 import API from "../utils/API"
 
 class Space extends Component {
@@ -19,14 +20,22 @@ class Space extends Component {
 
   render() {
     return (
-      <div>
-        <Section>
-          <h4>test</h4>
-        </Section>
-
+      <>
+        <Container fluid>
+          <Row className="justify-content-center">
+            <Col md="12" lg="8">
+              <Banner className="register-section">
+                <h3>Studio Space</h3>
+                <h6>Explore available studio space.</h6>
+              </Banner>
+            </Col>
+          </Row>
+        </Container>
+        
+        <div className="space-section">
         <Container fluid>
           <Row>
-            <Col size="lg-12">
+            <Col lg="12">
               {!this.state.spaces.length ? (
                 <h5 className="text-center">No Spaces to Display</h5>
               ) : (
@@ -51,7 +60,8 @@ class Space extends Component {
             </Col>
           </Row>
         </Container>
-      </div>
+        </div>
+      </>
     );
   }
 }

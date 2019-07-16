@@ -30,8 +30,8 @@ nav .nav-item {
   background-color: #fff;
   border: none;
 }
-.nav-item .dropdown-item {
-  width: max-content;
+.navbar-nav .dropdown-menu {
+  min-width: max-content;
 }
 .dropdown .navbar-nav a {
   margin: 0;
@@ -48,6 +48,10 @@ nav .nav-item {
   width: 6rem;
   margin: 1rem auto;
   padding: .5em;
+}
+.register-link .dropdown-item.btn:hover {
+  box-shadow: 0 0 0 0.2rem rgba(124,165,197, .5);
+  border-color: rgba(124,165,197, .5);
 }
 .dropdown-menu.show {
   margin-bottom: 2rem;

@@ -1,6 +1,6 @@
-import React, {Component} from "react";
+import React, { Component } from "react";
 import { Link } from "react-router-dom";
-import { NavDropdown, Nav, Button } from 'react-bootstrap';
+import { NavDropdown, Nav, Button, Collapse } from 'react-bootstrap';
 import { Dropdown } from "../Form";
 import Login from "../Login";
 import "./style.css";
@@ -80,14 +80,12 @@ export class DropdownNavSO extends Component {
     e.stopPropagation();
 
     console.log('handle click');
-
   }
 
   render() {
 
     return (
       <NavDropdown 
-        onClick={this.stopClose}
         title="Create Account" 
         id="dropdown-btn"
         alignRight>
