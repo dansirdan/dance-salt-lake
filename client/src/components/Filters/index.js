@@ -70,7 +70,7 @@ class ClassFilter extends Component {
   constructor(props, context) {
     super(props, context);
     this.state = {
-      master: false
+      master: "0"
     }
   }
 
@@ -81,7 +81,7 @@ class ClassFilter extends Component {
 
   handleCheckbox = event => {
     let { name, checked } = event.target;
-    checked === true ? checked = 1 : checked = 0
+    checked === true ? checked = "1" : checked = "0"
     this.setState({ [name]: checked }, () => this.props.filter(this.state))
   };
 

@@ -78,7 +78,7 @@ class Class extends Component {
   // converts filterParams object to query string and calls queryCall function
   stringifyParams = (obj) => {
     // removes props when the value is 0 - i.e., when the dropdown selects the default or "all" option
-    Object.keys(obj).forEach((key) => (obj[key] === "0" || (obj[key] === false)) && delete obj[key]);
+    Object.keys(obj).forEach((key) => (obj[key] === "0") && delete obj[key]);
     
     const stringified = queryString.stringify(obj)
     const query = "?" + stringified;
