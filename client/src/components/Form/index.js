@@ -37,7 +37,7 @@ export function Dropdown(props) {
 export function Checkbox(props) {
   return (
     <div className="form-group form-check">
-      <input type="checkbox" className="form-check-input" id={props.name} {...props} />
+      <input type="checkbox" className="form-check-input" name={props.name} {...props} />
       <label htmlFor={props.name}>{props.lable}</label>
     </div>
   )

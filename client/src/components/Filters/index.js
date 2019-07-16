@@ -39,7 +39,7 @@ class AuditionFilter extends Component {
           name="lookingFor"
           onChange={this.handleInputChange}
         >
-          <option>Gender: All</option>
+          <option value="0">Gender: All</option>
           {gender.map((gender, i) => <option key={i} value={gender}>{gender}</option>)}
         </Dropdown>
 
@@ -56,7 +56,7 @@ class AuditionFilter extends Component {
           name="gig"
           onChange={this.handleInputChange}
         >
-          <option>Gig Type: All</option>
+          <option value="0">Gig Type: All</option>
           {gig.map((type, i) => <option key={i} value={type}>{type}</option>)}
         </Dropdown>
 
@@ -69,12 +69,20 @@ class ClassFilter extends Component {
 
   constructor(props, context) {
     super(props, context);
-    this.state = {}
+    this.state = {
+      master: false
+    }
   }
 
   handleInputChange = event => {
     const { name, value } = event.target;
     this.setState({ [name]: value }, () => this.props.filter(this.state))
+  };
+
+  handleCheckbox = event => {
+    let { name, checked } = event.target;
+    checked === true ? checked = 1 : checked = 0
+    this.setState({ [name]: checked }, () => this.props.filter(this.state))
   };
 
   render() {
@@ -91,7 +99,7 @@ class ClassFilter extends Component {
           name="instructorName"
           onChange={this.handleInputChange}
         >
-          <option>Instructor: All</option>
+          <option value="0">Instructor: All</option>
           {instructors.map((name, i) => <option key={i} value={name}>{name}</option>)}
         </Dropdown>
 
@@ -99,7 +107,7 @@ class ClassFilter extends Component {
           name="level"
           onChange={this.handleInputChange}
         >
-          <option>Level: All</option>
+          <option value="0">Level: All</option>
           {levels.map((level, i) => <option key={i} value={level}>{level}</option>)}
         </Dropdown>
 
@@ -107,13 +115,14 @@ class ClassFilter extends Component {
           name="style"
           onChange={this.handleInputChange}
         >
-          <option>Style: All</option>
+          <option value="0">Style: All</option>
           {styles.map((style, i) => <option key={i} value={style}>{style}</option>)}
         </Dropdown>
 
         <Checkbox
+          value={this.state.checked}
           name="master"
-          onChange={this.handleInputChange}
+          onChange={this.handleCheckbox}
           lable="Master Class"
         />
 

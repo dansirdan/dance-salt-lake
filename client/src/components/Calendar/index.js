@@ -16,7 +16,7 @@ class CalendarSection extends Component {
     };
   }
 
-  componentDidUpdate() {
+  componentDidUpdate = () => {
     if (this.state.activeDates !== this.props.active) {
       // console.log("not the same");
       this.setState({ activeDates: this.props.active })

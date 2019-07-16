@@ -53,7 +53,7 @@ class Audition extends Component {
   handleShow = id => {
     // single query of an audition's id to populate state and then show more info.
 
-    API.getSinglePost("auditions", id) 
+    API.getSinglePost("auditions", id)
       .then(res => this.setState({ moreInfo: res.data, show: true }))
       .catch(err => console.log(err));
   };
@@ -72,21 +72,23 @@ class Audition extends Component {
   };
 
   // handles input changes from Filter and Calendar components
-  handleFilterUpdate = params => {
+  handleFilterUpdate = param => {
     let currentParams = this.state.filterParams
-    let newParams = {...currentParams, ...params}
-    this.setState({ filterParams: newParams }, () => {
-      console.log(this.state.filterParams);   
-      this.stringifyParams();   
-    })
-  };
+    let newParams = { ...currentParams, ...param }
 
+    this.setState({ filterParams: newParams }, () => this.stringifyParams(this.state.filterParams));  
+  };
+  
   // converts filterParams object to query string and calls queryCall function
-  stringifyParams = () => {
-    const stringified = queryString.stringify(this.state.filterParams)
+  stringifyParams = (obj) => {
+    // removes props when the value is 0 - i.e., when the dropdown selects the default or "all" option
+    Object.keys(obj).forEach((key) => (obj[key] === "0") && delete obj[key]);
+    
+    const stringified = queryString.stringify(obj)
     const query = "?" + stringified;
+
     this.queryCall("auditions", query);
-  } 
+  }
 
   /**
   * the queryCall (getQueryPosts) method takes THREE argument which create the route path
@@ -104,10 +106,10 @@ class Audition extends Component {
 
   render() {
     const auditions = this.state.queryResults;
-    
+
     return (
       <>
-        <CalendarSection 
+        <CalendarSection
           path="auditions"
           data={this.state.allAuditions}
           active={this.state.activeDates}
