@@ -4,6 +4,7 @@ import { List, ClassListItem } from "../components/List";
 import { Container } from "../components/Grid";
 import CalendarSection from "../components/Calendar";
 import { SpaceBanner } from "../components/Preview";
+import queryString from "query-string";
 import API from "../utils/API"
 
 class Class extends Component {
@@ -14,9 +15,11 @@ class Class extends Component {
     this.handleClose = this.handleClose.bind(this);
 
     this.state = {
-      classes: [],
-      show: false,
+      allClasses: [],
+      queryResults: [],
       activeDates: [],
+      filterParams: {},
+      show: false,
       date: new Date(),
       moreInfo: {
         title: "",
@@ -51,40 +54,69 @@ class Class extends Component {
       .catch(err => console.log(err));
   };
 
-  // method for passing query results from calendar component to page
-  handleQuery = results => {
-    this.setState({ classes: results });
-  }
   // lifecycle method to prepare for the logo change and do an API call
   componentWillMount() {
     this.props.handleLogo();
-    let activeDates = []; 
+    let activeDates = [];
 
     API.getPosts("classes")
       .then(res => {
-        activeDates = [...new Set(res.data.map(x => x.date))]
-        this.setState({ classes: res.data, activeDates: activeDates })
+        activeDates = [...new Set(res.data.map(x => x.date))] // array of unique event dates for react-calendar tileContent method
+        this.setState({ allClasses: res.data, queryResults: res.data, activeDates: activeDates }) // set allAuditions and queryResults to same initial value 
+      })
+      .catch(err => console.log(err));
+  }
+
+  // handles input changes from Filter and Calendar components
+  handleFilterUpdate = params => {
+    let currentParams = this.state.filterParams
+    let newParams = { ...currentParams, ...params }
+    this.setState({ filterParams: newParams }, () => {
+      console.log(this.state.filterParams);
+      this.stringifyParams();
+    })
+  };
+
+  // converts filterParams object to query string and calls queryCall function
+  stringifyParams = () => {
+    const stringified = queryString.stringify(this.state.filterParams)
+    const query = "?" + stringified;
+    this.queryCall("classes", query);
+  }
+
+  /**
+  * the queryCall (getQueryPosts) method takes THREE argument which create the route path
+  * when we get to that point, the onClick method should return data on the
+  * audition(path)/date(subType)"2019/07/05"/QUERY
+  */
+
+  queryCall = (postType, param) => {
+    API.getQueryPosts(postType, param)
+      .then(res => {
+        this.setState({ queryResults: res.data })
       })
       .catch(err => console.log(err));
   }
 
   render() {
+    const classes = this.state.queryResults;
+
     return (
-      <div>
-      <CalendarSection
-        path="classes"
-        handleQuery={this.handleQuery}
-        results={this.state.classes}
-        active={this.state.activeDates}
-      />
+      <>
+        <CalendarSection
+          path="classes"
+          data={this.state.allClasses}
+          active={this.state.activeDates}
+          filter={this.handleFilterUpdate}
+        />
         <Container fluid>
           <Row>
             <Col size="md-12">
-              {!this.state.classes.length ? (
+              {!classes.length ? (
                 <h5 className="text-center">No Classes to Display</h5>
               ) : (
                   <List>
-                    {this.state.classes.map(klass => {
+                    {classes.map(klass => {
                       return (
                         <ClassListItem
                           key={klass.id}
@@ -111,9 +143,7 @@ class Class extends Component {
           </Row>
 
           <Row className="justify-content-lg-center">
-            <Col md="8">
-              <SpaceBanner />
-            </Col>
+            <SpaceBanner />
           </Row>
 
         </Container>
@@ -146,7 +176,7 @@ class Class extends Component {
             </Button>
           </Modal.Footer>
         </Modal>
-      </div>
+      </>
     );
   }
 }

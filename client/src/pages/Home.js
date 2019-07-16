@@ -21,7 +21,7 @@ class Home extends Component {
         <Hero />
         <Container>
           <div className="preview">
-            
+
             <Row>
               <Col md="12" lg="4">
                 <ClassesPreview />
@@ -43,9 +43,7 @@ class Home extends Component {
           </div>
 
           <Row className="justify-content-center">
-            <Col md="10">
-              <SpaceBanner />
-            </Col>
+            <SpaceBanner />
           </Row>
 
         </Container>

@@ -1,59 +1,49 @@
 import React, { Component } from "react";
-import { Form, Dropdown } from "../Form";
-import { Checkbox } from "../Form";
+import { Form, Dropdown, Checkbox } from "../Form";
 
 function Filter(props) {
 
   switch (props.path) {
     case "auditions":
       return <AuditionFilter {...props} />
-      
+
     case "classes":
       return <ClassFilter {...props} />
-      
+
     default:
       return <></>
   }
 }
 
-
 class AuditionFilter extends Component {
   constructor(props, context) {
     super(props, context);
-    this.state = {
-      lookingFor: "",
-      gig: "",
-    }
+    this.state = {}
   }
-  
-  
-  handleInputChange = event => {    
+
+  handleInputChange = event => {
     const { name, value } = event.target;
-    this.setState({ [name]: value });
-    // this.props.queryCall(this.props.path, this.state)
-    console.log(this.state);
-    
+    this.setState({ [name]: value }, () => this.props.filter(this.state))
   };
-  
+
   render() {
 
-    const gender = [...new Set(this.props.results.map(x => x.lookingFor))]
-    const gig = [...new Set(this.props.results.map(x => x.gig))]
+    // arrays of only unique values for filter dropdown
+    const gender = [...new Set(this.props.data.map(x => x.lookingFor))]
+    const gig = [...new Set(this.props.data.map(x => x.gig))]
 
     return (
-      // {props.results ? (
-
       <Form>
 
-        <Dropdown 
-          name="lookingFor" 
+        <Dropdown
+          name="lookingFor"
           onChange={this.handleInputChange}
-        >          
-          <option>Gender: All</option>          
+        >
+          <option>Gender: All</option>
           {gender.map((gender, i) => <option key={i} value={gender}>{gender}</option>)}
         </Dropdown>
 
-    {/* <Dropdown>
+        {/* <Dropdown>
           <option>Style:</option>
           {props.style.map(style => {
             return (
@@ -62,7 +52,7 @@ class AuditionFilter extends Component {
           })}
         </Dropdown> */}
 
-        <Dropdown 
+        <Dropdown
           name="gig"
           onChange={this.handleInputChange}
         >
@@ -71,41 +61,33 @@ class AuditionFilter extends Component {
         </Dropdown>
 
       </Form>
-
-      // ) : ("")}
     )
   }
-
 }
 
 class ClassFilter extends Component {
 
   constructor(props, context) {
     super(props, context);
-    this.state = {
-      instructorName: "",
-      level: "",
-      style: "",
-      master: false
-    }
+    this.state = {}
   }
 
   handleInputChange = event => {
     const { name, value } = event.target;
-    console.log(name, value);
-
-    this.setState({ [name]: value });
+    this.setState({ [name]: value }, () => this.props.filter(this.state))
   };
 
   render() {
-    const instructors = [...new Set(this.props.results.map(x => x.instructorName))]
-    const levels = [...new Set(this.props.results.map(x => x.level))]
-    const styles = [...new Set(this.props.results.map(x => x.style))]
+
+    // arrays of only unique values for filter dropdown
+    const instructors = [...new Set(this.props.data.map(x => x.instructorName))]
+    const levels = [...new Set(this.props.data.map(x => x.level))]
+    const styles = [...new Set(this.props.data.map(x => x.style))]
 
     return (
       <Form>
 
-        <Dropdown 
+        <Dropdown
           name="instructorName"
           onChange={this.handleInputChange}
         >
@@ -113,17 +95,17 @@ class ClassFilter extends Component {
           {instructors.map((name, i) => <option key={i} value={name}>{name}</option>)}
         </Dropdown>
 
-        <Dropdown 
+        <Dropdown
           name="level"
-          onChange={this.handleInputChange}  
+          onChange={this.handleInputChange}
         >
           <option>Level: All</option>
           {levels.map((level, i) => <option key={i} value={level}>{level}</option>)}
         </Dropdown>
 
-        <Dropdown 
+        <Dropdown
           name="style"
-          onChange={this.handleInputChange}  
+          onChange={this.handleInputChange}
         >
           <option>Style: All</option>
           {styles.map((style, i) => <option key={i} value={style}>{style}</option>)}

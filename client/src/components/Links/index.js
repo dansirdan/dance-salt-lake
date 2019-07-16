@@ -1,6 +1,7 @@
-import React from "react";
+import React, {Component} from "react";
 import { Link } from "react-router-dom";
-import { NavDropdown, Nav, Dropdown, Button } from 'react-bootstrap';
+import { NavDropdown, Nav, Button } from 'react-bootstrap';
+import { Dropdown } from "../Form";
 import Login from "../Login";
 import "./style.css";
 
@@ -73,32 +74,46 @@ export function RegisterNav() {
 
 // dropdown nav for signed out users
 // Component AS another component similar to naming a <a> tag with a button class
-export function DropdownNavSO() {
-  return (
-    <NavDropdown as={Dropdown} title="Create Account" alignRight id="dropdown-btn">
-      <Login />
-      <NavDropdown.Divider />
-      <div className="register-link">
-        <NavDropdown.Item as="p">
-          Need and account? <br />Click here to register
-        </NavDropdown.Item>
-        <NavDropdown.Item as={Button} href="/register">Register</NavDropdown.Item>
-      </div>
-        
-    </NavDropdown>
+export class DropdownNavSO extends Component {
 
-  )
+  stopClose = e => {
+    e.stopPropagation();
+
+    console.log('handle click');
+
+  }
+
+  render() {
+
+    return (
+      <NavDropdown 
+        onClick={this.stopClose}
+        title="Create Account" 
+        id="dropdown-btn"
+        alignRight>
+        <Login />
+        <NavDropdown.Divider />
+        <div className="register-link">
+          <NavDropdown.Item as="p">
+            Need and account? <br />Click here to register
+          </NavDropdown.Item>
+          <NavDropdown.Item as={Button} href="/register">Register</NavDropdown.Item>
+        </div>
+          
+      </NavDropdown>
+    )
+  }
 }
 
 // dropdown nav for signed in users
 export function DropdownNavSI() {
   return (
-    <NavDropdown title="Account" alignRight id="dropdown-btn">
+    <Dropdown title="Account" alignRight id="dropdown-btn">
 
       <NavDropdown.Item href="/usershome">Manage Account</NavDropdown.Item>
       <NavDropdown.Divider />
       <NavDropdown.Item href="/logout">Logout</NavDropdown.Item>    
 
-    </NavDropdown>
+    </Dropdown>
   )
 }

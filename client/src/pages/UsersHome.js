@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Jumbotron } from "../components/Sections"
 // import { LogoutBtn } from "../components/Form";
-import Post from "../components/Post"
+import Post from "../components/Post";
 
 class UsersHome extends Component {
 

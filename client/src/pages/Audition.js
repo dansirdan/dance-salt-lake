@@ -4,6 +4,7 @@ import { List, AuditionListItem } from "../components/List";
 import { Container } from "../components/Grid";
 import CalendarSection from "../components/Calendar";
 import { SpaceBanner } from "../components/Preview";
+import queryString from "query-string";
 import API from "../utils/API";
 
 class Audition extends Component {
@@ -14,9 +15,11 @@ class Audition extends Component {
     this.handleClose = this.handleClose.bind(this);
 
     this.state = {
-      auditions: [],
-      show: false,
+      allAuditions: [],
+      queryResults: [],
       activeDates: [],
+      filterParams: {},
+      show: false,
       // date: new Date(),
       moreInfo: {
         title: "",
@@ -55,10 +58,6 @@ class Audition extends Component {
       .catch(err => console.log(err));
   };
 
-  // method for passing query results from calendar component to page
-  handleQuery = results => {
-    this.setState({ auditions: results });    
-  }
   // lifecycle method to prepare for the logo change and do an API call
   componentWillMount() {
     this.props.handleLogo();
@@ -66,29 +65,62 @@ class Audition extends Component {
 
     API.getPosts("auditions")
       .then(res => {
-        activeDates = [...new Set(res.data.map(x => x.date))]
-        this.setState({ auditions: res.data, activeDates: activeDates })
+        activeDates = [...new Set(res.data.map(x => x.date))] // array of unique event dates for react-calendar tileContent method
+        this.setState({ allAuditions: res.data, queryResults: res.data, activeDates: activeDates }) // set allAuditions and queryResults to same initial value 
       })
       .catch(err => console.log(err));
   };
 
+  // handles input changes from Filter and Calendar components
+  handleFilterUpdate = params => {
+    let currentParams = this.state.filterParams
+    let newParams = {...currentParams, ...params}
+    this.setState({ filterParams: newParams }, () => {
+      console.log(this.state.filterParams);   
+      this.stringifyParams();   
+    })
+  };
+
+  // converts filterParams object to query string and calls queryCall function
+  stringifyParams = () => {
+    const stringified = queryString.stringify(this.state.filterParams)
+    const query = "?" + stringified;
+    this.queryCall("auditions", query);
+  } 
+
+  /**
+  * the queryCall (getQueryPosts) method takes THREE argument which create the route path
+  * when we get to that point, the onClick method should return data on the
+  * audition(path)/date(subType)"2019/07/05"/QUERY
+  */
+
+  queryCall = (postType, param) => {
+    API.getQueryPosts(postType, param)
+      .then(res => {
+        this.setState({ queryResults: res.data })
+      })
+      .catch(err => console.log(err));
+  }
+
   render() {
+    const auditions = this.state.queryResults;
+    
     return (
       <>
         <CalendarSection 
           path="auditions"
-          handleQuery={this.handleQuery}
-          results={this.state.auditions}
+          data={this.state.allAuditions}
           active={this.state.activeDates}
+          filter={this.handleFilterUpdate}
         />
         <Container fluid>
           <Row>
             <Col className="justify-content-center" lg="12">
-              {!this.state.auditions.length ? (
+              {!auditions.length ? (
                 <h5 className="text-center">No Auditions to Display</h5>
               ) : (
                   <List>
-                    {this.state.auditions.map(audition => {
+                    {auditions.map(audition => {
                       return (
                         <AuditionListItem
                           key={audition.id}

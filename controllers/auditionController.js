@@ -7,55 +7,21 @@ module.exports = {
       .then(data => res.json(data))
       .catch(err => res.status(422).json(err));
   },
-  findAll: function (req, res) {
+  findAll: function (req, res) {   
     db.Audition
       .findAll({})
       .then(data => res.json(data))
       .catch(err => res.status(422).json(err));
   },
-  // ============= Find By ===============
-  // ============ Un-Tested ==============
-  findAllWhere: function (req, res) {  
-    console.log(req.params);
-     
+  findAllWhere: function (req, res) {       
     db.Audition
-      .findAll( req.params )
+      .findAll({ where: req.query })
       .then(data => res.json(data))
       .catch(err => res.status(422).json(err));
   },
-  // findByDate: function (req, res) {   
-  //   db.Audition
-  //     .findAll({ where: req.params })
-  //     .then(data => res.json(data))
-  //     .catch(err => res.status(422).json(err));
-  // },
-  // findByGender: function (req, res) {
-  //   db.Audition
-  //     .findAll({ where: { gender: req.params.gender } })
-  //     .then(data => res.json(data))
-  //     .catch(err => res.status(422).json(err));
-  // },
-  // findByStyle: function (req, res) {
-  //   db.Audition
-  //     .findAll({ where: { style: req.params.style } })
-  //     .then(data => res.json(data))
-  //     .catch(err => res.status(422).json(err));
-  // },
-  // findByLocation: function (req, res) {
-  //   db.Audition
-  //     .findAll({ where: { adress: req.params.address } })
-  //     .then(data => res.json(data))
-  //     .catch(err => res.status(422).json(err));
-  // },
-  // findByGig: function (req, res) {
-  //   db.Audition
-  //     .findAll({ where: { gig: req.params.gig } })
-  //     .then(data => res.json(data))
-  //     .catch(err => res.status(422).json(err));
-  // },
 
   // ============= Un-tested =============
-  findOne: function (req, res) {
+  findOne: function (req, res) {  
     db.Audition
       .findOne({ where: { id: req.params.id } })
       .then(data => res.json(data))

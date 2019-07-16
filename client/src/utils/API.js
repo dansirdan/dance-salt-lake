@@ -8,8 +8,11 @@ export default {
     return axios.get("/api/" + postType + "/" + id)
   },
   getQueryPosts: function (postType, param) {   
-    return axios.get("/api/" + postType + "/filter/")
+    return axios.post("/api/" + postType + "/filter" + param)
   }
+  // getQueryPosts: function (postType, subType, param) {   
+  //   return axios.get("/api/" + postType + "/filter/" + subType)
+  // }
   // getQueryPosts: function (postType, subType, param) {   
   //   return axios.get("/api/" + postType + "/" + subType + "/" + param)
   // }

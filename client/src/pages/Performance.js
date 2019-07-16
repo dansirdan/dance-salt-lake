@@ -4,6 +4,7 @@ import { List, PerformanceListItem } from "../components/List";
 import { Container } from "../components/Grid";
 import CalendarSection from "../components/Calendar";
 import { SpaceBanner } from "../components/Preview";
+import queryString from "query-string";
 import API from "../utils/API"
 
 class Performance extends Component {
@@ -14,7 +15,8 @@ class Performance extends Component {
     this.handleClose = this.handleClose.bind(this);
 
     this.state = {
-      performances: [],
+      queryResults: [],
+      activeDates: [],
       show: false,
       date: new Date(),
       moreInfo: {
@@ -47,35 +49,65 @@ class Performance extends Component {
       .catch(err => console.log(err));
   };
 
-  // method for passing query results from calendar component to page
-  handleQuery = results => {
-    this.setState({ auditions: results });
-  }
-
   // lifecycle method to prepare for the logo change and do an API call
   componentWillMount() {
     this.props.handleLogo();
+    let activeDates = [];
 
     API.getPosts("performances")
-      .then(res => this.setState({ performances: res.data }))
+      .then(res => {
+        activeDates = [...new Set(res.data.map(x => x.date))]
+        this.setState({ queryResults: res.data, activeDates: activeDates })
+      })
       .catch(err => console.log(err));
   }
 
+  handleDateUpdate = param => {
+    this.setState({ date: param }, () => {
+      console.log(this.state.date);
+      this.stringifyParams();
+    })
+  };
+
+  // converts filterParams object to query string and calls queryCall function
+  stringifyParams = () => {
+    const stringified = queryString.stringify(this.state.date)
+    const query = "?" + stringified;
+    this.queryCall("performances", query);
+  }
+
+  /**
+  * the queryCall (getQueryPosts) method takes THREE argument which create the route path
+  * when we get to that point, the onClick method should return data on the
+  * audition(path)/date(subType)"2019/07/05"/QUERY
+  */
+
+  queryCall = (postType, param) => {
+    API.getQueryPosts(postType, param)
+      .then(res => {
+        this.setState({ queryResults: res.data })
+      })
+      .catch(err => console.log(err));
+  }
+
+
   render() {
+    const performances = this.state.queryResults;
     return (
       <div>
         <CalendarSection
-          path="performances"
-          handleQuery={this.handleQuery}
+          data={performances}
+          active={this.state.activeDates}
+          filter={this.handleDateUpdate}
         />
         <Container fluid>
           <Row>
             <Col size="md-12">
-              {!this.state.performances.length ? (
+              {!performances.length ? (
                 <h5 className="text-center">No Performances to Display</h5>
               ) : (
                   <List>
-                    {this.state.performances.map(performance => {
+                    {performances.map(performance => {
                       return (
                         <PerformanceListItem
                           key={performance.id}
@@ -99,9 +131,7 @@ class Performance extends Component {
           </Row>
 
           <Row className="justify-content-lg-center">
-            <Col md="8">
-              <SpaceBanner />
-            </Col>
+            <SpaceBanner />
           </Row>
 
         </Container>
