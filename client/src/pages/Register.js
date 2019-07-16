@@ -1,7 +1,7 @@
 import React, { Component } from "react";
-import { Section, Banner } from "../components/Sections";
+import { Banner } from "../components/Sections";
 import { Container, Row, Col, Form, Button } from "react-bootstrap";
-import { Input, FormBtn } from "../components/Form";
+import { Input } from "../components/Form";
 const axios = require("axios");
 
 class Register extends Component {

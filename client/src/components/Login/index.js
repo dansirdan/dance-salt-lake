@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { Input, FormBtn } from "../Form";
-import { NavDropdown, Dropdown } from 'react-bootstrap';
+import { Dropdown } from 'react-bootstrap';
 const axios = require("axios");
 
 class Login extends Component {
@@ -51,7 +51,6 @@ class Login extends Component {
       <div className="container login">
 
           <form>
-          {/* <Dropdown.Item as="div"> */}
             <Input
               autoFocus
               value={this.state.email}
@@ -59,15 +58,12 @@ class Login extends Component {
               name="email"
               placeholder="Email (required)"
             />
-          {/* </Dropdown.Item> */}
-          {/* <Dropdown.Item as="div"> */}
             <Input
               value={this.state.password}
               onChange={this.handleInputChange}
               name="password"
               placeholder="Password (required)"
             />
-          {/* </Dropdown.Item> */}
           <Dropdown.Item as="div">
             <FormBtn
               disabled={!(this.state.email && this.state.password)}

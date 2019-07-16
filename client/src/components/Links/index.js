@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
-import { NavDropdown, Nav, Button, Collapse } from 'react-bootstrap';
+import { NavDropdown, Nav, Button } from 'react-bootstrap';
 import { Dropdown } from "../Form";
 import Login from "../Login";
 import "./style.css";
@@ -74,33 +74,22 @@ export function RegisterNav() {
 
 // dropdown nav for signed out users
 // Component AS another component similar to naming a <a> tag with a button class
-export class DropdownNavSO extends Component {
+export function DropdownNavSO() {
 
-  stopClose = e => {
-    e.stopPropagation();
-
-    console.log('handle click');
-  }
-
-  render() {
-
-    return (
-      <NavDropdown 
-        title="Create Account" 
-        id="dropdown-btn"
-        alignRight>
-        <Login />
-        <NavDropdown.Divider />
-        <div className="register-link">
-          <NavDropdown.Item as="p">
-            Need and account? <br />Click here to register
+  return (
+    <NavDropdown title="Create Account" id="dropdown-btn" alignRight>
+      
+      <Login />
+      <NavDropdown.Divider />
+      <div className="register-link">
+        <NavDropdown.Item as="p">
+          Need and account? <br />Click here to register
           </NavDropdown.Item>
-          <NavDropdown.Item as={Button} href="/register">Register</NavDropdown.Item>
-        </div>
-          
-      </NavDropdown>
-    )
-  }
+        <NavDropdown.Item as={Button} href="/register">Register</NavDropdown.Item>
+      </div>
+
+    </NavDropdown>
+  )
 }
 
 // dropdown nav for signed in users
@@ -110,7 +99,7 @@ export function DropdownNavSI() {
 
       <NavDropdown.Item href="/usershome">Manage Account</NavDropdown.Item>
       <NavDropdown.Divider />
-      <NavDropdown.Item href="/logout">Logout</NavDropdown.Item>    
+      <NavDropdown.Item href="/logout">Logout</NavDropdown.Item>
 
     </Dropdown>
   )

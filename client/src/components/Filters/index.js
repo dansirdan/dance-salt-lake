@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Form, Dropdown, Checkbox } from "../Form";
+import { Form, Dropdown, Checkbox, Btn } from "../Form";
 
 function Filter(props) {
 
@@ -25,6 +25,10 @@ class AuditionFilter extends Component {
     const { name, value } = event.target;
     this.setState({ [name]: value }, () => this.props.filter(this.state))
   };
+
+  clearInputs = event => {
+    this.setState({})
+  }
 
   render() {
 
@@ -60,6 +64,8 @@ class AuditionFilter extends Component {
           {gig.map((type, i) => <option key={i} value={type}>{type}</option>)}
         </Dropdown>
 
+        <Btn onClick={this.clearInputs}>Clear</Btn>
+
       </Form>
     )
   }
@@ -85,6 +91,10 @@ class ClassFilter extends Component {
     this.setState({ [name]: checked }, () => this.props.filter(this.state))
   };
 
+  clearInputs = event => {
+    this.setState({})
+  }
+  
   render() {
 
     // arrays of only unique values for filter dropdown
@@ -125,6 +135,8 @@ class ClassFilter extends Component {
           onChange={this.handleCheckbox}
           lable="Master Class"
         />
+
+        <Btn onClick={this.clearInputs}>Clear</Btn>
 
       </Form>
     )
