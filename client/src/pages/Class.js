@@ -17,7 +17,7 @@ class Class extends Component {
     this.state = {
       allClasses: [],
       queryResults: [],
-      activeDates: [],
+      activeDates: null,
       filterParams: {},
       show: false,
       date: new Date(),

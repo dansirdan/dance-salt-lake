@@ -16,7 +16,7 @@ export function Classes() {
         type="text"
         placeholder="Dance Style"
       />
-      <Checkbox 
+      <Checkbox
         name="master"
         lable="Master Class"
       />
@@ -27,7 +27,7 @@ export function Classes() {
         <option value="advanced">Advanced</option>
         <option value="all-levels">All Levels</option>
       </Dropdown>
-     
+
       <Input
         type="submit"
         value="Submit"
@@ -66,7 +66,7 @@ export function Auditions() {
   return (
     <>
       {dateTimeLocation()}
-      <Input 
+      <Input
         name="lookingFor"
         type="text"
         placeholder="Looking For"

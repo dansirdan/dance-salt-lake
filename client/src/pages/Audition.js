@@ -17,7 +17,7 @@ class Audition extends Component {
     this.state = {
       allAuditions: [],
       queryResults: [],
-      activeDates: [],
+      activeDates: null,
       filterParams: {},
       show: false,
       // date: new Date(),

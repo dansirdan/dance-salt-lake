@@ -18,11 +18,12 @@
   bottom: .5rem;
   background-color: #ddd;
   border-radius: 25px;
-  width: 3rem;
+  width: 67%;
   height: .3rem;
 }
 
-.react-calendar {
+.react-calendar,
+.calendar-placeholder {
   width: 100%;
   max-width: 480px;
   border: none;

@@ -16,7 +16,7 @@ class Performance extends Component {
 
     this.state = {
       queryResults: [],
-      activeDates: [],
+      activeDates: null,
       show: false,
       date: new Date(),
       moreInfo: {

@@ -25,20 +25,17 @@ export class MainNav extends Component {
             {this.props.tinyLogo ? <TinyLogo /> : <div />}
             <Navbar.Toggle aria-controls="basic-navbar-nav" />
             <Navbar.Collapse id="basic-navbar-nav">
-              <Nav>
+              <Nav>                
                 <ClassNav />
                 <PerformanceNav />
                 <AuditionNav />
+                <AboutNav />
 
                 {this.props.isAuthed ? (
                   <DropdownNavSI />
                 ) : (
-                    <>
-                      <AboutNav />
-                      <DropdownNavSO />
-                    </>
+                    <DropdownNavSO />
                   )}
-
               </Nav>
             </Navbar.Collapse>
           </Navbar>
