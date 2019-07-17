@@ -79,8 +79,8 @@ class MoreInfo extends Component {
                 <Col>
                   <Row>
                     <Col className="align-contetn-center">
-                      <li className="accent-text">DETAILS</li>
-                      <p><span className="light-text"> - {gig}</span></p>
+                      <li className="accent-text">AUDITION DETAILS</li>
+                      <p><span className="light-text">({gig})</span></p>
                       <p><span className="light-text">{description}</span></p>
                     </Col>
                   </Row>

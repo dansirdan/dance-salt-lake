@@ -10,6 +10,7 @@ class AuthProvider extends Component {
 
   constructor() {
     super()
+    this.logout = this.logout.bind(this)
     this.login = this.login.bind(this)
     this.login = this.login.bind(this)
   }
@@ -23,7 +24,7 @@ class AuthProvider extends Component {
         if (!dbUser.data.email || !dbUser.data.id) {
           console.log("No sessions user");
         } else {
-          setTimeout(this.setState({ isAuth: true, user: dbUser.data }))
+          this.login(dbUser.data)
         }
       })
       .catch(err => {
@@ -52,10 +53,17 @@ class AuthProvider extends Component {
   }
 
   logout() {
-    this.setState({
-      isAuth: false,
-      user: {}
-    })
+
+    API.user()
+      .then((res, req) => {
+        console.log(res)
+        this.setState({
+          isAuth: false
+        })
+      })
+      .catch(err => {
+        console.log(err)
+      })
   }
 
   render() {

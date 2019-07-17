@@ -18,7 +18,7 @@ module.exports = {
   },
   logout: function (req, res) {
     req.logout();
-    res.redirect("/");
+    // res.redirect("/");
   },
   user: function (req, res) {
     if (!req.user) {

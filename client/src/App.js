@@ -62,12 +62,26 @@ class App extends Component {
             tinyLogo={!this.state.largeLogo}
           />
           <Switch>
+            {/* <AuthConsumer>
+              {({ sessions }) => (
+                <Route
+                  render={props =>
+                    isAuth ? <Redirect to="/" /> : <Home {...props} handleShow={this.handleShow} sessions={sessions} />
+                  }
+                />
+              )}
+            </AuthConsumer> */}
             <Route
               exact path="/"
               render={(props) => (
-                <Home {...props}
-                  handleShow={this.handleShow}
-                />
+                <AuthConsumer>
+                  {({ sessions }) => (
+                    <Home {...props}
+                      handleShow={this.handleShow}
+                      sessions={sessions}
+                    />
+                  )}
+                </AuthConsumer>
               )}
             />
             <Route

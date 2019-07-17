@@ -95,25 +95,35 @@ export function DropdownNavSO() {
 }
 
 // dropdown nav for signed in users
-export function DropdownNavSI() {
+export class DropdownNavSI extends Component {
 
-  return (
-    <Dropdown alignRight id="dropdown-btn">
-      <Dropdown.Toggle caret="true">
-        Account
+  handleLogout = (logout, e) => {
+    e.preventDefault();
+    logout()
+  }
+
+  render() {
+    return (
+      <Dropdown alignRight id="dropdown-btn">
+        <Dropdown.Toggle caret="true">
+          Account
       </Dropdown.Toggle>
-      <Dropdown.Menu>
-        <Dropdown.Item as={Link} to="/usershome">
-          Account Page
+        <Dropdown.Menu>
+          <Dropdown.Item as={Link} to="/usershome">
+            Account Page
         </Dropdown.Item>
-        <AuthConsumer>
-          {({ logout }) => (
-            <Dropdown.Item onClick={logout}>
-              Logout
+          <AuthConsumer>
+            {({ logout }) => (
+              <Dropdown.Item
+                as={FormBtn}
+                onClick={(e) => this.handleLogout(logout, e)}
+              >
+                Logout
             </Dropdown.Item>
-          )}
-        </AuthConsumer>
-      </Dropdown.Menu>
-    </Dropdown>
-  )
+            )}
+          </AuthConsumer>
+        </Dropdown.Menu>
+      </Dropdown>
+    )
+  }
 }

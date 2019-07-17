@@ -21,8 +21,9 @@ class Home extends Component {
     }
   }
 
-  componentWillMount() {
+  componentDidMount() {
     this.props.handleShow();
+    this.props.sessions();
   }
 
   // React-Modal method for closing and clearing the data

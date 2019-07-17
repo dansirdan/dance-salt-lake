@@ -15,7 +15,9 @@
     "react-bootstrap": "^1.0.0-beta.9",
     "react-calendar": "^2.19.0",
     "react-dom": "^16.6.3",
+    "react-google": "0.0.3",
     "react-motion": "^0.5.2",
+    "react-native-geocoding": "^0.3.0",
     "react-scripts": "^2.1.1"
   },
   "scripts": {
