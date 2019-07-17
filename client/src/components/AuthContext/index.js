@@ -24,7 +24,7 @@ class AuthProvider extends Component {
         if (!dbUser.data.email || !dbUser.data.id) {
           console.log("No sessions user");
         } else {
-          setTimeout(() => this.setState({ isAuth: true, user: dbUser.data }), 1000)
+          this.setState({ isAuth: true, user: dbUser.data })
         }
       })
       .catch(err => {
@@ -40,7 +40,7 @@ class AuthProvider extends Component {
         API.user()
           .then(dbUser => {
             console.log(dbUser.data)
-            setTimeout(() => this.setState({ isAuth: true, user: dbUser.data }), 1000)
+            this.setState({ isAuth: true, user: dbUser.data })
           })
           .catch(err => {
             console.log("error", err)

@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { AuthConsumer } from "../AuthContext";
 import { Input, FormBtn } from "../Form";
 import { NavDropdown, Nav, Button } from 'react-bootstrap';
+import { LinkContainer } from 'react-router-bootstrap'
 import { Dropdown } from "../Form";
 import Login from "../Login";
 import "./style.css";
@@ -20,57 +21,71 @@ export function TinyLogo() {
 
 export function ClassNav() {
   return (
-    <Nav.Link href="/class">
-      Class
-    </Nav.Link>
+    <LinkContainer to="/class">
+      <Nav.Link>
+        Class
+      </Nav.Link>
+    </LinkContainer>
   )
 };
 
 export function PerformanceNav() {
   return (
-    <Nav.Link href="/performance">
-      Performance
-    </Nav.Link>
+    <LinkContainer to="/performance">
+      <Nav.Link>
+        Performance
+      </Nav.Link>
+    </LinkContainer>
   )
 };
 
 export function AuditionNav() {
   return (
-    <Nav.Link href="/audition">
-      Audition
-    </Nav.Link>
+    <LinkContainer to="/audition">
+      <Nav.Link>
+        Audition
+      </Nav.Link>
+    </LinkContainer>
   )
 };
 
 export function UsersHomeNav() {
   return (
-    <Nav.Link href="/usershome">
-      Users Home
-    </Nav.Link>
+    <LinkContainer to="/usershome">
+      <Nav.Link>
+        Users Home
+      </Nav.Link>
+    </LinkContainer>
   )
 };
 
 export function AboutNav() {
   return (
-    <Nav.Link href="/about">
-      About
-    </Nav.Link>
+    <LinkContainer to="/about">
+      <Nav.Link>
+        About
+      </Nav.Link>
+    </LinkContainer>
   )
 };
 
 export function LoginNav() {
   return (
-    <Nav.Link href="/login">
-      Login
-    </Nav.Link>
+    <LinkContainer to="/login">
+      <Nav.Link>
+        Login
+      </Nav.Link>
+    </LinkContainer>
   )
 };
 
 export function RegisterNav() {
   return (
-    <Nav.Link href="/register">
-      Register
-    </Nav.Link>
+    <LinkContainer to="/register">
+      <Nav.Link>
+        Register
+      </Nav.Link>
+    </LinkContainer>
   )
 };
 
@@ -87,7 +102,9 @@ export function DropdownNavSO() {
         <NavDropdown.Item as="p">
           Need and account? <br />Click here to register
           </NavDropdown.Item>
-        <NavDropdown.Item as={Button} href="/register">Register</NavDropdown.Item>
+        <LinkContainer to="/register">
+          <NavDropdown.Item as={Button}>Register</NavDropdown.Item>
+        </LinkContainer>
       </div>
 
     </NavDropdown>
@@ -95,47 +112,62 @@ export function DropdownNavSO() {
 }
 
 // dropdown nav for signed in users
-// export function DropdownNavSI() {
-//   return (
-//     <Dropdown title="Account" alignRight id="dropdown-btn">
-
-//       <NavDropdown.Item href="/usershome">Manage Account</NavDropdown.Item>
-//       <NavDropdown.Divider />
-//       <NavDropdown.Item href="/logout">Logout</NavDropdown.Item>
-
-//     </Dropdown>
-//   )
-
-
 export class DropdownNavSI extends Component {
-
   handleLogout = (logout, e) => {
     e.preventDefault();
     logout()
   }
-
   render() {
     return (
-      <Dropdown alignRight id="dropdown-btn">
-        <Dropdown.Toggle caret="true">
-          Account
-      </Dropdown.Toggle>
-        <Dropdown.Menu>
-          <Dropdown.Item as={Link} to="/usershome">
-            Account Page
-        </Dropdown.Item>
-          <AuthConsumer>
-            {({ logout }) => (
-              <Dropdown.Item
-                as={FormBtn}
-                onClick={(e) => this.handleLogout(logout, e)}
-              >
-                Logout
-            </Dropdown.Item>
-            )}
-          </AuthConsumer>
-        </Dropdown.Menu>
-      </Dropdown>
+      <NavDropdown title="Account" alignRight id="dropdown-btn">
+
+        <NavDropdown.Item as={Link} to="/usershome">Manage Account</NavDropdown.Item>
+        <NavDropdown.Divider />
+        <AuthConsumer>
+          {({ logout }) => (
+            <NavDropdown.Item
+              as={FormBtn}
+              onClick={(e) => this.handleLogout(logout, e)}
+            >
+              Logout
+          </NavDropdown.Item>
+          )}
+        </AuthConsumer>
+
+      </NavDropdown>
     )
   }
 }
+
+// export class DropdownNavSI extends Component {
+
+//   handleLogout = (logout, e) => {
+//     e.preventDefault();
+//     logout()
+//   }
+
+//   render() {
+//     return (
+//       <Dropdown alignRight id="dropdown-btn">
+//         <Dropdown.Toggle caret="true">
+//           Account
+//       </Dropdown.Toggle>
+//         <Dropdown.Menu>
+//           <Dropdown.Item as={Link} to="/usershome">
+//             Account Page
+//         </Dropdown.Item>
+//           <AuthConsumer>
+//             {({ logout }) => (
+//               <Dropdown.Item
+//                 as={FormBtn}
+//                 onClick={(e) => this.handleLogout(logout, e)}
+//               >
+//                 Logout
+//             </Dropdown.Item>
+//             )}
+//           </AuthConsumer>
+//         </Dropdown.Menu>
+//       </Dropdown>
+//     )
+//   }
+// }
