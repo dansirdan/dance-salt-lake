@@ -12,7 +12,7 @@ class AuthProvider extends Component {
     super()
     this.logout = this.logout.bind(this)
     this.login = this.login.bind(this)
-    this.login = this.login.bind(this)
+    this.sessions = this.sessions.bind(this)
   }
 
   sessions() {
@@ -24,7 +24,7 @@ class AuthProvider extends Component {
         if (!dbUser.data.email || !dbUser.data.id) {
           console.log("No sessions user");
         } else {
-          this.login(dbUser.data)
+          setTimeout(() => this.setState({ isAuth: true, user: dbUser.data }), 1000)
         }
       })
       .catch(err => {

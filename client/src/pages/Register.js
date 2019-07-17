@@ -12,19 +12,44 @@ class Register extends Component {
     address: '',
     phone: '',
     email: '',
-    password: ''
+    password: '',
+    lat: '',
+    lng: ''
   }
 
   handleRegister = event => {
     event.preventDefault();
 
-    if (this.state.email && this.state.password) {
-      axios.post("/api/auth/signup", {
-        email: this.state.email,
-        password: this.state.password
-      }).then(function (data) {
-        console.log(data);
-      }).catch(err => console.log(err));
+    if (this.state.address) {
+      let cityLat;
+      let cityLon;
+      let geoAddy = "138+Broadway,+Salt+Lake+City,+UT"
+      const geoKey = "AIzaSyBwWAv336FT-ttOosMGCDcROKAsq_rhkbA"
+      let geoQuery = `https://maps.googleapis.com/maps/api/geocode/json?address=${geoAddy}&key=${geoKey}`;
+      axios.get(geoQuery)
+        .then(response => {
+          cityLat = parseFloat(response.data.results[0].geometry.location.lat);
+          cityLon = parseFloat(response.data.results[0].geometry.location.lng);
+          console.log(response);
+          console.log(cityLat, cityLon)
+          this.setState({
+            lat: cityLat,
+            lng: cityLon
+          })
+
+          if (this.state.email && this.state.password) {
+            axios.post("/api/auth/signup", {
+              email: this.state.email,
+              password: this.state.password
+            }).then(function (data) {
+              console.log(data);
+            }).catch(err => console.log(err));
+          }
+
+        })
+        .catch(err => {
+          console.log(err);
+        })
     }
   }
 
@@ -34,6 +59,10 @@ class Register extends Component {
       [name]: value
     });
   };
+
+  componentWillMount() {
+    this.props.handleLogo();
+  }
 
   render() {
     return (

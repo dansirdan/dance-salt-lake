@@ -20,7 +20,8 @@ class UsersHome extends Component {
               <p className="lead">Welcome, {user.email}</p>
               <hr className="my-4" />
               <p>Click the dropdown below to post a new class, audition, performance, or rental space.</p>
-              <Post />
+              <Post
+                user={user} />
             </Jumbotron>
           </div>
         )}
