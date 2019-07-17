@@ -1,13 +1,8 @@
-import React, { Component } from 'react';
-import {
-  BrowserRouter as Router,
-  Route,
-  Switch,
-  Redirect
-} from "react-router-dom";
+import React, { Component } from 'react'
+import { BrowserRouter as Router, Route, Switch, Redirect } from 'react-router-dom'
+import { AuthProvider, AuthConsumer } from './components/AuthContext'
 import Home from "./pages/Home";
 import About from "./pages/About";
-import Login from "./pages/Login";
 import Register from "./pages/Register";
 import Class from "./pages/Class";
 import Performance from "./pages/Performance";
@@ -20,13 +15,13 @@ import AnimateHeight from "react-animate-height";
 import LargeLogo from "./components/LargeLogo";
 import './App.css';
 
+// CURRENTLY NOT WORKING USING A DIFFERENT METHOD THAT DOES WORK
+// import ProtectedRoute from './components/ProtectedRoute'
+
 class App extends Component {
 
-  // declaring state
   state = {
-    isAuthenticated: false,
     largeLogo: true,
-    userInfo: ""
   }
 
   // function for toggling the Large Logo on/off
@@ -52,73 +47,41 @@ class App extends Component {
     }
   }
 
-
-  // function to save logged in user data
-  // TO DO:
-  // 1. id first
-  // 2. test
-  // 3. name, email, etc 
-  handleAuth = (bool, emailUser) => {
-    this.setState({
-      isAuthenticated: bool,
-      userInfo: emailUser
-    })
-  }
-
-  // function to set state to auth: false
-  handleLogout = (event) => {
-    event.preventDefault();
-    this.setState({
-      isAuthenticated: false,
-      userInfo: ""
-    })
-  }
-
-  // render function
   render() {
-    const {
-      largeLogo,
-      isAuthenticated,
-      userInfo
-    } = this.state;
-
     return (
       <Router>
-        <>
+        <AuthProvider>
           <AnimateHeight
             duration={2000}
-            height={largeLogo ? 'auto' : 0}
+            height={this.state.largeLogo ? 'auto' : 0}
             easing={'ease'}
           >
             <LargeLogo />
           </AnimateHeight>
           <MainNav
-            isAuthed={isAuthenticated}
             tinyLogo={!this.state.largeLogo}
           />
           <Switch>
+            {/* <AuthConsumer>
+              {({ sessions }) => (
+                <Route
+                  render={props =>
+                    isAuth ? <Redirect to="/" /> : <Home {...props} handleShow={this.handleShow} sessions={sessions} />
+                  }
+                />
+              )}
+            </AuthConsumer> */}
             <Route
               exact path="/"
               render={(props) => (
-                <Home {...props}
-                  isAuthed={isAuthenticated}
-                  handleAuth={this.handleAuth}
-                  handleShow={this.handleShow}
-                />
-              )}
-            />
-            <Route
-              exact path="/login"
-              render={(props) => (
-                isAuthenticated ? (
-                  <Redirect to="/usershome" />
-                ) : (
-                    <Login {...props}
-                      isAuthed={isAuthenticated}
-                      handleAuth={this.handleAuth}
-                      handleLogo={this.handleLogo}
+                <AuthConsumer>
+                  {({ sessions }) => (
+                    <Home {...props}
+                      handleShow={this.handleShow}
+                      sessions={sessions}
                     />
-                  )
+                  )}
+                </AuthConsumer>
               )}
             />
             <Route
@@ -164,39 +127,43 @@ class App extends Component {
             <Route
               exact path="/register"
               render={(props) => (
-                isAuthenticated ? (
-                  <Redirect to="/usershome" />
-                ) : (
-                    <Register {...props}
-                      isAuthed={isAuthenticated}
-                      handleAuth={this.handleAuth}
-                      handleLogo={this.handleLogo}
-                    />
-                  )
+                <Register {...props}
+                  handleLogo={this.handleLogo}
+                />
               )}
             />
-            <Route
+            {/* WORKS JUST LIKE PROTECTED ROUTE */}
+            <AuthConsumer>
+              {({ isAuth }) => (
+                <Route
+                  render={props =>
+                    isAuth ? <UsersHome {...props} handleLogo={this.handleLogo} /> : <Redirect to="/" />
+                  }
+                />
+              )}
+            </AuthConsumer>
+            {/* <ProtectedRoute
               exact path="/usershome"
+              component={UsersHome}
               render={(props) => (
-                isAuthenticated ? (
-                  <UsersHome {...props}
-                    userInfo={userInfo}
-                    isAuthed={isAuthenticated}
-                    handleAuth={this.handleAuth}
-                    onClick={this.handleLogout}
-                    handleLogo={this.handleLogo}
-                  />
-                ) : (
-                    <Redirect to="/login" />
-                  )
+                <UsersHome {...props}
+                  handleLogo={this.handleLogo}
+                />
+              )}
+            /> */}
+            {/* CURRENTLY NOT WORKING AS INTENDED AS A COMPONENT */}
+            <Route
+              render={(props) => (
+                <NoMatch {...props}
+                  handleLogo={this.handleLogo}
+                />
               )}
             />
-            <Route component={NoMatch} />
           </Switch>
-          <Footer />
-        </>
+        </AuthProvider>
+        <Footer />
       </Router>
-    );
+    )
   }
 }
 

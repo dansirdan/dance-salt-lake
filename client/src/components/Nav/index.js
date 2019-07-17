@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Container, Nav, Navbar } from "react-bootstrap";
+import { AuthConsumer } from "../AuthContext"
 import moment from "moment";
-
 import {
   TinyLogo,
   ClassNav,
@@ -15,35 +15,41 @@ import "./style.css"
 
 export class MainNav extends Component {
 
-
   render() {
 
     return (
       <div className="nav-wrapper">
         <Container fluid>
-          <Navbar expand="lg" variant="light">
-            {this.props.tinyLogo ? <TinyLogo /> : <div />}
-            <Navbar.Toggle aria-controls="basic-navbar-nav" />
-            <Navbar.Collapse id="basic-navbar-nav">
-              <Nav>
-                <ClassNav />
-                <PerformanceNav />
-                <AuditionNav />
+          <AuthConsumer>
+            {({ isAuth }) => (
+              < Navbar expand="lg">
+                {this.props.tinyLogo ? <TinyLogo /> : <div />}
+                <Navbar.Toggle aria-controls="basic-navbar-nav" />
+                <Navbar.Collapse id="basic-navbar-nav">
+                  <Nav>
+                    <ClassNav />
+                    <PerformanceNav />
+                    <AuditionNav />
+                    <AboutNav />
 
-                {this.props.isAuthed ? (
-                  <DropdownNavSI />
-                ) : (
-                    <>
-                      <AboutNav />
-                      <DropdownNavSO />
-                    </>
-                  )}
+                    {isAuth ? (
+                      <DropdownNavSI
+                      />
+                    ) : (
+                        <>
+                          <DropdownNavSO />
+                        </>
+                      )}
 
-              </Nav>
-            </Navbar.Collapse>
-          </Navbar>
+                  </Nav>
+                </Navbar.Collapse>
+              </Navbar>
+
+            )}
+          </AuthConsumer>
+
         </Container>
-      </div>
+      </div >
     );
   }
 }

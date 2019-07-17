@@ -7,13 +7,19 @@ export default {
   getSinglePost: function (postType, id) {
     return axios.get("/api/" + postType + "/" + id)
   },
-  getQueryPosts: function (postType, param) {   
+  getQueryPosts: function (postType, param) {
     return axios.post("/api/" + postType + "/filter" + param)
+  },
+  auth: function (authRoute, user) {
+    return axios.post("/api/auth/" + authRoute, user)
+  },
+  logoutUser: function () {
+    return axios.get("/api/auth/logout")
+  },
+  user: function () {
+    return axios.get("/api/auth/user")
+  },
+  newPost: function (postType, id, post) {
+    return axios.post("/api/post/" + postType + "/" + id, post)
   }
-  // getQueryPosts: function (postType, subType, param) {   
-  //   return axios.get("/api/" + postType + "/filter/" + subType)
-  // }
-  // getQueryPosts: function (postType, subType, param) {   
-  //   return axios.get("/api/" + postType + "/" + subType + "/" + param)
-  // }
 }

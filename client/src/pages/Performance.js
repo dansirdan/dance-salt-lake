@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import { Modal, Button, Row, Col } from "react-bootstrap";
+import MoreInfo from "../components/MoreInfo";
+import { Row, Col } from "react-bootstrap";
 import { List, PerformanceListItem } from "../components/List";
 import { Container } from "../components/Grid";
 import CalendarSection from "../components/Calendar";
@@ -16,7 +17,7 @@ class Performance extends Component {
 
     this.state = {
       queryResults: [],
-      activeDates: [],
+      activeDates: null,
       show: false,
       date: new Date(),
       moreInfo: {
@@ -94,7 +95,7 @@ class Performance extends Component {
   render() {
     const performances = this.state.queryResults;
     return (
-      <div>
+      <>
         <CalendarSection
           data={performances}
           active={this.state.activeDates}
@@ -135,36 +136,13 @@ class Performance extends Component {
           </Row>
 
         </Container>
-        <Modal
+        <MoreInfo
+          page="Performance"
           show={this.state.show}
           onHide={this.handleClose}
-          size="lg"
-          aria-labelledby="contained-modal-title-vcenter"
-          centered
-        >
-          <Modal.Header closeButton>
-            <Modal.Title>
-              Performance Info
-            </Modal.Title>
-          </Modal.Header>
-          <Modal.Body>
-            <h2>{this.state.moreInfo.title}</h2>
-            <h5>description</h5>
-            <p>{this.state.moreInfo.description}</p>
-            <p>Address: {this.state.moreInfo.address}</p>
-            <p>Length: {this.state.moreInfo.length}</p>
-            <p>Payment: {this.state.moreInfo.payment}</p>
-            <p>Time: {this.state.moreInfo.time}</p>
-            <p>Date: {this.state.moreInfo.date}</p>
-            <p>Special: {this.state.moreInfo.special}</p>
-          </Modal.Body>
-          <Modal.Footer>
-            <Button variant="secondary" onClick={this.handleClose}>
-              Close
-            </Button>
-          </Modal.Footer>
-        </Modal>
-      </div>
+          moreInfo={this.state.moreInfo}
+        />
+      </>
     );
   }
 }

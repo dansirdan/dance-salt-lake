@@ -12,15 +12,7 @@ class CalendarSection extends Component {
     super(props, context);
     this.state = {
       date: new Date(),
-      activeDates: ["2019-07-14", "2019-07-16"]
     };
-  }
-
-  componentDidUpdate = () => {
-    if (this.state.activeDates !== this.props.active) {
-      // console.log("not the same");
-      this.setState({ activeDates: this.props.active })
-    }
   }
 
   // React-Calendar Method for setting the current date of the calendar
@@ -35,19 +27,15 @@ class CalendarSection extends Component {
 
   // React-Calendar Method for adding tile content
   tileContent = ({ date, view }) => {
-    let { activeDates } = this.state
-    // console.log("tileContent", active);
-    
+    let { active } = this.props
     let day = moment(date).format('YYYY-MM-DD')
 
-    if (view === 'month' && activeDates.includes(day)) {
+    if (view === 'month' && active.includes(day)) {
       return <div className="active-date"></div>
     }
   }
 
   render() {
-    // console.log(this.state.activeDates);
-    // console.log(this.props.active);
 
     return (
       <Section>
@@ -60,12 +48,15 @@ class CalendarSection extends Component {
                 filter={this.props.filter}
               />
 
-              <Calendar
-                onChange={this.onChange}
-                value={this.state.date}
-                onClickDay={this.onClickDay}
-                tileContent={this.tileContent}
-              />
+              {this.props.active ? (
+                <Calendar
+                  onChange={this.onChange}
+                  value={this.state.date}
+                  onClickDay={this.onClickDay}
+                  tileContent={this.tileContent}
+                  prevAriaLabel={this.state.test}
+                />
+              ) : (<div className="calendar-placeholder"></div>)}
 
             </Row>
           </div>
