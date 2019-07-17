@@ -13,11 +13,9 @@ module.exports = {
       .then(data => res.json(data))
       .catch(err => res.status(422).json(err));
   },
-  // ============= Find By ===============
-  // ============ Un-Tested ==============
-  findByDate: function(req, res) {
+  findAllWhere: function(req, res) {
     db.Performance
-      .findAll({ where: { date: req.params.date }})
+      .findAll({ where: req.query })
       .then(data => res.json(data))
       .catch(err => res.status(422).json(err));
   },

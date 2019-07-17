@@ -1,20 +1,18 @@
 import React, { Component } from "react";
-import { Container, Row, Col } from "react-bootstrap";
+import { Container, Row } from "react-bootstrap";
 import { Section } from "../Sections";
 import Calendar from "react-calendar";
-import QueryDropDown from "../QueryDrop";
-import API from "../../utils/API";
+import Filter from "../Filters";
 import moment from "moment";
-import "./style.css"
+import "./style.css";
 
 class CalendarSection extends Component {
 
   constructor(props, context) {
     super(props, context);
     this.state = {
-      results: [],
       date: new Date(),
-    }
+    };
   }
 
   // React-Calendar Method for setting the current date of the calendar
@@ -22,49 +20,49 @@ class CalendarSection extends Component {
 
   // React-Calendar Method for querying on the clicked day
   onClickDay = value => {
-    let param = moment(value).format('YYYY-MM-DD')
-    this.queryCall(this.props.path, "date", param)
-
+    let param = {}
+    param.date = moment(value).format('YYYY-MM-DD');
+    this.props.filter(param)
   };
 
-  /**
-  * the queryCall (getQueryPosts) method takes THREE argument which create the route path
-  * when we get to that point, the onClick method should return data on the 
-  * audition(path)/date(subType)"2019/07/05"/QUERY
-  */
-  queryCall = (postType, subType, param) => {
-    API.getQueryPosts(postType, subType, param)
-      .then(res => {
-        this.setState({ results: res.data })
-        this.props.handleQuery(this.state.results)
-      })
-      .catch(err => console.log(err));
+  // React-Calendar Method for adding tile content
+  tileContent = ({ date, view }) => {
+    let { active } = this.props
+    let day = moment(date).format('YYYY-MM-DD')
+
+    if (view === 'month' && active.includes(day)) {
+      return <div className="active-date"></div>
+    }
   }
 
   render() {
+
     return (
       <Section>
-        <Container fluid>
+        <Container>
           <div className="calendar-section_content">
-            <Row className="justify-content-md-center">
-              <Col md="3">
-                <QueryDropDown
-                  queryCall={this.queryCall}
-                />
-              </Col>
-              {/* <Col size="md-1" /> */}
-              <Col md="5">
+            <Row className="justify-content-around align-items-center">
+
+              <Filter
+                {...this.props}
+                filter={this.props.filter}
+              />
+
+              {this.props.active ? (
                 <Calendar
                   onChange={this.onChange}
                   value={this.state.date}
                   onClickDay={this.onClickDay}
+                  tileContent={this.tileContent}
+                  prevAriaLabel={this.state.test}
                 />
-              </Col>
+              ) : (<div className="calendar-placeholder"></div>)}
 
             </Row>
           </div>
         </Container>
-      </Section >
+      </Section>
+
     )
   }
 }

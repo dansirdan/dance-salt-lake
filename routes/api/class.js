@@ -10,16 +10,7 @@ router.route("/:id")
   .put(classController.update)
   .delete(classController.delete)
 
-router.route("/date/:date")
-  .get(classController.findByDate)
-
-router.route("/instructor/:instructor")
-  .get(classController.findByInstructor)
-
-router.route("/level/:level")
-  .get(classController.findByLevel)
-
-router.route("/master/:master")
-  .get(classController.findByMaster)
+router.route("/filter/")
+  .post(classController.findAllWhere)
 
 module.exports = router;

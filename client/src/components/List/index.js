@@ -1,6 +1,5 @@
 import React from "react";
 import Thumbnail from "../Thumbnail";
-import { Badge } from "react-bootstrap";
 import { Container, Row, Col } from "../Grid";
 import { FormBtn } from "../Form";
 import moment from "moment";

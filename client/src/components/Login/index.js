@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { Input, FormBtn } from "../Form";
+import { Dropdown } from 'react-bootstrap';
 import { AuthConsumer } from "../AuthContext"
 
 class Login extends Component {
@@ -26,11 +27,12 @@ class Login extends Component {
   render() {
 
     return (
-      <div className="container">
+      <div className="container login">
         <AuthConsumer>
           {({ login }) => (
             <form>
               <Input
+                autoFocus
                 value={this.state.email}
                 onChange={this.handleInputChange}
                 name="email"
@@ -42,16 +44,17 @@ class Login extends Component {
                 name="password"
                 placeholder="Password (required)"
               />
-              <FormBtn
-                disabled={!(this.state.email && this.state.password)}
-                onClick={(e) => this.handleLogin(login, e)}
-              >
-                Login
-          </FormBtn>
+              <Dropdown.Item as="div">
+                <FormBtn
+                  disabled={!(this.state.email && this.state.password)}
+                  onClick={(e) => this.handleLogin(login, e)}
+                >
+                  Login
+            </FormBtn>
+              </Dropdown.Item>
             </form>
           )}
         </AuthConsumer>
-
       </div>
     )
   }

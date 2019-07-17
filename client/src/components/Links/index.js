@@ -2,11 +2,10 @@ import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import { AuthConsumer } from "../AuthContext";
 import { Input, FormBtn } from "../Form";
-import image from "./tinyPlaceholder.JPG";
-import Dropdown from 'react-bootstrap/Dropdown'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import Login from "../Login"
-import "./style.css"
+import { NavDropdown, Nav, Button } from 'react-bootstrap';
+import { Dropdown } from "../Form";
+import Login from "../Login";
+import "./style.css";
 
 export function TinyLogo() {
   return (
@@ -21,80 +20,93 @@ export function TinyLogo() {
 
 export function ClassNav() {
   return (
-    <Link className="navbar-brand" to="/class">
+    <Nav.Link href="/class">
       Class
-    </Link>
+    </Nav.Link>
   )
 };
 
 export function PerformanceNav() {
   return (
-    <Link className="navbar-brand" to="/performance">
+    <Nav.Link href="/performance">
       Performance
-    </Link>
+    </Nav.Link>
   )
 };
 
 export function AuditionNav() {
   return (
-    <Link className="navbar-brand" to="/audition">
+    <Nav.Link href="/audition">
       Audition
-    </Link>
+    </Nav.Link>
   )
 };
 
 export function UsersHomeNav() {
   return (
-    <Link className="navbar-brand" to="/usershome">
+    <Nav.Link href="/usershome">
       Users Home
-    </Link>
+    </Nav.Link>
   )
 };
 
 export function AboutNav() {
   return (
-    <Link className="navbar-brand" to="/about">
+    <Nav.Link href="/about">
       About
-    </Link>
+    </Nav.Link>
   )
 };
 
 export function LoginNav() {
   return (
-    <Link className="navbar-brand" to="/login">
+    <Nav.Link href="/login">
       Login
-    </Link>
+    </Nav.Link>
   )
 };
 
 export function RegisterNav() {
   return (
-    <Link className="navbar-brand" to="/register">
+    <Nav.Link href="/register">
       Register
-    </Link>
+    </Nav.Link>
   )
 };
 
 // dropdown nav for signed out users
 // Component AS another component similar to naming a <a> tag with a button class
 export function DropdownNavSO() {
+
   return (
-    <Dropdown alignRight id="dropdown-btn">
-      <Dropdown.Toggle>
-        <FontAwesomeIcon icon="check-square" />
-        Create Account
-      </Dropdown.Toggle>
-      <Dropdown.Menu>
-        <Login />
-        <Dropdown.Item as={Link} to="/register">
-          Register
-        </Dropdown.Item>
-      </Dropdown.Menu>
-    </Dropdown>
+    <NavDropdown title="Create Account" id="dropdown-btn" alignRight>
+
+      <Login />
+      <NavDropdown.Divider />
+      <div className="register-link">
+        <NavDropdown.Item as="p">
+          Need and account? <br />Click here to register
+          </NavDropdown.Item>
+        <NavDropdown.Item as={Button} href="/register">Register</NavDropdown.Item>
+      </div>
+
+    </NavDropdown>
   )
 }
 
 // dropdown nav for signed in users
+// export function DropdownNavSI() {
+//   return (
+//     <Dropdown title="Account" alignRight id="dropdown-btn">
+
+//       <NavDropdown.Item href="/usershome">Manage Account</NavDropdown.Item>
+//       <NavDropdown.Divider />
+//       <NavDropdown.Item href="/logout">Logout</NavDropdown.Item>
+
+//     </Dropdown>
+//   )
+
+
 export class DropdownNavSI extends Component {
 
   handleLogout = (logout, e) => {

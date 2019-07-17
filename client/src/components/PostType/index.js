@@ -16,8 +16,7 @@ export function Classes() {
         type="text"
         placeholder="Dance Style"
       />
-      {/* master boolean checkbox */}
-      <Checkbox 
+      <Checkbox
         name="master"
         lable="Master Class"
       />
@@ -28,7 +27,7 @@ export function Classes() {
         <option value="advanced">Advanced</option>
         <option value="all-levels">All Levels</option>
       </Dropdown>
-     
+
       <Input
         type="submit"
         value="Submit"
@@ -67,16 +66,22 @@ export function Auditions() {
   return (
     <>
       {dateTimeLocation()}
-      <Input 
-        name="lookingFor"
-        type="text"
-        placeholder="Looking For"
+      <Dropdown name="lookingFor">
+        <option>Gender</option>
+        <option value="men">Men</option>
+        <option value="women">Women</option>
+        <option value="both">Men and Women</option>
+        <option value="other">Other</option>
+      </Dropdown>
+      <Input
+        name="length"
+        type="number"
+        placeholder="Duration of Contract"
       />
       <Dropdown name="gig">
         <option>Gig Type</option>
-        <option value="contract">Contract</option>
-        <option value="project">Project Based</option>
-        <option value="fulltime">Fulltime</option>
+        <option value="month">Month/s</option>
+        <option value="year">Year/s</option>
       </Dropdown>
       <TextArea
         name="audtioNotes"
@@ -153,11 +158,6 @@ function dateTimeLocation() {
         name="photoLink"
         type="text"
         placeholder="Image link"
-      />
-      <Input
-        name="length"
-        type="text"
-        placeholder="Duration"
       />
       <Input
         name="date"

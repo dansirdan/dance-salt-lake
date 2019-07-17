@@ -8,5 +8,17 @@
   position: absolute;
   right: 3px;
   top: 90px;
+}
 
+@media (max-width: 992px) { 
+  .logo-container {
+    height: 50vw;
+  }
+  .logo h1 {
+    font-size: 10vw;
+  }
+  .logo h2 {
+    font-size: 5.35vw;
+    top: 9vw;
+  }
 }
