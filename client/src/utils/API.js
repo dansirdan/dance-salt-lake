@@ -9,11 +9,14 @@ export default {
   },
   getQueryPosts: function (postType, param) {   
     return axios.post("/api/" + postType + "/filter" + param)
+  },
+  auth: function (authRoute, user) {
+    return axios.post("/api/auth/" + authRoute, user)
+  },
+  logoutUser: function () {
+    return axios.get("/api/auth/logout")
+  },
+  user: function () {
+    return axios.get("/api/auth/user")
   }
-  // getQueryPosts: function (postType, subType, param) {   
-  //   return axios.get("/api/" + postType + "/filter/" + subType)
-  // }
-  // getQueryPosts: function (postType, subType, param) {   
-  //   return axios.get("/api/" + postType + "/" + subType + "/" + param)
-  // }
 }
