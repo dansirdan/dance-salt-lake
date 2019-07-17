@@ -20,8 +20,6 @@ app.use(
 app.use(passport.initialize());
 app.use(passport.session());
 
-// require("./routes/api-routes.js");
-// require("./routes/api-routes")(app);
 app.use(routes);
 
 const syncOptions = {

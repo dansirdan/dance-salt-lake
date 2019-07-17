@@ -12,12 +12,23 @@ export function Jumbotron({ children }) {
   );
 }
 
-export function Section({ children }) {
+export function Section({ children, className }) {
   return (
-    <section className="calendar-wrapper">
-      {children}
+    <section className="section-wrapper">
+      <div className={className}>
+       {children}
+
+      </div>
     </section>
   );
 }
 
-
+export function Banner({ children, className }) {
+  return ( 
+    <div className="banner">
+      <div className={className}>
+        {children}
+      </div>
+    </div>
+  )
+}

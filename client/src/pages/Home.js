@@ -80,10 +80,8 @@ class Home extends Component {
             </Row>
           </div>
 
-          <Row className="justify-content-md-center">
-            <Col md="10">
-              <SpaceBanner />
-            </Col>
+          <Row className="justify-content-center">
+            <SpaceBanner />
           </Row>
           <MoreInfo
             page="Audition"

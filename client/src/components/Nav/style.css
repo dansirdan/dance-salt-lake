@@ -7,7 +7,7 @@
 }
 nav {
   max-width: 1650px;
-  height: 60px;
+  min-height: 60px;
   margin: 0 auto;
 }
 .navbar {
@@ -16,31 +16,58 @@ nav {
 .navbar-nav {
   margin: 0 auto;
 }
-.navbar-nav a,
-#dropdown-btn .btn-primary {
+.navbar-nav .navbar-brand,
+nav .nav-item {
   font-size: .9rem;
   font-weight: 500;
+}
+.nav-link {
   margin: 0 1.5rem;
 }
-.navbar-nav .dropdown {
-  position: absolute;
-  right: 2.5rem;
-}
-#dropdown-btn .btn-primary {
+nav .nav-item {
   margin-right: 0;
   color: #888;
   background-color: #fff;
   border: none;
 }
-#dropdown-btn .dropdown-menu {
-  width: 18rem;
-  padding-top: 1rem;
+.navbar-nav .dropdown-menu {
+  min-width: max-content;
 }
-.sticky {
-  transition: all 0.1s ease-in;
-  position: fixed;
-  top: 0;
-  z-index: 99;
+.dropdown .navbar-nav a {
+  margin: 0;
+}
+.login {
+  margin-top: 1rem;
+  margin-bottom: 3rem;
+}
+.register-link .dropdown-item {
+  text-align: center;
+  width: 100%
+}    
+.register-link .dropdown-item.btn {
+  width: 6rem;
+  margin: 1rem auto;
+  padding: .5em;
+}
+.register-link .dropdown-item.btn:hover {
+  box-shadow: 0 0 0 0.2rem rgba(124,165,197, .5);
+  border-color: rgba(124,165,197, .5);
+}
+.dropdown-menu.show {
+  margin-bottom: 2rem;
+}
+
+/* REMOVE DEFAULT STYLING */
+.dropdown-item.active, 
+.dropdown-item:active {
+    color: #fff;
+    text-decoration: none;
+    background-color: #eee;
+}
+.dropdown-item:focus, .dropdown-item:hover {
+    color: #16181b;
+    text-decoration: none;
+    background-color: #fff;
 }
 
 /* FOOTER */
@@ -51,4 +78,17 @@ footer {
   padding: 1rem;
   padding-top: 1.5rem;
   background-color: #ddd;
+}
+
+@media (max-width: 576px) { 
+  .navbar {
+    padding: 0;
+  }
+}
+@media (min-width: 992px) { 
+  .navbar-nav .dropdown {
+    position: absolute;
+    right: 2.5rem;
+    margin: 0 1.5rem;
+  }
 }

@@ -5,8 +5,8 @@ import { List, ClassListItem } from "../components/List";
 import { Container } from "../components/Grid";
 import CalendarSection from "../components/Calendar";
 import { SpaceBanner } from "../components/Preview";
+import queryString from "query-string";
 import API from "../utils/API"
-import moment from "moment";
 
 class Class extends Component {
   constructor(props, context) {
@@ -16,7 +16,10 @@ class Class extends Component {
     this.handleClose = this.handleClose.bind(this);
 
     this.state = {
-      classes: [],
+      allClasses: [],
+      queryResults: [],
+      activeDates: null,
+      filterParams: {},
       show: false,
       date: new Date(),
       moreInfo: {
@@ -52,34 +55,71 @@ class Class extends Component {
       .catch(err => console.log(err));
   };
 
-  // method for passing query results from calendar component to page
-  handleQuery = results => {
-    this.setState({ classes: results });
-  }
   // lifecycle method to prepare for the logo change and do an API call
   componentWillMount() {
     this.props.handleLogo();
+    let activeDates = [];
 
     API.getPosts("classes")
-      .then(res => this.setState({ classes: res.data }))
+      .then(res => {
+        activeDates = [...new Set(res.data.map(x => x.date))] // array of unique event dates for react-calendar tileContent method
+        this.setState({ allClasses: res.data, queryResults: res.data, activeDates: activeDates }) // set allAuditions and queryResults to same initial value 
+      })
+      .catch(err => console.log(err));
+  }
+
+  // handles input changes from Filter and Calendar components
+  handleFilterUpdate = param => {
+    let currentParams = this.state.filterParams
+    let newParams = { ...currentParams, ...param }
+
+    this.setState({ filterParams: newParams }, () => this.stringifyParams(this.state.filterParams))
+  };
+
+  // converts filterParams object to query string and calls queryCall function
+  stringifyParams = (obj) => {
+    // removes props when the value is 0 - i.e., when the dropdown selects the default or "all" option
+    Object.keys(obj).forEach((key) => (obj[key] === "0") && delete obj[key]);
+    
+    const stringified = queryString.stringify(obj)
+    const query = "?" + stringified;
+    
+    this.queryCall("classes", query);
+  }
+
+  /**
+  * the queryCall (getQueryPosts) method takes THREE argument which create the route path
+  * when we get to that point, the onClick method should return data on the
+  * audition(path)/date(subType)"2019/07/05"/QUERY
+  */
+
+  queryCall = (postType, param) => {
+    API.getQueryPosts(postType, param)
+      .then(res => {
+        this.setState({ queryResults: res.data })
+      })
       .catch(err => console.log(err));
   }
 
   render() {
+    const classes = this.state.queryResults;
+
     return (
       <>
         <CalendarSection
           path="classes"
-          handleQuery={this.handleQuery}
+          data={this.state.allClasses}
+          active={this.state.activeDates}
+          filter={this.handleFilterUpdate}
         />
         <Container fluid>
           <Row>
             <Col size="md-12">
-              {!this.state.classes.length ? (
+              {!classes.length ? (
                 <h5 className="text-center">No Classes to Display</h5>
               ) : (
                   <List>
-                    {this.state.classes.map(klass => {
+                    {classes.map(klass => {
                       return (
                         <ClassListItem
                           key={klass.id}
@@ -106,9 +146,7 @@ class Class extends Component {
           </Row>
 
           <Row className="justify-content-lg-center">
-            <Col md="8">
-              <SpaceBanner />
-            </Col>
+            <SpaceBanner />
           </Row>
 
         </Container>
