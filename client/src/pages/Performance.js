@@ -29,7 +29,9 @@ class Performance extends Component {
         payment: "",
         time: "",
         date: "",
-        special: ""
+        special: "",
+        // lat: "",
+        // lng: ""
       }
     }
   }

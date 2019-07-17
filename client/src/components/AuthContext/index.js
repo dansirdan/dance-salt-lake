@@ -1,10 +1,12 @@
 import React, { Component } from "react";
+import { Redirect } from "react-router-dom";
 import API from "../../utils/API"
 const AuthContext = React.createContext();
 
 class AuthProvider extends Component {
   state = {
     isAuth: false,
+    loggedOut: false,
     user: {}
   }
 
@@ -16,20 +18,23 @@ class AuthProvider extends Component {
   }
 
   sessions() {
-
-    console.log("this ran")
-    API.user()
-      .then(dbUser => {
-        console.log(dbUser.data)
-        if (!dbUser.data.email || !dbUser.data.id) {
-          console.log("No sessions user");
-        } else {
-          this.setState({ isAuth: true, user: dbUser.data })
-        }
-      })
-      .catch(err => {
-        console.log("error", err)
-      })
+    if (this.state.loggedOut) {
+      console.log("LOGGED OUT");
+    } else {
+      console.log("this ran")
+      API.user()
+        .then(dbUser => {
+          console.log(dbUser.data)
+          if (!dbUser.data.email || !dbUser.data.id) {
+            console.log("No sessions user");
+          } else {
+            this.setState({ isAuth: true, user: dbUser.data })
+          }
+        })
+        .catch(err => {
+          console.log("error", err)
+        })
+    }
   }
 
   login(user) {
@@ -40,7 +45,7 @@ class AuthProvider extends Component {
         API.user()
           .then(dbUser => {
             console.log(dbUser.data)
-            this.setState({ isAuth: true, user: dbUser.data })
+            this.setState({ isAuth: true, loggedOut: false, user: dbUser.data })
           })
           .catch(err => {
             console.log("error", err)
@@ -58,7 +63,8 @@ class AuthProvider extends Component {
       .then((res, req) => {
         console.log(res)
         this.setState({
-          isAuth: false
+          isAuth: false,
+          loggedOut: true
         })
       })
       .catch(err => {
