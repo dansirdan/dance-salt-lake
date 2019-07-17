@@ -44,14 +44,14 @@ class Login extends Component {
                 name="password"
                 placeholder="Password (required)"
               />
-              <Dropdown.Item as="div">
-                <FormBtn
-                  disabled={!(this.state.email && this.state.password)}
-                  onClick={(e) => this.handleLogin(login, e)}
-                >
-                  Login
+              {/* <Dropdown.Item as="div"> */}
+              <FormBtn
+                disabled={!(this.state.email && this.state.password)}
+                onClick={(e) => this.handleLogin(login, e)}
+              >
+                Login
             </FormBtn>
-              </Dropdown.Item>
+              {/* </Dropdown.Item> */}
             </form>
           )}
         </AuthConsumer>

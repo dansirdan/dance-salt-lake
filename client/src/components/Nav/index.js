@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import { Container, Nav, Navbar } from "react-bootstrap";
 import { AuthConsumer } from "../AuthContext"
 import moment from "moment";
-
 import {
   TinyLogo,
   ClassNav,
@@ -48,7 +47,7 @@ export class MainNav extends Component {
 
             )}
           </AuthConsumer>
-  
+
         </Container>
       </div >
     );

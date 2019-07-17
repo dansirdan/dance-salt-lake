@@ -7,7 +7,7 @@ export default {
   getSinglePost: function (postType, id) {
     return axios.get("/api/" + postType + "/" + id)
   },
-  getQueryPosts: function (postType, param) {   
+  getQueryPosts: function (postType, param) {
     return axios.post("/api/" + postType + "/filter" + param)
   },
   auth: function (authRoute, user) {
@@ -18,5 +18,8 @@ export default {
   },
   user: function () {
     return axios.get("/api/auth/user")
+  },
+  newPost: function (postType, id, post) {
+    return axios.post("/api/post/" + postType + "/" + id, post)
   }
 }
