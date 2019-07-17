@@ -42,7 +42,7 @@ export class ClassesPreview extends Component {
 
         {this.state.classData.map(klass => {
           return (
-            <Card key={klass.id}>
+            <Card key={klass.id} as="a" >
               <Card.Body>
                 <Container>
                   <Row className="justify-content-xs-center">
