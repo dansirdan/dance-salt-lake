@@ -95,47 +95,62 @@ export function DropdownNavSO() {
 }
 
 // dropdown nav for signed in users
-// export function DropdownNavSI() {
-//   return (
-//     <Dropdown title="Account" alignRight id="dropdown-btn">
-
-//       <NavDropdown.Item href="/usershome">Manage Account</NavDropdown.Item>
-//       <NavDropdown.Divider />
-//       <NavDropdown.Item href="/logout">Logout</NavDropdown.Item>
-
-//     </Dropdown>
-//   )
-
-
 export class DropdownNavSI extends Component {
-
   handleLogout = (logout, e) => {
     e.preventDefault();
     logout()
   }
-
   render() {
     return (
-      <Dropdown alignRight id="dropdown-btn">
-        <Dropdown.Toggle caret="true">
-          Account
-      </Dropdown.Toggle>
-        <Dropdown.Menu>
-          <Dropdown.Item as={Link} to="/usershome">
-            Account Page
-        </Dropdown.Item>
-          <AuthConsumer>
-            {({ logout }) => (
-              <Dropdown.Item
-                as={FormBtn}
-                onClick={(e) => this.handleLogout(logout, e)}
-              >
-                Logout
-            </Dropdown.Item>
-            )}
-          </AuthConsumer>
-        </Dropdown.Menu>
-      </Dropdown>
+      <NavDropdown title="Account" alignRight id="dropdown-btn">
+
+        <NavDropdown.Item as={Link} to="/usershome">Manage Account</NavDropdown.Item>
+        <NavDropdown.Divider />
+        <AuthConsumer>
+          {({ logout }) => (
+            <NavDropdown.Item
+              as={FormBtn}
+              onClick={(e) => this.handleLogout(logout, e)}
+            >
+              Logout
+          </NavDropdown.Item>
+          )}
+        </AuthConsumer>
+
+      </NavDropdown>
     )
   }
 }
+
+// export class DropdownNavSI extends Component {
+
+//   handleLogout = (logout, e) => {
+//     e.preventDefault();
+//     logout()
+//   }
+
+//   render() {
+//     return (
+//       <Dropdown alignRight id="dropdown-btn">
+//         <Dropdown.Toggle caret="true">
+//           Account
+//       </Dropdown.Toggle>
+//         <Dropdown.Menu>
+//           <Dropdown.Item as={Link} to="/usershome">
+//             Account Page
+//         </Dropdown.Item>
+//           <AuthConsumer>
+//             {({ logout }) => (
+//               <Dropdown.Item
+//                 as={FormBtn}
+//                 onClick={(e) => this.handleLogout(logout, e)}
+//               >
+//                 Logout
+//             </Dropdown.Item>
+//             )}
+//           </AuthConsumer>
+//         </Dropdown.Menu>
+//       </Dropdown>
+//     )
+//   }
+// }
