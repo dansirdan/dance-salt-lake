@@ -21,57 +21,71 @@ export function TinyLogo() {
 
 export function ClassNav() {
   return (
-    <Link tag={Link} to="/class">
-      Class
-    </Link>
+    <LinkContainer to="/class">
+      <Nav.Link>
+        Class
+      </Nav.Link>
+    </LinkContainer>
   )
 };
 
 export function PerformanceNav() {
   return (
-    <Link tag={Link} to="/performance">
-      Performance
-    </Link>
+    <LinkContainer to="/performance">
+      <Nav.Link>
+        Performance
+      </Nav.Link>
+    </LinkContainer>
   )
 };
 
 export function AuditionNav() {
   return (
-    <Link tag={Link} to="/audition">
-      Audition
-    </Link>
+    <LinkContainer to="/audition">
+      <Nav.Link>
+        Audition
+      </Nav.Link>
+    </LinkContainer>
   )
 };
 
 export function UsersHomeNav() {
   return (
-    <Link tag={Link} to="/usershome">
-      Users Home
-    </Link>
+    <LinkContainer to="/usershome">
+      <Nav.Link>
+        Users Home
+      </Nav.Link>
+    </LinkContainer>
   )
 };
 
 export function AboutNav() {
   return (
-    <Link tag={Link} to="/about">
-      About
-    </Link>
+    <LinkContainer to="/about">
+      <Nav.Link>
+        About
+      </Nav.Link>
+    </LinkContainer>
   )
 };
 
 export function LoginNav() {
   return (
-    <Link tag={Link} to="/login">
-      Login
-    </Link>
+    <LinkContainer to="/login">
+      <Nav.Link>
+        Login
+      </Nav.Link>
+    </LinkContainer>
   )
 };
 
 export function RegisterNav() {
   return (
-    <Link tag={Link} to="/register">
-      Register
-    </Link>
+    <LinkContainer to="/register">
+      <Nav.Link>
+        Register
+      </Nav.Link>
+    </LinkContainer>
   )
 };
 
@@ -88,7 +102,9 @@ export function DropdownNavSO() {
         <NavDropdown.Item as="p">
           Need and account? <br />Click here to register
           </NavDropdown.Item>
-        <NavDropdown.Item as={Button} tag={Link} to="/register">Register</NavDropdown.Item>
+        <LinkContainer to="/register">
+          <NavDropdown.Item as={Button}>Register</NavDropdown.Item>
+        </LinkContainer>
       </div>
 
     </NavDropdown>
