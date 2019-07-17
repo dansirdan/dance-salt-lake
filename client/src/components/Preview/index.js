@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Container } from "../Grid";
 import Thumbnail from "../Thumbnail";
 import { Card, Accordion, Button, Row, Col } from "react-bootstrap";
+import { FormBtn } from "../Form";
 import { Link } from "react-router-dom";
 import "./style.css";
 import API from "../../utils/API"
@@ -11,29 +12,47 @@ import moment from "moment";
 // each preview item makes a call to the API before mounting
 // Class Preview shows 3 Items always
 export class ClassesPreview extends Component {
-
-  // declaring state to store class data
   state = {
-    classData: []
+    classData: [],
+    moreInfo: {}
   }
 
-  // lifecycle method to trigger an API CALL
-  // stores the first 3 classes in the database currently
-  // TO DO:
-  // 1. define the query based off the date, time, master class, etc. CHOOSE
-  // 2. the route is defined already
+  // lifeCycle Method to grab two classes
   componentWillMount() {
-    let threeClasses = [];
 
+    let twoClasses = [];
+
+    // API Get All Routes take a str
+    // Returns all classes...who would have thought
     API.getPosts("classes")
       .then(res => {
         for (let i = 0; i < 2; i++) {
-          threeClasses.push(res.data[i]);
-        }
-        this.setState({ classData: threeClasses })
+          twoClasses.push(res.data[i]);
+        };
+        this.setState({ classData: twoClasses });
       })
       .catch(err => console.log(err));
   }
+
+  // MODAL METHOD #1
+  handleClose() {
+    this.setState({
+      show: false,
+      moreInfo: {}
+    })
+  }
+
+  // MODAL METHOD #2
+  handleShow = id => {
+    // API Get Single Post Route takes a str and id
+    // Returns a single class data object
+    API.getSinglePost("classes", id)
+      .then(res => {
+        this.setState({ moreInfo: res.data })
+        this.props.returnData(res.data, "Class")
+      })
+      .catch(err => console.log(err));
+  };
 
   render() {
     return (
@@ -54,7 +73,6 @@ export class ClassesPreview extends Component {
                         <div>
                           <h6>{klass.title}</h6>
                           <p className="accent-text">{klass.instructorName} Lastname</p>
-                          {/* <span className="badge">{klass.level}</span> */}
                           <p>{moment(klass.date).format("MMM Do, h:mm A")}</p>
                         </div>
                       </div>
@@ -80,12 +98,28 @@ export class ClassesPreview extends Component {
 
 // Performance Preview will show a random performance from the database
 export class PerformancesPreview extends Component {
-
-  // declaring state to store performance data
   state = {
-    performanceData: {}
+    performanceData: {},
+    moreInfo: {}
   }
 
+  handleClose() {
+    this.setState({
+      show: false,
+      moreInfo: {}
+    })
+  }
+
+  handleShow = id => {
+    // single query of an audition's id to populate state and then show more info.
+
+    API.getSinglePost("performances", id) //--hard coded post id
+      .then(res => {
+        this.setState({ moreInfo: res.data })
+        this.props.returnData(res.data, "Performance")
+      })
+      .catch(err => console.log(err));
+  };
   // lifecycle method to trigger an API CALL
   // stores a random performance from the database and displays it
   // TO DO:
@@ -127,7 +161,7 @@ export class PerformancesPreview extends Component {
             <Button variant="success" href={performance.url}>Get Tickets</Button>
           </Card.Body>
         </Card>
-      </div>
+      </div >
     )
   }
 }
@@ -137,9 +171,27 @@ export class AuditionPreview extends Component {
 
   // declaring state to store audition data
   state = {
-    auditionData: []
+    auditionData: [],
+    moreInfo: {}
   }
 
+  handleClose() {
+    this.setState({
+      show: false,
+      moreInfo: {}
+    })
+  }
+
+  handleShow = id => {
+    // single query of an audition's id to populate state and then show more info.
+
+    API.getSinglePost("auditions", id) //--hard coded post id
+      .then(res => {
+        this.setState({ moreInfo: res.data })
+        this.props.returnData(res.data, "Audition")
+      })
+      .catch(err => console.log(err));
+  };
   // lifecycle method to trigger an API CALL
   // stores the first 3 auditions in the database currently
 
@@ -152,7 +204,6 @@ export class AuditionPreview extends Component {
           threeAuditions.push(res.data[i]);
         }
         this.setState({ auditionData: threeAuditions })
-        console.log(this.state.auditionData[0].id)
       })
       .catch(err => console.log(err));
   }
@@ -172,7 +223,7 @@ export class AuditionPreview extends Component {
 
                   <div className="audition-header">
                     <Row>
-                      <Col lg="4" md="2"sm="4">
+                      <Col lg="4" md="2" sm="4">
                         <div className="date">
                           <p className="day">{moment(audition.date).format("DD")}</p>
                           <h6 className="month">{moment(audition.date).format("MMM")}</h6>
@@ -195,7 +246,11 @@ export class AuditionPreview extends Component {
                     <Card.Text className="light-text">
                       {audition.description}
                     </Card.Text>
-
+                    <FormBtn
+                      onClick={() => this.handleShow(audition.id)}
+                    >
+                      Show Audition
+                    </FormBtn>
                   </Card.Body>
                 </Accordion.Collapse>
               </Card>

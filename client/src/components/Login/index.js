@@ -1,44 +1,21 @@
 import React, { Component } from "react";
 import { Input, FormBtn } from "../Form";
-const axios = require("axios");
+import { AuthConsumer } from "../AuthContext"
 
 class Login extends Component {
-
+  // Definining State to Hold Info
   state = {
-    email: "dan@gmail.com",
+    email: "dm@gmail.com",
     password: "dansirdan"
   }
 
-  authenticateStuff = (bool, emailUser) => {
-    this.props.handleAuth(bool, emailUser);
+  // Method to call Auth Login function
+  handleLogin = (login, e) => {
+    e.preventDefault();
+    login(this.state)
   }
 
-
-  handleLogin = event => {
-    event.preventDefault();
-    let bool;
-    let currentUser;
-
-    if (this.state.email && this.state.password) {
-      axios.post("/api/auth/login", {
-        email: this.state.email,
-        password: this.state.password
-      }).then(data => {
-
-        if (data.status === 200) {
-          bool = true;
-          currentUser = JSON.parse(data.config.data);
-          let emailUser = currentUser.email;
-          this.authenticateStuff(bool, emailUser);
-        }
-      }).catch(err => {
-        console.log("error")
-        console.log(err);
-      });
-    }
-
-  }
-
+  // Handles state change for inputs
   handleInputChange = event => {
     const { name, value } = event.target;
     this.setState({
@@ -50,27 +27,30 @@ class Login extends Component {
 
     return (
       <div className="container">
-
-          <form>
-            <Input
-              value={this.state.email}
-              onChange={this.handleInputChange}
-              name="email"
-              placeholder="Email (required)"
-            />
-            <Input
-              value={this.state.password}
-              onChange={this.handleInputChange}
-              name="password"
-              placeholder="Password (required)"
-            />
-            <FormBtn
-              disabled={!(this.state.email && this.state.password)}
-              onClick={this.handleLogin}
-            >
-              Login
+        <AuthConsumer>
+          {({ login }) => (
+            <form>
+              <Input
+                value={this.state.email}
+                onChange={this.handleInputChange}
+                name="email"
+                placeholder="Email (required)"
+              />
+              <Input
+                value={this.state.password}
+                onChange={this.handleInputChange}
+                name="password"
+                placeholder="Password (required)"
+              />
+              <FormBtn
+                disabled={!(this.state.email && this.state.password)}
+                onClick={(e) => this.handleLogin(login, e)}
+              >
+                Login
           </FormBtn>
-          </form>
+            </form>
+          )}
+        </AuthConsumer>
 
       </div>
     )

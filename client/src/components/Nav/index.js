@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Container, Nav, Navbar } from "react-bootstrap";
+import { AuthConsumer } from "../AuthContext"
 import moment from "moment";
 
 import {
@@ -33,7 +34,7 @@ export class MainNav extends Component {
       // document.body.style.paddingTop = nav.offsetHeight + 'px';
     } else {
       console.log(navTop, heroTop);
-      
+
       nav.classList.remove("sticky");
       // document.body.style.paddingTop = 0;
     }
@@ -48,7 +49,34 @@ export class MainNav extends Component {
     return (
       <div className="nav-wrapper">
         <Container fluid>
-          <Navbar expand="lg">
+          <AuthConsumer>
+            {({ isAuth }) => (
+              < Navbar expand="lg">
+                {this.props.tinyLogo ? <TinyLogo /> : <div />}
+                <Navbar.Toggle aria-controls="basic-navbar-nav" />
+                <Navbar.Collapse id="basic-navbar-nav">
+                  <Nav>
+                    <ClassNav />
+                    <PerformanceNav />
+                    <AuditionNav />
+
+                    {isAuth ? (
+                      <DropdownNavSI
+                      />
+                    ) : (
+                        <>
+                          <AboutNav />
+                          <DropdownNavSO />
+                        </>
+                      )}
+
+                  </Nav>
+                </Navbar.Collapse>
+              </Navbar>
+
+            )}
+          </AuthConsumer>
+          {/* <Navbar expand="lg">
             {this.props.tinyLogo ? <TinyLogo /> : <div />}
             <Navbar.Toggle aria-controls="basic-navbar-nav" />
             <Navbar.Collapse id="basic-navbar-nav">
@@ -68,9 +96,9 @@ export class MainNav extends Component {
 
               </Nav>
             </Navbar.Collapse>
-          </Navbar>
+          </Navbar> */}
         </Container>
-      </div>
+      </div >
     );
   }
 }

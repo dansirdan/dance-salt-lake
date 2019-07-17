@@ -1,15 +1,50 @@
 import React, { Component } from "react";
+import MoreInfo from "../components/MoreInfo";
 import { Row, Col } from "react-bootstrap";
 import { Container } from "../components/Grid";
 import { ClassesPreview, PerformancesPreview, AuditionPreview, SpaceBanner } from "../components/Preview";
 import Hero from "../components/Hero";
 
 class Home extends Component {
+  constructor(props, context) {
+    super(props, context);
 
-  // lifecycle method to trigger the Large Logo animation
+    this.returnData = this.returnData.bind(this);
+    this.handleClose = this.handleClose.bind(this);
+
+    this.state = {
+      performances: [],
+      show: false,
+      date: new Date(),
+      moreInfo: {},
+      page: ""
+    }
+  }
+
   componentDidMount() {
     this.props.handleShow();
+    this.props.sessions();
   }
+
+  // React-Modal method for closing and clearing the data
+  handleClose() {
+    this.setState({
+      show: false,
+      moreInfo: {}
+    })
+  }
+
+  returnData = (data, page) => {
+    // single page of an audition's id to populate state and then show more info.
+    console.log(page)
+    if (data) {
+      this.setState({
+        moreInfo: data,
+        show: true,
+        page: page
+      })
+    }
+  };
 
   // TO DO:
   // 1. Decide where to put the space rental button
@@ -21,7 +56,7 @@ class Home extends Component {
         <Hero />
         <Container>
           <div className="preview">
-            
+
             <Row>
               <Col md="12" lg="4">
                 <ClassesPreview />
@@ -34,7 +69,10 @@ class Home extends Component {
               <Col md="12" lg="4">
                 <Row>
                   <Col md="12">
-                    <AuditionPreview />
+                    <AuditionPreview
+                      returnData={this.returnData}
+                      page="Audition"
+                    />
                   </Col>
                 </Row>
               </Col>
@@ -47,7 +85,12 @@ class Home extends Component {
               <SpaceBanner />
             </Col>
           </Row>
-
+          <MoreInfo
+            page="Audition"
+            show={this.state.show}
+            onHide={this.handleClose}
+            moreInfo={this.state.moreInfo}
+          />
         </Container>
       </div >
     )
