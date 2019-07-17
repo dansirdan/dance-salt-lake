@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { AuthConsumer } from "../AuthContext";
 import { Input, FormBtn } from "../Form";
 import { NavDropdown, Nav, Button } from 'react-bootstrap';
+import { LinkContainer } from 'react-router-bootstrap'
 import { Dropdown } from "../Form";
 import Login from "../Login";
 import "./style.css";
@@ -20,57 +21,57 @@ export function TinyLogo() {
 
 export function ClassNav() {
   return (
-    <Nav.Link href="/class">
+    <Link tag={Link} to="/class">
       Class
-    </Nav.Link>
+    </Link>
   )
 };
 
 export function PerformanceNav() {
   return (
-    <Nav.Link href="/performance">
+    <Link tag={Link} to="/performance">
       Performance
-    </Nav.Link>
+    </Link>
   )
 };
 
 export function AuditionNav() {
   return (
-    <Nav.Link href="/audition">
+    <Link tag={Link} to="/audition">
       Audition
-    </Nav.Link>
+    </Link>
   )
 };
 
 export function UsersHomeNav() {
   return (
-    <Nav.Link href="/usershome">
+    <Link tag={Link} to="/usershome">
       Users Home
-    </Nav.Link>
+    </Link>
   )
 };
 
 export function AboutNav() {
   return (
-    <Nav.Link href="/about">
+    <Link tag={Link} to="/about">
       About
-    </Nav.Link>
+    </Link>
   )
 };
 
 export function LoginNav() {
   return (
-    <Nav.Link href="/login">
+    <Link tag={Link} to="/login">
       Login
-    </Nav.Link>
+    </Link>
   )
 };
 
 export function RegisterNav() {
   return (
-    <Nav.Link href="/register">
+    <Link tag={Link} to="/register">
       Register
-    </Nav.Link>
+    </Link>
   )
 };
 
@@ -87,7 +88,7 @@ export function DropdownNavSO() {
         <NavDropdown.Item as="p">
           Need and account? <br />Click here to register
           </NavDropdown.Item>
-        <NavDropdown.Item as={Button} href="/register">Register</NavDropdown.Item>
+        <NavDropdown.Item as={Button} tag={Link} to="/register">Register</NavDropdown.Item>
       </div>
 
     </NavDropdown>
