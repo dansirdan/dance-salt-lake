@@ -1,11 +1,7 @@
 import React, { Component } from "react";
 import { Input, FormBtn } from "../Form";
-<<<<<<< HEAD
 import { Dropdown } from 'react-bootstrap';
-const axios = require("axios");
-=======
 import { AuthConsumer } from "../AuthContext"
->>>>>>> master
 
 class Login extends Component {
   // Definining State to Hold Info

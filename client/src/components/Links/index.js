@@ -1,4 +1,4 @@
-import React from "react";
+import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import { AuthConsumer } from "../AuthContext";
 import { Input, FormBtn } from "../Form";
@@ -80,7 +80,7 @@ export function DropdownNavSO() {
 
   return (
     <NavDropdown title="Create Account" id="dropdown-btn" alignRight>
-      
+
       <Login />
       <NavDropdown.Divider />
       <div className="register-link">
