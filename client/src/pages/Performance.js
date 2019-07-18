@@ -88,6 +88,7 @@ class Performance extends Component {
   queryCall = (postType, param) => {
     API.getQueryPosts(postType, param)
       .then(res => {
+        console.log(res);
         this.setState({ queryResults: res.data })
       })
       .catch(err => console.log(err));

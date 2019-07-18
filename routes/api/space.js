@@ -10,4 +10,7 @@ router.route("/:id")
   .put(spaceController.update)
   .delete(spaceController.delete)
 
+router.route("/filter/")
+  .post(spaceController.findAllWhere)
+
 module.exports = router;

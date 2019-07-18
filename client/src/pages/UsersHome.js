@@ -25,7 +25,8 @@ class UsersHome extends Component {
                   user={user} />
               </Jumbotron>
             </div>
-            <EditPosts />
+            <EditPosts
+              user={user} />
           </>
         )}
       </AuthConsumer>
