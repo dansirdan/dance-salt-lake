@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { BrowserRouter as Router, Route, Switch, Redirect } from 'react-router-dom'
+import { BrowserRouter as Router, Route, Switch, Redirect, Link } from 'react-router-dom'
 import { AuthProvider, AuthConsumer } from './components/AuthContext'
 import Home from "./pages/Home";
 import About from "./pages/About";
@@ -75,11 +75,16 @@ class App extends Component {
               exact path="/"
               render={(props) => (
                 <AuthConsumer>
-                  {({ sessions }) => (
-                    <Home {...props}
-                      handleShow={this.handleShow}
-                      sessions={sessions}
-                    />
+                  {({ isAuth, loggedOut, sessions }) => (
+                    isAuth ?
+                      <Redirect to="/usershome"></Redirect>
+                      : loggedOut ?
+                        <Link to="/home"></Link>
+                        :
+                        <Home {...props}
+                          handleShow={this.handleShow}
+                          sessions={sessions}
+                        />
                   )}
                 </AuthConsumer>
               )}

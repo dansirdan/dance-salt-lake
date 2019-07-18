@@ -34,7 +34,9 @@ class Class extends Component {
         level: "",
         payment: "",
         time: "",
-        date: ""
+        date: "",
+        // lat: "",
+        // lng: ""
       }
     }
   }
@@ -80,10 +82,10 @@ class Class extends Component {
   stringifyParams = (obj) => {
     // removes props when the value is 0 - i.e., when the dropdown selects the default or "all" option
     Object.keys(obj).forEach((key) => (obj[key] === "0") && delete obj[key]);
-    
+
     const stringified = queryString.stringify(obj)
     const query = "?" + stringified;
-    
+
     this.queryCall("classes", query);
   }
 

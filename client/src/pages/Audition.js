@@ -34,7 +34,9 @@ class Audition extends Component {
         payment: "",
         time: "",
         date: "",
-        link: ""
+        link: "",
+        // lat: "",
+        // lng: ""
       }
     }
   }
@@ -77,14 +79,14 @@ class Audition extends Component {
     let currentParams = this.state.filterParams
     let newParams = { ...currentParams, ...param }
 
-    this.setState({ filterParams: newParams }, () => this.stringifyParams(this.state.filterParams));  
+    this.setState({ filterParams: newParams }, () => this.stringifyParams(this.state.filterParams));
   };
-  
+
   // converts filterParams object to query string and calls queryCall function
   stringifyParams = (obj) => {
     // removes props when the value is 0 - i.e., when the dropdown selects the default or "all" option
     Object.keys(obj).forEach((key) => (obj[key] === "0") && delete obj[key]);
-    
+
     const stringified = queryString.stringify(obj)
     const query = "?" + stringified;
 
