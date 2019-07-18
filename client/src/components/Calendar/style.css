@@ -5,7 +5,7 @@
   margin-bottom: 10rem;
 }
 .calendar-section_content {
-  background-color: #ddd;
+  background-color: #d0d9e0;
   padding: 3rem;
   max-width: 960px;
   margin: 0 auto;
@@ -16,7 +16,7 @@
 .active-date {
   position: absolute;
   bottom: .5rem;
-  background-color: #ddd;
+  background-color: #d0d9e0;
   border-radius: 25px;
   width: 67%;
   height: .3rem;

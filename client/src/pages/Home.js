@@ -59,7 +59,10 @@ class Home extends Component {
 
             <Row>
               <Col md="12" lg="4">
-                <ClassesPreview />
+                <ClassesPreview 
+                  returnData={this.returnData}
+                  page="Class"
+                  />
               </Col>
 
               <Col md="12" lg="4">

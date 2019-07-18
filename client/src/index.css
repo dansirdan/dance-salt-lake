@@ -116,6 +116,13 @@ ul, li {
 .show>.btn-success.dropdown-toggle:focus {
     box-shadow: 0 0 0 0.2rem  rgba(124,165,197, .5);
 }
+.btn-primary:not(:disabled):not(.disabled).active, 
+.btn-primary:not(:disabled):not(.disabled):active, 
+.show>.btn-primary.dropdown-toggle {
+  color: #fff;
+  background-color: #5692c1;
+  border-color: #5692c1;
+}
 .btn-primary:focus,
 .btn-success:focus {
   box-shadow: 0 0 0 0.2rem rgba(124,165,197, .5);

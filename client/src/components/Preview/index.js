@@ -61,8 +61,8 @@ export class ClassesPreview extends Component {
 
         {this.state.classData.map(klass => {
           return (
-            <Card key={klass.id} as="a" >
-              <Card.Body>
+            <Card key={klass.id}>
+              <Card.Body as="a" onClick={() => this.handleShow(klass.id)}>
                 <Container>
                   <Row className="justify-content-xs-center">
                     <Col lg="4" md="3" xs="6">

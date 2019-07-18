@@ -36,9 +36,10 @@ nav .nav-item {
 .dropdown .navbar-nav a {
   margin: 0;
 }
-.login {
-  margin-top: 1rem;
-  margin-bottom: 3rem;
+.register-link,
+ .auth-dropdown  {
+  padding: .7rem 2rem;
+  text-align: center;
 }
 .register-link .dropdown-item {
   text-align: center;
@@ -64,11 +65,12 @@ nav .nav-item {
     text-decoration: none;
     background-color: #eee;
 }
-.dropdown-item:focus, .dropdown-item:hover {
+/* .dropdown-item:focus, 
+.dropdown-item:hover {
     color: #16181b;
     text-decoration: none;
     background-color: #fff;
-}
+} */
 
 /* FOOTER */
 footer {
@@ -77,7 +79,7 @@ footer {
   height: 100%;
   padding: 1rem;
   padding-top: 1.5rem;
-  background-color: #ddd;
+  background-color: #d0d9e0;;
 }
 
 @media (max-width: 576px) { 
