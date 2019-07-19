@@ -5,32 +5,12 @@ import {
   Button,
   Row,
   Col,
-  Container,
-  Image,
-  Table
+  Container
 } from "react-bootstrap";
 import EditForm from "../EditForm";
-import moment from "moment";
 import "./style.css";
 
 class EditModal extends Component {
-  // constructor(props, context) {
-  //   super(props, context);
-
-  //   this.state = {
-  //     editType: ""
-  //   }
-  // }
-
-  // setData = (editType) => {
-  //   this.setState({
-  //     editType: editType
-  //   })
-  // }
-
-  // componentWillMount() {
-  //   this.setData(this.props.editType)
-  // }
 
   render() {
     return (

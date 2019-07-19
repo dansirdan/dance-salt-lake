@@ -25,7 +25,7 @@ class Register extends Component {
       let cityLat;
       let cityLon;
       let geoAddy = "138+Broadway,+Salt+Lake+City,+UT"
-      const geoKey = "AIzaSyBwWAv336FT-ttOosMGCDcROKAsq_rhkbA"
+      const geoKey = `${process.env.RREACT_APP_GOOGLE_API_KEY}`
       let geoQuery = `https://maps.googleapis.com/maps/api/geocode/json?address=${geoAddy}&key=${geoKey}`;
       axios.get(geoQuery)
         .then(response => {
