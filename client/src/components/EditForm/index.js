@@ -12,7 +12,6 @@ class EditForm extends Component {
     this.handleEditType = this.handleEditType.bind(this);
     this.handleInputChange = this.handleInputChange.bind(this);
     this.handleSelectEdit = this.handleSelectEdit.bind(this);
-    this.loadPrevious = this.loadPrevious.bind(this);
 
     this.state = {
       editType: "",
@@ -43,58 +42,76 @@ class EditForm extends Component {
     }
   }
 
-  loadPrevious = (editType, id) => {
-    switch (editType) {
+  componentDidMount() {
+    console.log(this.props);
+    switch (this.props.editType) {
       case "auditions":
-        API.getSinglePost(editType, id)
-          .then(res => {
-            console.log(res.data);
-            this.handleSelectEdit(editType)
-          })
-          .catch(err => {
-            console.log(err);
-            return (
-              <p>Error</p>
-            )
-          })
+        this.setState({
+          title: this.props.modalData.title,
+          lookingFor: this.props.modalData.lookingFor,
+          description: this.props.modalData.description,
+          text: this.props.modalData.auditionsNotes,
+          address: this.props.modalData.address,
+          lat: this.props.modalData.lat,
+          lng: this.props.modalData.lng,
+          gig: this.props.modalData.gig,
+          photoLink: this.props.modalData.photoLink,
+          link: this.props.modalData.url,
+          length: this.props.modalData.length,
+          payment: this.props.modalData.payment,
+          time: this.props.modalData.time,
+          date: this.props.modalData.date,
+          url: this.props.modalData.url
+        })
+        break;
       case "classes":
-        API.getSinglePost(editType, id)
-          .then(res => {
-            console.log(res.data);
-            this.handleSelectEdit(editType)
-          })
-          .catch(err => {
-            console.log(err);
-            return (
-              <p>Error</p>
-            )
-          })
+        this.setState({
+          title: this.props.modalData.title,
+          style: this.props.modalData.style,
+          master: this.props.modalData.value,
+          description: this.props.modalData.description,
+          address: this.props.modalData.address,
+          lat: this.props.modalData.lat,
+          lng: this.props.modalData.lng,
+          instructorName: this.props.modalData.instructorName,
+          photoLink: this.props.modalData.photoLink,
+          length: this.props.modalData.length,
+          level: this.props.modalData.level,
+          payment: this.props.modalData.payment,
+          time: this.props.modalData.time,
+          date: this.props.modalData.date,
+          url: this.props.modalData.url
+        })
         break;
       case "performances":
-        API.getSinglePost(editType, id)
-          .then(res => {
-            console.log(res.data);
-            this.handleSelectEdit(editType)
-          })
-          .catch(err => {
-            console.log(err);
-            return (
-              <p>Error</p>
-            )
-          })
+        this.setState({
+          title: this.props.modalData.title,
+          description: this.props.modalData.description,
+          address: this.props.modalData.address,
+          lat: this.props.modalData.lat,
+          lng: this.props.modalData.lng,
+          price: this.props.modalData.price,
+          photoLink: this.props.modalData.photoLink,
+          length: this.props.modalData.length,
+          payment: this.props.modalData.payment,
+          time: this.props.modalData.time,
+          date: this.props.modalData.date,
+          url: this.props.modalData.url,
+          special: this.props.modalData.special
+        })
         break;
       case "space":
-        API.getSinglePost(editType, id)
-          .then(res => {
-            console.log(res.data);
-            this.handleSelectEdit(editType)
-          })
-          .catch(err => {
-            console.log(err);
-            return (
-              <p>Error</p>
-            )
-          })
+        this.setState({
+          name: this.props.modalData.name,
+          rate: this.props.modalData.rate,
+          location: this.props.modalData.address,
+          squareFootage: this.props.modalData.squareFootage,
+          url: this.props.modalData.url,
+          numPeople: this.props.modalData.numPeople,
+          photoLink: this.props.modalData.photoLink,
+          description: this.props.modalData.description,
+          email: ""
+        })
         break;
 
       default:
@@ -451,11 +468,10 @@ class EditForm extends Component {
     }
   }
 
-
   render() {
     return (
       <form>
-        {this.loadPrevious(this.props.id)}
+        {this.handleSelectEdit(this.props.editType)}
       </form>
     )
   }

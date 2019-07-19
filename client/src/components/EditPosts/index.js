@@ -93,7 +93,7 @@ class EditPosts extends Component {
               <tbody>
                 {(classes.length > 0) ? classes.map(klass => {
                   return (
-                    <tr>
+                    <tr key={klass.id}>
                       <td><span className="light-text">{klass.title}</span></td>
                       <td><span className="light-text">{klass.instructorName}</span></td>
                       <td><span className="light-text">{klass.style}</span></td>
@@ -102,7 +102,7 @@ class EditPosts extends Component {
                       <td><span className="light-text">{moment(klass.time, "HH:mm:ss").format("h:mm A")}</span></td>
                       <td><span className="light-text">{moment(klass.date).format("MMM Do")}</span></td>
                       <td>
-                        <li><span className="light-text">Edit</span></li>
+                        <li><Button onClick={() => this.props.returnData({ id: klass.id, editType: "classes" })}>Edit</Button></li>
                         <li><span className="light-text">Copy</span></li>
                         <li><span className="light-text">Delete</span></li>
                       </td>
@@ -131,7 +131,7 @@ class EditPosts extends Component {
               <tbody>
                 {(performances.length > 0) ? performances.map(performance => {
                   return (
-                    <tr>
+                    <tr key={performance.id}>
                       <td><span className="light-text">{performance.title}</span></td>
                       <td><span className="light-text">{performance.description}</span></td>
                       <td><span className="light-text">{performance.address}</span></td>
@@ -139,7 +139,7 @@ class EditPosts extends Component {
                       <td><span className="light-text">{moment(performance.time, "HH:mm:ss").format("h:mm A")}</span></td>
                       <td><span className="light-text">{moment(performance.date).format("MMM Do")}</span></td>
                       <td>
-                        <li><span className="light-text">Edit</span></li>
+                        <li><Button onClick={() => this.props.returnData({ id: performance.id, editType: "performances" })}>Edit</Button></li>
                         <li><span className="light-text">Copy</span></li>
                         <li><span className="light-text">Delete</span></li>
                       </td>
@@ -168,7 +168,7 @@ class EditPosts extends Component {
               <tbody>
                 {(auditions.length > 0) ? auditions.map(audition => {
                   return (
-                    <tr>
+                    <tr key={audition.id}>
                       <td><span className="light-text">{audition.title}</span></td>
                       <td><span className="light-text">{audition.lookingFor}</span></td>
                       <td><span className="light-text">{audition.gig}</span></td>
@@ -176,7 +176,7 @@ class EditPosts extends Component {
                       <td><span className="light-text">{moment(audition.time, "HH:mm:ss").format("h:mm A")}</span></td>
                       <td><span className="light-text">{moment(audition.date).format("MMM Do")}</span></td>
                       <td>
-                        <li><span className="light-text">Edit</span></li>
+                        <li><Button onClick={() => this.props.returnData({ id: audition.id, editType: "auditions" })}>Edit</Button></li>
                         <li><span className="light-text">Copy</span></li>
                         <li><span className="light-text">Delete</span></li>
                       </td>
@@ -204,14 +204,14 @@ class EditPosts extends Component {
               <tbody>
                 {(spaces.length > 0) ? spaces.map(space => {
                   return (
-                    <tr>
+                    <tr key={space.id}>
                       <td><span className="light-text">{space.name}</span></td>
                       <td><span className="light-text">{space.rate}</span></td>
                       <td><span className="light-text">{space.squareFootage}</span></td>
                       <td><span className="light-text">{space.numPeople}</span></td>
                       <td><span className="light-text">{space.email}</span></td>
                       <td>
-                        <li><span className="light-text">Edit</span></li>
+                        <li><Button onClick={() => this.props.returnData({ id: space.id, editType: "space" })}>Edit</Button></li>
                         <li><span className="light-text">Copy</span></li>
                         <li><span className="light-text">Delete</span></li>
                       </td>

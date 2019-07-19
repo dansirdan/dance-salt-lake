@@ -14,23 +14,23 @@ import moment from "moment";
 import "./style.css";
 
 class EditModal extends Component {
-  constructor(props, context) {
-    super(props, context);
+  // constructor(props, context) {
+  //   super(props, context);
 
-    this.state = {
-      editType: ""
-    }
-  }
+  //   this.state = {
+  //     editType: ""
+  //   }
+  // }
 
-  setData = (editType) => {
-    this.setState({
-      editType: editType
-    })
-  }
+  // setData = (editType) => {
+  //   this.setState({
+  //     editType: editType
+  //   })
+  // }
 
-  componentWillMount() {
-    this.setData(this.props.editType)
-  }
+  // componentWillMount() {
+  //   this.setData(this.props.editType)
+  // }
 
   render() {
     return (
@@ -49,9 +49,13 @@ class EditModal extends Component {
             <span>&times;</span>
           </Button>
         </Modal.Header>
-        <EditForm
-          id={this.props.id}
-        />
+        <Modal.Body>
+          <EditForm
+            editId={this.props.editId}
+            editType={this.props.editType}
+            modalData={this.props.modalData}
+          />
+        </Modal.Body>
         <Modal.Footer>
           <Button variant="secondary" onClick={this.props.onHide}>
             Close

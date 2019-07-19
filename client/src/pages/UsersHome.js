@@ -1,8 +1,10 @@
 import React, { Component } from 'react';
-import { Jumbotron } from "../components/Sections"
-import Post from "../components/Post"
-import EditPosts from "../components/EditPosts"
+import { Jumbotron } from "../components/Sections";
+import Post from "../components/Post";
+import EditPosts from "../components/EditPosts";
+import EditModal from "../components/EditModal";
 import { AuthConsumer } from '../components/AuthContext';
+import API from '../utils/API';
 
 class UsersHome extends Component {
   constructor(props, context) {
@@ -16,7 +18,8 @@ class UsersHome extends Component {
       show: false,
       date: new Date(),
       editId: "",
-      editType: ""
+      editType: "",
+      modalData: {}
     }
   }
 
@@ -27,19 +30,26 @@ class UsersHome extends Component {
   handleClose() {
     this.setState({
       show: false,
-      editId: ""
+      editId: "",
+      modalData: {}
     })
   }
 
-  returnData = data => {
+  returnData = (data) => {
     // single page of an audition's id to populate state and then show more info.
-    if (data) {
-      this.setState({
-        editId: data.id,
-        show: true,
-        editType: data.editType
+
+    API.getSinglePost(data.editType, data.id)
+      .then(res => {
+        console.log(res);
+        console.log(res.data)
+        this.setState({
+          show: true,
+          editType: data.editType,
+          modalData: res.data
+        })
+
       })
-    }
+      .catch(err => console.log(err))
   };
 
   render() {
@@ -60,6 +70,12 @@ class UsersHome extends Component {
             <EditPosts
               user={user}
               returnData={this.returnData}
+            />
+            <EditModal
+              show={this.state.show}
+              onHide={this.handleClose}
+              modalData={this.state.modalData}
+              editType={this.state.editType}
             />
           </>
         )}
