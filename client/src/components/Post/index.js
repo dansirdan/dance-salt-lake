@@ -1,5 +1,6 @@
 import React, { Component } from "react";
-import { Form, Input, Dropdown, TextArea, Checkbox, FormBtn } from "../Form";
+import { Input, Dropdown, TextArea, Checkbox, FormBtn } from "../Form";
+import { Form } from "react-bootstrap"
 import API from "../../utils/API";
 import axios from "axios";
 
@@ -401,7 +402,8 @@ class Post extends Component {
   render() {
     return (
       // form with POST method and route adjusting to postType value
-      <form>
+      // validated={validated} onSubmit={handleSubmit}>
+      <Form> 
 
         {/* <Input
           name="user-id"
@@ -424,7 +426,7 @@ class Post extends Component {
 
         {this.renderInputs()}
 
-      </form>
+      </Form>
     )
   }
 }
