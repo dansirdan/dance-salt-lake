@@ -186,13 +186,6 @@ class Post extends Component {
           placeholder="Image link"
         />
         <Input
-          value={this.state.length}
-          onChange={this.handleInputChange}
-          name="length"
-          type="text"
-          placeholder="Duration"
-        />
-        <Input
           value={this.state.date}
           onChange={this.handleInputChange}
           name="date"
@@ -244,14 +237,33 @@ class Post extends Component {
               placeholder="Looking For"
             />
             <Dropdown
+              value={this.state.lookingFor}
+              onChange={this.handleInputChange}
+              name="lookingFor"
+            >
+              <option>Gig Type</option>
+              <option value="Men">Men</option>
+              <option value="Women">Women</option>
+              <option value="Both">Men/Women</option>
+              <option value="Any">Any</option>
+              <option value="Other">Other</option>
+            </Dropdown>
+            <Input
+              value={this.state.length}
+              onChange={this.handleInputChange}
+              name="length"
+              type="number"
+              placeholder="Duration"
+            />
+            <Dropdown
               value={this.state.gig}
               onChange={this.handleInputChange}
               name="gig"
             >
               <option>Gig Type</option>
-              <option value="contract">Contract</option>
-              <option value="project">Project Based</option>
-              <option value="fulltime">Fulltime</option>
+              <option value="Month">Months</option>
+              <option value="Year">Year</option>
+              <option value="Years">Years</option>
             </Dropdown>
             <TextArea
               value={this.state.auditionsNotes}

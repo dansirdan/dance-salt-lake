@@ -162,6 +162,18 @@ code {
   margin-top: 6rem;
   justify-content: space-between;
 }
+.line-one {
+  width:25%;
+  background: linear-gradient(to top right, #fff calc(50% - 1px), #aaa, #fff calc(50% + 1px) )
+}
+.line-two {
+  width:25%;
+  background: linear-gradient(to top right, #fff calc(50% - 1px), #aaa, #fff calc(50% + 1px) )
+}
+.line-three {
+  width:25%;
+  background: linear-gradient(to top right, #fff calc(50% - 1px), #aaa, #fff calc(50% + 1px) )
+}
 @media (max-width: 768px) { 
   .about-section__img--first,
   .about-section__img--second {

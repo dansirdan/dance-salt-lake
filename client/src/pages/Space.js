@@ -26,7 +26,7 @@ class Space extends Component {
             <Col md="12" lg="8">
               <Banner className="register-section">
                 <h3>Studio Space</h3>
-                <h6>Explore available studio space.</h6>
+                <h6>Explore available studio space</h6>
               </Banner>
             </Col>
           </Row>
