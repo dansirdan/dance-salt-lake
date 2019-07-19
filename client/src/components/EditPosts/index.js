@@ -85,8 +85,8 @@ class EditPosts extends Component {
                   <th><p className="accent-text">Style</p></th>
                   <th><p className="accent-text">Level</p></th>
                   <th><p className="accent-text">Length</p></th>
-                  <th><p className="accent-text">Time</p></th>
                   <th><p className="accent-text">Date</p></th>
+                  <th><p className="accent-text">Time</p></th>
                   <th><p className="accent-text">Actions</p></th>
                 </tr>
               </thead>
@@ -99,12 +99,12 @@ class EditPosts extends Component {
                       <td><span className="light-text">{klass.style}</span></td>
                       <td><span className="light-text">{klass.level}</span></td>
                       <td><span className="light-text">{klass.length}</span></td>
-                      <td><span className="light-text">{moment(klass.time, "HH:mm:ss").format("h:mm A")}</span></td>
                       <td><span className="light-text">{moment(klass.date).format("MMM Do")}</span></td>
+                      <td><span className="light-text">{moment(klass.time, "HH:mm:ss").format("h:mm A")}</span></td>
                       <td>
                         <li><Button onClick={() => this.props.returnData({ id: klass.id, editType: "classes" })}>Edit</Button></li>
-                        <li><span className="light-text">Copy</span></li>
-                        <li><span className="light-text">Delete</span></li>
+                        <li><Button onClick={() => this.props.copyData({ id: klass.id, editType: "classes" })}>Copy</Button></li>
+                        <li><Button onClick={() => this.props.deleteData({ id: klass.id, editType: "classes" })}>Delete</Button></li>
                       </td>
                     </tr>
                   )
@@ -123,8 +123,8 @@ class EditPosts extends Component {
                   <th><p className="accent-text">Description</p></th>
                   <th><p className="accent-text">Address</p></th>
                   <th><p className="accent-text">Price</p></th>
-                  <th><p className="accent-text">Time</p></th>
                   <th><p className="accent-text">Date</p></th>
+                  <th><p className="accent-text">Time</p></th>
                   <th><p className="accent-text">Actions</p></th>
                 </tr>
               </thead>
@@ -136,12 +136,12 @@ class EditPosts extends Component {
                       <td><span className="light-text">{performance.description}</span></td>
                       <td><span className="light-text">{performance.address}</span></td>
                       <td><span className="light-text">{performance.price}</span></td>
-                      <td><span className="light-text">{moment(performance.time, "HH:mm:ss").format("h:mm A")}</span></td>
                       <td><span className="light-text">{moment(performance.date).format("MMM Do")}</span></td>
+                      <td><span className="light-text">{moment(performance.time, "HH:mm:ss").format("h:mm A")}</span></td>
                       <td>
                         <li><Button onClick={() => this.props.returnData({ id: performance.id, editType: "performances" })}>Edit</Button></li>
-                        <li><span className="light-text">Copy</span></li>
-                        <li><span className="light-text">Delete</span></li>
+                        <li><Button onClick={() => this.props.copyData({ id: performance.id, editType: "performances" })}>Copy</Button></li>
+                        <li><Button onClick={() => this.props.deleteData({ id: performance.id, editType: "performances" })}>Delete</Button></li>
                       </td>
                     </tr>
                   )
@@ -160,8 +160,8 @@ class EditPosts extends Component {
                   <th><p className="accent-text">Looking For</p></th>
                   <th><p className="accent-text">Contract</p></th>
                   <th><p className="accent-text">Length</p></th>
-                  <th><p className="accent-text">Time</p></th>
                   <th><p className="accent-text">Date</p></th>
+                  <th><p className="accent-text">Time</p></th>
                   <th><p className="accent-text">Actions</p></th>
                 </tr>
               </thead>
@@ -173,12 +173,12 @@ class EditPosts extends Component {
                       <td><span className="light-text">{audition.lookingFor}</span></td>
                       <td><span className="light-text">{audition.gig}</span></td>
                       <td><span className="light-text">{audition.length}</span></td>
-                      <td><span className="light-text">{moment(audition.time, "HH:mm:ss").format("h:mm A")}</span></td>
                       <td><span className="light-text">{moment(audition.date).format("MMM Do")}</span></td>
+                      <td><span className="light-text">{moment(audition.time, "HH:mm:ss").format("h:mm A")}</span></td>
                       <td>
                         <li><Button onClick={() => this.props.returnData({ id: audition.id, editType: "auditions" })}>Edit</Button></li>
-                        <li><span className="light-text">Copy</span></li>
-                        <li><span className="light-text">Delete</span></li>
+                        <li><Button onClick={() => this.props.copyData({ id: audition.id, editType: "auditions" })}>Copy</Button></li>
+                        <li><Button onClick={() => this.props.deleteData({ id: audition.id, editType: "auditions" })}>Delete</Button></li>
                       </td>
                     </tr>
                   )
