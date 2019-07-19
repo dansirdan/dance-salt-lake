@@ -2,10 +2,16 @@
   width: 100%;
   padding: 4vw 8vw;
   background-color: #eee;
+  /* background-color: #d0d9e0; */
+  /* background-color: #696464; */
   margin-bottom: 10rem;
+  border-bottom: 1px solid #ddd;
+  border-top: 1px solid #ddd;
 }
 .calendar-section_content {
-  background-color: #ddd;
+  /* background-color: #d0d9e0; */
+  /* background-color: #696464; */
+  /* background-color: #eee; */
   padding: 3rem;
   max-width: 960px;
   margin: 0 auto;
@@ -16,7 +22,7 @@
 .active-date {
   position: absolute;
   bottom: .5rem;
-  background-color: #ddd;
+  background-color: #d0d9e0;
   border-radius: 25px;
   width: 67%;
   height: .3rem;
