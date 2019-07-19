@@ -27,7 +27,6 @@ class MoreInfo extends Component {
     this.setState({
       page: page
     })
-    console.log(this.state.moreInfo)
   }
 
   componentWillMount() {
