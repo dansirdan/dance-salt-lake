@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { Input, Dropdown, TextArea, Checkbox, FormBtn } from "../Form";
-import { Form } from "react-bootstrap"
+import { Row, Col, Form, InputGroup } from "react-bootstrap"
 import API from "../../utils/API";
 import axios from "axios";
 
@@ -12,7 +12,7 @@ class Post extends Component {
     this.handlePostType = this.handlePostType.bind(this);
     this.handleInputChange = this.handleInputChange.bind(this);
     this.handleSelectChange = this.handleSelectChange.bind(this);
-
+    
     this.state = {
       postType: '',
       lookingFor: '',
@@ -161,6 +161,7 @@ class Post extends Component {
       [name]: value
     });
   };
+ 
 
   dateTimeLocation() {
     return (
@@ -171,6 +172,32 @@ class Post extends Component {
           name="title"
           type="text"
           placeholder="Title"
+        />
+        <Input
+          value={this.state.date}
+          onChange={this.handleInputChange}
+          name="date"
+          type="date"
+          defaultValue="2019-07-01" //remove after testing
+        />
+        <Input
+          value={this.state.time}
+          onChange={this.handleInputChange}
+          name="starTime"
+          type="time"
+        />
+        <Input
+          value={this.state.time}
+          onChange={this.handleInputChange}
+          name="endTime"
+          type="time"
+        />
+        <Input
+          value={this.state.address}
+          onChange={this.handleInputChange}
+          name="address"
+          type="text"
+          placeholder="Address"
         />
         <TextArea
           value={this.state.description}
@@ -187,31 +214,19 @@ class Post extends Component {
           placeholder="Image link"
         />
         <Input
-          value={this.state.date}
+          value={this.state.length}
           onChange={this.handleInputChange}
-          name="date"
-          type="date"
-          defaultValue="2019-07-01" //remove after testing
+          name="length"
+          type="text"
+          placeholder="Duration"
         />
-        <Input
-          value={this.state.time}
-          onChange={this.handleInputChange}
-          name="time"
-          type="time"
-        />
+
         <Input
           value={this.state.payment}
           onChange={this.handleInputChange}
           name="payment"
           type="text"
           placeholder="Payment Method"
-        />
-        <Input
-          value={this.state.address}
-          onChange={this.handleInputChange}
-          name="address"
-          type="text"
-          placeholder="Address"
         />
         <Input
           value={this.state.url}
@@ -229,50 +244,230 @@ class Post extends Component {
       case "auditions":
         return (
           <>
-            {this.dateTimeLocation()}
-            <Input
-              value={this.state.lookingFor}
-              onChange={this.handleInputChange}
-              name="lookingFor"
-              type="text"
-              placeholder="Looking For"
-            />
-            <Dropdown
-              value={this.state.lookingFor}
-              onChange={this.handleInputChange}
-              name="lookingFor"
-            >
-              <option>Gig Type</option>
-              <option value="Men">Men</option>
-              <option value="Women">Women</option>
-              <option value="Both">Men/Women</option>
-              <option value="Any">Any</option>
-              <option value="Other">Other</option>
-            </Dropdown>
-            <Input
-              value={this.state.length}
-              onChange={this.handleInputChange}
-              name="length"
-              type="number"
-              placeholder="Duration"
-            />
-            <Dropdown
-              value={this.state.gig}
-              onChange={this.handleInputChange}
-              name="gig"
-            >
-              <option>Gig Type</option>
-              <option value="Month">Months</option>
-              <option value="Year">Year</option>
-              <option value="Years">Years</option>
-            </Dropdown>
-            <TextArea
-              value={this.state.auditionsNotes}
-              onChange={this.handleInputChange}
-              name="audtioNotes"
-              type="text"
-              placeholder="Notes"
-            />
+            <Form.Row>
+              <Form.Group as={Col} md="8" controlId="">
+                <InputGroup>
+                  <InputGroup.Prepend>
+                    <InputGroup.Text>Title</InputGroup.Text>
+                  </InputGroup.Prepend>
+                  <Form.Control
+                    required
+                    value={this.state.title}
+                    type="text"
+                    placeholder="Title"
+                    name="title"
+                    onChange={this.handleInputChange}
+                  />
+                  <Form.Control.Feedback>Looks good!</Form.Control.Feedback>
+                </InputGroup>
+
+              </Form.Group>
+            </Form.Row>
+
+            <Form.Row>
+              <Form.Group as={Col} md="4" controlId="">
+                <InputGroup>
+                  <InputGroup.Prepend>
+                    <InputGroup.Text>Date</InputGroup.Text>
+                  </InputGroup.Prepend>
+                  <Form.Control
+                    required
+                    value={this.state.date}
+                    type="date"
+                    placeholder="Date"
+                    name="date"
+                    onChange={this.handleInputChange}
+                  />
+                  <Form.Control.Feedback>Looks good!</Form.Control.Feedback>
+                </InputGroup>
+
+              </Form.Group>
+
+              <Form.Group as={Col} md="4" controlId="">
+                <InputGroup>
+                  <InputGroup.Prepend>
+                    <InputGroup.Text>Time</InputGroup.Text>
+                  </InputGroup.Prepend>
+                  <InputGroup.Prepend>
+                    <Form.Control
+                      required
+                      value={this.state.startTime}
+                      type="time"
+                      placeholder="Start Time"
+                      name="startTime"
+                      onChange={this.handleInputChange}
+                    />
+                    <Form.Control.Feedback>Looks good!</Form.Control.Feedback>
+                  </InputGroup.Prepend>
+                  <Form.Control
+                    required
+                    value={this.state.endTime}
+                    type="time"
+                    placeholder="End Time"
+                    name="endTime"
+                    onChange={this.handleInputChange}
+                  />
+                  <Form.Control.Feedback>Looks good!</Form.Control.Feedback>
+                </InputGroup>
+              </Form.Group>
+            </Form.Row>
+
+            <Form.Row>
+              <Form.Group as={Col} md="8" controlId="">
+                <InputGroup>
+                  <InputGroup.Prepend>
+                    <InputGroup.Text>Address</InputGroup.Text>
+                  </InputGroup.Prepend>
+                  <Form.Control
+                    required
+                    value={this.state.address}
+                    type="text"
+                    placeholder="Address"
+                    name="address"
+                    onChange={this.handleInputChange}
+                  />
+                  <Form.Control.Feedback>Looks good!</Form.Control.Feedback>
+
+                  <Form.Control
+                    required
+                    value={this.state.city}
+                    type="text"
+                    placeholder="City"
+                    name="city"
+                    onChange={this.handleInputChange}
+                  />
+                  <Form.Control.Feedback>Looks good!</Form.Control.Feedback>
+
+                  <Form.Control
+                    required
+                    value={this.state.state}
+                    type="text"
+                    placeholder="State"
+                    name="state"
+                    onChange={this.handleInputChange}
+                  />
+                  <Form.Control.Feedback>Looks good!</Form.Control.Feedback>
+                </InputGroup>
+              </Form.Group>
+            </Form.Row>
+
+            <Form.Row>
+              <Form.Group as={Col} md="8" controlId="">
+                <InputGroup>
+                  <InputGroup.Prepend>
+                    <InputGroup.Text>Looking For:</InputGroup.Text>
+                  </InputGroup.Prepend>
+                  <InputGroup.Prepend>
+                    <Form.Control
+                      required
+                      value={this.state.number}
+                      type="number"
+                      placeholder="Number of:"
+                      name="number"
+                      onChange={this.handleInputChange}
+                    />
+                    <Form.Control.Feedback>Looks good!</Form.Control.Feedback>
+                  </InputGroup.Prepend>
+                  <InputGroup.Prepend>
+                    <Form.Control
+                      as="select"
+                      required
+                      value={this.state.lookingFor}
+                      name="lookingFor"
+                      onChange={this.handleInputChange}
+                    >
+                      <option value="Men">Men</option>
+                      <option value="Women">Women</option>
+                      <option value="Both">Both</option>
+                      <option value="Any">Any</option>
+                    </Form.Control>
+                    <Form.Control.Feedback>Looks good!</Form.Control.Feedback>
+                  </InputGroup.Prepend>
+                </InputGroup>
+              </Form.Group>
+            </Form.Row>
+
+            <Form.Row>
+              <Form.Group as={Col} md="8" controlId="">
+                <InputGroup>
+                  <InputGroup.Prepend>
+                    <InputGroup.Text>Contract Length:</InputGroup.Text>
+                  </InputGroup.Prepend>
+                  <InputGroup.Prepend>
+                    <Form.Control
+                      required
+                      value={this.state.number}
+                      type="number"
+                      placeholder="Number of:"
+                      name="number"
+                      onChange={this.handleInputChange}
+                    />
+                    <Form.Control.Feedback>Looks good!</Form.Control.Feedback>
+                  </InputGroup.Prepend>
+                  <InputGroup.Prepend>
+                    <Form.Control
+                      as="select"
+                      required
+                      value={this.state.lookingFor}
+                      name="lookingFor"
+                      onChange={this.handleInputChange}
+                    >
+                      <option value="Month Contract">Month Contract</option>
+                      <option value="Year Contract">Year Contract</option>
+                    </Form.Control>
+                    <Form.Control.Feedback>Looks good!</Form.Control.Feedback>
+                  </InputGroup.Prepend>
+                </InputGroup>
+              </Form.Group>
+            </Form.Row>
+
+            <Form.Row>
+              <Form.Group as={Col} md="8" controlId="">
+                <InputGroup>
+                  <InputGroup.Prepend>
+                    <InputGroup.Text>Description</InputGroup.Text>
+                  </InputGroup.Prepend>
+                  <Form.Control
+                    required
+                    type="text"
+                    value={this.state.description}
+                    name="description"
+                    onChange={this.handleInputChange}
+                  />
+                  <Form.Control.Feedback>Looks good!</Form.Control.Feedback>
+                </InputGroup>
+              </Form.Group>
+            </Form.Row>
+
+            <Form.Row>
+              <Form.Group as={Col} md="8" controlId="">
+                <InputGroup>
+                  <InputGroup.Prepend>
+                    <InputGroup.Text>Links</InputGroup.Text>
+                  </InputGroup.Prepend>
+                  <Form.Control
+                    required
+                    type="text"
+                    value={this.state.description}
+                    name="description"
+                    placeholder="Image Link"
+                    onChange={this.handleInputChange}
+                  />
+                  <Form.Control.Feedback>Looks good!</Form.Control.Feedback>
+
+                  <Form.Control
+                    required
+                    type="text"
+                    value={this.state.description}
+                    name="description"
+                    placeholder="Website URL"
+                    onChange={this.handleInputChange}
+                  />
+                  <Form.Control.Feedback>Looks good!</Form.Control.Feedback>
+                </InputGroup>
+              </Form.Group>
+            </Form.Row>
+
             <FormBtn
               // disabled={!(this.state.email && this.state.password)}
               onClick={this.handlePosts}
@@ -414,8 +609,7 @@ class Post extends Component {
   render() {
     return (
       // form with POST method and route adjusting to postType value
-      // validated={validated} onSubmit={handleSubmit}>
-      <Form> 
+      <Form>
 
         {/* <Input
           name="user-id"
