@@ -14,23 +14,23 @@ class Post extends Component {
   handleSelectChange = (event) => {
     // set value
     event.preventDefault();
-    this.setState({ postType: event.target.value})        
+    this.setState({ postType: event.target.value })
   }
 
   renderInputs = () => {
     switch (this.state.postType) {
       case "auditions":
         return <Audition />;
-  
+
       case "classes":
         return <Class />;
-  
+
       case "performances":
         return <Performance />;
 
       case "space":
         return <Space />;
-      
+
       default:
         break
     }
