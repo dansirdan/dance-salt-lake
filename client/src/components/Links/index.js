@@ -97,11 +97,9 @@ export function DropdownNavSO() {
     <NavDropdown title="Create Account" id="dropdown-btn" alignRight>
 
       <Login />
-      <NavDropdown.Divider />
       <div className="register-link">
-        <NavDropdown.Item as="p">
-          Need and account? <br />Click here to register
-          </NavDropdown.Item>
+      <NavDropdown.Divider />
+        <p>Need and account? <br />Click here to register</p>
         <LinkContainer to="/register">
           <NavDropdown.Item as={Button}>Register</NavDropdown.Item>
         </LinkContainer>
@@ -120,20 +118,20 @@ export class DropdownNavSI extends Component {
   render() {
     return (
       <NavDropdown title="Account" alignRight id="dropdown-btn">
-
-        <NavDropdown.Item as={Link} to="/usershome">Manage Account</NavDropdown.Item>
-        <NavDropdown.Divider />
-        <AuthConsumer>
-          {({ logout }) => (
-            <NavDropdown.Item
-              as={FormBtn}
-              onClick={(e) => this.handleLogout(logout, e)}
-            >
-              Logout
-          </NavDropdown.Item>
-          )}
-        </AuthConsumer>
-
+        <div className="register-link">
+          <NavDropdown.Item as={Link} to="/usershome">Manage Account</NavDropdown.Item>
+          {/* <NavDropdown.Divider /> */}
+          <AuthConsumer>
+            {({ logout }) => (
+              <NavDropdown.Item
+                as={Link}
+                onClick={(e) => this.handleLogout(logout, e)}
+              >
+                Logout
+            </NavDropdown.Item>
+            )}
+          </AuthConsumer>
+        </div>
       </NavDropdown>
     )
   }

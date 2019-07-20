@@ -15,7 +15,7 @@
   background-color: #fff;
 }
 .card-header:hover {
-  background-color: rgba(0, 0, 0, .04);
+  background-color: #f8f9fa;
 }
 /* TYPOGRAPHY */
 .preview h3 {
@@ -28,7 +28,7 @@
 }
 /* CLASS */
 .class-preview .card:hover {
-  background-color: rgba(0, 0, 0, .04);
+  background-color: #f8f9fa;
 }
 .class-preview .details {
   display: flex;

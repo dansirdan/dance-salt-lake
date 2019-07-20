@@ -2,6 +2,9 @@ import React, { Component } from 'react';
 import { Row, Col } from "react-bootstrap"
 import { Container } from "../components/Grid";
 
+import Post from "../components/Post"
+
+
 class About extends Component {
 
   // lifecycle method to handle Large Logo
@@ -19,6 +22,7 @@ class About extends Component {
     return (
       <div className="about-section">
 
+        <Post />
         <Container>
           <Row className="justify-content-md-center">
 
@@ -46,7 +50,7 @@ class About extends Component {
 
           <Row className="about-section">
             <Col md="4" className="about-section__img--first">
-              <img src="http://placehold.it/400x400" className="img-fluid rounded-circle" alt="aboutus" />
+              <img src="./img/headshot-dan.png" className="img-fluid rounded-circle" alt="aboutus" />
             </Col>
             <Col md="6">
               <h2 className="">Daniel Mont-Eton</h2>
@@ -66,7 +70,7 @@ class About extends Component {
 
           <Row className="about-section flex-row-reverse">
             <Col md="4" className="about-section__img--second">
-              <img src="http://placehold.it/400x400" className="img-fluid rounded-circle" alt="aboutus" />
+              <img src="./img/headshot-jessi.png" className="img-fluid rounded-circle" alt="aboutus" />
             </Col>
             <Col md="6">
               <h2 className="">Jessica Bramwell</h2>

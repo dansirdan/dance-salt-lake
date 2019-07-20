@@ -4,7 +4,7 @@ const auditionController = require("../../controllers/auditionController");
 router.route("/")
   .get(auditionController.findAll)
   .post(auditionController.create)
-
+ 
 router.route("/:id")
   .get(auditionController.findOne)
   .put(auditionController.update)
