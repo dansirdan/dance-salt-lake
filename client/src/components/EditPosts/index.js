@@ -1,6 +1,7 @@
 import React, { Component } from "react";
-import { Container, Row, Col, Table, Button, Modal } from "react-bootstrap";
+import { Container, Row, Col, Table, Button, Modal, Tabs, Tab } from "react-bootstrap";
 import { Section, Banner } from "../Sections";
+import Post from "../Post";
 import EditModal from "../EditModal";
 import CopyModal from "../CopyModal";
 import moment from "moment";
@@ -213,8 +214,21 @@ class EditPosts extends Component {
 
     return (
       <>
-        <Section>
-          <Banner>
+        <Tabs defaultActiveKey="new-post" id="edit-tabs">
+          <Tab eventKey="new-post" title="New Post">
+            <Container>
+              <Row className="justify-content-around align-items-center">
+                <Col md='8'>
+                  <h3>What would you like to post?</h3>
+                  <hr className="my-4" />
+                  <p><span className="accent-text">Click the dropdown below to post a new class, audition, performance, or rental space.</span></p>
+                  <Post
+                    user={this.props.user} />
+                </Col>
+              </Row>
+            </Container>
+          </Tab>
+          <Tab eventKey="classes" title="Classes">
             <Container>
               <Row className="justify-content-around align-items-center">
                 <h3>Classes</h3>
@@ -247,14 +261,18 @@ class EditPosts extends Component {
                       )
                     })
                       :
-                      <tr><td>No Classes to Show</td></tr>
+                      <tr><td>No Classes to Show</td><td /><td /><td /><td /><td /></tr>
                     }
                   </tbody>
                 </Table>
               </Row>
             </Container>
-          </Banner>
-          <Banner>
+
+
+          </Tab>
+          <Tab eventKey="performances" title="Performances">
+
+
 
             <Container>
               <Row className="justify-content-around align-items-center">
@@ -284,14 +302,19 @@ class EditPosts extends Component {
                       )
                     })
                       :
-                      <tr><td>No Performances to Show</td></tr>
+                      <tr><td>No Performances to Show</td><td /><td /><td /></tr>
                     }
                   </tbody>
                 </Table>
               </Row>
             </Container>
-          </Banner>
-          <Banner>
+
+
+          </Tab>
+
+          <Tab eventKey="auditions" title="Auditions">
+
+
 
             <Container>
               <Row className="justify-content-around align-items-center">
@@ -323,14 +346,18 @@ class EditPosts extends Component {
                       )
                     })
                       :
-                      <tr><td>No Auditions to Show</td></tr>
+                      <tr><td>No Auditions to Show</td><td /><td /><td /><td /></tr>
                     }
                   </tbody>
                 </Table>
               </Row>
             </Container>
-          </Banner>
-          <Banner>
+
+
+          </Tab>
+          <Tab eventKey="spaces" title="Spaces">
+
+
 
             <Container>
               <Row className="justify-content-around align-items-center">
@@ -361,45 +388,47 @@ class EditPosts extends Component {
                       )
                     })
                       :
-                      <tr><td>No Rental Spaces to Show</td></tr>
+                      <tr><td>No Rental Spaces to Show</td><td /><td /><td /><td /></tr>
                     }
                   </tbody>
                 </Table>
               </Row>
             </Container>
-            <Modal
-              size="sm"
-              show={this.state.deleteShow}
-              onHide={() => this.handleClose()}
-              aria-labelledby="example-modal-sizes-title-sm"
-            >
-              <Modal.Header closeButton>
-                <Modal.Title id="example-modal-sizes-title-sm">
-                  <h3>are you sure?</h3>
-                </Modal.Title>
-              </Modal.Header>
-              <Modal.Body>
-                <Button onClick={() => this.deleteData(this.state.deleteData)}><span className="light-text">delete</span></Button>
-                <Button onClick={() => this.handleClose()}><span className="light-text">cancel</span></Button>
-              </Modal.Body>
-            </Modal>
-            <EditModal
-              show={this.state.editShow}
-              onHide={this.handleClose}
-              modalData={this.state.modalData}
-              editType={this.state.editType}
-            />
-            <CopyModal
-              user={this.props.user}
-              show={this.state.copyShow}
-              onHide={this.handleClose}
-              copyData={this.state.copyData}
-              editType={this.state.editType}
-              eventData={this.state.modalData}
-              updateCopyTable={this.updateCopyTable}
-            />
-          </Banner>
-        </Section>
+
+
+          </Tab>
+        </Tabs>
+        <Modal
+          size="sm"
+          show={this.state.deleteShow}
+          onHide={() => this.handleClose()}
+          aria-labelledby="example-modal-sizes-title-sm"
+        >
+          <Modal.Header closeButton>
+            <Modal.Title id="example-modal-sizes-title-sm">
+              <h3>are you sure?</h3>
+            </Modal.Title>
+          </Modal.Header>
+          <Modal.Body>
+            <Button onClick={() => this.deleteData(this.state.deleteData)}><span className="light-text">delete</span></Button>
+            <Button onClick={() => this.handleClose()}><span className="light-text">cancel</span></Button>
+          </Modal.Body>
+        </Modal>
+        <EditModal
+          show={this.state.editShow}
+          onHide={this.handleClose}
+          modalData={this.state.modalData}
+          editType={this.state.editType}
+        />
+        <CopyModal
+          user={this.props.user}
+          show={this.state.copyShow}
+          onHide={this.handleClose}
+          copyData={this.state.copyData}
+          editType={this.state.editType}
+          eventData={this.state.modalData}
+          updateCopyTable={this.updateCopyTable}
+        />
       </>
     )
   }
