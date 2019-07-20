@@ -20,10 +20,17 @@ function Audition() {
     startTime: yup.string().required(),
     endTime: yup.string().required(),
 
-    // address: yup.string().required(),
-    // city: yup.string().required(),
-    // state: yup.string().required(),
-    // zip: yup.string().required(),
+    address: yup.string().required(),
+    city: yup.string().required(),
+    state: yup.string().required(),
+    zip: yup.string().required(),
+    
+    // location: {
+    //   address: yup.string().required(),
+    //   city: yup.string().required(),
+    //   state: yup.string().required(),
+    //   zip: yup.string().required(),
+    // },
 
     numberOf: yup.string().required(),
     lookingFor: yup.string().required(),
@@ -70,8 +77,7 @@ function Audition() {
     let location = Object.values(values.location)
     location = location.toString()
     location = location.split(" ").join("+")
-    console.log(location);    
-
+    
     let cityLat, cityLng;
     let geoAddy = location
     const geoKey = "AIzaSyBwWAv336FT-ttOosMGCDcROKAsq_rhkbA"
@@ -79,13 +85,14 @@ function Audition() {
 
     axios.get(geoQuery)
       .then(response => {
-        cityLat = parseFloat(response.data.results[0].geometry.location.lat);
-        cityLng = parseFloat(response.data.results[0].geometry.location.lng);
         
-        const payload = { ...values, lat: cityLat, lng: cityLng }
+        cityLat = parseFloat(response.data.results[0].geometry.location.lat);
+        cityLng = parseFloat(response.data.results[0].geometry.location.lng);        
+        
+        const payload = { ...values, lat: cityLat, lng: cityLng };
+        
         setValues(payload);
         alert(JSON.stringify(payload, null, 2)); 
-        API.newPost("auditions", values)
       })
       .catch(err => {
         console.log(err);
@@ -102,10 +109,8 @@ function Audition() {
           initialValues={initialValues}
           onSubmit={(values, { setSubmitting, setValues }) => {
             handleQuery(values, setValues);
-
-            API.newPost("auditions", values) 
-
-            setTimeout(() => setSubmitting(false), 500)
+            API.newPost("auditions", values);
+            setTimeout(() => setSubmitting(false), 500);
           }}
         >
           {({
@@ -127,7 +132,7 @@ function Audition() {
                   onChange={handleChange}
                 />
                 <Form.Row>
-                  <Form.Group as={Col} md="8" controlId="">
+                  <Form.Group as={Col} md="12">
                     <InputGroup>
                       <InputGroup.Prepend>
                         <InputGroup.Text>Title</InputGroup.Text>
@@ -149,7 +154,7 @@ function Audition() {
                 </Form.Row>
 
                 <Form.Row>
-                  <Form.Group as={Col} md="4" controlId="">
+                  <Form.Group as={Col} md="4">
                     <InputGroup>
                       <InputGroup.Prepend>
                         <InputGroup.Text>Date</InputGroup.Text>
@@ -169,7 +174,7 @@ function Audition() {
 
                   </Form.Group>
 
-                  <Form.Group as={Col} md="4" controlId="">
+                  <Form.Group as={Col} md="6">
                     <InputGroup>
                       <InputGroup.Prepend>
                         <InputGroup.Text>Time</InputGroup.Text>
@@ -203,7 +208,7 @@ function Audition() {
                 </Form.Row>
 
                 <Form.Row>
-                  <Form.Group as={Col} md="8" controlId="">
+                  <Form.Group as={Col} md="12">
                     <InputGroup>
                       <InputGroup.Prepend>
                         <InputGroup.Text>Address</InputGroup.Text>
@@ -277,7 +282,7 @@ function Audition() {
                 />
 
                 <Form.Row>
-                  <Form.Group as={Col} md="8" controlId="">
+                  <Form.Group as={Col} md={12}>
                     <InputGroup>
                       <InputGroup.Prepend>
                         <InputGroup.Text>Looking For:</InputGroup.Text>
@@ -294,7 +299,8 @@ function Audition() {
                           isInvalid={!!errors.numberOf}
                         />
                         <Form.Control.Feedback>{errors.numberOf}</Form.Control.Feedback>
-                      </InputGroup.Prepend>
+                      </InputGroup.Prepend>                      
+
                       <InputGroup.Prepend>
                         <Form.Control
                           as="select"
@@ -305,29 +311,28 @@ function Audition() {
                           onBlur={handleBlur}
                           isInvalid={!!errors.lookingFor}
                         >
+                          <option>Gender:</option>
                           <option value="Men">Men</option>
                           <option value="Women">Women</option>
-                          <option value="Both">Both</option>
+                          <option value="Men and Women">Men and Women</option>
                           <option value="Any">Any</option>
                         </Form.Control>
                         <Form.Control.Feedback>{errors.lookingFor}</Form.Control.Feedback>
                       </InputGroup.Prepend>
                     </InputGroup>
                   </Form.Group>
-                </Form.Row>
 
-                <Form.Row>
-                  <Form.Group as={Col} md="8" controlId="">
+                  <Form.Group as={Col} md={12}>
                     <InputGroup>
                       <InputGroup.Prepend>
-                        <InputGroup.Text>Contract Length:</InputGroup.Text>
+                        <InputGroup.Text>Contract:</InputGroup.Text>
                       </InputGroup.Prepend>
                       <InputGroup.Prepend>
                         <Form.Control
                           required
                           name="length"
                           value={values.number}
-                          placeholder="Duration"
+                          placeholder="Length"
                           type="number"
                           onChange={handleChange}
                           onBlur={handleBlur}
@@ -345,6 +350,7 @@ function Audition() {
                           onBlur={handleBlur}
                           isInvalid={!!errors.contract}
                         >
+                          <option>Contract Type:</option>
                           <option value="Month Contract">Month Contract</option>
                           <option value="Year Contract">Year Contract</option>
                         </Form.Control>
@@ -355,7 +361,7 @@ function Audition() {
                 </Form.Row>
 
                 <Form.Row>
-                  <Form.Group as={Col} md="8" controlId="">
+                  <Form.Group as={Col} md="12">
                     <InputGroup>
                       <InputGroup.Prepend>
                         <InputGroup.Text>Description</InputGroup.Text>
@@ -375,7 +381,7 @@ function Audition() {
                 </Form.Row>
 
                 <Form.Row>
-                  <Form.Group as={Col} md="8" controlId="">
+                  <Form.Group as={Col} md="12">
                     <InputGroup>
                       <InputGroup.Prepend>
                         <InputGroup.Text>Links</InputGroup.Text>

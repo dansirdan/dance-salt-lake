@@ -8,8 +8,6 @@ import { SpaceBanner } from "../components/Preview";
 import queryString from "query-string";
 import API from "../utils/API"
 
-import { Audition } from "../components/PostType"
-
 class Class extends Component {
   constructor(props, context) {
     super(props, context);
@@ -109,9 +107,7 @@ class Class extends Component {
     const classes = this.state.queryResults;
 
     return (
-      <>
-        <Audition />
-          
+      <>         
         <CalendarSection
           path="classes"
           data={this.state.allClasses}
