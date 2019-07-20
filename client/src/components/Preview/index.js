@@ -26,6 +26,7 @@ export class ClassesPreview extends Component {
     // Returns all classes...who would have thought
     API.getPosts("classes")
       .then(res => {
+        console.log(res);
         for (let i = 0; i < 2; i++) {
           twoClasses.push(res.data[i]);
         };

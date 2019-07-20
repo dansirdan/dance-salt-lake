@@ -13,11 +13,19 @@ module.exports = {
       .then(data => res.json(data))
       .catch(err => res.status(422).json(err));
   },
-  
+  findAllWhere: function (req, res) {
+    // console.log(req.query);
+
+    db.Space
+      .findAll({ where: req.query })
+      .then(data => res.json(data))
+      .catch(err => res.status(422).json(err));
+  },
+
   // ============= Un-tested =============
   findOne: function (req, res) {
     db.Space
-      .findOne({ where: { id: req.params.id }})
+      .findOne({ where: { id: req.params.id } })
       .then(data => res.json(data))
       .catch(err => res.status(422).json(err));
   },

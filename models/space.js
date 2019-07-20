@@ -38,14 +38,14 @@ module.exports = function (sequelize, DataTypes) {
       //   isInt: true
       // }
     },
-    photoLink: {
-      type: DataTypes.STRING,
-      // allowNull: false,
-      // validate: {
-      //   notEmpty: true,
-      //   isUrl: true
-      // }
-    },
+    // photoLink: {
+    //   type: DataTypes.STRING,
+    //   // allowNull: false,
+    //   // validate: {
+    //   //   notEmpty: true,
+    //   //   isUrl: true
+    //   // }
+    // },
     description: {
       type: DataTypes.STRING,
       // allowNull: false,

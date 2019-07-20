@@ -10,7 +10,7 @@ router.route("/:id")
   .put(auditionController.update)
   .delete(auditionController.delete)
 
-router.route("/filter")
+router.route("/filter/")
   .post(auditionController.findAllWhere)
 
 module.exports = router;
