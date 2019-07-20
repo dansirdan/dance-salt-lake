@@ -11,9 +11,7 @@ export function CopyClass(props) {
           <Table responsive>
             <thead>
               <tr>
-                <th><p className="accent-text">Style</p></th>
-                <th><p className="accent-text">Level</p></th>
-                <th><p className="accent-text">Instructor</p></th>
+                <th><p className="accent-text">Class</p></th>
                 <th><p className="accent-text">Date</p></th>
                 <th><p className="accent-text">Time</p></th>
               </tr>
@@ -22,9 +20,7 @@ export function CopyClass(props) {
               {(props.data.length > 0) ? props.data.map(klass => {
                 return (
                   <tr key={klass.id}>
-                    <td><span className="light-text">{klass.style}</span></td>
-                    <td><span className="light-text">{klass.level}</span></td>
-                    <td><span className="light-text">{klass.instructorName}</span></td>
+                    <td><span className="light-text">{`${klass.style} / ${klass.level} / ${klass.instructorName}`}</span></td>
                     <td><span className="light-text">{moment(klass.date).format("MMM Do")}</span></td>
                     <td><span className="light-text">{moment(klass.time, "HH:mm:ss").format("h:mm A")}</span></td>
                   </tr>

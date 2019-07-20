@@ -14,6 +14,7 @@ class CopyEvent extends Component {
     this.handlePostCopy = this.handlePostCopy.bind(this);
     this.state = {
       copyMode: false,
+      userId: '',
       lookingFor: '',
       auditionsNotes: '',
       gig: '',
@@ -124,6 +125,7 @@ class CopyEvent extends Component {
     switch (this.props.editType) {
       case "auditions":
         copy = {
+          UserId: this.props.user.id,
           title: this.state.title,
           lookingFor: this.state.lookingFor,
           description: this.state.description,
@@ -143,6 +145,7 @@ class CopyEvent extends Component {
         break;
       case "classes":
         copy = {
+          UserId: this.props.user.id,
           title: this.state.title,
           style: this.state.style,
           master: 1,
@@ -163,6 +166,7 @@ class CopyEvent extends Component {
         break;
       case "performances":
         copy = {
+          UserId: this.props.user.id,
           title: this.state.title,
           description: this.state.description,
           address: this.state.address,

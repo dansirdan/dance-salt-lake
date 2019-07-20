@@ -21,5 +21,11 @@ export default {
   },
   newPost: function (postType, post) {
     return axios.post("/api/" + postType, post)
+  },
+  deletePost: function (postType, postId) {
+    return axios.delete("/api/" + postType + "/" + postId)
+  },
+  updatePost: function (postType, postId) {
+    return axios.put("/api/" + postType + "/" + postId)
   }
 }

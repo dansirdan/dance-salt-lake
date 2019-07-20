@@ -14,7 +14,7 @@ module.exports = {
       .catch(err => res.status(422).json(err));
   },
   findAllWhere: function (req, res) {
-    console.log(req.query);
+    // console.log(req.query);
 
     db.Space
       .findAll({ where: req.query })

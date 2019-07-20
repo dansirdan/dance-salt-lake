@@ -10,7 +10,7 @@ router.route("/:id")
   .put(performanceController.update)
   .delete(performanceController.delete)
 
-router.route("/filter")
+router.route("/filter/")
   .post(performanceController.findAllWhere)
 
 module.exports = router;

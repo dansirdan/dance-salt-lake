@@ -80,4 +80,3 @@ class CopyModal extends Component {
 }
 
 export default CopyModal;
-
