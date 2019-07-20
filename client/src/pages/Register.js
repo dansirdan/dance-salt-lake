@@ -73,7 +73,7 @@ class Register extends Component {
             <Col md="12" lg="8">
               <Banner className="register-section">
                 <h3>Register</h3>
-                <h6>Please fill out the form below to create an account.</h6>
+                <h6>Please fill out the form below to create an account</h6>
               </Banner>
             </Col>
           </Row>

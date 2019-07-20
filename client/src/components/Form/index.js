@@ -7,7 +7,7 @@ export function Form(props) {
     </form>
   )
 }
-
+ 
 export function Input(props) {
   return (
     <div className="form-group">
@@ -45,7 +45,7 @@ export function Checkbox(props) {
 // Buttons
 export function FormBtn(props) {
   return (
-    <button {...props} style={{ float: "right", marginBottom: 10 }} className="btn btn-success">
+    <button {...props} style={{ marginBottom: 10 }} className="btn btn-success">
       {props.children}
     </button>
   );
