@@ -47,15 +47,6 @@ class AuditionFilter extends Component {
           {gender.map((gender, i) => <option key={i} value={gender}>{gender}</option>)}
         </Dropdown>
 
-        {/* <Dropdown>
-          <option>Style:</option>
-          {props.style.map(style => {
-            return (
-              <option value={style}>{style}</option>
-            )
-          })}
-        </Dropdown> */}
-
         <Dropdown
           name="gig"
           onChange={this.handleInputChange}

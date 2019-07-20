@@ -19,7 +19,7 @@ export default {
   user: function () {
     return axios.get("/api/auth/user")
   },
-  newPost: function (postType, id, post) {
-    return axios.post("/api/post/" + postType + "/" + id, post)
-  }
+  newPost: function (postType, post) {
+    return axios.post("/api/" + postType, post)
+  },
 }
