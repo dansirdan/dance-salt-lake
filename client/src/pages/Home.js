@@ -58,20 +58,20 @@ class Home extends Component {
           <div className="preview">
             <Row>
               <Col md="12" lg="4">
-                <ClassesPreview />
+                {/* <ClassesPreview /> */}
               </Col>
 
               <Col md="12" lg="4">
-                <PerformancesPreview />
+                {/* <PerformancesPreview /> */}
               </Col>
 
               <Col md="12" lg="4">
                 <Row>
                   <Col md="12">
-                    <AuditionPreview
+                    {/* <AuditionPreview
                       returnData={this.returnData}
                       page="Audition"
-                    />
+                    /> */}
                   </Col>
                 </Row>
               </Col>

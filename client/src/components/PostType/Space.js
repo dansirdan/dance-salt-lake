@@ -38,7 +38,7 @@ function Space() {
       .min(3, "Too Short")
       .max(255, "That's a bit much...")
       .required("Required"),
-    img: yup.string()
+    photoLInk: yup.string()
       .url("valid url required")
       .required('Required'),
     url: yup.string()
@@ -62,11 +62,11 @@ function Space() {
       zip: "",
     },
     lat: "",
-    lon: "",
+    lng: "",
 
     photoLink: "",
-    description: "",
     url: "",
+    description: "",
   }
 
   const handleQuery = (values, setValues) => {
@@ -283,15 +283,15 @@ function Space() {
                   <Form.Label>Image link</Form.Label>
                   <Form.Control
                     required
-                    name="img"
-                    value={values.img}
+                    name="photoLink"
+                    value={values.photoLink}
                     placeholder="Image Link"
                     type="text"
                     onChange={handleChange}
                     onBlur={handleBlur}
-                    isInvalid={!!errors.img}
+                    isInvalid={!!errors.photoLink}
                   />
-                  {errors.img && touched.img && <div className="input-feedback">{errors.img}</div>}
+                  {errors.photoLink && touched.photoLink && <div className="input-feedback">{errors.photoLink}</div>}
                 </Form.Group>
 
                 <Form.Group as={Col} md="12">

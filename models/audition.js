@@ -5,89 +5,105 @@ module.exports = function (sequelize, DataTypes) {
       type: DataTypes.STRING,
       allowNull: false,
       validate: {
+        len: [2],
+        notEmpty: true
+      }
+    },
+    date: {
+      type: DataTypes.DATEONLY,
+      allowNull: false,
+      validate: {
+        isDate: true,
+        isAfter: DataTypes.NOW,
+        notEmpty: true
+      }
+    },
+    startTime: {
+      type: DataTypes.TIME,
+      allowNull: false,
+      validate: {
         len: [1],
         notEmpty: true
       }
     },
-    lookingFor: {
-      type: DataTypes.STRING,
-      // allowNull: false
-    },
-    description: {
-      type: DataTypes.STRING,
-      // allowNull: false,
-      // validate: {
-      //   len: [1],
-      //   notEmpty: true
-      // }
-    },
-    text: {
-      type: DataTypes.STRING,
-      // allowNull: false,
-      // validate: {
-      //   len: [1],
-      //   notEmpty: true
-      // }
+    endTime: {
+      type: DataTypes.TIME,
+      allowNull: false,
+      validate: {
+        len: [1],
+        notEmpty: true
+      }
     },
     address: {
       type: DataTypes.STRING,
-      // allowNull: false
+      allowNull: false
     },
-    gig: {
+    city: {
       type: DataTypes.STRING,
-      // allowNull: false
+      allowNull: false
+    },
+    state: {
+      type: DataTypes.STRING,
+      allowNull: false
+    },
+    zip: {
+      type: DataTypes.INTEGER,
+      allowNull: false
+    },
+    lat: {
+      type: DataTypes.INTEGER,
+      allowNull: false
+    },
+    lng: {
+      type: DataTypes.INTEGER,
+      allowNull: false
+    },
+    numberOf: {
+      type: DataTypes.STRING,
+      allowNull: false
+    },
+    lookingFor: {
+      type: DataTypes.STRING,
+      allowNull: false
+    },
+    length: {
+      type: DataTypes.STRING,
+      allowNull: false
+    },
+    contract: {
+      type: DataTypes.STRING,
+      allowNull: false
+    },
+    description: {
+      type: DataTypes.STRING,
+      allowNull: false,
+      validate: {
+        len: [2],
+        notEmpty: true
+      }
     },
     photoLink: {
       type: DataTypes.STRING,
-      // allowNull: false,
-      // validate: {
-      //   notEmpty: true,
-      //   isUrl: true
-      // }
-    },
-    link: {
-      type: DataTypes.STRING,
-      allowNull: true,
+      allowNull: false,
       validate: {
         notEmpty: true,
         isUrl: true
       }
     },
-    length: {
-      type: DataTypes.STRING,
-      // allowNull: false
-    },
-    payment: {
-      type: DataTypes.STRING,
-      // allowNull: false
-    },
-    time: {
-      type: DataTypes.TIME,
-      // allowNull: false,
-      // validate: {
-      //   len: [1],
-      //   notEmpty: true
-      // }
-    },
-    date: {
-      type: DataTypes.DATEONLY,
-      // allowNull: false,
-      // validate: {
-      //   isDate: true,
-      //   isAfter: DataTypes.NOW,
-      //   notEmpty: true
-      // }
-    },
     url: {
       type: DataTypes.STRING,
-      // allowNull: false
+      allowNull: false,
+      validate: {
+        notEmpty: true,
+        isUrl: true
+      }
     },
   });
 
   Audition.associate = (models) => {
     Audition.belongsTo(models.User, {
       foreignKey: {
-        // allowNull: false
+        allowNull: false
       }
     });
   };

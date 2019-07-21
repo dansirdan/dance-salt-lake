@@ -47,7 +47,7 @@ function Audition() {
       .min(3, "Too Short")
       .max(255, "That's a bit much...")
       .required("Required"),
-    img: yup.string()
+    photoLink: yup.string()
       .url("valid url required")
       .required('Required'),
     url: yup.string()
@@ -58,18 +58,17 @@ function Audition() {
 
   const initialValues = {
 
-    UserId: "1",
-    title: "asdf",
+    UserId: "2",
+    title: "",
     date: "2019-07-13",
     startTime: "15:00",
     endTime: "16:00",
 
-    location: {
-      address: "519 E 4th Ave",
-      city: "Salt Lake City",
-      state: "Utah",
-      zip: "84103",
-    },
+    address: "519 E 4th Ave",
+    city: "Salt Lake City",
+    state: "Utah",
+    zip: "84103",
+
     lat: "",
     lng: "",
 
@@ -79,16 +78,19 @@ function Audition() {
     length: "6",
     contract: "Month Contract",
 
-    description: "asdf",
-    img: "asdf.com",
-    url: "asdf.com"
+    description: "",
+    photoLink: "http://asdf.com",
+    url: "http://asdf.com"
   }
 
   const handleQuery = (values, setValues) => {
 
-    let location = Object.values(values.location)
+    let location = (({ address, city, state, zip }) => ({ address, city, state, zip }))(values);
+    location = Object.values(location)
     location = location.toString()
     location = location.split(" ").join("+")
+    console.log(location);
+    
 
     let cityLat, cityLng;
     let geoAddy = location
@@ -104,7 +106,8 @@ function Audition() {
         const payload = { ...values, lat: cityLat, lng: cityLng };
 
         setValues(payload);
-        alert(JSON.stringify(payload, null, 2));
+        // alert(JSON.stringify(payload, null, 2));
+        console.log(JSON.stringify(payload, null, 2));
       })
       .catch(err => {
         console.log(err);
@@ -352,15 +355,15 @@ function Audition() {
                       <Form.Label>Image link</Form.Label>
                       <Form.Control
                         required
-                        name="img"
-                        value={values.img}
+                        name="photoLink"
+                        value={values.photoLink}
                         placeholder="https://www.example.com"
                         type="text"
                         onChange={handleChange}
                         onBlur={handleBlur}
-                        isInvalid={!!errors.img}
+                        isInvalid={!!errors.photoLink}
                       />
-                    {errors.img && touched.img && <div className="input-feedback">{errors.img}</div>}
+                    {errors.photoLink && touched.photoLink && <div className="input-feedback">{errors.photoLink}</div>}
                     </Form.Group>
 
                   <Form.Group as={Col} md="12">

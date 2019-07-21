@@ -25,7 +25,8 @@ class Register extends Component {
       let cityLat;
       let cityLon;
       let geoAddy = "138+Broadway,+Salt+Lake+City,+UT"
-      const geoKey = `${process.env.RREACT_APP_GOOGLE_API_KEY}`
+      // const geoKey = `${process.env.RREACT_APP_GOOGLE_API_KEY}`
+      const geoKey = "AIzaSyBwWAv336FT-ttOosMGCDcROKAsq_rhkbA"
       let geoQuery = `https://maps.googleapis.com/maps/api/geocode/json?address=${geoAddy}&key=${geoKey}`;
       axios.get(geoQuery)
         .then(response => {
@@ -123,12 +124,14 @@ class Register extends Component {
                 <Input
                   value={this.state.email}
                   onChange={this.handleInputChange}
+                  type="email"
                   name="email"
                   placeholder="Email (required)"
                 />
                 <Input
                   value={this.state.password}
                   onChange={this.handleInputChange}
+                  type="password"
                   name="password"
                   placeholder="Password (required)"
                 />

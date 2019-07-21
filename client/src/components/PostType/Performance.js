@@ -40,7 +40,7 @@ function Performance() {
       .min(3, "Too Short")
       .max(255, "That's a bit much...")
       .required("Required"),
-    img: yup.string()
+    photoLink: yup.string()
       .url("valid url required")
       .required('Required'),
     url: yup.string()
@@ -68,7 +68,7 @@ function Performance() {
     payment: "",
 
     description: "",
-    img: "",
+    photoLink: "",
     url: ""
   }
 
@@ -293,15 +293,15 @@ function Performance() {
                   <Form.Label>Image link</Form.Label>
                   <Form.Control
                     required
-                    name="img"
-                    value={values.img}
+                    name="photoLink"
+                    value={values.photoLink}
                     placeholder="Image Link"
                     type="text"
                     onChange={handleChange}
                     onBlur={handleBlur}
-                    isInvalid={!!errors.img}
+                    isInvalid={!!errors.photoLink}
                   />
-                  {errors.title && touched.title && <div className="input-feedback">{errors.title}</div>}
+                  {errors.photoLink && touched.photoLink && <div className="input-feedback">{errors.photoLink}</div>}
                 </Form.Group>
 
                 <Form.Group as={Col} md="12">
@@ -316,7 +316,7 @@ function Performance() {
                     onBlur={handleBlur}
                     isInvalid={!!errors.url}
                   />
-                  {errors.title && touched.title && <div className="input-feedback">{errors.title}</div>}
+                  {errors.url && touched.url && <div className="input-feedback">{errors.url}</div>}
                 </Form.Group>
 
                 <Form.Group as={Col} md="12">

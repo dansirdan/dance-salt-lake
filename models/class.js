@@ -4,83 +4,110 @@ module.exports = function (sequelize, DataTypes) {
     title: {
       type: DataTypes.STRING,
       allowNull: false,
-      // validate: {
-      //   len: [1],
-      //   notEmpty: true
-      // }
+      validate: {
+        len: [2],
+        notEmpty: true
+      }
+    },
+    instructorName: {
+      type: DataTypes.STRING,
+      allowNull: false
     },
     style: {
       type: DataTypes.STRING,
-      // allowNull: false
+      allowNull: false
+    },
+    level: {
+      type: DataTypes.STRING,
+      allowNull: false
     },
     master: {
       type: DataTypes.BOOLEAN,
-      // allowNull: false,
+      allowNull: false,
       defaultValue: false
     },
-    description: {
+    payment: {
       type: DataTypes.STRING,
-      // allowNull: false,
-      // validate: {
-      //   len: [1],
-      //   notEmpty: true
-      // }
+      allowNull: false
+    },
+    date: {
+      type: DataTypes.DATEONLY,
+      allowNull: false,
+      validate: {
+        isDate: true,
+        isAfter: DataTypes.NOW,
+        notEmpty: true
+      }
+    },
+    startTime: {
+      type: DataTypes.TIME,
+      allowNull: false,
+      validate: {
+        len: [1],
+        notEmpty: true
+      }
+    },
+    endTime: {
+      type: DataTypes.TIME,
+      allowNull: false,
+      validate: {
+        len: [1],
+        notEmpty: true
+      }
     },
     address: {
       type: DataTypes.STRING,
       allowNull: false
     },
-    instructorName: {
+    city: {
       type: DataTypes.STRING,
-      // allowNull: false
+      allowNull: false
+    },
+    state: {
+      type: DataTypes.STRING,
+      allowNull: false
+    },
+    zip: {
+      type: DataTypes.INTEGER,
+      allowNull: false
+    },
+    lat: {
+      type: DataTypes.INTEGER,
+      allowNull: false
+    },
+    lng: {
+      type: DataTypes.INTEGER,
+      allowNull: false
+    },
+    description: {
+      type: DataTypes.STRING,
+      allowNull: false,
+      validate: {
+        len: [1],
+        notEmpty: true
+      }
     },
     photoLink: {
       type: DataTypes.STRING,
-      // allowNull: false,
-      // validate: {
-      //   notEmpty: true,
-      //   isUrl: true
-      // }
-    },
-    length: {
-      type: DataTypes.STRING,
-      // allowNull: false
-    },
-    level: {
-      type: DataTypes.STRING,
-      // allowNull: false
-    },
-    payment: {
-      type: DataTypes.STRING,
-      // allowNull: false
-    },
-    time: {
-      type: DataTypes.TIME,
-      // allowNull: false,
-      // validate: {
-      //   len: [1],
-      //   notEmpty: true
-      // }
-    },
-    date: {
-      type: DataTypes.DATEONLY,
-      // allowNull: false,
-      // validate: {
-      //   isDate: true,
-      //   isAfter: DataTypes.NOW,
-      //   notEmpty: true
-      // }
+      allowNull: false,
+      validate: {
+        notEmpty: true,
+        isUrl: true
+      }
     },
     url: {
       type: DataTypes.STRING,
-      // allowNull: false
+      allowNull: false
     },
+
+
+
   });
 
   Class.associate = (models) => {
     Class.belongsTo(models.User, {
       foreignKey: {
-        // allowNull: false
+        allowNull: false
       }
     });
   };

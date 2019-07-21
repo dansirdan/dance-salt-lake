@@ -32,21 +32,21 @@ function Class() {
     endTime: yup.string()
       .required('Required'),
 
-    address: yup.string()
-      .required('Required'),
-    city: yup.string()
-      .required('Required'),
-    state: yup.string()
-      .required('Required'),
-    zip: yup.number()
-      .min(8, "valid zipcode required")
-      .required('Required'),
+    // address: yup.string()
+    //   .required('Required'),
+    // city: yup.string()
+    //   .required('Required'),
+    // state: yup.string()
+    //   .required('Required'),
+    // zip: yup.number()
+    //   .min(8, "valid zipcode required")
+    //   .required('Required'),
 
     description: yup.string()
       .min(3, "Too Short")
       .max(255, "That's a bit much...")
       .required("Required"),
-    img: yup.string()
+    photoLink: yup.string()
       .url("valid url required")
       .required('Required'),
     url: yup.string()
@@ -64,6 +64,8 @@ function Class() {
     level: "",
     master: false,
 
+    // *** payment *** 
+
     date: "",
     startTime: "",
     endTime: "",
@@ -75,7 +77,7 @@ function Class() {
       zip: "",
     },
     lat: "",
-    log: "",
+    lng: "",
 
     description: "",
     photoLink: "",
@@ -104,7 +106,7 @@ function Class() {
 
         setValues(payload);
         alert(JSON.stringify(payload, null, 2));
-        API.newPost("classes", values)
+        // API.newPost("classes", values)
       })
       .catch(err => {
         console.log(err);
@@ -122,7 +124,7 @@ function Class() {
           initialValues={initialValues}
           onSubmit={(values, { setSubmitting, setValues }) => {
             handleQuery(values, setValues);
-            API.newPost("auditions", values);
+            API.newPost("classes", values);
             setTimeout(() => setSubmitting(false), 500);
           }}
         >
@@ -174,7 +176,7 @@ function Class() {
                   />
                   {errors.instructorName && touched.instructorName && <div className="input-feedback">{errors.instructorName}</div>}
                 </Form.Group>
-              
+
                 <Form.Group as={Col} md="12">
                   <Form.Label>Instructor</Form.Label>
                   <Form.Control
@@ -204,7 +206,7 @@ function Class() {
                   />
                   {errors.style && touched.style && <div className="input-feedback">{errors.style}</div>}
                 </Form.Group>
-               
+
                 <Form.Group as={Col} md="12">
                   <Form.Label>Level</Form.Label>
                   <Form.Control as="select"
@@ -348,13 +350,13 @@ function Class() {
                   <Form.Label>Image link</Form.Label>
                   <Form.Control
                     required
-                    name="img"
-                    value={values.img}
+                    name="photoLink"
+                    value={values.photoLink}
                     placeholder="Photo Link"
                     type="text"
                     onChange={handleChange}
                     onBlur={handleBlur}
-                    isInvalid={!!errors.img}
+                    isInvalid={!!errors.photoLink}
                   />
                   {errors.title && touched.title && <div className="input-feedback">{errors.title}</div>}
                 </Form.Group>

@@ -66,7 +66,8 @@ class MoreInfo extends Component {
       date,
       link,
       instructorName,
-      special
+      special,
+      url
     } = this.props.moreInfo;
 
     switch (this.props.page) {
@@ -103,7 +104,7 @@ class MoreInfo extends Component {
               <Row>
                 <Col md='7'>
                   <br />
-                  <Link className="btn btn-primary" to={link} >
+                  <Link className="btn btn-primary" to={url} >
                     Contact
                   </Link >
                 </Col>

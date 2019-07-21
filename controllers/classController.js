@@ -2,6 +2,8 @@ const db = require("../models");
 
 module.exports = {
   create: function (req, res) {
+    console.log("db hit");
+    
     db.Class
       .create(req.body)
       .then(data => res.json(data))
