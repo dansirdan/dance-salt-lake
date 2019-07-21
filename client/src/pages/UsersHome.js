@@ -32,10 +32,8 @@ class UsersHome extends Component {
                 </Col>
               </Row>
               <Row>
-                <Col md='3'>
 
-                </Col>
-                <Col md='9'>
+                <Col md='12'>
                   <EditPosts
                     user={user}
                   />

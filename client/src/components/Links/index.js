@@ -98,7 +98,7 @@ export function DropdownNavSO() {
 
       <Login />
       <div className="register-link">
-      <NavDropdown.Divider />
+        <NavDropdown.Divider />
         <p>Need and account? <br />Click here to register</p>
         <LinkContainer to="/register">
           <NavDropdown.Item as={Button}>Register</NavDropdown.Item>
@@ -125,6 +125,7 @@ export class DropdownNavSI extends Component {
             {({ logout }) => (
               <NavDropdown.Item
                 as={Link}
+                to="/"
                 onClick={(e) => this.handleLogout(logout, e)}
               >
                 Logout
