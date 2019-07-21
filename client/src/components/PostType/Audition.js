@@ -23,15 +23,15 @@ function Audition() {
     endTime: yup.string()
       .required('Required'),
 
-    // address: yup.string()
-    //   .required('Required'),
-    // city: yup.string()
-    //   .required('Required'),
-    // state: yup.string()
-    //   .required('Required'),
-    // zip: yup.number()
-    //   .min(8, "valid zipcode required")
-    //   .required('Required'),
+    address: yup.string()
+      .required('Required'),
+    city: yup.string()
+      .required('Required'),
+    state: yup.string()
+      .required('Required'),
+    zip: yup.number()
+      .min(8, "valid zipcode required")
+      .required('Required'),
 
     numberOf: yup.number()
       .required('Required'),
@@ -58,7 +58,7 @@ function Audition() {
 
   const initialValues = {
 
-    UserId: "2",
+    UserId: "1",
     title: "",
     date: "2019-07-13",
     startTime: "15:00",
@@ -124,9 +124,10 @@ function Audition() {
           initialValues={initialValues}
           onSubmit={(values, { setSubmitting, setValues }) => {
             handleQuery(values, setValues);
-            API.newPost("auditions", values);
-            setTimeout(() => setSubmitting(false), 500);
-          }}
+            setTimeout(() => {
+              API.newPost("auditions", values)
+              setSubmitting(false)}, 500);
+            }}
         >
           {({
             handleSubmit,

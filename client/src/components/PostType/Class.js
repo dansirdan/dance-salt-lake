@@ -32,15 +32,18 @@ function Class() {
     endTime: yup.string()
       .required('Required'),
 
-    // address: yup.string()
-    //   .required('Required'),
-    // city: yup.string()
-    //   .required('Required'),
-    // state: yup.string()
-    //   .required('Required'),
-    // zip: yup.number()
-    //   .min(8, "valid zipcode required")
-    //   .required('Required'),
+    payment: yup.string()
+      .required("Required"),
+
+    address: yup.string()
+      .required('Required'),
+    city: yup.string()
+      .required('Required'),
+    state: yup.string()
+      .required('Required'),
+    zip: yup.number()
+      .min(8, "valid zipcode required")
+      .required('Required'),
 
     description: yup.string()
       .min(3, "Too Short")
@@ -57,36 +60,35 @@ function Class() {
 
   const initialValues = {
 
-    UserId: "",
-    title: "",
-    instructorName: "",
-    style: "",
-    level: "",
+    UserId: "1",
+    title: "class",
+    instructorName: "Fancy Nancy",
+    style: "Disco",
+    level: "Advanced",
     master: false,
 
-    // *** payment *** 
+    payment: "Cash",
 
-    date: "",
-    startTime: "",
-    endTime: "",
+    date: "2019-07-21",
+    startTime: "15:00",
+    endTime: "16:00",
 
-    location: {
-      address: "",
-      city: "",
-      state: "",
-      zip: "",
-    },
+    address: "519 E 4th Ave",
+    city: "Salt Lake City",
+    state: "Utah",
+    zip: "84103",
+    
     lat: "",
     lng: "",
 
-    description: "",
-    photoLink: "",
-    url: ""
+    description: "asdf",
+    photoLink: "http://asdf.com",
+    url: "http://asdf.com"
   }
 
   const handleQuery = (values, setValues) => {
 
-    let location = Object.values(values.location)
+    let location = (({ address, city, state, zip }) => ({ address, city, state, zip }))(values);
     location = location.toString()
     location = location.split(" ").join("+")
     console.log(location);
@@ -229,6 +231,13 @@ function Class() {
                 </Form.Group>
 
                 <Form.Group as={Col} md="12">
+                  <Form.Label>Payment:</Form.Label>
+                  <InputGroup.Checkbox name="payment" label="Cash" />
+                  <InputGroup.Checkbox name="payment" label="Card" />
+                  <InputGroup.Checkbox name="payment" label="Any" />
+                </Form.Group>
+
+                <Form.Group as={Col} md="12">
                   <Form.Label>Date</Form.Label>
                   <Form.Control
                     required
@@ -276,7 +285,7 @@ function Class() {
                   <Form.Label>Address</Form.Label>
                   <Form.Control
                     required
-                    name="location.address"
+                    name="address"
                     value={values.address}
                     placeholder="Address"
                     type="text"
@@ -284,13 +293,13 @@ function Class() {
                     onBlur={handleBlur}
                     isInvalid={!!errors.address}
                   />
-                  {errors.title && touched.title && <div className="input-feedback">{errors.title}</div>}
+                  {errors.address && touched.address && <div className="input-feedback">{errors.address}</div>}
                 </Form.Group>
 
                 <Form.Group as={Col} md="12">
                   <Form.Control
                     required
-                    name="location.city"
+                    name="city"
                     value={values.city}
                     placeholder="City"
                     type="text"
@@ -304,7 +313,7 @@ function Class() {
                 <Form.Group as={Col} md="12">
                   <Form.Control
                     required
-                    name="location.state"
+                    name="state"
                     value={values.state}
                     placeholder="State"
                     type="text"
@@ -312,12 +321,13 @@ function Class() {
                     onBlur={handleBlur}
                     isInvalid={!!errors.state}
                   />
+                  {errors.zip && touched.zip && <div className="input-feedback">{errors.zip}</div>}
                 </Form.Group>
 
                 <Form.Group as={Col} md="12">
                   <Form.Control
                     required
-                    name="location.zip"
+                    name="zip"
                     value={values.zip}
                     placeholder="Zip"
                     type="number"
@@ -325,7 +335,7 @@ function Class() {
                     onBlur={handleBlur}
                     isInvalid={!!errors.zip}
                   />
-                  {errors.title && touched.title && <div className="input-feedback">{errors.title}</div>}
+                  {errors.zip && touched.zip && <div className="input-feedback">{errors.zip}</div>}
                 </Form.Group>
 
                 <Form.Control

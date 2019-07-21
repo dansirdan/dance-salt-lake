@@ -52,11 +52,11 @@ module.exports = function (sequelize, DataTypes) {
     },
     lat: {
       type: DataTypes.INTEGER,
-      allowNull: false
+      allowNull: true
     },
     lng: {
       type: DataTypes.INTEGER,
-      allowNull: false
+      allowNull: true
     },
     numberOf: {
       type: DataTypes.STRING,

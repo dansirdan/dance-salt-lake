@@ -50,31 +50,33 @@ function Performance() {
   });
 
   const initialValues = {
-    title: "",
-    date: "",
-    startTime: "",
-    length: "",
 
-    location: {
-      address: "",
-      city: "",
-      state: "",
-      zip: "",
-    },
+    UserId: "1",
+    title: "performance",
+    date: "2019-07-13",
+    startTime: "15:00",
+    length: "90",
+
+    address: "519 E 4th Ave",
+    city: "Salt Lake City",
+    state: "Utah",
+    zip: "84103",
+
     lat: "",
-    lon: "",
+    lng: "",
 
-    price: "",
-    payment: "",
+    price: "90",
+    payment: "Cash",
 
-    description: "",
-    photoLink: "",
-    url: ""
+    description: "asdf",
+    photoLink: "http://asdf.com",
+    url: "http://asdf.com"
   }
 
   const handleQuery = (values, setValues) => {
 
-    let location = Object.values(values.location)
+    let location = (({ address, city, state, zip }) => ({ address, city, state, zip }))(values);
+    location = Object.values(location);
     location = location.toString()
     location = location.split(" ").join("+")
 
@@ -92,7 +94,8 @@ function Performance() {
         const payload = { ...values, lat: cityLat, lng: cityLng };
 
         setValues(payload);
-        alert(JSON.stringify(payload, null, 2));
+        // alert(JSON.stringify(payload, null, 2));
+        console.log(JSON.stringify(payload, null, 2));
       })
       .catch(err => {
         console.log(err);
@@ -109,8 +112,10 @@ function Performance() {
           initialValues={initialValues}
           onSubmit={(values, { setSubmitting, setValues }) => {
             handleQuery(values, setValues);
-            API.newPost("performances", values);
-            setTimeout(() => setSubmitting(false), 500);
+            setTimeout(() => {
+              API.newPost("performances", values)
+              setSubmitting(false)
+            }, 500);
           }}
         >
           {({
@@ -127,7 +132,7 @@ function Performance() {
                   required
                   hidden
                   name="UserId"
-                  value={values.UserId}
+                  value={user.id}
                   type="number"
                   onChange={handleChange}
                 />
@@ -196,7 +201,7 @@ function Performance() {
                   <Form.Label>Address</Form.Label>
                   <Form.Control
                     required
-                    name="location.address"
+                    name="address"
                     value={values.address}
                     placeholder="Address"
                     type="text"
@@ -210,7 +215,7 @@ function Performance() {
                 <Form.Group as={Col} md="12">
                   <Form.Control
                     required
-                    name="location.city"
+                    name="city"
                     value={values.city}
                     placeholder="City"
                     type="text"
@@ -224,7 +229,7 @@ function Performance() {
                 <Form.Group as={Col} md="12">
                   <Form.Control
                     required
-                    name="location.state"
+                    name="state"
                     value={values.state}
                     placeholder="State"
                     type="text"
@@ -238,7 +243,7 @@ function Performance() {
                 <Form.Group as={Col} md="12">
                   <Form.Control
                     required
-                    name="location.zip"
+                    name="zip"
                     value={values.zip}
                     placeholder="Zip"
                     type="number"

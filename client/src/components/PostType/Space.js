@@ -48,32 +48,36 @@ function Space() {
   });
 
   const initialValues = {
-    name: "",
-    email: "",
-    rate: "",
+    
+    UserId: "1",
+    name: "jess",
+    email: "a@gmail.com",
+    rate: "400",
 
-    squareFootage: "",
-    numPeople: "",
+    squareFootage: "600",
+    numPeople: "4",
 
-    location: {
-      address: "",
-      city: "",
-      state: "",
-      zip: "",
-    },
+    address: "519 E 4th Ave",
+    city: "Salt Lake City",
+    state: "Utah",
+    zip: "84103",
+
     lat: "",
     lng: "",
 
-    photoLink: "",
-    url: "",
-    description: "",
+    description: "asdf",
+    photoLink: "http://asdf.com",
+    url: "http://asdf.com"
   }
 
   const handleQuery = (values, setValues) => {
 
-    let location = Object.values(values.location)
+    let location = (({ address, city, state, zip }) => ({ address, city, state, zip }))(values);
+    location = Object.values(location);
     location = location.toString()
     location = location.split(" ").join("+")
+    console.log(location);
+    
 
     let cityLat, cityLng;
     let geoAddy = location
@@ -89,7 +93,8 @@ function Space() {
         const payload = { ...values, lat: cityLat, lng: cityLng };
 
         setValues(payload);
-        alert(JSON.stringify(payload, null, 2));
+        // alert(JSON.stringify(payload, null, 2));
+        console.log(JSON.stringify(payload, null, 2));
       })
       .catch(err => {
         console.log(err);
@@ -105,9 +110,13 @@ function Space() {
           validationSchema={schema}
           initialValues={initialValues}
           onSubmit={(values, { setSubmitting, setValues }) => {
+            console.log("onSubmit");
+            
             handleQuery(values, setValues);
-            API.newPost("auditions", values);
-            setTimeout(() => setSubmitting(false), 500);
+            setTimeout(() => {
+              API.newPost("space", values)
+              setSubmitting(false)
+            }, 500);
           }}
         >
           {({
@@ -208,7 +217,7 @@ function Space() {
                   <Form.Label>Address</Form.Label>
                   <Form.Control
                     required
-                    name="location.address"
+                    name="address"
                     value={values.address}
                     placeholder="Address"
                     type="text"
@@ -222,7 +231,7 @@ function Space() {
                 <Form.Group as={Col} md="12">
                   <Form.Control
                     required
-                    name="location.city"
+                    name="city"
                     value={values.city}
                     placeholder="City"
                     type="text"
@@ -236,7 +245,7 @@ function Space() {
                 <Form.Group as={Col} md="12">
                   <Form.Control
                     required
-                    name="location.state"
+                    name="state"
                     value={values.state}
                     placeholder="State"
                     type="text"
@@ -244,13 +253,13 @@ function Space() {
                     onBlur={handleBlur}
                     isInvalid={!!errors.state}
                   />
-                  {errors.city && touched.city && <div className="input-feedback">{errors.city}</div>}
+                  {errors.state && touched.state && <div className="input-feedback">{errors.state}</div>}
                 </Form.Group>
 
                 <Form.Group as={Col} md="12">
                   <Form.Control
                     required
-                    name="location.zip"
+                    name="zip"
                     value={values.zip}
                     placeholder="Zip"
                     type="number"

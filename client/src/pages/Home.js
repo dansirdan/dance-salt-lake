@@ -72,7 +72,7 @@ class Home extends Component {
                       returnData={this.returnData}
                       page="Audition"
                     /> */}
-                  </Col>
+                  </Col> 
                 </Row>
               </Col>
             </Row>
