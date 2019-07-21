@@ -33,7 +33,7 @@ function Audition() {
     state: yup.string()
       .required('Required'),
     zip: yup.number()
-      .min(8, "valid zipcode required")
+      .min(5, "valid zipcode required")
       .required('Required'),
 
     numberOf: yup.number()
@@ -94,7 +94,6 @@ function Audition() {
     location = location.toString()
     location = location.split(" ").join("+")
     console.log(location);
-
 
     let cityLat, cityLng;
     let geoAddy = location
