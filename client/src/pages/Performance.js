@@ -121,7 +121,8 @@ class Performance extends Component {
                           photoLink={performance.photoLink}
                           length={performance.length}
                           payment={performance.payment}
-                          time={performance.time}
+                          startTime={performance.startTime}
+                          endTime={performance.endTime}
                           date={performance.date}
                           special={performance.special}
                           onClick={() => this.handleShow(performance.id)}

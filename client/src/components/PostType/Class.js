@@ -86,7 +86,7 @@ function Class() {
     lng: "",
 
     description: "asdf",
-    photoLink: "http://asdf.com",
+    photoLink: "http://lorempixel.com/640/480",
     url: "http://asdf.com"
   }
 

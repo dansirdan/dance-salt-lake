@@ -157,7 +157,11 @@ export class PerformancesPreview extends Component {
             <p><span className="light-text">
               {performance.description !== "" ? performance.description : "There are no current performances within our database..."}
             </span></p>
-            <p>{performance.address}</p>
+            <div className="no-margin">
+              <p>{performance.address}</p>
+              <p>{performance.city}, {performance.state}</p>
+            </div>
+            <br />
             <h6>${performance.price}</h6>
             <Button variant="success" href={performance.url}>Get Tickets</Button>
           </Card.Body>
@@ -233,6 +237,7 @@ export class AuditionPreview extends Component {
                         <div className="details">
                           <h6>{audition.title}</h6>
                           <p><span className="light-text">{audition.address}</span></p>
+                          <p><span className="light-text">{audition.city} {audition.state}</span></p>
                         </div>
                       </Col>
                     </Row>
@@ -241,7 +246,7 @@ export class AuditionPreview extends Component {
                 <Accordion.Collapse eventKey={index.toString()}>
                   <Card.Body>
                     <Card.Text>
-                      <b>Start Time:</b> {moment(audition.time, "HH:mm:ss").format("h:mm A")}
+                      <p> {moment(audition.startTime, "HH:mm:ss").format("h:mm A")} - {moment(audition.endTime, "HH:mm:ss").format("h:mm A")}</p>
                     </Card.Text>
                     <Card.Text className="light-text">
                       {audition.description}

@@ -51,12 +51,12 @@ module.exports = function (sequelize, DataTypes) {
       allowNull: false
     },
     lat: {
-      type: DataTypes.INTEGER,
-      allowNull: true
+      type: DataTypes.FLOAT,
+      allowNull: false
     },
     lng: {
-      type: DataTypes.INTEGER,
-      allowNull: true
+      type: DataTypes.FLOAT,
+      allowNull: false
     },
     numberOf: {
       type: DataTypes.STRING,

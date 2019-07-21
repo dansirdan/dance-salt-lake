@@ -72,11 +72,11 @@ module.exports = function (sequelize, DataTypes) {
       allowNull: false
     },
     lat: {
-      type: DataTypes.INTEGER,
+      type: DataTypes.FLOAT,
       allowNull: false
     },
     lng: {
-      type: DataTypes.INTEGER,
+      type: DataTypes.FLOAT,
       allowNull: false
     },
     description: {

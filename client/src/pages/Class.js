@@ -135,7 +135,8 @@ class Class extends Component {
                           length={klass.length}
                           level={klass.level}
                           payment={klass.payment}
-                          time={klass.time}
+                          startTime={klass.startTime}
+                          endTime={klass.endTime}
                           date={klass.date}
                           onClick={() => this.handleShow(klass.id)}
                         />

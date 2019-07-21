@@ -14,6 +14,10 @@ import GoogleMapTWO from "../GoogleMapTWO";
 import moment from "moment";
 import "./style.css";
 
+/* TODO: 
+* contact button doesn't work as expected
+* make the address a link to google maps
+*/
 class MoreInfo extends Component {
   constructor(props, context) {
     super(props, context);
@@ -59,14 +63,17 @@ class MoreInfo extends Component {
       title,
       description,
       address,
-      gig,
+      city,
+      state,
+      zip,
       length,
+      contract,
       payment,
-      time,
+      startTime,
+      endTime,
       date,
-      link,
+      photoLink,
       instructorName,
-      special,
       url
     } = this.props.moreInfo;
 
@@ -80,7 +87,7 @@ class MoreInfo extends Component {
                   <Row>
                     <Col className="align-contetn-center">
                       <li className="accent-text">AUDITION DETAILS</li>
-                      <p><span className="light-text">({gig})</span></p>
+                      <p><span className="light-text">({length} {contract})</span></p>
                       <p><span className="light-text">{description}</span></p>
                     </Col>
                   </Row>
@@ -92,7 +99,7 @@ class MoreInfo extends Component {
                   <li className="accent-text">DATE</li>
                   <p><span className="light-text">{moment(date).format("MMM Do")}</span></p>
                   <li className="accent-text">TIME</li>
-                  <p><span className="light-text">{moment(time, "HH:mm:ss").format("h:mm A")}</span></p>
+                  <p><span className="light-text">{moment(startTime, "HH:mm:ss").format("h:mm A")} - {moment(startTime, "HH:mm:ss").format("h:mm A")}</span></p>
                 </Col>
                 <Col sm='8' md='5'>
                   <li className="accent-text">LOCATION</li>
@@ -104,14 +111,12 @@ class MoreInfo extends Component {
               <Row>
                 <Col md='7'>
                   <br />
-                  <Link className="btn btn-primary" to={url} >
-                    Contact
-                  </Link >
+                  <Link className="btn btn-primary" to={url}>Contact</Link > 
                 </Col>
                 <Col>
                   <br />
                   <li><span className="light-text">{address}</span></li>
-                  <li><span className="light-text">Salt Lake City, UT</span></li>
+                  <li><span className="light-text">{city}, {state} {zip}</span></li> 
                 </Col>
               </Row>
             </Container >
@@ -149,7 +154,7 @@ class MoreInfo extends Component {
                     </thead>
                     <tbody>
                       <tr>
-                        <td><span className="light-text">{moment(time, "HH:mm:ss").format("h:mm A")}</span></td>
+                        <td><span className="light-text">{moment(startTime, "HH:mm:ss").format("h:mm A")} - {moment(endTime, "HH:mm:ss").format("h:mm A")}</span></td>
                         <td><span className="light-text">{moment(date).format("MMM Do")}</span></td>
                         <td><span className="light-text">{payment}</span></td>
                         <td>
@@ -168,14 +173,12 @@ class MoreInfo extends Component {
               <Row>
                 <Col md='7'>
                   <br />
-                  <Link className="btn btn-primary" to={link} >
-                    Contact
-                  </Link >
+                  <Link className="btn btn-primary" to={url}>Contact</Link >
                 </Col>
                 <Col>
                   <br />
                   <li><span className="light-text">{address}</span></li>
-                  <li><span className="light-text">Salt Lake City, UT</span></li>
+                  <li><span className="light-text">{city}, {state} {zip}</span></li>
                 </Col>
               </Row>
 
@@ -206,9 +209,8 @@ class MoreInfo extends Component {
                   <li className="accent-text">DATE</li>
                   <p><span className="light-text">{moment(date).format("MMM Do")}</span></p>
                   <li className="accent-text">TIME</li>
-                  <p><span className="light-text">{moment(time, "HH:mm:ss").format("h:mm A")}</span></p>
+                  <p><span className="light-text">{moment(startTime, "HH:mm:ss").format("h:mm A")}</span></p>
                   <li className="accent-text">MISC</li>
-                  <p><span className="light-text">{special}</span></p>
                 </Col>
                 <Col>
                   <GoogleMapTWO />
@@ -217,14 +219,14 @@ class MoreInfo extends Component {
               <Row>
                 <Col md='7'>
                   <br />
-                  <Link className="btn btn-primary" to={link} >
+                  <Link className="btn btn-primary" to={url}>
                     Contact
                   </Link >
                 </Col>
                 <Col>
                   <br />
                   <li><span className="light-text">{address}</span></li>
-                  <li><span className="light-text">Salt Lake City, UT</span></li>
+                  <li><span className="light-text">{city}, {state} {zip}</span></li>
                 </Col>
               </Row>
             </Container>
