@@ -1,5 +1,5 @@
 import React from "react";
-import { Row, Form, Col, InputGroup, Button } from "react-bootstrap";
+import { Form, Col, InputGroup, Button } from "react-bootstrap";
 import { AuthConsumer } from '../AuthContext';
 import API from "../../utils/API";
 import axios from "axios";
@@ -23,15 +23,15 @@ function Audition() {
     endTime: yup.string()
       .required('Required'),
 
-    address: yup.string()
-      .required('Required'),
-    city: yup.string()
-      .required('Required'),
-    state: yup.string()
-      .required('Required'),
-    zip: yup.number()
-      .min(8, "valid zipcode required")
-      .required('Required'),
+    // address: yup.string()
+    //   .required('Required'),
+    // city: yup.string()
+    //   .required('Required'),
+    // state: yup.string()
+    //   .required('Required'),
+    // zip: yup.number()
+    //   .min(8, "valid zipcode required")
+    //   .required('Required'),
 
     numberOf: yup.number()
       .required('Required'),
@@ -143,7 +143,7 @@ function Audition() {
                     type="number"
                     onChange={handleChange}
                   />
-                  <Form.Group as={Col} md="6">
+                  <Form.Group as={Col} md="12">
                     <Form.Label>Post Title</Form.Label>
                     <Form.Control
                       required
@@ -159,7 +159,7 @@ function Audition() {
                     {errors.title && touched.title && <div className="input-feedback">{errors.title}</div>}
                   </Form.Group>
 
-                    <Form.Group as={Col} md="2">
+                    <Form.Group as={Col} md="12">
                       <Form.Label>Date</Form.Label>
                       <Form.Control
                         required
@@ -171,10 +171,10 @@ function Audition() {
                         onChange={handleChange}
                         onBlur={handleBlur}
                       />
-                      {errors.title && touched.title && <div className="input-feedback">{errors.title}</div>}
+                      {errors.date && touched.date && <div className="input-feedback">{errors.date}</div>}
                     </Form.Group>
 
-                <Form.Group as={Col} md="2">
+                <Form.Group as={Col} md="12">
                       <Form.Label>Start Time</Form.Label>
                       <Form.Control
                         required
@@ -186,10 +186,10 @@ function Audition() {
                         onBlur={handleBlur}
                         isInvalid={!!errors.startTime}
                       />
-                      {errors.title && touched.title && <div className="input-feedback">{errors.title}</div>}
+                      {errors.startTime && touched.startTime && <div className="input-feedback">{errors.startTime}</div>}
                     </Form.Group>
 
-                    <Form.Group  as={Col} md="2">
+                    <Form.Group  as={Col} md="12">
                       <Form.Label>End Time</Form.Label>
                       <Form.Control
                         required
@@ -201,10 +201,10 @@ function Audition() {
                         onBlur={handleBlur}
                         isInvalid={!!errors.endTime}
                       />
-                      {errors.title && touched.title && <div className="input-feedback">{errors.title}</div>}
+                      {errors.endTime && touched.endTime && <div className="input-feedback">{errors.endTime}</div>}
                     </Form.Group>
 
-                    <Form.Group as={Col} md="2">
+                    <Form.Group as={Col} md="12">
                     <Form.Label>Address</Form.Label>
                       <Form.Control
                         required
@@ -216,10 +216,10 @@ function Audition() {
                         onBlur={handleBlur}
                         isInvalid={!!errors.address}
                       />
-                      {errors.title && touched.title && <div className="input-feedback">{errors.title}</div>}
+                  {errors.address && touched.address && <div className="input-feedback">{errors.address}</div>}
                     </Form.Group>
 
-                    <Form.Group as={Col} md="2">
+                    <Form.Group as={Col} md="12">
                       <Form.Control
                         required
                         name="location.city"
@@ -230,10 +230,10 @@ function Audition() {
                         onBlur={handleBlur}
                         isInvalid={!!errors.city}
                       />
-                      {errors.title && touched.title && <div className="input-feedback">{errors.title}</div>}
+                      {errors.city && touched.city && <div className="input-feedback">{errors.city}</div>}
                     </Form.Group>
 
-                    <Form.Group as={Col} md="2">
+                    <Form.Group as={Col} md="12">
                       <Form.Control
                         required
                         name="location.state"
@@ -244,9 +244,10 @@ function Audition() {
                         onBlur={handleBlur}
                         isInvalid={!!errors.state}
                       />
+                  {errors.state && touched.state && <div className="input-feedback">{errors.state}</div>}
                     </Form.Group>
 
-                    <Form.Group as={Col} md="2">
+                    <Form.Group as={Col} md="12">
                       <Form.Control
                         required
                         name="location.zip"
@@ -257,7 +258,7 @@ function Audition() {
                         onBlur={handleBlur}
                         isInvalid={!!errors.zip}
                       />
-                      {errors.title && touched.title && <div className="input-feedback">{errors.title}</div>}
+                      {errors.zip && touched.zip && <div className="input-feedback">{errors.zip}</div>}
                     </Form.Group>
 
                     <Form.Control
@@ -278,7 +279,7 @@ function Audition() {
                       onChange={handleChange}
                     />
 
-                    <Form.Group as={Col} md="6">
+                    <Form.Group as={Col} md="12">
                       <Form.Label>Looking For:</Form.Label>
                       <InputGroup>
                         <Form.Control
@@ -291,7 +292,7 @@ function Audition() {
                           onBlur={handleBlur}
                           isInvalid={!!errors.numberOf}
                         />
-                        {errors.title && touched.title && <div className="input-feedback">{errors.title}</div>}
+                        {errors.numberOf && touched.numberOf && <div className="input-feedback">{errors.numberOf}</div>}
 
                         <InputGroup.Prepend>
                           <Form.Control
@@ -309,12 +310,12 @@ function Audition() {
                             <option value="Men and Women">Men and Women</option>
                             <option value="Any">Any</option>
                           </Form.Control>
-                          {errors.title && touched.title && <div className="input-feedback">{errors.title}</div>}
+                          {errors.lookingFor && touched.lookingFor && <div className="input-feedback">{errors.lookingFor}</div>}
                         </InputGroup.Prepend>
                       </InputGroup>
                     </Form.Group>
 
-                    <Form.Group as={Col} md="6">
+                    <Form.Group as={Col} md="12">
                       <Form.Label>Contract:</Form.Label>
                       <InputGroup>
                         <Form.Control
@@ -327,7 +328,7 @@ function Audition() {
                           onBlur={handleBlur}
                           isInvalid={!!errors.length}
                         />
-                        {errors.title && touched.title && <div className="input-feedback">{errors.title}</div>}
+                        {errors.length && touched.length && <div className="input-feedback">{errors.length}</div>}
                         <InputGroup.Prepend>
                           <Form.Control
                             as="select"
@@ -342,12 +343,12 @@ function Audition() {
                             <option value="Month Contract">Month Contract</option>
                             <option value="Year Contract">Year Contract</option>
                           </Form.Control>
-                          {errors.title && touched.title && <div className="input-feedback">{errors.contract}</div>}
+                          {errors.contract && touched.contract && <div className="input-feedback">{errors.contract}</div>}
                         </InputGroup.Prepend>
                       </InputGroup>
                     </Form.Group>
 
-                    <Form.Group as={Col} md="6">
+                    <Form.Group as={Col} md="12">
                       <Form.Label>Image link</Form.Label>
                       <Form.Control
                         required
@@ -359,10 +360,10 @@ function Audition() {
                         onBlur={handleBlur}
                         isInvalid={!!errors.img}
                       />
-                      {errors.title && touched.title && <div className="input-feedback">{errors.title}</div>}
+                    {errors.img && touched.img && <div className="input-feedback">{errors.img}</div>}
                     </Form.Group>
 
-                  <Form.Group as={Col} md="6">
+                  <Form.Group as={Col} md="12">
                     <Form.Label>Image link</Form.Label>
                     <Form.Control
                       required
@@ -374,21 +375,21 @@ function Audition() {
                       onBlur={handleBlur}
                       isInvalid={!!errors.url}
                     />
-                    {errors.title && touched.title && <div className="input-feedback">{errors.title}</div>}
+                    {errors.url && touched.url && <div className="input-feedback">{errors.url}</div>}
                   </Form.Group>              
 
-                  <Form.Group as={Col} md="6">
+                  <Form.Group as={Col} md="12">
                     <Form.Label>Description</Form.Label>
                     <Form.Control
                       required
                       name="description"
                       value={values.description}
-                      type="textarea"
+                      as="textarea"
                       onChange={handleChange}
                       onBlur={handleBlur}
                       isInvalid={!!errors.description}
                     />
-                    {errors.title && touched.title && <div className="input-feedback">{errors.description}</div>}
+                    {errors.description && touched.description && <div className="input-feedback">{errors.description}</div>}
                   </Form.Group>
 
                 <Button type="submit">Submit</Button>

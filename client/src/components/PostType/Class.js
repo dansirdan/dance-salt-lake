@@ -1,12 +1,10 @@
-import React, { Component } from "react";
-import { Row, Col, Form, InputGroup, FormControl, Button } from "react-bootstrap";
+import React from "react";
+import { Col, Form, InputGroup, Button } from "react-bootstrap";
 import { AuthConsumer } from '../AuthContext';
 import API from "../../utils/API";
 import axios from "axios";
-
 import { Formik } from "formik";
 import * as yup from "yup";
-
 
 function Class() {
 
@@ -146,7 +144,7 @@ function Class() {
                   type="number"
                   onChange={handleChange}
                 />
-                <Form.Group as={Col} md="6">
+                <Form.Group as={Col} md="12">
                   <Form.Label>Post Title</Form.Label>
                   <Form.Control
                     required
@@ -162,7 +160,7 @@ function Class() {
                   {errors.title && touched.title && <div className="input-feedback">{errors.title}</div>}
                 </Form.Group>
 
-                <Form.Group as={Col} md="6">
+                <Form.Group as={Col} md="12">
                   <Form.Label>Instructor</Form.Label>
                   <Form.Control
                     required
@@ -177,7 +175,7 @@ function Class() {
                   {errors.instructorName && touched.instructorName && <div className="input-feedback">{errors.instructorName}</div>}
                 </Form.Group>
               
-                <Form.Group as={Col} md="4">
+                <Form.Group as={Col} md="12">
                   <Form.Label>Instructor</Form.Label>
                   <Form.Control
                     required
@@ -192,7 +190,7 @@ function Class() {
                   {errors.instructorName && touched.instructorName && <div className="input-feedback">{errors.instructorName}</div>}
                 </Form.Group>
 
-                <Form.Group as={Col} md="4">
+                <Form.Group as={Col} md="12">
                   <Form.Label>Style</Form.Label>
                   <Form.Control
                     required
@@ -207,7 +205,7 @@ function Class() {
                   {errors.style && touched.style && <div className="input-feedback">{errors.style}</div>}
                 </Form.Group>
                
-                <Form.Group as={Col} md="4">
+                <Form.Group as={Col} md="12">
                   <Form.Label>Level</Form.Label>
                   <Form.Control as="select"
                     required
@@ -224,11 +222,11 @@ function Class() {
                   {errors.level && touched.level && <div className="input-feedback">{errors.level}</div>}
                 </Form.Group>
 
-                <Form.Group as={Col} md="2">
+                <Form.Group as={Col} md="12">
                   <InputGroup.Checkbox name="Master" label="Master Class" />
                 </Form.Group>
 
-                <Form.Group as={Col} md="2">
+                <Form.Group as={Col} md="12">
                   <Form.Label>Date</Form.Label>
                   <Form.Control
                     required
@@ -242,7 +240,7 @@ function Class() {
                   {errors.date && touched.date && <div className="input-feedback">{errors.date}</div>}
                 </Form.Group>
 
-                <Form.Group as={Col} md="2">
+                <Form.Group as={Col} md="12">
                   <Form.Label>Start Time</Form.Label>
                   <Form.Control
                     required
@@ -257,7 +255,7 @@ function Class() {
                   {errors.startTime && touched.startTime && <div className="input-feedback">{errors.startTime}</div>}
                 </Form.Group>
 
-                <Form.Group as={Col} md="2">
+                <Form.Group as={Col} md="12">
                   <Form.Label>End Time</Form.Label>
                   <Form.Control
                     required
@@ -272,7 +270,7 @@ function Class() {
                   {errors.endTime && touched.endTime && <div className="input-feedback">{errors.endTime}</div>}
                 </Form.Group>
 
-                <Form.Group as={Col} md="2">
+                <Form.Group as={Col} md="12">
                   <Form.Label>Address</Form.Label>
                   <Form.Control
                     required
@@ -287,7 +285,7 @@ function Class() {
                   {errors.title && touched.title && <div className="input-feedback">{errors.title}</div>}
                 </Form.Group>
 
-                <Form.Group as={Col} md="2">
+                <Form.Group as={Col} md="12">
                   <Form.Control
                     required
                     name="location.city"
@@ -301,7 +299,7 @@ function Class() {
                   {errors.title && touched.title && <div className="input-feedback">{errors.title}</div>}
                 </Form.Group>
 
-                <Form.Group as={Col} md="2">
+                <Form.Group as={Col} md="12">
                   <Form.Control
                     required
                     name="location.state"
@@ -314,7 +312,7 @@ function Class() {
                   />
                 </Form.Group>
 
-                <Form.Group as={Col} md="2">
+                <Form.Group as={Col} md="12">
                   <Form.Control
                     required
                     name="location.zip"
@@ -346,7 +344,7 @@ function Class() {
                   onChange={handleChange}
                 />
 
-                <Form.Group as={Col} md="6">
+                <Form.Group as={Col} md="12">
                   <Form.Label>Image link</Form.Label>
                   <Form.Control
                     required
@@ -361,7 +359,7 @@ function Class() {
                   {errors.title && touched.title && <div className="input-feedback">{errors.title}</div>}
                 </Form.Group>
 
-                <Form.Group as={Col} md="6">
+                <Form.Group as={Col} md="12">
                   <Form.Label>Image link</Form.Label>
                   <Form.Control
                     required
@@ -376,13 +374,13 @@ function Class() {
                   {errors.title && touched.title && <div className="input-feedback">{errors.title}</div>}
                 </Form.Group>
 
-                <Form.Group as={Col} md="6">
+                <Form.Group as={Col} md="12">
                   <Form.Label>Description</Form.Label>
                   <Form.Control
                     required
                     name="description"
                     value={values.description}
-                    type="textarea"
+                    as="textarea"
                     onChange={handleChange}
                     onBlur={handleBlur}
                     isInvalid={!!errors.description}

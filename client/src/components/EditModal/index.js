@@ -1,12 +1,6 @@
 import React, { Component } from 'react';
-import { Link } from "react-router-dom";
-import {
-  Modal,
-  Button,
-  Row,
-  Col,
-  Container
-} from "react-bootstrap";
+// import { Link } from "react-router-dom";
+import { Modal, Button } from "react-bootstrap";
 import EditForm from "../EditForm";
 import "./style.css";
 

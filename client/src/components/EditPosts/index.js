@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { Container, Row, Col, Table, Button, Modal, Tabs, Tab } from "react-bootstrap";
-import { Section, Banner } from "../Sections";
+// import { Section, Banner } from "../Sections";
 import Post from "../Post";
 import EditModal from "../EditModal";
 import CopyModal from "../CopyModal";

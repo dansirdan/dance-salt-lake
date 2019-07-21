@@ -52,17 +52,13 @@ class Home extends Component {
   // 3. Place it somewhere HERE
   render() {
     return (
-      <div>
+      <>
         <Hero />
         <Container>
           <div className="preview">
-
             <Row>
               <Col md="12" lg="4">
-                <ClassesPreview 
-                  returnData={this.returnData}
-                  page="Class"
-                  />
+                <ClassesPreview />
               </Col>
 
               <Col md="12" lg="4">
@@ -79,7 +75,6 @@ class Home extends Component {
                   </Col>
                 </Row>
               </Col>
-
             </Row>
           </div>
 
@@ -93,7 +88,7 @@ class Home extends Component {
             moreInfo={this.state.moreInfo}
           />
         </Container>
-      </div >
+      </>
     )
   }
 }

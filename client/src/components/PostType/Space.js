@@ -1,12 +1,10 @@
-import React, { Component } from "react";
-import { Row, Col, Form, InputGroup, Button } from "react-bootstrap";
+import React from "react";
+import { Col, Form, Button } from "react-bootstrap";
 import { AuthConsumer } from '../AuthContext';
 import API from "../../utils/API";
 import axios from "axios";
-
 import { Formik } from "formik";
 import * as yup from "yup";
-
 
 function Space() {
 
@@ -130,7 +128,7 @@ function Space() {
                   type="number"
                   onChange={handleChange}
                 />
-                <Form.Group as={Col} md="6">
+                <Form.Group as={Col} md="12">
                   <Form.Label>Name</Form.Label>
                   <Form.Control
                     required
@@ -146,7 +144,7 @@ function Space() {
                   {errors.name && touched.name && <div className="input-feedback">{errors.name}</div>}
                 </Form.Group>
 
-                <Form.Group as={Col} md="2">
+                <Form.Group as={Col} md="12">
                   <Form.Label>Email</Form.Label>
                   <Form.Control
                     required
@@ -161,7 +159,7 @@ function Space() {
                   {errors.email && touched.email && <div className="input-feedback">{errors.email}</div>}
                 </Form.Group>
 
-                <Form.Group as={Col} md="2">
+                <Form.Group as={Col} md="12">
                   <Form.Label>Rate</Form.Label>
                   <Form.Control
                     required
@@ -176,7 +174,7 @@ function Space() {
                   {errors.rate && touched.rate && <div className="input-feedback">{errors.rate}</div>}
                 </Form.Group>
               
-                <Form.Group as={Col} md="2">
+                <Form.Group as={Col} md="12">
                   <Form.Label>Sq.ft.</Form.Label>
                   <Form.Control
                     required
@@ -191,7 +189,7 @@ function Space() {
                   {errors.squareFootage && touched.squareFootage && <div className="input-feedback">{errors.squareFootage}</div>}
                 </Form.Group>
             
-                <Form.Group as={Col} md="2">
+                <Form.Group as={Col} md="12">
                   <Form.Label>Capacity</Form.Label>
                   <Form.Control
                     required
@@ -206,7 +204,7 @@ function Space() {
                   {errors.numPeople && touched.numPeople && <div className="input-feedback">{errors.numPeople}</div>}
                 </Form.Group>
 
-                <Form.Group as={Col} md="2">
+                <Form.Group as={Col} md="12">
                   <Form.Label>Address</Form.Label>
                   <Form.Control
                     required
@@ -221,7 +219,7 @@ function Space() {
                   {errors.address && touched.address && <div className="input-feedback">{errors.address}</div>}
                 </Form.Group>
 
-                <Form.Group as={Col} md="2">
+                <Form.Group as={Col} md="12">
                   <Form.Control
                     required
                     name="location.city"
@@ -235,7 +233,7 @@ function Space() {
                   {errors.city && touched.city && <div className="input-feedback">{errors.city}</div>}
                 </Form.Group>
 
-                <Form.Group as={Col} md="2">
+                <Form.Group as={Col} md="12">
                   <Form.Control
                     required
                     name="location.state"
@@ -249,7 +247,7 @@ function Space() {
                   {errors.city && touched.city && <div className="input-feedback">{errors.city}</div>}
                 </Form.Group>
 
-                <Form.Group as={Col} md="2">
+                <Form.Group as={Col} md="12">
                   <Form.Control
                     required
                     name="location.zip"
@@ -281,7 +279,7 @@ function Space() {
                   onChange={handleChange}
                 />
 
-                <Form.Group as={Col} md="6">
+                <Form.Group as={Col} md="12">
                   <Form.Label>Image link</Form.Label>
                   <Form.Control
                     required
@@ -296,7 +294,7 @@ function Space() {
                   {errors.img && touched.img && <div className="input-feedback">{errors.img}</div>}
                 </Form.Group>
 
-                <Form.Group as={Col} md="6">
+                <Form.Group as={Col} md="12">
                   <Form.Label>Image link</Form.Label>
                   <Form.Control
                     required
@@ -311,7 +309,7 @@ function Space() {
                   {errors.url && touched.url && <div className="input-feedback">{errors.url}</div>}
                 </Form.Group>
 
-                <Form.Group as={Col} md="6">
+                <Form.Group as={Col} md="12">
                   <Form.Label>Description</Form.Label>
                   <Form.Control
                     required

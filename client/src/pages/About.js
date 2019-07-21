@@ -2,8 +2,6 @@ import React, { Component } from 'react';
 import { Row, Col } from "react-bootstrap"
 import { Container } from "../components/Grid";
 
-import Post from "../components/Post"
-
 
 class About extends Component {
 
@@ -22,7 +20,6 @@ class About extends Component {
     return (
       <div className="about-section">
 
-        <Post />
         <Container>
           <Row className="justify-content-md-center">
 

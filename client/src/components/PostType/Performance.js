@@ -1,12 +1,10 @@
-import React, { Component } from "react";
-import { Row, Col, Form, InputGroup, Button } from "react-bootstrap";
+import React from "react";
+import { Col, Form, InputGroup, Button } from "react-bootstrap";
 import { AuthConsumer } from '../AuthContext';
 import API from "../../utils/API";
 import axios from "axios";
-
 import { Formik } from "formik";
 import * as yup from "yup";
-
 
 function Performance() {
 
@@ -133,7 +131,7 @@ function Performance() {
                   type="number"
                   onChange={handleChange}
                 />
-                <Form.Group as={Col} md="6">
+                <Form.Group as={Col} md="12">
                   <Form.Label>Post Title</Form.Label>
                   <Form.Control
                     required
@@ -149,7 +147,7 @@ function Performance() {
                   {errors.title && touched.title && <div className="input-feedback">{errors.title}</div>}
                 </Form.Group>
 
-                <Form.Group as={Col} md="2">
+                <Form.Group as={Col} md="12">
                   <Form.Label>Date</Form.Label>
                   <Form.Control
                     required
@@ -164,7 +162,7 @@ function Performance() {
                   {errors.date && touched.date && <div className="input-feedback">{errors.date}</div>}
                 </Form.Group>
 
-                <Form.Group as={Col} md="2">
+                <Form.Group as={Col} md="12">
                   <Form.Label>Start Time</Form.Label>
                   <Form.Control
                     required
@@ -179,7 +177,7 @@ function Performance() {
                   {errors.startTime && touched.startTime && <div className="input-feedback">{errors.startTime}</div>}
                 </Form.Group>
 
-                <Form.Group as={Col} md="2">
+                <Form.Group as={Col} md="12">
                   <Form.Label>Length</Form.Label>
                   <Form.Control
                     required
@@ -194,7 +192,7 @@ function Performance() {
                   {errors.title && touched.title && <div className="input-feedback">{errors.title}</div>}
                 </Form.Group>
 
-                <Form.Group as={Col} md="2">
+                <Form.Group as={Col} md="12">
                   <Form.Label>Address</Form.Label>
                   <Form.Control
                     required
@@ -209,7 +207,7 @@ function Performance() {
                   {errors.address && touched.address && <div className="input-feedback">{errors.address}</div>}
                 </Form.Group>
 
-                <Form.Group as={Col} md="2">
+                <Form.Group as={Col} md="12">
                   <Form.Control
                     required
                     name="location.city"
@@ -223,7 +221,7 @@ function Performance() {
                   {errors.city && touched.city && <div className="input-feedback">{errors.city}</div>}
                 </Form.Group>
 
-                <Form.Group as={Col} md="2">
+                <Form.Group as={Col} md="12">
                   <Form.Control
                     required
                     name="location.state"
@@ -237,7 +235,7 @@ function Performance() {
                   {errors.city && touched.city && <div className="input-feedback">{errors.city}</div>}
                 </Form.Group>
 
-                <Form.Group as={Col} md="2">
+                <Form.Group as={Col} md="12">
                   <Form.Control
                     required
                     name="location.zip"
@@ -269,7 +267,7 @@ function Performance() {
                   onChange={handleChange}
                 />
 
-                <Form.Group as={Col} md="6">
+                <Form.Group as={Col} md="12">
                   <Form.Label>Price:</Form.Label>
                   <Form.Control
                     required
@@ -284,14 +282,14 @@ function Performance() {
                   {errors.price && touched.price && <div className="input-feedback">{errors.price}</div>}
                 </Form.Group>
 
-                <Form.Group as={Col} md="6">
+                <Form.Group as={Col} md="12">
                   <Form.Label>Payment:</Form.Label>
                   <InputGroup.Checkbox name="payment" label="Cash" />
                   <InputGroup.Checkbox name="payment" label="Card" />
                   <InputGroup.Checkbox name="payment" label="Any" />
                 </Form.Group>
 
-                <Form.Group as={Col} md="6">
+                <Form.Group as={Col} md="12">
                   <Form.Label>Image link</Form.Label>
                   <Form.Control
                     required
@@ -306,7 +304,7 @@ function Performance() {
                   {errors.title && touched.title && <div className="input-feedback">{errors.title}</div>}
                 </Form.Group>
 
-                <Form.Group as={Col} md="6">
+                <Form.Group as={Col} md="12">
                   <Form.Label>Image link</Form.Label>
                   <Form.Control
                     required
@@ -321,7 +319,7 @@ function Performance() {
                   {errors.title && touched.title && <div className="input-feedback">{errors.title}</div>}
                 </Form.Group>
 
-                <Form.Group as={Col} md="6">
+                <Form.Group as={Col} md="12">
                   <Form.Label>Description</Form.Label>
                   <Form.Control
                     required

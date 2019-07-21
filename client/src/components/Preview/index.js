@@ -63,7 +63,7 @@ export class ClassesPreview extends Component {
         {this.state.classData.map(klass => {
           return (
             <Card key={klass.id}>
-              <Card.Body as="a" onClick={() => this.handleShow(klass.id)}>
+              <Card.Body>
                 <Container>
                   <Row className="justify-content-xs-center">
                     <Col lg="4" md="3" xs="6">
@@ -268,9 +268,7 @@ export function SpaceBanner() {
       <div className="banner">
         <h4>Looking for studio space?</h4>
         <p>Click here to view available rental spaces</p>
-        <Link className="btn btn-primary" to="/space" >
-          View
-    </Link >
+        <Link className="btn btn-primary" to="/space">View</Link >
       </div>
     </Col>
   )

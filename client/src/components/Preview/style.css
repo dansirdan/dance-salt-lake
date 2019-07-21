@@ -27,9 +27,6 @@
   padding-bottom: 1rem;
 }
 /* CLASS */
-.class-preview .card:hover {
-  background-color: #f8f9fa;
-}
 .class-preview .details {
   display: flex;
   justify-content: space-between;
