@@ -3,19 +3,23 @@ import { Col, Form, InputGroup, Button } from "react-bootstrap";
 import { AuthConsumer } from '../AuthContext';
 import API from "../../utils/API";
 import axios from "axios";
+import moment from "moment";
 import { Formik } from "formik";
 import * as yup from "yup";
 
 function Performance() {
 
+  const today = moment().format("L");
+
   const schema = yup.object().shape({
 
     title: yup.string()
-      .min(2, 'Too Short!')
-      .max(50, 'Too Long!')
+      .min(2, 'Too Short')
+      .max(50, 'Too Long')
       .required('Required'),
     date: yup.date()
-      .required("Required"),
+      .min(today)
+      .required('Required'),
     startTime: yup.string()
       .required("Required"),
     length: yup.string()
@@ -145,8 +149,8 @@ function Performance() {
                     placeholder="Title"
                     type="text"
                     isInvalid={!!errors.title}
-                    onChange={handleChange}
                     isValid={touched.title && !errors.title}
+                    onChange={handleChange}
                     onBlur={handleBlur}
                   />
                   {errors.title && touched.title && <div className="input-feedback">{errors.title}</div>}
@@ -158,9 +162,10 @@ function Performance() {
                     required
                     name="date"
                     value={values.date}
-                    placeholder="Date"
+                    placeholder={today}
                     type="date"
                     isInvalid={!!errors.date}
+                    isValid={touched.date && !errors.date}
                     onChange={handleChange}
                     onBlur={handleBlur}
                   />
@@ -178,6 +183,7 @@ function Performance() {
                     onChange={handleChange}
                     onBlur={handleBlur}
                     isInvalid={!!errors.startTime}
+                    isValid={touched.startTime && !errors.startTime}
                   />
                   {errors.startTime && touched.startTime && <div className="input-feedback">{errors.startTime}</div>}
                 </Form.Group>
@@ -193,8 +199,9 @@ function Performance() {
                     onChange={handleChange}
                     onBlur={handleBlur}
                     isInvalid={!!errors.length}
+                    isValid={touched.length && !errors.length}
                   />
-                  {errors.title && touched.title && <div className="input-feedback">{errors.title}</div>}
+                  {errors.length && touched.length && <div className="input-feedback">{errors.length}</div>}
                 </Form.Group>
 
                 <Form.Group as={Col} md="12">
@@ -208,6 +215,7 @@ function Performance() {
                     onChange={handleChange}
                     onBlur={handleBlur}
                     isInvalid={!!errors.address}
+                    isValid={touched.address && !errors.address}
                   />
                   {errors.address && touched.address && <div className="input-feedback">{errors.address}</div>}
                 </Form.Group>
@@ -222,6 +230,7 @@ function Performance() {
                     onChange={handleChange}
                     onBlur={handleBlur}
                     isInvalid={!!errors.city}
+                    isValid={touched.city && !errors.city}
                   />
                   {errors.city && touched.city && <div className="input-feedback">{errors.city}</div>}
                 </Form.Group>
@@ -236,6 +245,7 @@ function Performance() {
                     onChange={handleChange}
                     onBlur={handleBlur}
                     isInvalid={!!errors.state}
+                    isValid={touched.state && !errors.state}
                   />
                   {errors.city && touched.city && <div className="input-feedback">{errors.city}</div>}
                 </Form.Group>
@@ -250,6 +260,7 @@ function Performance() {
                     onChange={handleChange}
                     onBlur={handleBlur}
                     isInvalid={!!errors.zip}
+                    isValid={touched.zip && !errors.zip}
                   />
                   {errors.zip && touched.zip && <div className="input-feedback">{errors.zip}</div>}
                 </Form.Group>
@@ -283,6 +294,7 @@ function Performance() {
                     onChange={handleChange}
                     onBlur={handleBlur}
                     isInvalid={!!errors.price}
+                    isValid={touched.price && !errors.price}
                   />
                   {errors.price && touched.price && <div className="input-feedback">{errors.price}</div>}
                 </Form.Group>
@@ -305,6 +317,7 @@ function Performance() {
                     onChange={handleChange}
                     onBlur={handleBlur}
                     isInvalid={!!errors.photoLink}
+                    isValid={touched.photoLink && !errors.photoLink}
                   />
                   {errors.photoLink && touched.photoLink && <div className="input-feedback">{errors.photoLink}</div>}
                 </Form.Group>
@@ -320,6 +333,7 @@ function Performance() {
                     onChange={handleChange}
                     onBlur={handleBlur}
                     isInvalid={!!errors.url}
+                    isValid={touched.url && !errors.url}
                   />
                   {errors.url && touched.url && <div className="input-feedback">{errors.url}</div>}
                 </Form.Group>
@@ -334,8 +348,9 @@ function Performance() {
                     onChange={handleChange}
                     onBlur={handleBlur}
                     isInvalid={!!errors.description}
+                    isValid={touched.description && !errors.description}
                   />
-                  {errors.title && touched.title && <div className="input-feedback">{errors.description}</div>}
+                  {errors.description && touched.description && <div className="input-feedback">{errors.description}</div>}
                 </Form.Group>
 
                 <Button type="submit">Submit</Button>

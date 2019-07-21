@@ -11,8 +11,8 @@ function Space() {
   const schema = yup.object().shape({
 
     name: yup.string()
-      .min(2, 'Too Short!')
-      .max(50, 'Too Long!')
+      .min(2, 'Too Short')
+      .max(50, 'Too Long')
       .required('Required'),
     email: yup.string()
       .required("Required"),
@@ -31,14 +31,14 @@ function Space() {
     state: yup.string()
       .required("Required"),
     zip: yup.number()
-      .min(8, "valid zipcode required")
+      .min(5, "valid zipcode required")
       .required('Required'),
 
     description: yup.string()
       .min(3, "Too Short")
       .max(255, "That's a bit much...")
       .required("Required"),
-    photoLInk: yup.string()
+    photoLink: yup.string()
       .url("valid url required")
       .required('Required'),
     url: yup.string()
@@ -71,13 +71,11 @@ function Space() {
   }
 
   const handleQuery = (values, setValues) => {
-
+    
     let location = (({ address, city, state, zip }) => ({ address, city, state, zip }))(values);
     location = Object.values(location);
     location = location.toString()
     location = location.split(" ").join("+")
-    console.log(location);
-    
 
     let cityLat, cityLng;
     let geoAddy = location
@@ -110,13 +108,11 @@ function Space() {
           validationSchema={schema}
           initialValues={initialValues}
           onSubmit={(values, { setSubmitting, setValues }) => {
-            console.log("onSubmit");
             
             handleQuery(values, setValues);
             setTimeout(() => {
               API.newPost("space", values)
-              setSubmitting(false)
-            }, 500);
+              setSubmitting(false)}, 500);
           }}
         >
           {({
@@ -133,7 +129,7 @@ function Space() {
                   required
                   hidden
                   name="UserId"
-                  value={values.UserId}
+                  value={user.id}
                   type="number"
                   onChange={handleChange}
                 />
@@ -146,8 +142,8 @@ function Space() {
                     placeholder="Name"
                     type="text"
                     isInvalid={!!errors.name}
-                    onChange={handleChange}
                     isValid={touched.name && !errors.name}
+                    onChange={handleChange}
                     onBlur={handleBlur}
                   />
                   {errors.name && touched.name && <div className="input-feedback">{errors.name}</div>}
@@ -162,6 +158,7 @@ function Space() {
                     placeholder="Email Address"
                     type="text"
                     isInvalid={!!errors.email}
+                    isValid={touched.email && !errors.email}
                     onChange={handleChange}
                     onBlur={handleBlur}
                   />
@@ -179,6 +176,7 @@ function Space() {
                     onChange={handleChange}
                     onBlur={handleBlur}
                     isInvalid={!!errors.rate}
+                    isValid={touched.rate && !errors.rate}
                   />
                   {errors.rate && touched.rate && <div className="input-feedback">{errors.rate}</div>}
                 </Form.Group>
@@ -194,6 +192,7 @@ function Space() {
                     onChange={handleChange}
                     onBlur={handleBlur}
                     isInvalid={!!errors.squareFootage}
+                    isValid={touched.squareFootage && !errors.squareFootage}
                   />
                   {errors.squareFootage && touched.squareFootage && <div className="input-feedback">{errors.squareFootage}</div>}
                 </Form.Group>
@@ -209,6 +208,7 @@ function Space() {
                     onChange={handleChange}
                     onBlur={handleBlur}
                     isInvalid={!!errors.numPeople}
+                    isValid={touched.numPeople && !errors.numPeople}
                   />
                   {errors.numPeople && touched.numPeople && <div className="input-feedback">{errors.numPeople}</div>}
                 </Form.Group>
@@ -224,6 +224,7 @@ function Space() {
                     onChange={handleChange}
                     onBlur={handleBlur}
                     isInvalid={!!errors.address}
+                    isValid={touched.address && !errors.address}
                   />
                   {errors.address && touched.address && <div className="input-feedback">{errors.address}</div>}
                 </Form.Group>
@@ -238,6 +239,7 @@ function Space() {
                     onChange={handleChange}
                     onBlur={handleBlur}
                     isInvalid={!!errors.city}
+                    isValid={touched.city && !errors.city}
                   />
                   {errors.city && touched.city && <div className="input-feedback">{errors.city}</div>}
                 </Form.Group>
@@ -252,6 +254,7 @@ function Space() {
                     onChange={handleChange}
                     onBlur={handleBlur}
                     isInvalid={!!errors.state}
+                    isValid={touched.state && !errors.state}
                   />
                   {errors.state && touched.state && <div className="input-feedback">{errors.state}</div>}
                 </Form.Group>
@@ -266,6 +269,7 @@ function Space() {
                     onChange={handleChange}
                     onBlur={handleBlur}
                     isInvalid={!!errors.zip}
+                    isValid={touched.zip && !errors.zip}
                   />
                   {errors.zip && touched.zip && <div className="input-feedback">{errors.zip}</div>}
                 </Form.Group>
@@ -299,6 +303,7 @@ function Space() {
                     onChange={handleChange}
                     onBlur={handleBlur}
                     isInvalid={!!errors.photoLink}
+                    isValid={touched.photoLink && !errors.photoLink}
                   />
                   {errors.photoLink && touched.photoLink && <div className="input-feedback">{errors.photoLink}</div>}
                 </Form.Group>
@@ -314,6 +319,7 @@ function Space() {
                     onChange={handleChange}
                     onBlur={handleBlur}
                     isInvalid={!!errors.url}
+                    isValid={touched.url && !errors.url}
                   />
                   {errors.url && touched.url && <div className="input-feedback">{errors.url}</div>}
                 </Form.Group>
@@ -324,10 +330,11 @@ function Space() {
                     required
                     name="description"
                     value={values.description}
-                    type="textarea"
+                    as="textarea"
                     onChange={handleChange}
                     onBlur={handleBlur}
                     isInvalid={!!errors.description}
+                    isValid={touched.description && !errors.description}
                   />
                   {errors.description && touched.description && <div className="input-feedback">{errors.description}</div>}
                 </Form.Group>

@@ -3,10 +3,13 @@ import { Col, Form, InputGroup, Button } from "react-bootstrap";
 import { AuthConsumer } from '../AuthContext';
 import API from "../../utils/API";
 import axios from "axios";
+import moment from "moment";
 import { Formik } from "formik";
 import * as yup from "yup";
 
 function Class() {
+
+  const today = moment().format("L"); 
 
   const schema = yup.object().shape({
 
@@ -26,6 +29,7 @@ function Class() {
       .required('Required'),
 
     date: yup.date()
+      .min(today)
       .required('Required'),
     startTime: yup.string()
       .required('Required'),
@@ -67,9 +71,9 @@ function Class() {
     level: "Advanced",
     master: false,
 
-    payment: "Cash",
+    payment: [],
 
-    date: "2019-07-21",
+    date: "",
     startTime: "15:00",
     endTime: "16:00",
 
@@ -107,8 +111,9 @@ function Class() {
         const payload = { ...values, lat: cityLat, lng: cityLng };
 
         setValues(payload);
-        alert(JSON.stringify(payload, null, 2));
-        // API.newPost("classes", values)
+        console.log(JSON.stringify(payload, null, 2));
+        // alert(JSON.stringify(payload, null, 2));
+        API.newPost("classes", values)
       })
       .catch(err => {
         console.log(err);
@@ -126,7 +131,7 @@ function Class() {
           initialValues={initialValues}
           onSubmit={(values, { setSubmitting, setValues }) => {
             handleQuery(values, setValues);
-            API.newPost("classes", values);
+            {/* API.newPost("classes", values); */}
             setTimeout(() => setSubmitting(false), 500);
           }}
         >
@@ -144,7 +149,7 @@ function Class() {
                   required
                   hidden
                   name="UserId"
-                  value={values.UserId}
+                  value={user.id}
                   type="number"
                   onChange={handleChange}
                 />
@@ -173,21 +178,7 @@ function Class() {
                     placeholder="Name"
                     type="text"
                     isInvalid={!!errors.instructorName}
-                    onChange={handleChange}
-                    onBlur={handleBlur}
-                  />
-                  {errors.instructorName && touched.instructorName && <div className="input-feedback">{errors.instructorName}</div>}
-                </Form.Group>
-
-                <Form.Group as={Col} md="12">
-                  <Form.Label>Instructor</Form.Label>
-                  <Form.Control
-                    required
-                    name="style"
-                    value={values.style}
-                    placeholder="Style"
-                    type="text"
-                    isInvalid={!!errors.style}
+                    isValid={touched.instructorName && !errors.instructorName}
                     onChange={handleChange}
                     onBlur={handleBlur}
                   />
@@ -198,15 +189,16 @@ function Class() {
                   <Form.Label>Style</Form.Label>
                   <Form.Control
                     required
-                    name="date"
-                    value={values.date}
-                    placeholder="Date"
-                    type="date"
-                    isInvalid={!!errors.date}
+                    name="style"
+                    value={values.style}
+                    placeholder="Style"
+                    type="text"
+                    isInvalid={!!errors.style}
+                    isValid={touched.style && !errors.style}
                     onChange={handleChange}
                     onBlur={handleBlur}
                   />
-                  {errors.style && touched.style && <div className="input-feedback">{errors.style}</div>}
+                  {errors.instructorName && touched.instructorName && <div className="input-feedback">{errors.instructorName}</div>}
                 </Form.Group>
 
                 <Form.Group as={Col} md="12">
@@ -215,6 +207,7 @@ function Class() {
                     required
                     name="level"
                     isInvalid={!!errors.level}
+                    isValid={touched.level && !errors.level}
                     onChange={handleChange}
                     onBlur={handleBlur}
                   >
@@ -227,14 +220,38 @@ function Class() {
                 </Form.Group>
 
                 <Form.Group as={Col} md="12">
-                  <InputGroup.Checkbox name="Master" label="Master Class" />
+                  <Form.Check 
+                    name="master[0]" 
+                    label="Master Class" 
+                    value="Master Class" 
+                    onChange={handleChange}
+                  />
                 </Form.Group>
 
                 <Form.Group as={Col} md="12">
-                  <Form.Label>Payment:</Form.Label>
-                  <InputGroup.Checkbox name="payment" label="Cash" />
-                  <InputGroup.Checkbox name="payment" label="Card" />
-                  <InputGroup.Checkbox name="payment" label="Any" />
+                  <Form.Label className="mr-3">Payment:</Form.Label>
+                  <Form.Check 
+                    inline 
+                    name="payment" 
+                    value="Cash"
+                    label="Cash" 
+                    onChange={handleChange}                    
+                  />
+                  <Form.Check
+                    inline 
+                    name="payment" 
+                    value="Card"
+                    label="Card"
+                    onChange={handleChange}   
+                  />
+                  <Form.Check 
+                    inline 
+                    default
+                    name="payment" 
+                    value="Any"
+                    label="Any" 
+                    onChange={handleChange}  
+                  />
                 </Form.Group>
 
                 <Form.Group as={Col} md="12">
@@ -247,6 +264,7 @@ function Class() {
                     onChange={handleChange}
                     onBlur={handleBlur}
                     isInvalid={!!errors.date}
+                    isValid={touched.date && !errors.date}
                   />
                   {errors.date && touched.date && <div className="input-feedback">{errors.date}</div>}
                 </Form.Group>
@@ -262,6 +280,7 @@ function Class() {
                     onChange={handleChange}
                     onBlur={handleBlur}
                     isInvalid={!!errors.startTime}
+                    isValid={touched.startTime && !errors.startTime}
                   />
                   {errors.startTime && touched.startTime && <div className="input-feedback">{errors.startTime}</div>}
                 </Form.Group>
@@ -277,6 +296,7 @@ function Class() {
                     onChange={handleChange}
                     onBlur={handleBlur}
                     isInvalid={!!errors.endTime}
+                    isValid={touched.endTime && !errors.endTime}
                   />
                   {errors.endTime && touched.endTime && <div className="input-feedback">{errors.endTime}</div>}
                 </Form.Group>
@@ -292,6 +312,7 @@ function Class() {
                     onChange={handleChange}
                     onBlur={handleBlur}
                     isInvalid={!!errors.address}
+                    isValid={touched.address && !errors.address}
                   />
                   {errors.address && touched.address && <div className="input-feedback">{errors.address}</div>}
                 </Form.Group>
@@ -306,8 +327,9 @@ function Class() {
                     onChange={handleChange}
                     onBlur={handleBlur}
                     isInvalid={!!errors.city}
+                    isValid={touched.city && !errors.city}
                   />
-                  {errors.title && touched.title && <div className="input-feedback">{errors.title}</div>}
+                  {errors.city && touched.city && <div className="input-feedback">{errors.city}</div>}
                 </Form.Group>
 
                 <Form.Group as={Col} md="12">
@@ -320,8 +342,9 @@ function Class() {
                     onChange={handleChange}
                     onBlur={handleBlur}
                     isInvalid={!!errors.state}
+                    isValid={touched.state && !errors.state}
                   />
-                  {errors.zip && touched.zip && <div className="input-feedback">{errors.zip}</div>}
+                  {errors.state && touched.state && <div className="input-feedback">{errors.state}</div>}
                 </Form.Group>
 
                 <Form.Group as={Col} md="12">
@@ -334,6 +357,7 @@ function Class() {
                     onChange={handleChange}
                     onBlur={handleBlur}
                     isInvalid={!!errors.zip}
+                    isValid={touched.zip && !errors.zip}
                   />
                   {errors.zip && touched.zip && <div className="input-feedback">{errors.zip}</div>}
                 </Form.Group>
@@ -367,8 +391,9 @@ function Class() {
                     onChange={handleChange}
                     onBlur={handleBlur}
                     isInvalid={!!errors.photoLink}
+                    isValid={touched.photoLink && !errors.photoLink}
                   />
-                  {errors.title && touched.title && <div className="input-feedback">{errors.title}</div>}
+                  {errors.photoLink && touched.photoLink && <div className="input-feedback">{errors.photoLink}</div>}
                 </Form.Group>
 
                 <Form.Group as={Col} md="12">
@@ -382,8 +407,9 @@ function Class() {
                     onChange={handleChange}
                     onBlur={handleBlur}
                     isInvalid={!!errors.url}
+                    isValid={touched.url && !errors.url}
                   />
-                  {errors.title && touched.title && <div className="input-feedback">{errors.title}</div>}
+                  {errors.url && touched.url && <div className="input-feedback">{errors.url}</div>}
                 </Form.Group>
 
                 <Form.Group as={Col} md="12">
@@ -396,8 +422,9 @@ function Class() {
                     onChange={handleChange}
                     onBlur={handleBlur}
                     isInvalid={!!errors.description}
+                    isValid={touched.description && !errors.description}
                   />
-                  {errors.title && touched.title && <div className="input-feedback">{errors.description}</div>}
+                  {errors.description && touched.description && <div className="input-feedback">{errors.description}</div>}
                 </Form.Group>
 
                 <Button type="submit">Submit</Button>
