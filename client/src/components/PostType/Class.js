@@ -13,26 +13,47 @@ function Class() {
   const schema = yup.object().shape({
 
     title: yup.string()
-      .min(2, 'Too Short!')
-      .max(50, 'Too Long!')
+      .min(2, 'Too Short')
+      .max(50, 'Too Long')
       .required('Required'),
-    instructorName: yup.string().required(),
-    style: yup.string().required(),
-    level: yup.string().required(),
-    master: yup.boolean().required(),
+    instructorName: yup.string()
+      .min(2, 'Too Short')
+      .max(50, 'Too Long')
+      .required('Required'),
+    style: yup.string()
+      .required('Required'),
+    level: yup.string()
+      .required('Required'),
+    master: yup.boolean()
+      .required('Required'),
 
-    date: yup.string().required(),
-    startTime: yup.string().required(),
-    endTime: yup.string().required(),
+    date: yup.date()
+      .required('Required'),
+    startTime: yup.string()
+      .required('Required'),
+    endTime: yup.string()
+      .required('Required'),
 
-    address: yup.string().required(),
-    city: yup.string().required(),
-    state: yup.string().required(),
-    zip: yup.string().required(),
+    address: yup.string()
+      .required('Required'),
+    city: yup.string()
+      .required('Required'),
+    state: yup.string()
+      .required('Required'),
+    zip: yup.number()
+      .min(8, "valid zipcode required")
+      .required('Required'),
 
-    description: yup.string().required(),
-    photoLink: yup.string().required(),
-    url: yup.string().required(),
+    description: yup.string()
+      .min(3, "Too Short")
+      .max(255, "That's a bit much...")
+      .required("Required"),
+    img: yup.string()
+      .url("valid url required")
+      .required('Required'),
+    url: yup.string()
+      .url("valid url required")
+      .required('Required'),
 
   });
 

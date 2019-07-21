@@ -16,20 +16,36 @@ function Space() {
       .min(2, 'Too Short!')
       .max(50, 'Too Long!')
       .required('Required'),
-    email: yup.string().required(),
-    rate: yup.date().required(),
+    email: yup.string()
+      .required("Required"),
+    rate: yup.number()
+      .required("Required"),
 
-    squareFootage: yup.date().required(),
-    numPeople: yup.date().required(),
+    squareFootage: yup.number()
+      .required("Required"),
+    numPeople: yup.number()
+      .required("Required"),
 
-    address: yup.string().required(),
-    city: yup.string().required(),
-    state: yup.string().required(),
-    zip: yup.string().required(),
+    address: yup.string()
+      .required("Required"),
+    city: yup.string()
+      .required("Required"),
+    state: yup.string()
+      .required("Required"),
+    zip: yup.number()
+      .min(8, "valid zipcode required")
+      .required('Required'),
 
-    photoLink: yup.string().required(),
-    description: yup.string().required(),
-    url: yup.string().required(),
+    description: yup.string()
+      .min(3, "Too Short")
+      .max(255, "That's a bit much...")
+      .required("Required"),
+    img: yup.string()
+      .url("valid url required")
+      .required('Required'),
+    url: yup.string()
+      .url("valid url required")
+      .required('Required'),
 
   });
 
