@@ -124,7 +124,7 @@ export class DropdownNavSI extends Component {
           <AuthConsumer>
             {({ logout }) => (
               <NavDropdown.Item
-                as={Link}
+                as={FormBtn}
                 onClick={(e) => this.handleLogout(logout, e)}
               >
                 Logout

@@ -1,5 +1,5 @@
 import React from "react";
-import { Row, Col, Form, InputGroup, Button } from "react-bootstrap";
+import { Row, Form, Col, InputGroup, Button } from "react-bootstrap";
 import { AuthConsumer } from '../AuthContext';
 import API from "../../utils/API";
 import axios from "axios";
@@ -24,7 +24,7 @@ function Audition() {
     city: yup.string().required(),
     state: yup.string().required(),
     zip: yup.string().required(),
-    
+
     // location: {
     //   address: yup.string().required(),
     //   city: yup.string().required(),
@@ -40,7 +40,9 @@ function Audition() {
 
     description: yup.string().required(),
     img: yup.string().required(),
-    url: yup.string().required(),
+    url: yup.string()
+      .url()
+      .required(),
 
   });
 
@@ -59,7 +61,7 @@ function Audition() {
       zip: "84103",
     },
     lat: "",
-    lng:  "",
+    lng: "",
 
     numberOf: "4",
     lookingFor: "Both",
@@ -77,7 +79,7 @@ function Audition() {
     let location = Object.values(values.location)
     location = location.toString()
     location = location.split(" ").join("+")
-    
+
     let cityLat, cityLng;
     let geoAddy = location
     const geoKey = "AIzaSyBwWAv336FT-ttOosMGCDcROKAsq_rhkbA"
@@ -85,14 +87,14 @@ function Audition() {
 
     axios.get(geoQuery)
       .then(response => {
-        
+
         cityLat = parseFloat(response.data.results[0].geometry.location.lat);
-        cityLng = parseFloat(response.data.results[0].geometry.location.lng);        
-        
+        cityLng = parseFloat(response.data.results[0].geometry.location.lng);
+
         const payload = { ...values, lat: cityLat, lng: cityLng };
-        
+
         setValues(payload);
-        alert(JSON.stringify(payload, null, 2)); 
+        alert(JSON.stringify(payload, null, 2));
       })
       .catch(err => {
         console.log(err);
@@ -123,42 +125,32 @@ function Audition() {
             errors,
           }) => (
               <Form noValidate onSubmit={handleSubmit}>
-                <Form.Control
-                  required
-                  hidden
-                  name="UserId"
-                  value={values.UserId}
-                  type="number"
-                  onChange={handleChange}
-                />
-                <Form.Row>
-                  <Form.Group as={Col} md="12">
-                    <InputGroup>
-                      <InputGroup.Prepend>
-                        <InputGroup.Text>Title</InputGroup.Text>
-                      </InputGroup.Prepend>
-                      <Form.Control
-                        required
-                        name="title"
-                        value={values.title}
-                        placeholder="Title"
-                        type="text"
-                        isInvalid={!!errors.title}
-                        onChange={handleChange}
-                      ///* onBlur={handleBlur} */}
-                      />
-                      {errors.title && touched.title ? (<Form.Control.Feedback>{errors.title}</Form.Control.Feedback>) : null}
-                    </InputGroup>
-
+                  <Form.Control
+                    required
+                    hidden
+                    name="UserId"
+                    value={values.UserId}
+                    type="number"
+                    onChange={handleChange}
+                  />
+                  <Form.Group as={Col} md="6">
+                    <Form.Label>Post Title</Form.Label>
+                    <Form.Control
+                      required
+                      name="title"
+                      value={values.title}
+                      placeholder="Title"
+                      type="text"
+                      isInvalid={!!errors.title}
+                      onChange={handleChange}
+                      isValid={touched.title && !errors.title}
+                      onBlur={handleBlur}
+                    />
+                    {errors.title && touched.title && <div className="input-feedback">{errors.title}</div>}
                   </Form.Group>
-                </Form.Row>
 
-                <Form.Row>
-                  <Form.Group as={Col} md="4">
-                    <InputGroup>
-                      <InputGroup.Prepend>
-                        <InputGroup.Text>Date</InputGroup.Text>
-                      </InputGroup.Prepend>
+                    <Form.Group as={Col} md="2">
+                      <Form.Label>Date</Form.Label>
                       <Form.Control
                         required
                         name="date"
@@ -169,29 +161,26 @@ function Audition() {
                         onChange={handleChange}
                         onBlur={handleBlur}
                       />
-                      <Form.Control.Feedback>{errors.date}</Form.Control.Feedback>
-                    </InputGroup>
+                      {errors.title && touched.title && <div className="input-feedback">{errors.title}</div>}
+                    </Form.Group>
 
-                  </Form.Group>
+                <Form.Group as={Col} md="2">
+                      <Form.Label>Start Time</Form.Label>
+                      <Form.Control
+                        required
+                        name="startTime"
+                        value={values.startTime}
+                        placeholder="Start Time"
+                        type="time"
+                        onChange={handleChange}
+                        onBlur={handleBlur}
+                        isInvalid={!!errors.startTime}
+                      />
+                      {errors.title && touched.title && <div className="input-feedback">{errors.title}</div>}
+                    </Form.Group>
 
-                  <Form.Group as={Col} md="6">
-                    <InputGroup>
-                      <InputGroup.Prepend>
-                        <InputGroup.Text>Time</InputGroup.Text>
-                      </InputGroup.Prepend>
-                      <InputGroup.Prepend>
-                        <Form.Control
-                          required
-                          name="startTime"
-                          value={values.startTime}
-                          placeholder="Start Time"
-                          type="time"
-                          onChange={handleChange}
-                          onBlur={handleBlur}
-                          isInvalid={!!errors.startTime}
-                        />
-                        <Form.Control.Feedback>{errors.startTime}</Form.Control.Feedback>
-                      </InputGroup.Prepend>
+                    <Form.Group  as={Col} md="2">
+                      <Form.Label>End Time</Form.Label>
                       <Form.Control
                         required
                         name="endTime"
@@ -202,17 +191,11 @@ function Audition() {
                         onBlur={handleBlur}
                         isInvalid={!!errors.endTime}
                       />
-                      <Form.Control.Feedback>{errors.endTime}</Form.Control.Feedback>
-                    </InputGroup>
-                  </Form.Group>
-                </Form.Row>
+                      {errors.title && touched.title && <div className="input-feedback">{errors.title}</div>}
+                    </Form.Group>
 
-                <Form.Row>
-                  <Form.Group as={Col} md="12">
-                    <InputGroup>
-                      <InputGroup.Prepend>
-                        <InputGroup.Text>Address</InputGroup.Text>
-                      </InputGroup.Prepend>
+                    <Form.Group as={Col} md="2">
+                    <Form.Label>Address</Form.Label>
                       <Form.Control
                         required
                         name="location.address"
@@ -223,8 +206,10 @@ function Audition() {
                         onBlur={handleBlur}
                         isInvalid={!!errors.address}
                       />
-                      <Form.Control.Feedback>{errors.address}</Form.Control.Feedback>
+                      {errors.title && touched.title && <div className="input-feedback">{errors.title}</div>}
+                    </Form.Group>
 
+                    <Form.Group as={Col} md="2">
                       <Form.Control
                         required
                         name="location.city"
@@ -235,8 +220,10 @@ function Audition() {
                         onBlur={handleBlur}
                         isInvalid={!!errors.city}
                       />
-                      <Form.Control.Feedback>{errors.city}</Form.Control.Feedback>
+                      {errors.title && touched.title && <div className="input-feedback">{errors.title}</div>}
+                    </Form.Group>
 
+                    <Form.Group as={Col} md="2">
                       <Form.Control
                         required
                         name="location.state"
@@ -247,7 +234,9 @@ function Audition() {
                         onBlur={handleBlur}
                         isInvalid={!!errors.state}
                       />
+                    </Form.Group>
 
+                    <Form.Group as={Col} md="2">
                       <Form.Control
                         required
                         name="location.zip"
@@ -258,76 +247,66 @@ function Audition() {
                         onBlur={handleBlur}
                         isInvalid={!!errors.zip}
                       />
-                      <Form.Control.Feedback>{errors.zip}</Form.Control.Feedback>
-                    </InputGroup>
-                  </Form.Group>
-                </Form.Row>
+                      {errors.title && touched.title && <div className="input-feedback">{errors.title}</div>}
+                    </Form.Group>
 
-                <Form.Control
-                  required
-                  hidden
-                  name="lat"
-                  value={values.lat}
-                  type="number"
-                  onChange={handleChange}
-                />
+                    <Form.Control
+                      required
+                      hidden
+                      name="lat"
+                      value={values.lat}
+                      type="number"
+                      onChange={handleChange}
+                    />
 
-                <Form.Control
-                  required
-                  hidden
-                  name="lng"
-                  value={values.lon}
-                  type="number"
-                  onChange={handleChange}
-                />
+                    <Form.Control
+                      required
+                      hidden
+                      name="lng"
+                      value={values.lon}
+                      type="number"
+                      onChange={handleChange}
+                    />
 
-                <Form.Row>
-                  <Form.Group as={Col} md={12}>
-                    <InputGroup>
-                      <InputGroup.Prepend>
-                        <InputGroup.Text>Looking For:</InputGroup.Text>
-                      </InputGroup.Prepend>
-                      <InputGroup.Prepend>
+                    <Form.Group as={Col} md="6">
+                      <Form.Label>Looking For:</Form.Label>
+                      <InputGroup>
                         <Form.Control
                           required
                           name="numberOf"
                           value={values.number}
-                          placeholder="Number of:"
+                          placeholder="Number of"
                           type="number"
                           onChange={handleChange}
                           onBlur={handleBlur}
                           isInvalid={!!errors.numberOf}
                         />
-                        <Form.Control.Feedback>{errors.numberOf}</Form.Control.Feedback>
-                      </InputGroup.Prepend>                      
+                        {errors.title && touched.title && <div className="input-feedback">{errors.title}</div>}
 
-                      <InputGroup.Prepend>
-                        <Form.Control
-                          as="select"
-                          required
-                          name="lookingFor"
-                          value={values.lookingFor}
-                          onChange={handleChange}
-                          onBlur={handleBlur}
-                          isInvalid={!!errors.lookingFor}
-                        >
-                          <option>Gender:</option>
-                          <option value="Men">Men</option>
-                          <option value="Women">Women</option>
-                          <option value="Men and Women">Men and Women</option>
-                          <option value="Any">Any</option>
-                        </Form.Control>
-                        <Form.Control.Feedback>{errors.lookingFor}</Form.Control.Feedback>
-                      </InputGroup.Prepend>
-                    </InputGroup>
-                  </Form.Group>
+                        <InputGroup.Prepend>
+                          <Form.Control
+                            as="select"
+                            required
+                            name="lookingFor"
+                            value={values.lookingFor}
+                            onChange={handleChange}
+                            onBlur={handleBlur}
+                            isInvalid={!!errors.lookingFor}
+                          >
+                            <option>Gender</option>
+                            <option value="Men">Men</option>
+                            <option value="Women">Women</option>
+                            <option value="Men and Women">Men and Women</option>
+                            <option value="Any">Any</option>
+                          </Form.Control>
+                          {errors.title && touched.title && <div className="input-feedback">{errors.title}</div>}
+                        </InputGroup.Prepend>
+                      </InputGroup>
+                    </Form.Group>
 
-                  <Form.Group as={Col} md={12}>
-                    <InputGroup>
-                      <InputGroup.Prepend>
-                        <InputGroup.Text>Contract:</InputGroup.Text>
-                      </InputGroup.Prepend>
-                      <InputGroup.Prepend>
+                    <Form.Group as={Col} md="6">
+                      <Form.Label>Contract:</Form.Label>
+                      <InputGroup>
                         <Form.Control
                           required
                           name="length"
@@ -338,54 +317,28 @@ function Audition() {
                           onBlur={handleBlur}
                           isInvalid={!!errors.length}
                         />
-                        <Form.Control.Feedback>{errors.length}</Form.Control.Feedback>
-                      </InputGroup.Prepend>
-                      <InputGroup.Prepend>
-                        <Form.Control
-                          as="select"
-                          required
-                          name="contract"
-                          value={values.contract}
-                          onChange={handleChange}
-                          onBlur={handleBlur}
-                          isInvalid={!!errors.contract}
-                        >
-                          <option>Contract Type:</option>
-                          <option value="Month Contract">Month Contract</option>
-                          <option value="Year Contract">Year Contract</option>
-                        </Form.Control>
-                        <Form.Control.Feedback>{errors.contract}</Form.Control.Feedback>
-                      </InputGroup.Prepend>
-                    </InputGroup>
-                  </Form.Group>
-                </Form.Row>
+                        {errors.title && touched.title && <div className="input-feedback">{errors.title}</div>}
+                        <InputGroup.Prepend>
+                          <Form.Control
+                            as="select"
+                            required
+                            name="contract"
+                            value={values.contract}
+                            onChange={handleChange}
+                            onBlur={handleBlur}
+                            isInvalid={!!errors.contract}
+                          >
+                            <option>Contract Type:</option>
+                            <option value="Month Contract">Month Contract</option>
+                            <option value="Year Contract">Year Contract</option>
+                          </Form.Control>
+                          {errors.title && touched.title && <div className="input-feedback">{errors.contract}</div>}
+                        </InputGroup.Prepend>
+                      </InputGroup>
+                    </Form.Group>
 
-                <Form.Row>
-                  <Form.Group as={Col} md="12">
-                    <InputGroup>
-                      <InputGroup.Prepend>
-                        <InputGroup.Text>Description</InputGroup.Text>
-                      </InputGroup.Prepend>
-                      <Form.Control
-                        required
-                        name="description"
-                        value={values.description}
-                        type="text"
-                        onChange={handleChange}
-                        onBlur={handleBlur}
-                        isInvalid={!!errors.description}
-                      />
-                      <Form.Control.Feedback>{errors.description}</Form.Control.Feedback>
-                    </InputGroup>
-                  </Form.Group>
-                </Form.Row>
-
-                <Form.Row>
-                  <Form.Group as={Col} md="12">
-                    <InputGroup>
-                      <InputGroup.Prepend>
-                        <InputGroup.Text>Links</InputGroup.Text>
-                      </InputGroup.Prepend>
+                    <Form.Group as={Col} md="6">
+                      <Form.Label>Image link</Form.Label>
                       <Form.Control
                         required
                         name="img"
@@ -396,22 +349,37 @@ function Audition() {
                         onBlur={handleBlur}
                         isInvalid={!!errors.img}
                       />
-                      <Form.Control.Feedback>{errors.img}</Form.Control.Feedback>
+                      {errors.title && touched.title && <div className="input-feedback">{errors.title}</div>}
+                    </Form.Group>
 
-                      <Form.Control
-                        required
-                        name="url"
-                        value={values.url}
-                        placeholder="Website URL"
-                        type="text"
-                        onChange={handleChange}
-                        onBlur={handleBlur}
-                        isInvalid={!!errors.url}
-                      />
-                      <Form.Control.Feedback>{errors.url}</Form.Control.Feedback>
-                    </InputGroup>
+                  <Form.Group as={Col} md="6">
+                    <Form.Label>Image link</Form.Label>
+                    <Form.Control
+                      required
+                      name="url"
+                      value={values.url}
+                      placeholder="Website URL"
+                      type="text"
+                      onChange={handleChange}
+                      onBlur={handleBlur}
+                      isInvalid={!!errors.url}
+                    />
+                    {errors.title && touched.title && <div className="input-feedback">{errors.title}</div>}
+                  </Form.Group>              
+
+                  <Form.Group as={Col} md="6">
+                    <Form.Label>Description</Form.Label>
+                    <Form.Control
+                      required
+                      name="description"
+                      value={values.description}
+                      type="textarea"
+                      onChange={handleChange}
+                      onBlur={handleBlur}
+                      isInvalid={!!errors.description}
+                    />
+                    {errors.title && touched.title && <div className="input-feedback">{errors.description}</div>}
                   </Form.Group>
-                </Form.Row>
 
                 <Button type="submit">Submit</Button>
               </Form>
