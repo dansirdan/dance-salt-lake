@@ -1,10 +1,10 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import { AuthConsumer } from "../AuthContext";
-import { Input, FormBtn } from "../Form";
+// import { FormBtn } from "../Form";
 import { NavDropdown, Nav, Button } from 'react-bootstrap';
 import { LinkContainer } from 'react-router-bootstrap'
-import { Dropdown } from "../Form";
+// import { Dropdown } from "../Form";
 import Login from "../Login";
 import "./style.css";
 
@@ -124,6 +124,7 @@ export class DropdownNavSI extends Component {
           <AuthConsumer>
             {({ logout }) => (
               <NavDropdown.Item
+                /* as={FormBtn} */
                 as={Link}
                 to="/"
                 onClick={(e) => this.handleLogout(logout, e)}

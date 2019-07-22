@@ -1,6 +1,11 @@
 import React, { Component } from "react";
+<<<<<<< HEAD
 import { Redirect } from "react-router-dom";
 import API from "../../utils/API";
+=======
+// import { Redirect } from "react-router-dom";
+import API from "../../utils/API"
+>>>>>>> cb20fe8b8b18b49d51fac35241284355c3709968
 const AuthContext = React.createContext();
 
 class AuthProvider extends Component {

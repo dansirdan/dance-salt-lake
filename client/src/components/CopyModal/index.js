@@ -1,19 +1,13 @@
 import React, { Component } from 'react';
-import { Link } from "react-router-dom";
-import {
-  Modal,
-  Button,
-  Row,
-  Col,
-  Container
-} from "react-bootstrap";
+// import { Link } from "react-router-dom";
+import { Modal, Button } from "react-bootstrap";
 import {
   CopyClass,
   CopyAudition,
   CopyPerformance
 } from "../CopyTable";
 import CopyEvent from "../CopyEvent";
-import EditForm from "../EditForm";
+// import EditForm from "../EditForm";
 import "./style.css";
 
 class CopyModal extends Component {
