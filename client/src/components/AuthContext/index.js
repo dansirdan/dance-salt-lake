@@ -44,8 +44,16 @@ class AuthProvider extends Component {
         console.log(res);
         API.user()
           .then(dbUser => {
-            console.log(dbUser.data)
-            this.setState({ isAuth: true, loggedOut: false, user: dbUser.data })
+            // console.log(dbUser.data)
+            this.setState(
+              {
+                isAuth: true,
+                loggedOut: false,
+                user: dbUser.data,
+              },
+              () => _
+
+            )
           })
           .catch(err => {
             console.log("error", err)
