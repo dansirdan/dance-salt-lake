@@ -13,11 +13,11 @@ export default {
   auth: function (authRoute, user) {
     return axios.post("/api/auth/" + authRoute, user)
   },
-  // auth: function (user) {
-  //   return axios.post("/api/auth/signup", user)
-  // },
   logoutUser: function () {
     return axios.get("/api/auth/logout")
+  },
+  signUp: function (newUser) {
+    return axios.post("/api/auth/signup", newUser)
   },
   user: function () {
     return axios.get("/api/auth/user")

@@ -18,6 +18,7 @@ import './App.css';
 // CURRENTLY NOT WORKING USING A DIFFERENT METHOD THAT DOES WORK
 // import ProtectedRoute from './components/ProtectedRoute'
 
+
 class App extends Component {
 
   state = {
@@ -142,7 +143,7 @@ class App extends Component {
               {({ isAuth }) => (
                 <Route
                   render={props =>
-                    isAuth ? <UsersHome {...props} handleLogo={this.handleLogo} /> : <Redirect to="/" />
+                    isAuth ? <UsersHome {...props} handleLogo={this.handleLogo} /> : <Redirect to={{ pathname: "/", state: { from: props.location } }} />
                   }
                 />
               )}

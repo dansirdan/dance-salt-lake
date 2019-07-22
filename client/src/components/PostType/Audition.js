@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { Form, Col, InputGroup, Button } from "react-bootstrap";
 import { AuthConsumer } from '../AuthContext';
 import API from "../../utils/API";
@@ -89,7 +89,6 @@ function Audition() {
   function handleQuery(values, setValues) {
 
     let location = (({ address, city, state, zip }) => ({ address, city, state, zip }))(values);
-
     location = Object.values(location)
     location = location.toString()
     location = location.split(" ").join("+")
@@ -216,16 +215,11 @@ function Audition() {
                   <Form.Control
                     required
                     name="address"
-                    value={values.address}
-                    placeholder="Address"
-                    type="text"
                     onChange={handleChange}
                     onBlur={handleBlur}
                     isInvalid={!!errors.address}
                     isValid={touched.address && !errors.address}
                   />
-                  {errors.address && touched.address && <div className="input-feedback">{errors.address}</div>}
-                </Form.Group>
 
                 <Form.Group as={Col} md="12">
                   <Form.Control
@@ -352,7 +346,7 @@ function Audition() {
                         onBlur={handleBlur}
                         isInvalid={!!errors.contract}
                         isValid={touched.contract && !errors.contract}
-                      >
+                      />
                         <option>Contract Type:</option>
                         <option value="Month Contract">Month Contract</option>
                         <option value="Year Contract">Year Contract</option>

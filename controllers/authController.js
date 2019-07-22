@@ -5,12 +5,9 @@ module.exports = {
     res.json("this was successful")
   },
   signup: function (req, res) {
-    db.User.create({
-      email: req.body.email,
-      password: req.body.password
-    })
+    db.User.create(req.body)
       .then(function () {
-        res.redirect(307, "/");
+        res.json("this was successful");
       })
       .catch(function (err) {
         res.json(err);
@@ -18,8 +15,8 @@ module.exports = {
   },
   logout: function (req, res) {
     req.logout();
-    // res.redirect("/");
   },
+  // whatever we need from the user's DB we can get it from here:
   user: function (req, res) {
     if (!req.user) {
       res.json({});
@@ -28,7 +25,10 @@ module.exports = {
     else {
       res.json({
         email: req.user.email,
-        id: req.user.id
+        id: req.user.id,
+        name: req.user.name,
+        logo: req.user.logo,
+        website: req.user.website
       });
     }
   }

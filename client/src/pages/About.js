@@ -11,12 +11,6 @@ class About extends Component {
     this.props.handleLogo();
   }
 
-  // TO DO:
-  // 1. Discuss Content
-  // 2. Insert Bios y/n
-  // 3. Grab a photo from each
-  // 4. Style
-  // 5. Extra
   render() {
     return (
       <div className="about-section">

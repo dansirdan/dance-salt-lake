@@ -226,10 +226,10 @@ function Performance() {
                     onBlur={handleBlur}
                     isInvalid={!!errors.city}
                     isValid={touched.city && !errors.city}
-                  />
+                    />
                   {errors.city && touched.city && <div className="input-feedback">{errors.city}</div>}
                 </Form.Group>
-
+                
                 <Form.Group as={Col} md="12">
                   <Form.Control
                     required
