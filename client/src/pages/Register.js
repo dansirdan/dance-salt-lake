@@ -9,42 +9,42 @@ const axios = require("axios");
 
 function Register() {
 
- 
+
   // componentWillMount() {
   //   this.props.handleLogo();
   // }
 
   const schema = yup.object().shape({
-    name:  yup.string()
+    name: yup.string()
       .min(2, 'Too Short')
       .max(50, 'Too Long')
       .required('Required'),
-    logo:  yup.string()
+    logo: yup.string()
       .url("must be avalid url")
       .required('Required'),
-    website:  yup.string()
+    website: yup.string()
       .url("must be avalid url")
       .required('Required'),
-    address:  yup.string()
+    address: yup.string()
       .min(2, 'Too Short')
       .max(50, 'Too Long')
       .required('Required'),
-    city:  yup.string()
+    city: yup.string()
       .min(2, 'Too Short')
       .max(50, 'Too Long')
       .required('Required'),
-    state:  yup.string()
+    state: yup.string()
       .min(2, 'Too Short')
       .max(50, 'Too Long')
       .required('Required'),
-    zip:  yup.number()
+    zip: yup.number()
       .min(5, "valid zipcode required")
       .required('Required'),
-    phone:  yup.string()
+    phone: yup.string()
       .min(10, 'Too Short')
       .max(11, 'Too Long')
       .required('Required'),
-    email:  yup.string()
+    email: yup.string()
       .email(2, 'Too Short')
       .required('Required'),
     password: yup.string()
@@ -54,19 +54,39 @@ function Register() {
   });
 
   const initialValues = {
-    name: "",
-    logo: "",
-    website: "",
-    address: "",
-    city: "",
-    state: "",
-    zip: "",
+    name: 'Daniel',
+    logo: 'https://scontent.faus1-1.fna.fbcdn',
+    website: 'https://www.facebook.com/dmonteton',
+    address: '8 E Hillside Ave',
+    city: "Salt Lake City",
+    state: "Utah",
+    zip: "84103",
     lat: "",
     lng: "",
-    phone: "",
-    email: "",
-    password: ""
-  };
+    phone: '3032049046',
+    email: 'dmont@gmail.com',
+    password: '111111'
+  }
+
+  const handleRegister = (userData) => {
+    API.signUp(userData).then(function (res) {
+      console.log(res.data);
+    }).catch(err => console.log(err));
+  }
+
+
+  // const handleRegister = (userData) => {
+  //   API.auth("signup", userData).then(function (data) {
+  //     console.log(data);
+  //   }).catch(err => console.log(err));
+  // }
+
+  // handleInputChange = event => {
+  //   const { name, value } = event.target;
+  //   this.setState({
+  //     [name]: value
+  //   });
+  // };
 
   const handleQuery = (values, setValues) => {
 
@@ -103,13 +123,6 @@ function Register() {
       })
   }
 
-  const handleRegister = (userData) => {
-    API.auth("signup", userData).then(function (data) {
-      console.log(data);
-    }).catch(err => console.log(err));
-  }
-
-
   return (
     <>
       <Container fluid>
@@ -130,9 +143,14 @@ function Register() {
             <Formik
               validationSchema={schema}
               initialValues={initialValues}
-              onSubmit={(values, { setSubmitting, setValues }) => {
+              onSubmit={(values, { setSubmitting, setValues, resetForm }) => {
                 handleQuery(values, setValues);
-                setTimeout(() => setSubmitting(false), 500);
+                setTimeout(() => {
+                  resetForm(initialValues)
+                  console.log("reset");
+
+                  setSubmitting(false);
+                }, 500)
               }}
             >
               {({
@@ -234,7 +252,7 @@ function Register() {
                     </Form.Group>
 
                     <Form.Group as={Col} md="12">
-                     <Form.Control
+                      <Form.Control
                         value={values.zip}
                         name="zip"
                         type="text"

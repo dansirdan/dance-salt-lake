@@ -112,9 +112,14 @@ function Performance() {
         <Formik
           validationSchema={schema}
           initialValues={initialValues}
-          onSubmit={(values, { setSubmitting, setValues }) => {
+          onSubmit={(values, { setSubmitting, setValues, resetForm }) => {
             handleQuery(values, setValues);
-            setTimeout(() => setSubmitting(false), 500);
+            setTimeout(() => {
+              resetForm(initialValues)
+              console.log("reset");
+
+              setSubmitting(false);
+            }, 500)
           }}
         >
           {({
@@ -226,10 +231,10 @@ function Performance() {
                     onBlur={handleBlur}
                     isInvalid={!!errors.city}
                     isValid={touched.city && !errors.city}
-                  />
+                    />
                   {errors.city && touched.city && <div className="input-feedback">{errors.city}</div>}
                 </Form.Group>
-
+                
                 <Form.Group as={Col} md="12">
                   <Form.Control
                     required

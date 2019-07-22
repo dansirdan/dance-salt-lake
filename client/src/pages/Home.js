@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import MoreInfo from "../components/MoreInfo";
 import { Row, Col } from "react-bootstrap";
 import { Container } from "../components/Grid";
-import { ClassesPreview, PerformancesPreview, AuditionPreview, SpaceBanner } from "../components/Preview";
+import { Class, Audition, Performance, SpaceBanner } from "../components/Preview";
 import Hero from "../components/Hero";
 
 class Home extends Component {
@@ -58,17 +58,17 @@ class Home extends Component {
           <div className="preview">
             <Row>
               <Col md="12" lg="4">
-                <ClassesPreview />
+                <Class />
               </Col>
 
               <Col md="12" lg="4">
-                <PerformancesPreview />
+                <Performance />
               </Col>
 
               <Col md="12" lg="4">
                 <Row>
                   <Col md="12">
-                    <AuditionPreview
+                    <Audition
                       returnData={this.returnData}
                       page="Audition"
                     />

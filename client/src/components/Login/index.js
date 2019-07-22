@@ -5,8 +5,8 @@ import { AuthConsumer } from "../AuthContext"
 class Login extends Component {
   // Definining State to Hold Info
   state = {
-    email: "dm@gmail.com",
-    password: "dansirdan"
+    email: "dmont@gmail.com",
+    password: "111111"
   }
 
   // Method to call Auth Login function

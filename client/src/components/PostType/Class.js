@@ -127,9 +127,14 @@ function Class() {
         <Formik
           validationSchema={schema}
           initialValues={initialValues}
-          onSubmit={(values, { setSubmitting, setValues }) => {
-            handleQuery(values, setValues);        
-            setTimeout(() => setSubmitting(false), 500);
+          onSubmit={(values, { setSubmitting, setValues, resetForm }) => {
+            handleQuery(values, setValues);
+            setTimeout(() => {
+              resetForm(initialValues)
+              console.log("reset");
+
+              setSubmitting(false);
+            }, 500)
           }}
         >
           {({
@@ -318,11 +323,7 @@ function Class() {
                   <Form.Control
                     required
                     name="city"
-                    value={values.city}
                     placeholder="City"
-                    type="text"
-                    onChange={handleChange}
-                    onBlur={handleBlur}
                     isInvalid={!!errors.city}
                     isValid={touched.city && !errors.city}
                   />
@@ -349,9 +350,6 @@ function Class() {
                     required
                     name="zip"
                     value={values.zip}
-                    placeholder="Zip"
-                    type="number"
-                    onChange={handleChange}
                     onBlur={handleBlur}
                     isInvalid={!!errors.zip}
                     isValid={touched.zip && !errors.zip}

@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { Row, Col } from "react-bootstrap"
 import { Container } from "../components/Grid";
-import Post from "../components/Post";
 
 
 class About extends Component {
@@ -11,16 +10,9 @@ class About extends Component {
     this.props.handleLogo();
   }
 
-  // TO DO:
-  // 1. Discuss Content
-  // 2. Insert Bios y/n
-  // 3. Grab a photo from each
-  // 4. Style
-  // 5. Extra
   render() {
     return (
       <div className="about-section">
-        <Post />
         <Container>
           <Row className="justify-content-md-center">
 
