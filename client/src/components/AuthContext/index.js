@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { Redirect } from "react-router-dom";
-import API from "../../utils/API"
+import API from "../../utils/API";
 const AuthContext = React.createContext();
 
 class AuthProvider extends Component {
@@ -44,15 +44,10 @@ class AuthProvider extends Component {
         console.log(res);
         API.user()
           .then(dbUser => {
-            // console.log(dbUser.data)
-            this.setState(
-              {
-                isAuth: true,
-                loggedOut: false,
-                user: dbUser.data,
-              },
-              () => _
-
+            console.log(dbUser.data)
+            this.setState({ isAuth: true, loggedOut: false, user: dbUser.data })
+            return (
+              <Redirect to="/usershome"></Redirect>
             )
           })
           .catch(err => {
