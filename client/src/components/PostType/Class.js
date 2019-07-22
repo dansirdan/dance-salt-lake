@@ -71,7 +71,7 @@ function Class() {
     level: "Advanced",
     master: false,
 
-    payment: [],
+    // payment: [],
 
     date: "",
     startTime: "15:00",
@@ -110,10 +110,8 @@ function Class() {
 
         const payload = { ...values, lat: cityLat, lng: cityLng };
 
-        setValues(payload);
+        API.newPost("classes", payload);
         console.log(JSON.stringify(payload, null, 2));
-        // alert(JSON.stringify(payload, null, 2));
-        API.newPost("classes", values)
       })
       .catch(err => {
         console.log(err);
@@ -130,8 +128,7 @@ function Class() {
           validationSchema={schema}
           initialValues={initialValues}
           onSubmit={(values, { setSubmitting, setValues }) => {
-            handleQuery(values, setValues);
-            {/* API.newPost("classes", values); */}
+            handleQuery(values, setValues);        
             setTimeout(() => setSubmitting(false), 500);
           }}
         >

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { Form, Col, InputGroup, Button } from "react-bootstrap";
 import { AuthConsumer } from '../AuthContext';
 import API from "../../utils/API";
@@ -86,7 +86,7 @@ function Audition() {
     url: "http://asdf.com"
   }
 
-  const handleQuery = (values, setValues) => {
+  function handleQuery(values, setValues) {
 
     let location = (({ address, city, state, zip }) => ({ address, city, state, zip }))(values);
 
@@ -107,15 +107,14 @@ function Audition() {
         cityLng = parseFloat(response.data.results[0].geometry.location.lng);
 
         const payload = { ...values, lat: cityLat, lng: cityLng };
-
-        setValues(payload);
-        // alert(JSON.stringify(payload, null, 2));
+      
+        API.newPost("auditions", payload);
         console.log(JSON.stringify(payload, null, 2));
       })
       .catch(err => {
         console.log(err);
       });
-  }
+    }
 
   return (
 
@@ -125,13 +124,9 @@ function Audition() {
         <Formik
           validationSchema={schema}
           initialValues={initialValues}
-          onSubmit={(values, { setSubmitting, setValues }) => {
-            
+          onSubmit={(values, { setSubmitting, setValues }) => {            
             handleQuery(values, setValues);
-            setTimeout(() => {
-              API.newPost("auditions", values)
-              setSubmitting(false)
-            }, 500);
+            setTimeout(() => setSubmitting(false), 500);
           }}
         >
           {({
@@ -416,6 +411,7 @@ function Audition() {
 
                 <Button type="submit">Submit</Button>
               </Form>
+
             )}
         </Formik>
       )}

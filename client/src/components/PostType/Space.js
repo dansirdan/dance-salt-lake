@@ -90,8 +90,7 @@ function Space() {
 
         const payload = { ...values, lat: cityLat, lng: cityLng };
 
-        setValues(payload);
-        // alert(JSON.stringify(payload, null, 2));
+        API.newPost("space", payload);
         console.log(JSON.stringify(payload, null, 2));
       })
       .catch(err => {
@@ -108,11 +107,8 @@ function Space() {
           validationSchema={schema}
           initialValues={initialValues}
           onSubmit={(values, { setSubmitting, setValues }) => {
-            
             handleQuery(values, setValues);
-            setTimeout(() => {
-              API.newPost("space", values)
-              setSubmitting(false)}, 500);
+            setTimeout(() => setSubmitting(false), 500);
           }}
         >
           {({

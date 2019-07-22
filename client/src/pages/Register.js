@@ -4,56 +4,12 @@ import { Container, Row, Col, Form, Button } from "react-bootstrap";
 import { Input } from "../components/Form";
 import { Formik } from "formik";
 import * as yup from "yup";
+import API from "../utils/API";
 const axios = require("axios");
 
 function Register() {
 
-  const handleQuery = (values, setValues) => {
-
-    let location = (({ address, city, state, zip }) => ({ address, city, state, zip }))(values);
-
-    location = Object.values(location)
-    location = location.toString()
-    location = location.split(" ").join("+")
-    console.log(location);
-
-    let cityLat;
-    let cityLng;
-    let geoAddy = location;
-    // const geoKey = `${process.env.RREACT_APP_GOOGLE_API_KEY}`
-    const geoKey = "AIzaSyBwWAv336FT-ttOosMGCDcROKAsq_rhkbA"
-    let geoQuery = `https://maps.googleapis.com/maps/api/geocode/json?address=${geoAddy}&key=${geoKey}`;
-    
-    axios.get(geoQuery)
-      .then(response => {
-        cityLat = parseFloat(response.data.results[0].geometry.location.lat);
-        cityLng = parseFloat(response.data.results[0].geometry.location.lng);
-
-        console.log(response);
-        console.log(cityLat, cityLng)
-
-        const payload = { ...values, lat: cityLat, lng: cityLng };
-
-        setValues(payload);
-        // alert(JSON.stringify(payload, null, 2));
-        console.log(JSON.stringify(payload, null, 2));
-      })
-      .catch(err => {
-        console.log(err);
-      })
-  }   
-
-  // const handleRegister = (email, password) => {
-  //   if (email && password) {
-  //     axios.post("/api/auth/signup", {
-  //       email: values.email,
-  //       password: values.password
-  //     }).then(function (data) {
-  //       console.log(data);
-  //     }).catch(err => console.log(err));
-  //   }
-  // }
-
+ 
   // componentWillMount() {
   //   this.props.handleLogo();
   // }
@@ -112,6 +68,48 @@ function Register() {
     password: ""
   };
 
+  const handleQuery = (values, setValues) => {
+
+    let location = (({ address, city, state, zip }) => ({ address, city, state, zip }))(values);
+
+    location = Object.values(location)
+    location = location.toString()
+    location = location.split(" ").join("+")
+    console.log(location);
+
+    let cityLat;
+    let cityLng;
+    let geoAddy = location;
+    // const geoKey = `${process.env.RREACT_APP_GOOGLE_API_KEY}`
+    const geoKey = "AIzaSyBwWAv336FT-ttOosMGCDcROKAsq_rhkbA"
+    let geoQuery = `https://maps.googleapis.com/maps/api/geocode/json?address=${geoAddy}&key=${geoKey}`;
+
+    axios.get(geoQuery)
+      .then(response => {
+        cityLat = parseFloat(response.data.results[0].geometry.location.lat);
+        cityLng = parseFloat(response.data.results[0].geometry.location.lng);
+
+        console.log(response);
+        console.log(cityLat, cityLng)
+
+        const payload = { ...values, lat: cityLat, lng: cityLng };
+
+        setValues(payload);
+        handleRegister(payload)
+        console.log(JSON.stringify(payload, null, 2));
+      })
+      .catch(err => {
+        console.log(err);
+      })
+  }
+
+  const handleRegister = (userData) => {
+    API.auth("signup", userData).then(function (data) {
+      console.log(data);
+    }).catch(err => console.log(err));
+  }
+
+
   return (
     <>
       <Container fluid>
@@ -137,12 +135,12 @@ function Register() {
                 handleQuery(values, setValues);
                 setTimeout(() => {
 
-                  axios.post("/api/auth/signup", {
+                  {/* axios.post("/api/auth/signup", {
                     email: values.email,
                     password: values.password
                   }).then(function (data) {
                     console.log(data);
-                  }).catch(err => console.log(err));
+                  }).catch(err => console.log(err)); */}
                   
                   setSubmitting(false)
                 }, 500);

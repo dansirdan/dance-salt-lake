@@ -98,10 +98,7 @@ module.exports = function (sequelize, DataTypes) {
     url: {
       type: DataTypes.STRING,
       allowNull: false
-    },
-
-
-
+    }
   });
 
   Class.associate = (models) => {

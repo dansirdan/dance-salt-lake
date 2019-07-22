@@ -70,7 +70,6 @@ function Performance() {
     lng: "",
 
     price: "90",
-    payment: "Cash",
 
     description: "asdf",
     photoLink: "http://lorempixel.com/640/480",
@@ -97,8 +96,7 @@ function Performance() {
 
         const payload = { ...values, lat: cityLat, lng: cityLng };
 
-        setValues(payload);
-        // alert(JSON.stringify(payload, null, 2));
+        API.newPost("performances", payload);
         console.log(JSON.stringify(payload, null, 2));
       })
       .catch(err => {
@@ -116,10 +114,7 @@ function Performance() {
           initialValues={initialValues}
           onSubmit={(values, { setSubmitting, setValues }) => {
             handleQuery(values, setValues);
-            setTimeout(() => {
-              API.newPost("performances", values)
-              setSubmitting(false)
-            }, 500);
+            setTimeout(() => setSubmitting(false), 500);
           }}
         >
           {({
@@ -298,12 +293,31 @@ function Performance() {
                   />
                   {errors.price && touched.price && <div className="input-feedback">{errors.price}</div>}
                 </Form.Group>
-
+                
                 <Form.Group as={Col} md="12">
-                  <Form.Label>Payment:</Form.Label>
-                  <InputGroup.Checkbox name="payment" label="Cash" />
-                  <InputGroup.Checkbox name="payment" label="Card" />
-                  <InputGroup.Checkbox name="payment" label="Any" />
+                  <Form.Label className="mr-3">Payment:</Form.Label>
+                  <Form.Check
+                    inline
+                    name="payment"
+                    value="Cash"
+                    label="Cash"
+                    onChange={handleChange}
+                  />
+                  <Form.Check
+                    inline
+                    name="payment"
+                    value="Card"
+                    label="Card"
+                    onChange={handleChange}
+                  />
+                  <Form.Check
+                    inline
+                    default
+                    name="payment"
+                    value="Any"
+                    label="Any"
+                    onChange={handleChange}
+                  />
                 </Form.Group>
 
                 <Form.Group as={Col} md="12">
