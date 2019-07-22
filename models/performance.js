@@ -60,7 +60,7 @@ module.exports = function (sequelize, DataTypes) {
     },
     payment: {
       type: DataTypes.STRING,
-      allowNull: false
+      allowNull: true
     },
     description: {
       type: DataTypes.STRING,

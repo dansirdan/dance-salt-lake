@@ -44,9 +44,8 @@ function Performance() {
 
     price: yup.number()
       .required("Required"),
-    payment: yup.string()
-      .required("Required"),
-
+    payment: yup.string(),
+    
     description: yup.string()
       .min(3, "Too Short")
       .max(255, "That's a bit much...")
@@ -77,6 +76,7 @@ function Performance() {
     lng: "",
 
     price: "90",
+    payment: "",
 
     description: "asdf",
     photoLink: "http://lorempixel.com/640/480",

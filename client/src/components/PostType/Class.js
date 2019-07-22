@@ -36,8 +36,7 @@ function Class() {
     endTime: yup.string()
       .required('Required'),
 
-    payment: yup.string()
-      .required("Required"),
+    payment: yup.string(),
 
     address: yup.string()
       .min(2, 'Too Short')
@@ -78,7 +77,7 @@ function Class() {
     level: "Advanced",
     master: false,
 
-    // payment: [],
+    payment: [],
 
     date: "",
     startTime: "15:00",
