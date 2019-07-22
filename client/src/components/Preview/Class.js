@@ -29,7 +29,7 @@ class Class extends Component {
         if (res.data.length === 0) {
           console.log("no classes");
         } else {
-          for (let i = 0; i < res.data.length || i < 2; i++) {
+          for (let i = 0; i < res.data.length && i < 2; i++) {
             // const element = res.data[i];
             twoClasses.push(res.data[i]);
           }

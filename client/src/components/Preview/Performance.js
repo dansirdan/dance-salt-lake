@@ -35,7 +35,7 @@ class Perfomance extends Component {
   // stores a random performance from the database and displays it
   // TO DO:
   // 1. test with multiple performances in the DB
-  componentWillMount() {
+  componentDidMount() {
     let RNG;
     let randomPerformance;
     let showPerf = [];

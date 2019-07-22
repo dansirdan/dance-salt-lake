@@ -22,9 +22,9 @@ export default {
   user: function () {
     return axios.get("/api/auth/user")
   },
-  newPost: function (postType, post) {   
-    console.log("newPost", post);
-     
+  newPost: function (postType, post) {
+    console.log("newPost", postType, post);
+
     return axios.post("/api/" + postType, post)
   },
   deletePost: function (postType, postId) {

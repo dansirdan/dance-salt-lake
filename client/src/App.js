@@ -13,11 +13,8 @@ import { MainNav, Footer } from "./components/Nav";
 import NoMatch from "./pages/NoMatch";
 import AnimateHeight from "react-animate-height";
 import LargeLogo from "./components/LargeLogo";
-import './App.css';
-
-// CURRENTLY NOT WORKING USING A DIFFERENT METHOD THAT DOES WORK
-// import ProtectedRoute from './components/ProtectedRoute'
 import history from "./history";
+import './App.css';
 
 class App extends Component {
 

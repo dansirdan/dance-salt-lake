@@ -42,11 +42,13 @@ class Audition extends Component {
         if (res.data.length === 0) {
           console.log("no auditions");
         } else {
-          for (let i = 0; i < res.data.length || i < 3; i++) {
-            // const element = res.data[i];
+          console.log(res.data.length)
+          for (let i = 0; i < res.data.length && i < 3; i++) {
+            console.log(res.data)
             threeAuditions.push(res.data[i]);
           }
           this.setState({ auditionData: threeAuditions })
+          console.log(this.state.auditionData)
         }
         // for (let i = 0; i < 3; i++) {
         //   threeAuditions.push(res.data[i]);
@@ -65,7 +67,7 @@ class Audition extends Component {
           {this.state.auditionData.map((audition, index) => {
 
             return (
-              <Card key={audition.id}>
+              <Card key={index}>
                 <Accordion.Toggle as={Card.Header} eventKey={index.toString()} caret="true">
                   <div className="audition-header">
                     <Row>
@@ -87,7 +89,7 @@ class Audition extends Component {
                 <Accordion.Collapse eventKey={index.toString()}>
                   <Card.Body>
                     <Card.Text>
-                      <b>Start Time:</b> {moment(audition.time, "HH:mm:ss").format("h:mm A")}
+                      <b>Start Time:</b> {moment(audition.startTime, "HH:mm:ss").format("h:mm A")}
                     </Card.Text>
                     <Card.Text className="light-text">
                       {audition.description}

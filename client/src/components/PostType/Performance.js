@@ -45,7 +45,7 @@ function Performance(props) {
     price: yup.number()
       .required("Required"),
     payment: yup.string(),
-    
+
     description: yup.string()
       .min(3, "Too Short")
       .max(255, "That's a bit much...")
@@ -83,7 +83,7 @@ function Performance(props) {
     url: "http://asdf.com"
   }
 
-  const handleQuery = (values, setValues) => {
+  const handleQuery = (values, setValues, cb) => {
 
     let location = (({ address, city, state, zip }) => ({ address, city, state, zip }))(values);
     location = Object.values(location);
@@ -103,7 +103,12 @@ function Performance(props) {
 
         const payload = { ...values, lat: cityLat, lng: cityLng };
 
-        API.newPost("performances", payload);
+        API.newPost("performances", payload)
+          .then(res => {
+            console.log(res.data);
+            cb();
+          })
+          .catch(err => console.log(err));
         console.log(JSON.stringify(payload, null, 2));
       })
       .catch(err => {
@@ -120,12 +125,14 @@ function Performance(props) {
           validationSchema={schema}
           initialValues={initialValues}
           onSubmit={(values, { setSubmitting, setValues, resetForm }) => {
-            handleQuery(values, setValues);
-            setTimeout(() => {
-              resetForm(initialValues)
-              props.clearPostType();
-              setSubmitting(false);
-            }, 500)
+            handleQuery(values, setValues, () => {
+              setTimeout(() => {
+                resetForm(initialValues)
+                props.clearPostType();
+                setSubmitting(false);
+              }, 500)
+            });
+
           }}
         >
           {({
@@ -237,10 +244,10 @@ function Performance(props) {
                     onBlur={handleBlur}
                     isInvalid={!!errors.city}
                     isValid={touched.city && !errors.city}
-                    />
+                  />
                   {errors.city && touched.city && <div className="input-feedback">{errors.city}</div>}
                 </Form.Group>
-                
+
                 <Form.Group as={Col} md="12">
                   <Form.Control
                     required
@@ -304,7 +311,7 @@ function Performance(props) {
                   />
                   {errors.price && touched.price && <div className="input-feedback">{errors.price}</div>}
                 </Form.Group>
-                
+
                 <Form.Group as={Col} md="12">
                   <Form.Label className="mr-3">Payment:</Form.Label>
                   <Form.Check
