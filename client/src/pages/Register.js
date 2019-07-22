@@ -131,19 +131,8 @@ function Register() {
               validationSchema={schema}
               initialValues={initialValues}
               onSubmit={(values, { setSubmitting, setValues }) => {
-
                 handleQuery(values, setValues);
-                setTimeout(() => {
-
-                  {/* axios.post("/api/auth/signup", {
-                    email: values.email,
-                    password: values.password
-                  }).then(function (data) {
-                    console.log(data);
-                  }).catch(err => console.log(err)); */}
-                  
-                  setSubmitting(false)
-                }, 500);
+                setTimeout(() => setSubmitting(false), 500);
               }}
             >
               {({
