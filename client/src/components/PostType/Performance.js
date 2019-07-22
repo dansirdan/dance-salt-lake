@@ -7,7 +7,7 @@ import moment from "moment";
 import { Formik } from "formik";
 import * as yup from "yup";
 
-function Performance() {
+function Performance(props) {
 
   const today = moment().format("L");
 
@@ -123,8 +123,7 @@ function Performance() {
             handleQuery(values, setValues);
             setTimeout(() => {
               resetForm(initialValues)
-              console.log("reset");
-
+              props.clearPostType();
               setSubmitting(false);
             }, 500)
           }}

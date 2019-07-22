@@ -8,7 +8,7 @@ import { Formik } from "formik";
 import * as yup from "yup";
 
 
-function Audition() {
+function Audition(props) {
 
   const today = moment().format("L");
 
@@ -123,12 +123,12 @@ function Audition() {
         console.log(err);
       });
   }
-
+  
   return (
 
     <AuthConsumer>
       {({ user }) => (
-
+      
         <Formik
           validationSchema={schema}
           initialValues={initialValues}
@@ -136,8 +136,7 @@ function Audition() {
             handleQuery(values, setValues);
             setTimeout(() => {
               resetForm(initialValues)
-              console.log("reset");
-
+              props.clearPostType();
               setSubmitting(false);
             }, 500)
 

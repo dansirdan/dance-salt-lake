@@ -7,7 +7,7 @@ import moment from "moment";
 import { Formik } from "formik";
 import * as yup from "yup";
 
-function Class() {
+function Class(props) {
 
   const today = moment().format("L");
 
@@ -142,8 +142,7 @@ function Class() {
             handleQuery(values, setValues, () => {
               setTimeout(() => {
                 resetForm(initialValues)
-                console.log("reset");
-
+                props.clearPostType();
                 setSubmitting(false);
               }, 500)
             });
@@ -364,6 +363,7 @@ function Class() {
                     name="zip"
                     value={values.zip}
                     onBlur={handleBlur}
+                    onChange={handleChange}
                     isInvalid={!!errors.zip}
                     isValid={touched.zip && !errors.zip}
                   />

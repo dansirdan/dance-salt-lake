@@ -6,7 +6,7 @@ import axios from "axios";
 import { Formik } from "formik";
 import * as yup from "yup";
 
-function Space() {
+function Space(props) {
 
   const schema = yup.object().shape({
 
@@ -117,8 +117,7 @@ function Space() {
             handleQuery(values, setValues);
             setTimeout(() => {
               resetForm(initialValues)
-              console.log("reset");
-
+              props.clearPostType();
               setSubmitting(false);
             }, 500)
           }}

@@ -6,7 +6,7 @@ class Post extends Component {
   constructor(props, context) {
     super(props, context);
     this.state = {
-      postType: '',
+      postType: "",
     }
   }
 
@@ -17,19 +17,23 @@ class Post extends Component {
     this.setState({ postType: event.target.value })
   }
 
+  handleClear = () => {
+    this.setState({ postType: "" })
+  }
+
   renderInputs = () => {
     switch (this.state.postType) {
       case "auditions":
-        return <Audition />;
+        return <Audition clearPostType={this.handleClear} />;
 
       case "classes":
-        return <Class />;
+        return <Class clearPostType={this.handleClear} />;
 
       case "performances":
-        return <Performance />;
+        return <Performance  clearPostType={this.handleClear} />;
 
       case "space":
-        return <Space />;
+        return <Space clearPostType={this.handleClear} />;
 
       default:
         break
