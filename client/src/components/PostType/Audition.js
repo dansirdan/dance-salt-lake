@@ -4,7 +4,7 @@ import { AuthConsumer } from '../AuthContext';
 import API from "../../utils/API";
 import axios from "axios";
 import moment from "moment";
-import { Formik } from "formik";
+import { Formik, Field } from "formik";
 import * as yup from "yup";
 
 
@@ -49,9 +49,6 @@ function Audition(props) {
     lookingFor: yup.string()
       .required('Required'),
 
-    length: yup.number()
-      .min(1, "Must be more than 0")
-      .required('Required'),
     contract: yup.string()
       .required('Required'),
 
@@ -87,8 +84,7 @@ function Audition(props) {
     numberOf: "",
     lookingFor: "",
 
-    length: "6",
-    contract: "Month Contract",
+    contract: "",
 
     description: "asdf",
     photoLink: "http://lorempixel.com/640/480",
@@ -336,36 +332,21 @@ function Audition(props) {
 
                 <Form.Group as={Col} md="12">
                   <Form.Label>Contract:</Form.Label>
-                  <InputGroup>
-                    <Form.Control
-                      required
-                      name="length"
-                      value={values.number}
-                      placeholder="Length"
-                      type="text"
-                      onChange={handleChange}
-                      onBlur={handleBlur}
-                      isInvalid={!!errors.length}
-                      isValid={touched.length && !errors.length}
-                    />
-                    <InputGroup.Prepend>
-                      <Form.Control
+                  <Form.Control
                         as="select"
                         required
                         name="contract"
-                        value={values.contract}
+                        value={values.contract.contract}
                         onChange={handleChange}
                         onBlur={handleBlur}
                         isInvalid={!!errors.contract}
                         isValid={touched.contract && !errors.contract}
                       >
                         <option>Contract Type:</option>
-                        <option value="Month Contract">Month Contract</option>
-                        <option value="Year Contract">Year Contract</option>
+                        <option value="1-6 Month Contract">1-6 Month Contract</option>
+                        <option value="6-12 Month Contract">6-12 Month Contract</option>
+                        <option value="1-2 Year Contract">1-2 Year Contract</option>
                       </Form.Control>
-                    </InputGroup.Prepend>
-                  </InputGroup>
-                    {errors.length && touched.length && <div className="input-feedback">{errors.length}</div>}
                       {errors.contract && touched.contract && <div className="input-feedback">{errors.contract}</div>}
                 </Form.Group>
 

@@ -34,7 +34,7 @@ class AuditionFilter extends Component {
 
     // arrays of only unique values for filter dropdown
     const gender = [...new Set(this.props.data.map(x => x.lookingFor))]
-    const gig = [...new Set(this.props.data.map(x => x.gig))]
+    const gig = [...new Set(this.props.data.map(x => x.contract))]
 
     return (
       <Form>
@@ -48,7 +48,7 @@ class AuditionFilter extends Component {
         </Dropdown>
 
         <Dropdown
-          name="gig"
+          name="contract"
           onChange={this.handleInputChange}
         >
           <option value="0">Gig Type: All</option>

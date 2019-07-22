@@ -66,10 +66,6 @@ module.exports = function (sequelize, DataTypes) {
       type: DataTypes.STRING,
       allowNull: false
     },
-    length: {
-      type: DataTypes.STRING,
-      allowNull: false
-    },
     contract: {
       type: DataTypes.STRING,
       allowNull: false
