@@ -22,7 +22,7 @@ export function CopyClass(props) {
                   <tr key={klass.id}>
                     <td><span className="light-text">{`${klass.style} / ${klass.level} / ${klass.instructorName}`}</span></td>
                     <td><span className="light-text">{moment(klass.date).format("MMM Do")}</span></td>
-                    <td><span className="light-text">{moment(klass.time, "HH:mm:ss").format("h:mm A")}</span></td>
+                    <td><span className="light-text">{moment(klass.startTime, "HH:mm:ss").format("h:mm A")}</span></td>
                   </tr>
                 )
               })
@@ -59,7 +59,7 @@ export function CopyAudition(props) {
                   <tr key={audition.id}>
                     <td><span className="light-text">{audition.title}</span></td>
                     <td><span className="light-text">{moment(audition.date).format("MMM Do")}</span></td>
-                    <td><span className="light-text">{moment(audition.time, "HH:mm:ss").format("h:mm A")}</span></td>
+                    <td><span className="light-text">{moment(audition.startTime, "HH:mm:ss").format("h:mm A")}</span></td>
                   </tr>
                 )
               })
@@ -95,7 +95,7 @@ export function CopyPerformance(props) {
                   <tr key={performance.id}>
                     <td><span className="light-text">{performance.title}</span></td>
                     <td><span className="light-text">{moment(performance.date).format("MMM Do")}</span></td>
-                    <td><span className="light-text">{moment(performance.time, "HH:mm:ss").format("h:mm A")}</span></td>
+                    <td><span className="light-text">{moment(performance.startTime, "HH:mm:ss").format("h:mm A")}</span></td>
                   </tr>
                 )
               })

@@ -296,7 +296,7 @@ class EditPosts extends Component {
                                 <td><span className="light-text">{klass.style}</span></td>
                                 <td><span className="light-text">{klass.level}</span></td>
                                 <td><span className="light-text">{moment(klass.date).format("MMM Do")}</span></td>
-                                <td><span className="light-text">{moment(klass.time, "HH:mm:ss").format("h:mm A")}</span></td>
+                                <td><span className="light-text">{moment(klass.startTime, "HH:mm:ss").format("h:mm A")}</span></td>
                                 <td>
                                   <li><Button onClick={() => this.handleClick("edit", { id: klass.id, editType: "classes" })}>Edit</Button></li>
                                   <li><Button onClick={() => this.handleClick("copy", { id: klass.id, editType: "classes" })}>Copy</Button></li>
@@ -332,7 +332,7 @@ class EditPosts extends Component {
                               <tr key={performance.id}>
                                 <td><span className="light-text">{performance.title}</span></td>
                                 <td><span className="light-text">{moment(performance.date).format("MMM Do")}</span></td>
-                                <td><span className="light-text">{moment(performance.time, "HH:mm:ss").format("h:mm A")}</span></td>
+                                <td><span className="light-text">{moment(performance.startTime, "HH:mm:ss").format("h:mm A")}</span></td>
                                 <td>
                                   <li><Button onClick={() => this.handleClick("edit", { id: performance.id, editType: "performances" })}>Edit</Button></li>
                                   <li><Button onClick={() => this.handleClick("copy", { id: performance.id, editType: "performances" })}>Copy</Button></li>
@@ -371,7 +371,7 @@ class EditPosts extends Component {
                                 <td><span className="light-text">{audition.title}</span></td>
                                 <td><span className="light-text">{audition.lookingFor}</span></td>
                                 <td><span className="light-text">{moment(audition.date).format("MMM Do")}</span></td>
-                                <td><span className="light-text">{moment(audition.time, "HH:mm:ss").format("h:mm A")}</span></td>
+                                <td><span className="light-text">{moment(audition.startTime, "HH:mm:ss").format("h:mm A")}</span></td>
                                 <td>
                                   <li><Button onClick={() => this.handleClick("edit", { id: audition.id, editType: "auditions" })}>Edit</Button></li>
                                   <li><Button onClick={() => this.handleClick("copy", { id: audition.id, editType: "auditions" })}>Copy</Button></li>

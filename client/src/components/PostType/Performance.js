@@ -7,7 +7,7 @@ import moment from "moment";
 import { Formik } from "formik";
 import * as yup from "yup";
 
-function Performance() {
+function Performance(props) {
 
   const today = moment().format("L");
 
@@ -26,20 +26,26 @@ function Performance() {
       .required("Required"),
 
     address: yup.string()
-      .required("Required"),
+      .min(2, 'Too Short')
+      .max(50, 'Too Long')
+      .required('Required'),
     city: yup.string()
-      .required("Required"),
+      .min(2, 'Too Short')
+      .max(20, 'Too Long')
+      .required('Required'),
     state: yup.string()
-      .required("Required"),
-    zip: yup.number()
-      .min(8, "valid zipcode required")
+      .min(2, 'Too Short')
+      .max(15, 'Too Long')
+      .required('Required'),
+    zip: yup.string()
+      .length(5, "must be a valid zipcode")
+      .matches(/^[0-9]*$/, "must be a valid zipcode")
       .required('Required'),
 
     price: yup.number()
       .required("Required"),
-    payment: yup.string()
-      .required("Required"),
-
+    payment: yup.string(),
+    
     description: yup.string()
       .min(3, "Too Short")
       .max(255, "That's a bit much...")
@@ -70,6 +76,7 @@ function Performance() {
     lng: "",
 
     price: "90",
+    payment: "",
 
     description: "asdf",
     photoLink: "http://lorempixel.com/640/480",
@@ -116,8 +123,7 @@ function Performance() {
             handleQuery(values, setValues);
             setTimeout(() => {
               resetForm(initialValues)
-              console.log("reset");
-
+              props.clearPostType();
               setSubmitting(false);
             }, 500)
           }}

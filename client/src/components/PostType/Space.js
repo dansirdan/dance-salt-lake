@@ -6,7 +6,7 @@ import axios from "axios";
 import { Formik } from "formik";
 import * as yup from "yup";
 
-function Space() {
+function Space(props) {
 
   const schema = yup.object().shape({
 
@@ -23,15 +23,22 @@ function Space() {
       .required("Required"),
     numPeople: yup.number()
       .required("Required"),
-
+      
     address: yup.string()
-      .required("Required"),
+      .min(2, 'Too Short')
+      .max(50, 'Too Long')
+      .required('Required'),
     city: yup.string()
-      .required("Required"),
+      .min(2, 'Too Short')
+      .max(20, 'Too Long')
+      .required('Required'),
     state: yup.string()
-      .required("Required"),
-    zip: yup.number()
-      .min(5, "valid zipcode required")
+      .min(2, 'Too Short')
+      .max(15, 'Too Long')
+      .required('Required'),
+    zip: yup.string()
+      .length(5, "must be a valid zipcode")
+      .matches(/^[0-9]*$/, "must be a valid zipcode")
       .required('Required'),
 
     description: yup.string()
@@ -110,8 +117,7 @@ function Space() {
             handleQuery(values, setValues);
             setTimeout(() => {
               resetForm(initialValues)
-              console.log("reset");
-
+              props.clearPostType();
               setSubmitting(false);
             }, 500)
           }}

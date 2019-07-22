@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Banner } from "../components/Sections";
 import { Container, Row, Col, Form, Button } from "react-bootstrap";
 import { Formik } from "formik";
@@ -8,14 +8,13 @@ import * as yup from "yup";
 import API from "../utils/API";
 const axios = require("axios");
 
-function Register() {
+function Register(props) {
 
+  useEffect(() => props.handleLogo());
 
-  // componentWillMount() {
-  //   this.props.handleLogo();
-  // }
 
   const schema = yup.object().shape({
+
     name: yup.string()
       .min(2, 'Too Short')
       .max(50, 'Too Long')
@@ -26,21 +25,24 @@ function Register() {
     website: yup.string()
       .url("must be avalid url")
       .required('Required'),
+
     address: yup.string()
       .min(2, 'Too Short')
       .max(50, 'Too Long')
       .required('Required'),
     city: yup.string()
       .min(2, 'Too Short')
-      .max(50, 'Too Long')
+      .max(20, 'Too Long')
       .required('Required'),
     state: yup.string()
       .min(2, 'Too Short')
-      .max(50, 'Too Long')
+      .max(15, 'Too Long')
       .required('Required'),
-    zip: yup.number()
-      .min(5, "valid zipcode required")
+    zip: yup.string()
+      .length(5, "must be a valid zipcode")
+      .matches(/^[0-9]*$/, "must be a valid zipcode")
       .required('Required'),
+
     phone: yup.string()
       .min(10, 'Too Short')
       .max(11, 'Too Long')
@@ -112,9 +114,6 @@ function Register() {
       .then(response => {
         cityLat = parseFloat(response.data.results[0].geometry.location.lat);
         cityLng = parseFloat(response.data.results[0].geometry.location.lng);
-
-        console.log(response);
-        console.log(cityLat, cityLng)
 
         const payload = { ...values, lat: cityLat, lng: cityLng };
 

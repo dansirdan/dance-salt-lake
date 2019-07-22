@@ -7,7 +7,7 @@ import moment from "moment";
 import { Formik } from "formik";
 import * as yup from "yup";
 
-function Class() {
+function Class(props) {
 
   const today = moment().format("L");
 
@@ -36,17 +36,23 @@ function Class() {
     endTime: yup.string()
       .required('Required'),
 
-    payment: yup.string()
-      .required("Required"),
+    payment: yup.string(),
 
     address: yup.string()
+      .min(2, 'Too Short')
+      .max(50, 'Too Long')
       .required('Required'),
     city: yup.string()
+      .min(2, 'Too Short')
+      .max(20, 'Too Long')
       .required('Required'),
     state: yup.string()
+      .min(2, 'Too Short')
+      .max(15, 'Too Long')
       .required('Required'),
-    zip: yup.number()
-      .min(8, "valid zipcode required")
+    zip: yup.string()
+      .length(5, "must be a valid zipcode")
+      .matches(/^[0-9]*$/, "must be a valid zipcode")
       .required('Required'),
 
     description: yup.string()
@@ -71,7 +77,7 @@ function Class() {
     level: "Advanced",
     master: false,
 
-    // payment: [],
+    payment: [],
 
     date: "",
     startTime: "15:00",
@@ -136,8 +142,7 @@ function Class() {
             handleQuery(values, setValues, () => {
               setTimeout(() => {
                 resetForm(initialValues)
-                console.log("reset");
-
+                props.clearPostType();
                 setSubmitting(false);
               }, 500)
             });
@@ -358,6 +363,7 @@ function Class() {
                     name="zip"
                     value={values.zip}
                     onBlur={handleBlur}
+                    onChange={handleChange}
                     isInvalid={!!errors.zip}
                     isValid={touched.zip && !errors.zip}
                   />
