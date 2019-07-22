@@ -112,9 +112,14 @@ function Performance() {
         <Formik
           validationSchema={schema}
           initialValues={initialValues}
-          onSubmit={(values, { setSubmitting, setValues }) => {
+          onSubmit={(values, { setSubmitting, setValues, resetForm }) => {
             handleQuery(values, setValues);
-            setTimeout(() => setSubmitting(false), 500);
+            setTimeout(() => {
+              resetForm(initialValues)
+              console.log("reset");
+
+              setSubmitting(false);
+            }, 500)
           }}
         >
           {({

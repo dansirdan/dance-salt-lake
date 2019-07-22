@@ -106,6 +106,7 @@ function Audition() {
 
         const payload = { ...values, lat: cityLat, lng: cityLng };
 
+        setValues(payload)
         API.newPost("auditions", payload);
         console.log(JSON.stringify(payload, null, 2));
       })
@@ -122,9 +123,15 @@ function Audition() {
         <Formik
           validationSchema={schema}
           initialValues={initialValues}
-          onSubmit={(values, { setSubmitting, setValues }) => {
+          onSubmit={(values, { setSubmitting, setValues, resetForm }) => {
             handleQuery(values, setValues);
-            setTimeout(() => setSubmitting(false), 500);
+            setTimeout(() => {
+              resetForm(initialValues)
+              console.log("reset");
+              
+              setSubmitting(false);
+            }, 500)
+            
           }}
         >
           {({
@@ -306,12 +313,13 @@ function Audition() {
                         onBlur={handleBlur}
                         isInvalid={!!errors.lookingFor}
                         isValid={touched.lookingFor && !errors.lookingFor}
-                      />
+                      >
                       <option>Gender</option>
                       <option value="Men">Men</option>
                       <option value="Women">Women</option>
                       <option value="Men and Women">Men and Women</option>
                       <option value="Any">Any</option>
+                      </Form.Control>
                       {errors.lookingFor && touched.lookingFor && <div className="input-feedback">{errors.lookingFor}</div>}
                     </InputGroup.Prepend>
                   </InputGroup>
@@ -342,10 +350,11 @@ function Audition() {
                         onBlur={handleBlur}
                         isInvalid={!!errors.contract}
                         isValid={touched.contract && !errors.contract}
-                      />
+                      >
                       <option>Contract Type:</option>
                       <option value="Month Contract">Month Contract</option>
                       <option value="Year Contract">Year Contract</option>
+                      </Form.Control>
                       {errors.contract && touched.contract && <div className="input-feedback">{errors.contract}</div>}
                     </InputGroup.Prepend>
                   </InputGroup>

@@ -143,12 +143,14 @@ function Register() {
             <Formik
               validationSchema={schema}
               initialValues={initialValues}
-              onSubmit={(values, { setSubmitting, setValues }) => {
+              onSubmit={(values, { setSubmitting, setValues, resetForm }) => {
                 handleQuery(values, setValues);
                 setTimeout(() => {
+                  resetForm(initialValues)
+                  console.log("reset");
 
-                  setSubmitting(false)
-                }, 500);
+                  setSubmitting(false);
+                }, 500)
               }}
             >
               {({
