@@ -16,6 +16,9 @@ export default {
   logoutUser: function () {
     return axios.get("/api/auth/logout")
   },
+  signUp: function (newUser) {
+    return axios.post("/api/auth/signup", newUser)
+  },
   user: function () {
     return axios.get("/api/auth/user")
   },

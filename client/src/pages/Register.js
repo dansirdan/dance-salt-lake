@@ -2,57 +2,38 @@ import React, { Component } from "react";
 import { Banner } from "../components/Sections";
 import { Container, Row, Col, Form, Button } from "react-bootstrap";
 import { Input } from "../components/Form";
+import API from "../utils/API"
 const axios = require("axios");
 
 class Register extends Component {
 
   state = {
-    name: '',
-    logo: '',
-    website: '',
-    address: '',
-    phone: '',
-    email: '',
-    password: '',
-    lat: '',
-    lng: ''
+    name: 'Daniel',
+    logo: 'https://scontent.faus1-1.fna.fbcdn',
+    website: 'https://www.facebook.com/dmonteton',
+    address: '8 E Hillside Ave',
+    phone: '3032049046',
+    email: 'dmont@gmail.com',
+    password: '111111'
   }
 
   handleRegister = event => {
     event.preventDefault();
-
-    if (this.state.address) {
-      let cityLat;
-      let cityLon;
-      let geoAddy = "138+Broadway,+Salt+Lake+City,+UT"
-      const geoKey = `${process.env.RREACT_APP_GOOGLE_API_KEY}`
-      let geoQuery = `https://maps.googleapis.com/maps/api/geocode/json?address=${geoAddy}&key=${geoKey}`;
-      axios.get(geoQuery)
-        .then(response => {
-          cityLat = parseFloat(response.data.results[0].geometry.location.lat);
-          cityLon = parseFloat(response.data.results[0].geometry.location.lng);
-          console.log(response);
-          console.log(cityLat, cityLon)
-          this.setState({
-            lat: cityLat,
-            lng: cityLon
-          })
-
-          if (this.state.email && this.state.password) {
-            axios.post("/api/auth/signup", {
-              email: this.state.email,
-              password: this.state.password
-            }).then(function (data) {
-              console.log(data);
-            }).catch(err => console.log(err));
-          }
-
-        })
-        .catch(err => {
-          console.log(err);
-        })
+    if (this.state.email && this.state.password) {
+      API.signUp({
+        name: this.state.name,
+        logo: this.state.logo,
+        website: this.state.website,
+        address: this.state.address,
+        password: this.state.password,
+        email: this.state.email
+      })
+        .then(function (res) {
+          console.log(res.data);
+        }).catch(err => console.log(err));
     }
   }
+
 
   handleInputChange = event => {
     const { name, value } = event.target;
