@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
-import { Form, Input, Dropdown, TextArea, Checkbox, FormBtn } from "../Form";
-import { Container, Row, Col, Table, Button } from "react-bootstrap";
-import axios from "axios";
+import { Input } from "../Form";
+import { Container, Row, Col, Button } from "react-bootstrap";
 import "./style.css";
 import API from '../../utils/API';
 

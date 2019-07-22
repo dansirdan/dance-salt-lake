@@ -138,7 +138,8 @@ class Audition extends Component {
                           photoLink={audition.photoLink}
                           length={audition.length}
                           payment={audition.payment}
-                          time={audition.time}
+                          startTime={audition.startTime}
+                          endTime={audition.endTime}
                           date={audition.date}
                           link={audition.link}
                           onClick={() => this.handleShow(audition.id)}

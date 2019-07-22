@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Row, Col } from "react-bootstrap"
 import { Container } from "../components/Grid";
 
+
 class About extends Component {
 
   // lifecycle method to handle Large Logo

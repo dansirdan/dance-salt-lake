@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import { Input, FormBtn } from "../Form";
-import { Dropdown } from 'react-bootstrap';
 import { AuthConsumer } from "../AuthContext"
 
 class Login extends Component {

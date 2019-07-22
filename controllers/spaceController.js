@@ -2,6 +2,7 @@ const db = require("../models");
 
 module.exports = {
   create: function (req, res) {
+    console.log("create");
     db.Space
       .create(req.body)
       .then(data => res.json(data))
@@ -14,7 +15,6 @@ module.exports = {
       .catch(err => res.status(422).json(err));
   },
   findAllWhere: function (req, res) {
-    // console.log(req.query);
 
     db.Space
       .findAll({ where: req.query })

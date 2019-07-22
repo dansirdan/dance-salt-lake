@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
-import { Form, Input, Dropdown, TextArea, Checkbox, FormBtn } from "../Form";
+import { Input, Dropdown, TextArea, Checkbox, FormBtn } from "../Form";
 import axios from "axios";
 import "./style.css";
-import API from '../../utils/API';
 
 class EditForm extends Component {
   constructor(props, context) {
