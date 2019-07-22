@@ -86,10 +86,9 @@ function Audition() {
     url: "http://asdf.com"
   }
 
-  function handleQuery(values, setValues) {
+  const handleQuery = (values, setValues) => {
 
     let location = (({ address, city, state, zip }) => ({ address, city, state, zip }))(values);
-    location = Object.values(location)
     location = location.toString()
     location = location.split(" ").join("+")
     console.log(location);
@@ -106,14 +105,14 @@ function Audition() {
         cityLng = parseFloat(response.data.results[0].geometry.location.lng);
 
         const payload = { ...values, lat: cityLat, lng: cityLng };
-      
+
         API.newPost("auditions", payload);
         console.log(JSON.stringify(payload, null, 2));
       })
       .catch(err => {
         console.log(err);
       });
-    }
+  }
 
   return (
 
@@ -123,7 +122,7 @@ function Audition() {
         <Formik
           validationSchema={schema}
           initialValues={initialValues}
-          onSubmit={(values, { setSubmitting, setValues }) => {            
+          onSubmit={(values, { setSubmitting, setValues }) => {
             handleQuery(values, setValues);
             setTimeout(() => setSubmitting(false), 500);
           }}
@@ -168,12 +167,11 @@ function Audition() {
                     required
                     name="date"
                     value={values.date}
-                    placeholder={today}
                     type="date"
-                    isInvalid={!!errors.date}
-                    isValid={touched.date && !errors.date}
                     onChange={handleChange}
                     onBlur={handleBlur}
+                    isInvalid={!!errors.date}
+                    isValid={touched.date && !errors.date}
                   />
                   {errors.date && touched.date && <div className="input-feedback">{errors.date}</div>}
                 </Form.Group>
@@ -205,7 +203,7 @@ function Audition() {
                     onChange={handleChange}
                     onBlur={handleBlur}
                     isInvalid={!!errors.endTime}
-                    isValid={touched.endTime && !errors.endtime}
+                    isValid={touched.endTime && !errors.endTime}
                   />
                   {errors.endTime && touched.endTime && <div className="input-feedback">{errors.endTime}</div>}
                 </Form.Group>
@@ -215,21 +213,23 @@ function Audition() {
                   <Form.Control
                     required
                     name="address"
+                    value={values.address}
+                    placeholder="Address"
+                    type="text"
                     onChange={handleChange}
                     onBlur={handleBlur}
                     isInvalid={!!errors.address}
                     isValid={touched.address && !errors.address}
                   />
+                  {errors.address && touched.address && <div className="input-feedback">{errors.address}</div>}
+                </Form.Group>
 
                 <Form.Group as={Col} md="12">
                   <Form.Control
                     required
                     name="city"
-                    value={values.city}
                     placeholder="City"
-                    type="text"
-                    onChange={handleChange}
-                    onBlur={handleBlur}
+                    isInvalid={!!errors.city}
                     isValid={touched.city && !errors.city}
                   />
                   {errors.city && touched.city && <div className="input-feedback">{errors.city}</div>}
@@ -255,9 +255,6 @@ function Audition() {
                     required
                     name="zip"
                     value={values.zip}
-                    placeholder="Zip"
-                    type="text"
-                    onChange={handleChange}
                     onBlur={handleBlur}
                     isInvalid={!!errors.zip}
                     isValid={touched.zip && !errors.zip}
@@ -278,7 +275,7 @@ function Audition() {
                   required
                   hidden
                   name="lng"
-                  value={values.lng}
+                  value={values.lon}
                   type="number"
                   onChange={handleChange}
                 />
@@ -309,17 +306,16 @@ function Audition() {
                         onBlur={handleBlur}
                         isInvalid={!!errors.lookingFor}
                         isValid={touched.lookingFor && !errors.lookingFor}
-                      >
-                        <option>Gender</option>
-                        <option value="Men">Men</option>
-                        <option value="Women">Women</option>
-                        <option value="Men and Women">Men and Women</option>
-                        <option value="Any">Any</option>
-                      </Form.Control>
+                      />
+                      <option>Gender</option>
+                      <option value="Men">Men</option>
+                      <option value="Women">Women</option>
+                      <option value="Men and Women">Men and Women</option>
+                      <option value="Any">Any</option>
                       {errors.lookingFor && touched.lookingFor && <div className="input-feedback">{errors.lookingFor}</div>}
                     </InputGroup.Prepend>
                   </InputGroup>
-                </Form.Group>
+                </Form.Group >
 
                 <Form.Group as={Col} md="12">
                   <Form.Label>Contract:</Form.Label>
@@ -347,10 +343,9 @@ function Audition() {
                         isInvalid={!!errors.contract}
                         isValid={touched.contract && !errors.contract}
                       />
-                        <option>Contract Type:</option>
-                        <option value="Month Contract">Month Contract</option>
-                        <option value="Year Contract">Year Contract</option>
-                      </Form.Control>
+                      <option>Contract Type:</option>
+                      <option value="Month Contract">Month Contract</option>
+                      <option value="Year Contract">Year Contract</option>
                       {errors.contract && touched.contract && <div className="input-feedback">{errors.contract}</div>}
                     </InputGroup.Prepend>
                   </InputGroup>
@@ -405,11 +400,10 @@ function Audition() {
 
                 <Button type="submit">Submit</Button>
               </Form>
-
             )}
         </Formik>
       )}
-    </AuthConsumer>
+    </AuthConsumer >
   )
 }
 

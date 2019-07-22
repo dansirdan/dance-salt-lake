@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import EditPosts from "../components/EditPosts";
-import { Banner } from "../components/Sections";
+import { Section, Banner } from "../components/Sections";
 import Post from "../components/Post";
 
 import { Container, Row, Col } from "react-bootstrap";

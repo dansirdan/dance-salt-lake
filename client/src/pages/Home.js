@@ -58,7 +58,7 @@ class Home extends Component {
           <div className="preview">
             <Row>
               <Col md="12" lg="4">
-                <ClassesPreview />
+                <Class />
               </Col>
 
               <Col md="12" lg="4">
