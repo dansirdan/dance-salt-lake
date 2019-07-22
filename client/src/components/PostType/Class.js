@@ -1,5 +1,5 @@
 import React from "react";
-import { Col, Form, InputGroup, Button } from "react-bootstrap";
+import { Col, Form, Button } from "react-bootstrap";
 import { AuthConsumer } from '../AuthContext';
 import API from "../../utils/API";
 import axios from "axios";

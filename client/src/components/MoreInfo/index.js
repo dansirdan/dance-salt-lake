@@ -60,7 +60,7 @@ class MoreInfo extends Component {
 
   handlePage = () => {
     const {
-      title,
+      // title,
       description,
       address,
       city,
@@ -72,7 +72,7 @@ class MoreInfo extends Component {
       startTime,
       endTime,
       date,
-      photoLink,
+      // photoLink,
       instructorName,
       url
     } = this.props.moreInfo;

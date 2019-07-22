@@ -1,7 +1,6 @@
 import React from "react";
 import { Banner } from "../components/Sections";
 import { Container, Row, Col, Form, Button } from "react-bootstrap";
-import { Input } from "../components/Form";
 import { Formik } from "formik";
 import * as yup from "yup";
 import API from "../utils/API";
