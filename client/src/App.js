@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { BrowserRouter as Router, Route, Switch, Redirect, Link } from 'react-router-dom'
+import { Router, Route, Switch, Redirect, Link } from 'react-router-dom'
 import { AuthProvider, AuthConsumer } from './components/AuthContext'
 import Home from "./pages/Home";
 import About from "./pages/About";

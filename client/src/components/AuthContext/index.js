@@ -37,7 +37,7 @@ class AuthProvider extends Component {
     }
   }
 
-  login(user) {
+  login(user, cb) {
 
     API.auth("login", user)
       .then(res => {
@@ -46,6 +46,7 @@ class AuthProvider extends Component {
           .then(dbUser => {
             console.log(dbUser.data)
             this.setState({ isAuth: true, loggedOut: false, user: dbUser.data })
+            cb()
             // return (
             //   <Redirect to="/usershome"></Redirect>
             // )
