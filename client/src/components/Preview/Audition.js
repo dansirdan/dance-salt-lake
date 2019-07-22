@@ -53,7 +53,7 @@ class Audition extends Component {
       <div className="audition-preview">
         <h3>Auditions</h3>
         {/* TRUE/FALSE if no auditions available */}
-        {(this.state.auditionData > 0) ? <Accordion defaultActiveKey="0">
+        {(this.state.auditionData.length > 0) ? <Accordion defaultActiveKey="0">
           {this.state.auditionData.map((audition, index) => {
 
             return (

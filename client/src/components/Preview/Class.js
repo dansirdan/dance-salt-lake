@@ -3,7 +3,7 @@ import { Container } from "../Grid";
 import Thumbnail from "../Thumbnail";
 import { Card, Row, Col } from "react-bootstrap";
 import "./style.css";
-import API from "../../utils/API"
+import API from "../../utils/API";
 import moment from "moment";
 
 // using state and componentWillMount lifecycle methods
@@ -57,7 +57,7 @@ class Class extends Component {
     return (
       <div className="class-preview">
         <h3>Classes</h3>
-        {this.state.classData > 0 ? this.state.classData.map(klass => {
+        {this.state.classData.length > 0 ? this.state.classData.map(klass => {
           return (
             <Card key={klass.id}>
               <Card.Body as="a" onClick={() => this.handleShow(klass.id)}>

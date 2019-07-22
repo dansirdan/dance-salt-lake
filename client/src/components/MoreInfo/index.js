@@ -111,7 +111,7 @@ class MoreInfo extends Component {
               <Row>
                 <Col md='7'>
                   <br />
-                  <Link className="btn btn-primary" to={url}>Contact</Link > 
+                 <a href={`mailto:bramibly@gamil.com`} className="btn btn-primary">Contact</a> 
                 </Col>
                 <Col>
                   <br />
