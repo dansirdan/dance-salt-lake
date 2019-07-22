@@ -39,10 +39,18 @@ class Audition extends Component {
 
     API.getPosts("auditions")
       .then(res => {
-        for (let i = 0; i < 3; i++) {
-          threeAuditions.push(res.data[i]);
+        if (res.data.length === 0) {
+          console.log("no auditions");
+        } else {
+          for (let i = 0; i < res.data.length || i < 3; i++) {
+            // const element = res.data[i];
+            threeAuditions.push(res.data[i]);
+          }
+          this.setState({ auditionData: threeAuditions })
         }
-        this.setState({ auditionData: threeAuditions })
+        // for (let i = 0; i < 3; i++) {
+        //   threeAuditions.push(res.data[i]);
+        // }
       })
       .catch(err => console.log(err));
   }
