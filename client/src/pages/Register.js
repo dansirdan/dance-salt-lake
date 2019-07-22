@@ -10,9 +10,11 @@ const axios = require("axios");
 
 function Register(props) {
 
-  useEffect(() => props.handleLogo())
+  useEffect(() => props.handleLogo());
+
 
   const schema = yup.object().shape({
+
     name: yup.string()
       .min(2, 'Too Short')
       .max(50, 'Too Long')
@@ -23,21 +25,24 @@ function Register(props) {
     website: yup.string()
       .url("must be avalid url")
       .required('Required'),
+
     address: yup.string()
       .min(2, 'Too Short')
       .max(50, 'Too Long')
       .required('Required'),
     city: yup.string()
       .min(2, 'Too Short')
-      .max(50, 'Too Long')
+      .max(20, 'Too Long')
       .required('Required'),
     state: yup.string()
       .min(2, 'Too Short')
-      .max(50, 'Too Long')
+      .max(15, 'Too Long')
       .required('Required'),
-    zip: yup.number()
-      .min(5, "valid zipcode required")
+    zip: yup.string()
+      .length(5, "must be a valid zipcode")
+      .matches(/^[0-9]*$/, "must be a valid zipcode")
       .required('Required'),
+
     phone: yup.string()
       .min(10, 'Too Short')
       .max(11, 'Too Long')

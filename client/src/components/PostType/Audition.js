@@ -27,21 +27,30 @@ function Audition() {
       .required('Required'),
 
     address: yup.string()
+      .min(2, 'Too Short')
+      .max(50, 'Too Long')
       .required('Required'),
     city: yup.string()
+      .min(2, 'Too Short')
+      .max(20, 'Too Long')
       .required('Required'),
     state: yup.string()
+      .min(2, 'Too Short')
+      .max(15, 'Too Long')
       .required('Required'),
-    zip: yup.number()
-      .min(5, "valid zipcode required")
+    zip: yup.string()
+      .length(5, "must be a valid zipcode")
+      .matches(/^[0-9]*$/, "must be a valid zipcode")
       .required('Required'),
 
     numberOf: yup.number()
+      .min(1, "Must be more than 0")
       .required('Required'),
     lookingFor: yup.string()
       .required('Required'),
 
     length: yup.number()
+      .min(1, "Must be more than 0")
       .required('Required'),
     contract: yup.string()
       .required('Required'),
@@ -75,8 +84,8 @@ function Audition() {
     lat: "",
     lng: "",
 
-    numberOf: "4",
-    lookingFor: "Both",
+    numberOf: "",
+    lookingFor: "",
 
     length: "6",
     contract: "Month Contract",
@@ -128,10 +137,10 @@ function Audition() {
             setTimeout(() => {
               resetForm(initialValues)
               console.log("reset");
-              
+
               setSubmitting(false);
             }, 500)
-            
+
           }}
         >
           {({
@@ -263,6 +272,7 @@ function Audition() {
                     name="zip"
                     value={values.zip}
                     onBlur={handleBlur}
+                    onChange={handleChange}
                     isInvalid={!!errors.zip}
                     isValid={touched.zip && !errors.zip}
                   />
@@ -295,13 +305,12 @@ function Audition() {
                       name="numberOf"
                       value={values.number}
                       placeholder="Number of"
-                      type="number"
+                      type="text"
                       onChange={handleChange}
                       onBlur={handleBlur}
                       isInvalid={!!errors.numberOf}
                       isValid={touched.numberOf && !errors.numberOf}
                     />
-                    {errors.numberOf && touched.numberOf && <div className="input-feedback">{errors.numberOf}</div>}
 
                     <InputGroup.Prepend>
                       <Form.Control
@@ -314,15 +323,16 @@ function Audition() {
                         isInvalid={!!errors.lookingFor}
                         isValid={touched.lookingFor && !errors.lookingFor}
                       >
-                      <option>Gender</option>
-                      <option value="Men">Men</option>
-                      <option value="Women">Women</option>
-                      <option value="Men and Women">Men and Women</option>
-                      <option value="Any">Any</option>
+                        <option>Gender</option>
+                        <option value="Men">Men</option>
+                        <option value="Women">Women</option>
+                        <option value="Men and Women">Men and Women</option>
+                        <option value="Any">Any</option>
                       </Form.Control>
-                      {errors.lookingFor && touched.lookingFor && <div className="input-feedback">{errors.lookingFor}</div>}
                     </InputGroup.Prepend>
                   </InputGroup>
+                  {errors.numberOf && touched.numberOf && <div className="input-feedback">{errors.numberOf}</div>}
+                  {errors.lookingFor && touched.lookingFor && <div className="input-feedback">{errors.lookingFor}</div>}
                 </Form.Group >
 
                 <Form.Group as={Col} md="12">
@@ -333,13 +343,12 @@ function Audition() {
                       name="length"
                       value={values.number}
                       placeholder="Length"
-                      type="number"
+                      type="text"
                       onChange={handleChange}
                       onBlur={handleBlur}
                       isInvalid={!!errors.length}
                       isValid={touched.length && !errors.length}
                     />
-                    {errors.length && touched.length && <div className="input-feedback">{errors.length}</div>}
                     <InputGroup.Prepend>
                       <Form.Control
                         as="select"
@@ -351,13 +360,14 @@ function Audition() {
                         isInvalid={!!errors.contract}
                         isValid={touched.contract && !errors.contract}
                       >
-                      <option>Contract Type:</option>
-                      <option value="Month Contract">Month Contract</option>
-                      <option value="Year Contract">Year Contract</option>
+                        <option>Contract Type:</option>
+                        <option value="Month Contract">Month Contract</option>
+                        <option value="Year Contract">Year Contract</option>
                       </Form.Control>
-                      {errors.contract && touched.contract && <div className="input-feedback">{errors.contract}</div>}
                     </InputGroup.Prepend>
                   </InputGroup>
+                    {errors.length && touched.length && <div className="input-feedback">{errors.length}</div>}
+                      {errors.contract && touched.contract && <div className="input-feedback">{errors.contract}</div>}
                 </Form.Group>
 
                 <Form.Group as={Col} md="12">
