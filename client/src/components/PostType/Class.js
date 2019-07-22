@@ -9,7 +9,7 @@ import * as yup from "yup";
 
 function Class() {
 
-  const today = moment().format("L"); 
+  const today = moment().format("L");
 
   const schema = yup.object().shape({
 
@@ -81,7 +81,7 @@ function Class() {
     city: "Salt Lake City",
     state: "Utah",
     zip: "84103",
-    
+
     lat: "",
     lng: "",
 
@@ -90,7 +90,7 @@ function Class() {
     url: "http://asdf.com"
   }
 
-  const handleQuery = (values, setValues) => {
+  const handleQuery = (values, setValues, cb) => {
 
     let location = (({ address, city, state, zip }) => ({ address, city, state, zip }))(values);
     location = location.toString()
@@ -110,7 +110,12 @@ function Class() {
 
         const payload = { ...values, lat: cityLat, lng: cityLng };
 
-        API.newPost("classes", payload);
+        API.newPost("classes", payload)
+          .then(res => {
+            console.log(res.data);
+            cb();
+          })
+          .catch(err => console.log(err));
         console.log(JSON.stringify(payload, null, 2));
       })
       .catch(err => {
@@ -128,13 +133,15 @@ function Class() {
           validationSchema={schema}
           initialValues={initialValues}
           onSubmit={(values, { setSubmitting, setValues, resetForm }) => {
-            handleQuery(values, setValues);
-            setTimeout(() => {
-              resetForm(initialValues)
-              console.log("reset");
+            handleQuery(values, setValues, () => {
+              setTimeout(() => {
+                resetForm(initialValues)
+                console.log("reset");
 
-              setSubmitting(false);
-            }, 500)
+                setSubmitting(false);
+              }, 500)
+            });
+
           }}
         >
           {({
@@ -222,37 +229,37 @@ function Class() {
                 </Form.Group>
 
                 <Form.Group as={Col} md="12">
-                  <Form.Check 
-                    name="master[0]" 
-                    label="Master Class" 
-                    value="Master Class" 
+                  <Form.Check
+                    name="master[0]"
+                    label="Master Class"
+                    value="Master Class"
                     onChange={handleChange}
                   />
                 </Form.Group>
 
                 <Form.Group as={Col} md="12">
                   <Form.Label className="mr-3">Payment:</Form.Label>
-                  <Form.Check 
-                    inline 
-                    name="payment" 
+                  <Form.Check
+                    inline
+                    name="payment"
                     value="Cash"
-                    label="Cash" 
-                    onChange={handleChange}                    
+                    label="Cash"
+                    onChange={handleChange}
                   />
                   <Form.Check
-                    inline 
-                    name="payment" 
+                    inline
+                    name="payment"
                     value="Card"
                     label="Card"
-                    onChange={handleChange}   
+                    onChange={handleChange}
                   />
-                  <Form.Check 
-                    inline 
+                  <Form.Check
+                    inline
                     default
-                    name="payment" 
+                    name="payment"
                     value="Any"
-                    label="Any" 
-                    onChange={handleChange}  
+                    label="Any"
+                    onChange={handleChange}
                   />
                 </Form.Group>
 

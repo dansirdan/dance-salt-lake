@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { BrowserRouter as Router, Route, Switch, Redirect, Link } from 'react-router-dom'
+import { Router, Route, Switch, Redirect, Link } from 'react-router-dom'
 import { AuthProvider, AuthConsumer } from './components/AuthContext'
 import Home from "./pages/Home";
 import About from "./pages/About";
@@ -17,7 +17,7 @@ import './App.css';
 
 // CURRENTLY NOT WORKING USING A DIFFERENT METHOD THAT DOES WORK
 // import ProtectedRoute from './components/ProtectedRoute'
-
+import history from "./history";
 
 class App extends Component {
 
@@ -50,7 +50,7 @@ class App extends Component {
 
   render() {
     return (
-      <Router>
+      <Router history={history}>
         <AuthProvider>
           <AnimateHeight
             duration={2000}
@@ -63,35 +63,24 @@ class App extends Component {
             tinyLogo={!this.state.largeLogo}
           />
           <Switch>
-            {/* <AuthConsumer>
-              {({ sessions }) => (
-                <Route
-                  render={props =>
-                    isAuth ? <Redirect to="/" /> : <Home {...props} handleShow={this.handleShow} sessions={sessions} />
-                  }
-                />
-              )}
-            </AuthConsumer> */}
             <Route
-              exact path="/"
-              render={(props) => (
-                <AuthConsumer>
-                  {({ isAuth, loggedOut, sessions }) => (
-                    isAuth ?
-                      <Redirect to="/usershome"></Redirect>
-                      : loggedOut ?
-                        <Link to="/home"></Link>
-                        :
-                        <Home {...props}
-                          handleShow={this.handleShow}
-                          sessions={sessions}
-                        />
-                  )}
-                </AuthConsumer>
-              )}
+              exact
+              path="/"
+              render={(props) =>
+                (
+                  <AuthConsumer>
+                    {({ sessions }) => (
+                      <Home {...props}
+                        handleShow={this.handleShow}
+                        sessions={sessions}
+                      />
+                    )}
+                  </AuthConsumer>
+                )}
             />
             <Route
-              exact path="/class"
+              exact
+              path="/class"
               render={(props) => (
                 <Class {...props}
                   handleLogo={this.handleLogo}
@@ -99,7 +88,8 @@ class App extends Component {
               )}
             />
             <Route
-              exact path="/audition"
+              exact
+              path="/audition"
               render={(props) => (
                 <Audition {...props}
                   handleLogo={this.handleLogo}
@@ -107,7 +97,8 @@ class App extends Component {
               )}
             />
             <Route
-              exact path="/performance"
+              exact
+              path="/performance"
               render={(props) => (
                 <Performance {...props}
                   handleLogo={this.handleLogo}
@@ -115,7 +106,8 @@ class App extends Component {
               )}
             />
             <Route
-              exact path="/space"
+              exact
+              path="/space"
               render={(props) => (
                 <Space {...props}
                   handleLogo={this.handleLogo}
@@ -123,7 +115,8 @@ class App extends Component {
               )}
             />
             <Route
-              exact path="/about"
+              exact
+              path="/about"
               render={(props) => (
                 <About {...props}
                   handleLogo={this.handleLogo}
@@ -131,33 +124,29 @@ class App extends Component {
               )}
             />
             <Route
-              exact path="/register"
+              exact
+              path="/register"
               render={(props) => (
                 <Register {...props}
                   handleLogo={this.handleLogo}
                 />
               )}
             />
-            {/* WORKS JUST LIKE PROTECTED ROUTE */}
-            <AuthConsumer>
-              {({ isAuth }) => (
-                <Route
-                  render={props =>
-                    isAuth ? <UsersHome {...props} handleLogo={this.handleLogo} /> : <Redirect to={{ pathname: "/", state: { from: props.location } }} />
-                  }
-                />
+            <Route
+              exact
+              path="/usershome"
+              render={props => (
+                <AuthConsumer>
+                  {({ isAuth }) =>
+                    (
+                      isAuth ?
+                        <UsersHome {...props} handleLogo={this.handleLogo} />
+                        :
+                        <Redirect to={{ pathname: "/", state: { from: props.location } }} />
+                    )}
+                </AuthConsumer>
               )}
-            </AuthConsumer>
-            {/* <ProtectedRoute
-              exact path="/usershome"
-              component={UsersHome}
-              render={(props) => (
-                <UsersHome {...props}
-                  handleLogo={this.handleLogo}
-                />
-              )}
-            /> */}
-            {/* CURRENTLY NOT WORKING AS INTENDED AS A COMPONENT */}
+            />
             <Route
               render={(props) => (
                 <NoMatch {...props}

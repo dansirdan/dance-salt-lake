@@ -1,6 +1,8 @@
 import React, { Component } from "react";
 import { Input, FormBtn } from "../Form";
+import { Dropdown, Button } from 'react-bootstrap';
 import { AuthConsumer } from "../AuthContext"
+import history from "../../history";
 
 class Login extends Component {
   // Definining State to Hold Info
@@ -10,9 +12,11 @@ class Login extends Component {
   }
 
   // Method to call Auth Login function
-  handleLogin = (login, e) => {
-    e.preventDefault();
-    login(this.state)
+  handleLogin = (e, login) => {
+    e.preventDefault()
+    login(this.state, () => {
+      history.push("/usershome")
+    })
   }
 
   // Handles state change for inputs
@@ -44,12 +48,12 @@ class Login extends Component {
                 placeholder="Password (required)"
               />
               {/* <Dropdown.Item as="div"> */}
-              <FormBtn
+              <Button
                 disabled={!(this.state.email && this.state.password)}
-                onClick={(e) => this.handleLogin(login, e)}
+                onClick={(e) => this.handleLogin(e, login)}
               >
                 Login
-            </FormBtn>
+            </Button>
               {/* </Dropdown.Item> */}
             </form>
           )}
