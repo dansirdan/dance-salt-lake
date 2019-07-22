@@ -6,7 +6,7 @@ import { AuthConsumer } from "../components/AuthContext";
 import history from "../history";
 import * as yup from "yup";
 import API from "../utils/API";
-const axios = require("axios");
+import axios from "axios";
 
 function Register(props) {
 
