@@ -3,43 +3,43 @@ const bcrypt = require("bcryptjs");
 module.exports = function (sequelize, DataTypes) {
 
   const User = sequelize.define("User", {
-    // name: {
-    //   type: DataTypes.STRING,
-    //   allowNull: false,
-    //   unique: {
-    //     args: true,
-    //     msg: "Name or Organization already in use"
-    //   },
-    //   validate: {
-    //     len: [6],
-    //     not: [" "],
-    //     notEmpty: true
-    //   }
-    // },
-    // logo: {
-    //   type: DataTypes.STRING,
-    //   allowNull: false,
-    //   validate: {
-    //     notEmpty: true,
-    //     isUrl: true
-    //   }
-    // },
-    // website: {
-    //   type: DataTypes.STRING,
-    //   allowNull: false,
-    //   validate: {
-    //     isUrl: true
-    //   }
-    // },
-    // address: {
-    //   type: DataTypes.STRING,
-    //   allowNull: false
-    // },
-    // space: {
-    //   type: DataTypes.BOOLEAN,
-    //   allowNull: false,
-    //   defaultValue: false
-    // },
+    name: {
+      type: DataTypes.STRING,
+      allowNull: false,
+      unique: {
+        args: true,
+        msg: "Name or Organization already in use"
+      },
+      validate: {
+        len: [6],
+        // not: [" "],
+        notEmpty: true
+      }
+    },
+    logo: {
+      type: DataTypes.STRING,
+      allowNull: false,
+      validate: {
+        notEmpty: true,
+        isUrl: true
+      }
+    },
+    website: {
+      type: DataTypes.STRING,
+      allowNull: false,
+      validate: {
+        isUrl: true
+      }
+    },
+    address: {
+      type: DataTypes.STRING,
+      allowNull: false
+    },
+    space: {
+      type: DataTypes.BOOLEAN,
+      allowNull: true,
+      defaultValue: false
+    },
     password: {
       type: DataTypes.STRING,
       allowNull: false,
