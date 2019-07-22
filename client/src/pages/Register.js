@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useEffect } from "react";
 import { Banner } from "../components/Sections";
 import { Container, Row, Col, Form, Button } from "react-bootstrap";
 import { Formik } from "formik";
@@ -8,12 +8,9 @@ import * as yup from "yup";
 import API from "../utils/API";
 const axios = require("axios");
 
-function Register() {
+function Register(props) {
 
-
-  // componentWillMount() {
-  //   this.props.handleLogo();
-  // }
+  useEffect(() => props.handleLogo())
 
   const schema = yup.object().shape({
     name: yup.string()
@@ -112,9 +109,6 @@ function Register() {
       .then(response => {
         cityLat = parseFloat(response.data.results[0].geometry.location.lat);
         cityLng = parseFloat(response.data.results[0].geometry.location.lng);
-
-        console.log(response);
-        console.log(cityLat, cityLng)
 
         const payload = { ...values, lat: cityLat, lng: cityLng };
 
