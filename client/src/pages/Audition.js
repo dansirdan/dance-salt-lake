@@ -112,15 +112,17 @@ class Audition extends Component {
 
     return (
       <>
-        <CalendarSection
-          path="auditions"
-          data={this.state.allAuditions}
-          active={this.state.activeDates}
-          filter={this.handleFilterUpdate}
-        />
         <Container fluid>
-          <Row>
-            <Col className="justify-content-center" lg="12">
+          <Row className="event-page">
+            <Col lg="4" className="wrapper">
+              <CalendarSection
+                path="auditions"
+                data={this.state.allAuditions}
+                active={this.state.activeDates}
+                filter={this.handleFilterUpdate}
+              />
+            </Col>
+            <Col className="justify-content-center" lg="5">
               {!auditions.length ? (
                 <h5 className="text-center">No Auditions to Display</h5>
               ) : (

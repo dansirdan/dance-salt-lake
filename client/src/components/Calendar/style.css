@@ -1,18 +1,28 @@
+.event-page {
+  margin-top: 8rem;
+}
+.event-page .wrapper {
+  margin: 0 4rem;
+}
+.filter {
+  margin-top: 3rem;
+}
 .section-wrapper {
-  width: 100%;
-  padding: 4vw 8vw;
-  background-color: #eee;
+  /* width: 100%; */
+  /* padding: 4vw 8vw; */
+  /* background-color: #eee; */
   /* background-color: #d0d9e0; */
   /* background-color: #696464; */
-  margin-bottom: 10rem;
-  border-bottom: 1px solid #ddd;
-  border-top: 1px solid #ddd;
+  margin-bottom: 3rem;
+  /* border-bottom: 1px solid #ddd;
+  border-top: 1px solid #ddd; */
+  /* border-right: 1px solid #ddd; */
 }
 .calendar-section_content {
   /* background-color: #d0d9e0; */
   /* background-color: #696464; */
   /* background-color: #eee; */
-  padding: 3rem;
+  /* padding: 3rem; */
   max-width: 960px;
   margin: 0 auto;
 }
@@ -24,15 +34,20 @@
   bottom: .5rem;
   background-color: #d0d9e0;
   border-radius: 25px;
-  width: 67%;
+  width: 64%;
   height: .3rem;
 }
-
+.react-calendar__tile {
+  height: 2.7em;
+  width: 3em;
+  font-size: 4vw;
+  color: #222;
+}
 .react-calendar,
 .calendar-placeholder {
   width: 100%;
-  max-width: 480px;
-  border: none;
+  max-width: 400px;
+  border: 1px solid #eee;
 }
 .calendar-section_content .form-check {
   padding-left: 2.25rem;
@@ -61,9 +76,9 @@
 }
 .react-calendar__tile {
   position: relative;
-  height: 4rem;
-  width: 4rem;
-  font-size: 1.5rem;
+  height: 3.5rem;
+  width: 3.5rem;
+  font-size: 1.3rem;
   color: #222;
 }
 /* EVENT STYLING */

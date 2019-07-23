@@ -108,15 +108,17 @@ class Class extends Component {
 
     return (
       <>         
-        <CalendarSection
-          path="classes"
-          data={this.state.allClasses}
-          active={this.state.activeDates}
-          filter={this.handleFilterUpdate}
-        />
         <Container fluid>
-          <Row>
-            <Col size="md-12">
+          <Row className="event-pager">
+            <Col lg="4" className="wrapper">
+              <CalendarSection
+                path="classes"
+                data={this.state.allClasses}
+                active={this.state.activeDates}
+                filter={this.handleFilterUpdate}
+              />            
+            </Col>
+            <Col className="justify-content-center" lg="5">
               {!classes.length ? (
                 <h5 className="text-center">No Classes to Display</h5>
               ) : (

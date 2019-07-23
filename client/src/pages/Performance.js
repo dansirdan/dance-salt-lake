@@ -99,14 +99,16 @@ class Performance extends Component {
     const performances = this.state.queryResults;
     return (
       <>
-        <CalendarSection
-          data={performances}
-          active={this.state.activeDates}
-          filter={this.handleDateUpdate}
-        />
         <Container fluid>
-          <Row>
-            <Col size="md-12">
+          <Row className="event-page">
+            <Col lg="4" className="wrapper">
+            <CalendarSection
+              data={performances}
+              active={this.state.activeDates}
+              filter={this.handleDateUpdate}
+            />
+            </Col>
+            <Col className="justify-content-center" lg="5">
               {!performances.length ? (
                 <h5 className="text-center">No Performances to Display</h5>
               ) : (
