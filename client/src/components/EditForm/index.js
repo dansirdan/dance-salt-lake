@@ -447,7 +447,7 @@ class EditForm extends Component {
       let cityLat;
       let cityLon;
       let geoAddy = "138+Broadway,+Salt+Lake+City,+UT"
-      const geoKey = `${process.env.REACT_APP_GOOGLE_API_KEY}`;
+      const geoKey = `${process.env.GOOGLE_API}`;
       console.log(geoKey);
       let geoQuery = `https://maps.googleapis.com/maps/api/geocode/json?address=${geoAddy}&key=${geoKey}`;
       axios.get(geoQuery)

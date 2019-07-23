@@ -91,7 +91,7 @@ function Audition(props) {
     url: "http://asdf.com"
   }
 
-  const handleQuery = (values, setValues) => {
+  const handleQuery = (values, setValues, cb) => {
 
     let location = (({ address, city, state, zip }) => ({ address, city, state, zip }))(values);
     location = location.toString()
@@ -112,29 +112,35 @@ function Audition(props) {
         const payload = { ...values, lat: cityLat, lng: cityLng };
 
         setValues(payload)
-        API.newPost("auditions", payload);
+        API.newPost("auditions", payload)
+          .then(res => {
+            console.log(res.data);
+            cb();
+          })
+          .catch(err => console.log(err));
         console.log(JSON.stringify(payload, null, 2));
       })
       .catch(err => {
         console.log(err);
       });
   }
-  
+
   return (
 
     <AuthConsumer>
       {({ user }) => (
-      
+
         <Formik
           validationSchema={schema}
           initialValues={initialValues}
           onSubmit={(values, { setSubmitting, setValues, resetForm }) => {
-            handleQuery(values, setValues);
-            setTimeout(() => {
-              resetForm(initialValues)
-              props.clearPostType();
-              setSubmitting(false);
-            }, 500)
+            handleQuery(values, setValues, () => {
+              setTimeout(() => {
+                resetForm(initialValues)
+                props.clearPostType();
+                setSubmitting(false);
+              }, 500)
+            });
 
           }}
         >

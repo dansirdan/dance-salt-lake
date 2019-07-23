@@ -23,7 +23,7 @@ function Space(props) {
       .required("Required"),
     numPeople: yup.number()
       .required("Required"),
-      
+
     address: yup.string()
       .min(2, 'Too Short')
       .max(50, 'Too Long')
@@ -55,7 +55,7 @@ function Space(props) {
   });
 
   const initialValues = {
-    
+
     UserId: "1",
     name: "jess",
     email: "a@gmail.com",
@@ -77,8 +77,8 @@ function Space(props) {
     url: "http://asdf.com"
   }
 
-  const handleQuery = (values, setValues) => {
-    
+  const handleQuery = (values, setValues, cb) => {
+
     let location = (({ address, city, state, zip }) => ({ address, city, state, zip }))(values);
     location = Object.values(location);
     location = location.toString()
@@ -97,7 +97,12 @@ function Space(props) {
 
         const payload = { ...values, lat: cityLat, lng: cityLng };
 
-        API.newPost("space", payload);
+        API.newPost("space", payload)
+          .then(res => {
+            console.log(res.data);
+            cb();
+          })
+          .catch(err => console.log(err));
         console.log(JSON.stringify(payload, null, 2));
       })
       .catch(err => {
@@ -114,12 +119,14 @@ function Space(props) {
           validationSchema={schema}
           initialValues={initialValues}
           onSubmit={(values, { setSubmitting, setValues, resetForm }) => {
-            handleQuery(values, setValues);
-            setTimeout(() => {
-              resetForm(initialValues)
-              props.clearPostType();
-              setSubmitting(false);
-            }, 500)
+            handleQuery(values, setValues, () => {
+              setTimeout(() => {
+                resetForm(initialValues)
+                props.clearPostType();
+                setSubmitting(false);
+              }, 500)
+            });
+
           }}
         >
           {({
@@ -187,7 +194,7 @@ function Space(props) {
                   />
                   {errors.rate && touched.rate && <div className="input-feedback">{errors.rate}</div>}
                 </Form.Group>
-              
+
                 <Form.Group as={Col} md="12">
                   <Form.Label>Sq.ft.</Form.Label>
                   <Form.Control
@@ -203,7 +210,7 @@ function Space(props) {
                   />
                   {errors.squareFootage && touched.squareFootage && <div className="input-feedback">{errors.squareFootage}</div>}
                 </Form.Group>
-            
+
                 <Form.Group as={Col} md="12">
                   <Form.Label>Capacity</Form.Label>
                   <Form.Control
