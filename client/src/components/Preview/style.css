@@ -27,6 +27,9 @@
   padding-bottom: 1rem;
 }
 /* CLASS */
+.class-preview .card {
+  border-bottom: 1px solid #eee
+}
 .class-preview .details {
   display: flex;
   justify-content: space-between;

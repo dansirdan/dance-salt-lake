@@ -1,6 +1,12 @@
 import React, { Component } from 'react'
-import { Router, Route, Switch, Redirect, Link } from 'react-router-dom'
+import { Router, Route, Switch, Redirect } from 'react-router-dom'
 import { AuthProvider, AuthConsumer } from './components/AuthContext'
+
+import { library } from '@fortawesome/fontawesome-svg-core'
+import { fab } from '@fortawesome/free-brands-svg-icons'
+import { faCheckSquare, faCoffee, faEdit, faCopy, faTrash } from '@fortawesome/free-solid-svg-icons'
+
+
 import Home from "./pages/Home";
 import About from "./pages/About";
 import Register from "./pages/Register";
@@ -15,6 +21,8 @@ import AnimateHeight from "react-animate-height";
 import LargeLogo from "./components/LargeLogo";
 import history from "./history";
 import './App.css';
+
+library.add(fab, faCheckSquare, faCoffee, faEdit, faCopy, faTrash)
 
 class App extends Component {
 

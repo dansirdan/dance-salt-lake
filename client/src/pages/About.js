@@ -1,9 +1,8 @@
 import React, { Component } from 'react';
 import { Row, Col } from "react-bootstrap"
 import { Container } from "../components/Grid";
-import Post from "../components/Post";
 
-
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 class About extends Component {
 
   // lifecycle method to handle Large Logo
@@ -14,7 +13,7 @@ class About extends Component {
   render() {
     return (
       <div className="about-section">
-        <Post />
+        
         <Container>
           <Row className="justify-content-md-center">
 
@@ -48,9 +47,8 @@ class About extends Component {
               <h2 className="">Daniel Mont-Eton</h2>
               <br />
               <p className="text-black">
-                Lorem laboris Lorem non in. Lorem laboris Lorem non in. Lorem laboris Lorem non in.
-                Lorem laboris Lorem non in.
-                Lorem laboris Lorem non in.
+               I am deeply passionate about people and technology. My experience from the dance world has shaped me into a highly creative, collaborative, and adaptive developer. I enjoy resolving coding errors, creating exciting and interactive user interfaces, and love that I still get to collaborate with people who are just as excited about Web Development as I am.
+ I am a retired professional dancer with 10 years of experience in person to person collaboration, choreography, teaching, and performance. I have toured internationally in partnership with the US Department of State and the Ririe-Woodbury Dance Company, to Mongolia and South Korea. I have also taught extensively to all ages, abilities, and communities. Stepping into my new career as a Full Stack Web Developer has allowed me to see the many similarities between choreography and coding; between art and technology.
             </p>
               <hr className="my-4" />
               <p className="text-black">

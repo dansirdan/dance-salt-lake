@@ -79,6 +79,13 @@ ul, li {
   border-radius: .25rem;
   transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;
 }
+.svg-inline--fa {
+  color: #7ca5c5;
+}
+.svg-inline--fa:hover {
+  color: #65849d;
+  cursor: pointer;
+}
 .btn {
   text-transform: uppercase;
   font-size: .8rem;
@@ -164,6 +171,7 @@ code {
 /* ABOUT SECTION */
 .about-section {
   margin-top: 6rem;
+  padding-bottom: 6rem;
   justify-content: space-between;
 }
 .line-one {

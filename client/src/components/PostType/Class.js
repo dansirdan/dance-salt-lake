@@ -44,7 +44,7 @@ function Class(props) {
       .required('Required'),
     city: yup.string()
       .min(2, 'Too Short')
-      .max(20, 'Too Long')
+      .max(50, 'Too Long')
       .required('Required'),
     state: yup.string()
       .min(2, 'Too Short')
@@ -70,30 +70,30 @@ function Class(props) {
 
   const initialValues = {
 
-    UserId: "1",
-    title: "class",
-    instructorName: "Fancy Nancy",
-    style: "Disco",
-    level: "Advanced",
-    master: false,
+    UserId: "5",
+    title: "",
+    instructorName: "",
+    style: "",
+    level: "",
+    master: "",
 
-    payment: [],
+    payment: "",
 
     date: "",
-    startTime: "15:00",
-    endTime: "16:00",
+    startTime: "",
+    endTime: "",
 
-    address: "519 E 4th Ave",
-    city: "Salt Lake City",
-    state: "Utah",
-    zip: "84103",
+    address: "",
+    city: "",
+    state: "",
+    zip: "",
 
     lat: "",
     lng: "",
 
-    description: "asdf",
-    photoLink: "http://lorempixel.com/640/480",
-    url: "http://asdf.com"
+    description: "",
+    photoLink: "",
+    url: ""
   }
 
   const handleQuery = (values, setValues, cb) => {
@@ -336,6 +336,9 @@ function Class(props) {
                     required
                     name="city"
                     placeholder="City"
+                    type="text"
+                    onChange={handleChange}
+                    onBlur={handleBlur}
                     isInvalid={!!errors.city}
                     isValid={touched.city && !errors.city}
                   />

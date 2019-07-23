@@ -112,48 +112,51 @@ class Audition extends Component {
 
     return (
       <>
-        <CalendarSection
-          path="auditions"
-          data={this.state.allAuditions}
-          active={this.state.activeDates}
-          filter={this.handleFilterUpdate}
-        />
         <Container fluid>
           <Row>
-            <Col className="justify-content-center" lg="12">
-              {!auditions.length ? (
-                <h5 className="text-center">No Auditions to Display</h5>
-              ) : (
-                  <List>
-                    {auditions.map(audition => {
-                      return (
-                        <AuditionListItem
-                          key={audition.id}
-                          title={audition.title}
-                          lookingFor={audition.lookingFor}
-                          description={audition.description}
-                          text={audition.text}
-                          address={audition.address}
-                          gig={audition.gig}
-                          photoLink={audition.photoLink}
-                          length={audition.length}
-                          payment={audition.payment}
-                          startTime={audition.startTime}
-                          endTime={audition.endTime}
-                          date={audition.date}
-                          link={audition.link}
-                          onClick={() => this.handleShow(audition.id)}
-                        />
-                      )
-                    })}
-                  </List>
-                )
-              }
+            <Col lg="3" md="12" className="calendar-wrapper">
+              <CalendarSection
+                path="auditions"
+                data={this.state.allAuditions}
+                active={this.state.activeDates}
+                filter={this.handleFilterUpdate}
+              />
             </Col>
-          </Row>
-
-          <Row className="justify-content-lg-center">
-            <SpaceBanner />
+            <Col className="justify-content-center" lg="8" md="12">
+              <div className="event-page">
+                {!auditions.length ? (
+                  <h5 className="text-center">No Auditions to Display</h5>
+                ) : (
+                    <List>
+                      {auditions.map(audition => {
+                        return (
+                          <AuditionListItem
+                            key={audition.id}
+                            title={audition.title}
+                            lookingFor={audition.lookingFor}
+                            description={audition.description}
+                            text={audition.text}
+                            address={audition.address}
+                            gig={audition.gig}
+                            photoLink={audition.photoLink}
+                            length={audition.length}
+                            payment={audition.payment}
+                            startTime={audition.startTime}
+                            endTime={audition.endTime}
+                            date={audition.date}
+                            link={audition.link}
+                            onClick={() => this.handleShow(audition.id)}
+                          />
+                        )
+                      })}
+                    </List>
+                  )
+                }
+                <Row className="justify-content-lg-center">
+                  <SpaceBanner />
+                </Row>
+              </div>
+            </Col>
           </Row>
 
         </Container>

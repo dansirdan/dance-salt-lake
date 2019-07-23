@@ -99,45 +99,49 @@ class Performance extends Component {
     const performances = this.state.queryResults;
     return (
       <>
-        <CalendarSection
-          data={performances}
-          active={this.state.activeDates}
-          filter={this.handleDateUpdate}
-        />
         <Container fluid>
           <Row>
-            <Col size="md-12">
-              {!performances.length ? (
-                <h5 className="text-center">No Performances to Display</h5>
-              ) : (
-                  <List>
-                    {performances.map(performance => {
-                      return (
-                        <PerformanceListItem
-                          key={performance.id}
-                          title={performance.title}
-                          description={performance.description}
-                          address={performance.address}
-                          photoLink={performance.photoLink}
-                          length={performance.length}
-                          payment={performance.payment}
-                          startTime={performance.startTime}
-                          endTime={performance.endTime}
-                          date={performance.date}
-                          special={performance.special}
-                          onClick={() => this.handleShow(performance.id)}
-                        />
-                      )
-                    })}
-                  </List>
-                )
-              }
+            <Col lg="3" className="calendar-wrapper">
+              <CalendarSection
+                data={performances}
+                active={this.state.activeDates}
+                filter={this.handleDateUpdate}
+              />
+            </Col>
+            <Col className="justify-content-center" lg="8" md="12">
+              <div className="event-page">
+                {!performances.length ? (
+                  <h5 className="text-center">No Performances to Display</h5>
+                ) : (
+                    <List>
+                      {performances.map(performance => {
+                        return (
+                          <PerformanceListItem
+                            key={performance.id}
+                            title={performance.title}
+                            description={performance.description}
+                            address={performance.address}
+                            photoLink={performance.photoLink}
+                            length={performance.length}
+                            payment={performance.payment}
+                            startTime={performance.startTime}
+                            endTime={performance.endTime}
+                            date={performance.date}
+                            special={performance.special}
+                            onClick={() => this.handleShow(performance.id)}
+                          />
+                        )
+                      })}
+                    </List>
+                  )
+                }
+                <Row className="justify-content-lg-center">
+                  <SpaceBanner />
+                </Row>
+              </div>
             </Col>
           </Row>
 
-          <Row className="justify-content-lg-center">
-            <SpaceBanner />
-          </Row>
 
         </Container>
         <MoreInfo

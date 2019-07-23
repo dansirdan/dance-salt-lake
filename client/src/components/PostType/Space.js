@@ -57,24 +57,24 @@ function Space(props) {
   const initialValues = {
 
     UserId: "1",
-    name: "jess",
-    email: "a@gmail.com",
-    rate: "400",
+    name: "",
+    email: "",
+    rate: "",
 
-    squareFootage: "600",
-    numPeople: "4",
+    squareFootage: "",
+    numPeople: "",
 
-    address: "519 E 4th Ave",
-    city: "Salt Lake City",
-    state: "Utah",
-    zip: "84103",
+    address: "",
+    city: "",
+    state: "",
+    zip: "",
 
     lat: "",
     lng: "",
 
-    description: "asdf",
-    photoLink: "http://lorempixel.com/640/480",
-    url: "http://asdf.com"
+    description: "",
+    photoLink: "",
+    url: ""
   }
 
   const handleQuery = (values, setValues, cb) => {

@@ -49,9 +49,6 @@ function Audition(props) {
     lookingFor: yup.string()
       .required('Required'),
 
-    length: yup.number()
-      .min(1, "Must be more than 0")
-      .required('Required'),
     contract: yup.string()
       .required('Required'),
 
@@ -70,29 +67,23 @@ function Audition(props) {
 
   const initialValues = {
 
-    UserId: "1",
-    title: "Audition",
+    UserId: "5",
+    title: "",
     date: "",
-    startTime: "15:00",
-    endTime: "16:00",
-
-    address: "519 E 4th Ave",
-    city: "Salt Lake City",
-    state: "Utah",
-    zip: "84103",
-
+    startTime: "",
+    endTime: "",
+    address: "",
+    city: "",
+    state: "",
+    zip: "",
     lat: "",
     lng: "",
-
     numberOf: "",
     lookingFor: "",
-
-    length: "6",
-    contract: "Month Contract",
-
-    description: "asdf",
-    photoLink: "http://lorempixel.com/640/480",
-    url: "http://asdf.com"
+    contract: "",
+    description: "",
+    photoLink: "",
+    url: ""
   }
 
   const handleQuery = (values, setValues, cb) => {
@@ -250,6 +241,9 @@ function Audition(props) {
                     required
                     name="city"
                     placeholder="City"
+                    type="text"
+                    onChange={handleChange}
+                    onBlur={handleBlur}
                     isInvalid={!!errors.city}
                     isValid={touched.city && !errors.city}
                   />
@@ -342,37 +336,22 @@ function Audition(props) {
 
                 <Form.Group as={Col} md="12">
                   <Form.Label>Contract:</Form.Label>
-                  <InputGroup>
-                    <Form.Control
-                      required
-                      name="length"
-                      value={values.number}
-                      placeholder="Length"
-                      type="text"
-                      onChange={handleChange}
-                      onBlur={handleBlur}
-                      isInvalid={!!errors.length}
-                      isValid={touched.length && !errors.length}
-                    />
-                    <InputGroup.Prepend>
-                      <Form.Control
+                  <Form.Control
                         as="select"
                         required
                         name="contract"
-                        value={values.contract}
+                        value={values.contract.contract}
                         onChange={handleChange}
                         onBlur={handleBlur}
                         isInvalid={!!errors.contract}
                         isValid={touched.contract && !errors.contract}
                       >
                         <option>Contract Type:</option>
-                        <option value="Month Contract">Month Contract</option>
-                        <option value="Year Contract">Year Contract</option>
+                        <option value="1-6 Month Contract">1-6 Month Contract</option>
+                        <option value="6-12 Month Contract">6-12 Month Contract</option>
+                        <option value="1-2 Year Contract">1-2 Year Contract</option>
                       </Form.Control>
-                    </InputGroup.Prepend>
-                  </InputGroup>
-                  {errors.length && touched.length && <div className="input-feedback">{errors.length}</div>}
-                  {errors.contract && touched.contract && <div className="input-feedback">{errors.contract}</div>}
+                      {errors.contract && touched.contract && <div className="input-feedback">{errors.contract}</div>}
                 </Form.Group>
 
                 <Form.Group as={Col} md="12">

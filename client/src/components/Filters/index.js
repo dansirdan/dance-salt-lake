@@ -34,30 +34,32 @@ class AuditionFilter extends Component {
 
     // arrays of only unique values for filter dropdown
     const gender = [...new Set(this.props.data.map(x => x.lookingFor))]
-    const gig = [...new Set(this.props.data.map(x => x.gig))]
+    const gig = [...new Set(this.props.data.map(x => x.contract))]
 
     return (
-      <Form>
+      <div className="filter">
+        <Form>
 
-        <Dropdown
-          name="lookingFor"
-          onChange={this.handleInputChange}
-        >
-          <option value="0">Gender: All</option>
-          {gender.map((gender, i) => <option key={i} value={gender}>{gender}</option>)}
-        </Dropdown>
+          <Dropdown
+            name="lookingFor"
+            onChange={this.handleInputChange}
+          >
+            <option value="0">Gender: All</option>
+            {gender.map((gender, i) => <option key={i} value={gender}>{gender}</option>)}
+          </Dropdown>
 
-        <Dropdown
-          name="gig"
-          onChange={this.handleInputChange}
-        >
-          <option value="0">Gig Type: All</option>
-          {gig.map((type, i) => <option key={i} value={type}>{type}</option>)}
-        </Dropdown>
+          <Dropdown
+            name="contract"
+            onChange={this.handleInputChange}
+          >
+            <option value="0">Gig Type: All</option>
+            {gig.map((type, i) => <option key={i} value={type}>{type}</option>)}
+          </Dropdown>
 
-        <Btn onClick={this.clearInputs}>Clear</Btn>
+          <Btn onClick={this.clearInputs}>Clear</Btn>
 
-      </Form>
+        </Form>
+      </div>
     )
   }
 }
@@ -85,7 +87,7 @@ class ClassFilter extends Component {
   clearInputs = event => {
     this.setState({})
   }
-  
+
   render() {
 
     // arrays of only unique values for filter dropdown
@@ -94,42 +96,43 @@ class ClassFilter extends Component {
     const styles = [...new Set(this.props.data.map(x => x.style))]
 
     return (
-      <Form>
+      <div className="filter">
+        <Form>
 
-        <Dropdown
-          name="instructorName"
-          onChange={this.handleInputChange}
-        >
-          <option value="0">Instructor: All</option>
-          {instructors.map((name, i) => <option key={i} value={name}>{name}</option>)}
-        </Dropdown>
+          <Dropdown
+            name="instructorName"
+            onChange={this.handleInputChange}
+          >
+            <option value="0">Instructor: All</option>
+            {instructors.map((name, i) => <option key={i} value={name}>{name}</option>)}
+          </Dropdown>
 
-        <Dropdown
-          name="level"
-          onChange={this.handleInputChange}
-        >
-          <option value="0">Level: All</option>
-          {levels.map((level, i) => <option key={i} value={level}>{level}</option>)}
-        </Dropdown>
+          <Dropdown
+            name="level"
+            onChange={this.handleInputChange}
+          >
+            <option value="0">Level: All</option>
+            {levels.map((level, i) => <option key={i} value={level}>{level}</option>)}
+          </Dropdown>
 
-        <Dropdown
-          name="style"
-          onChange={this.handleInputChange}
-        >
-          <option value="0">Style: All</option>
-          {styles.map((style, i) => <option key={i} value={style}>{style}</option>)}
-        </Dropdown>
+          <Dropdown
+            name="style"
+            onChange={this.handleInputChange}
+          >
+            <option value="0">Style: All</option>
+            {styles.map((style, i) => <option key={i} value={style}>{style}</option>)}
+          </Dropdown>
 
-        <Checkbox
-          value={this.state.checked}
-          name="master"
-          onChange={this.handleCheckbox}
-          lable="Master Class"
-        />
+          <Checkbox
+            value={this.state.checked}
+            name="master"
+            onChange={this.handleCheckbox}
+            lable="Master Class"
+          />
 
-        <Btn onClick={this.clearInputs}>Clear</Btn>
-
-      </Form>
+          <Btn onClick={this.clearInputs}>Clear</Btn>
+        </Form>
+      </div>
     )
   }
 }

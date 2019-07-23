@@ -18,7 +18,7 @@ class UsersHome extends Component {
       <AuthConsumer>
         {({ user }) => (
           <>
-            <Section>
+            <Section className="usershome">
               <Row>
                 <Col>
                   <Banner>

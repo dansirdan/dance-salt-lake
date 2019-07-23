@@ -5,7 +5,7 @@ import "./style.css";
 
 function SpaceBanner() {
   return (
-    <Col lg="8" md="12">
+    <Col md="12">
       <div className="banner">
         <h4>Looking for studio space?</h4>
         <p>Click here to view available rental spaces</p>

@@ -38,30 +38,32 @@ class CalendarSection extends Component {
   render() {
 
     return (
-      <Section>
+      /* <Section> */
         <Container>
           <div className="calendar-section_content">
             <Row className="justify-content-around align-items-center">
 
-              <Filter
-                {...this.props}
-                filter={this.props.filter}
-              />
-
               {this.props.active ? (
-                <Calendar
-                  onChange={this.onChange}
-                  value={this.state.date}
-                  onClickDay={this.onClickDay}
-                  tileContent={this.tileContent}
-                  prevAriaLabel={this.state.test}
-                />
+                <>
+                  <Calendar
+                    onChange={this.onChange}
+                    value={this.state.date}
+                    onClickDay={this.onClickDay}
+                    tileContent={this.tileContent}
+                    prevAriaLabel={this.state.test}
+                  />
+
+                  <Filter
+                    {...this.props}
+                    filter={this.props.filter}
+                  />
+                </>
               ) : (<div className="calendar-placeholder"></div>)}
 
             </Row>
           </div>
         </Container>
-      </Section>
+      /* </Section> */
 
     )
   }
