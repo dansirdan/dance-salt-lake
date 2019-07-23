@@ -108,35 +108,37 @@ class Performance extends Component {
                 filter={this.handleDateUpdate}
               />
             </Col>
-            <Col className="justify-content-center event-page" lg="5">
-              {!performances.length ? (
-                <h5 className="text-center">No Performances to Display</h5>
-              ) : (
-                  <List>
-                    {performances.map(performance => {
-                      return (
-                        <PerformanceListItem
-                          key={performance.id}
-                          title={performance.title}
-                          description={performance.description}
-                          address={performance.address}
-                          photoLink={performance.photoLink}
-                          length={performance.length}
-                          payment={performance.payment}
-                          startTime={performance.startTime}
-                          endTime={performance.endTime}
-                          date={performance.date}
-                          special={performance.special}
-                          onClick={() => this.handleShow(performance.id)}
-                        />
-                      )
-                    })}
-                  </List>
-                )
-              }
-              <Row className="justify-content-lg-center">
-                <SpaceBanner />
-              </Row>
+            <Col className="justify-content-center" lg="8" md="12">
+              <div className="event-page">
+                {!performances.length ? (
+                  <h5 className="text-center">No Performances to Display</h5>
+                ) : (
+                    <List>
+                      {performances.map(performance => {
+                        return (
+                          <PerformanceListItem
+                            key={performance.id}
+                            title={performance.title}
+                            description={performance.description}
+                            address={performance.address}
+                            photoLink={performance.photoLink}
+                            length={performance.length}
+                            payment={performance.payment}
+                            startTime={performance.startTime}
+                            endTime={performance.endTime}
+                            date={performance.date}
+                            special={performance.special}
+                            onClick={() => this.handleShow(performance.id)}
+                          />
+                        )
+                      })}
+                    </List>
+                  )
+                }
+                <Row className="justify-content-lg-center">
+                  <SpaceBanner />
+                </Row>
+              </div>
             </Col>
           </Row>
 

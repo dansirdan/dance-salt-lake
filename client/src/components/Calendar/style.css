@@ -1,31 +1,19 @@
 .event-page {
   margin: 8rem 6rem 0;
-  height: 80vh;
+  min-height: 80vh;
 }
 .calendar-wrapper {
   padding: 8rem 3rem 2rem;
-  background-color: #eeeeee4f;
+  background-color: #eee;
   border-right: 1px solid #eee;
 }
 .filter {
   margin-top: 3rem;
 }
 .section-wrapper {
-  /* width: 100%; */
-  /* padding: 4vw 8vw; */
-  /* background-color: #eee; */
-  /* background-color: #d0d9e0; */
-  /* background-color: #696464; */
   margin-bottom: 3rem;
-  /* border-bottom: 1px solid #ddd;
-  border-top: 1px solid #ddd; */
-  /* border-right: 1px solid #ddd; */
 }
 .calendar-section_content {
-  /* background-color: #d0d9e0; */
-  /* background-color: #696464; */
-  /* background-color: #eee; */
-  /* padding: 3rem; */
   max-width: 960px;
   margin: 0 auto;
 }

@@ -81,6 +81,7 @@ class Audition extends Component {
                         <div className="details">
                           <h6>{audition.title}</h6>
                           <p><span className="light-text">{audition.address}</span></p>
+                          <p><span className="light-text">{audition.city}, {audition.state} {audition.zip}</span></p>
                         </div>
                       </Col>
                     </Row>
@@ -89,7 +90,7 @@ class Audition extends Component {
                 <Accordion.Collapse eventKey={index.toString()}>
                   <Card.Body>
                     <Card.Text>
-                      <b>Start Time:</b> {moment(audition.startTime, "HH:mm:ss").format("h:mm A")}
+                      <p>{moment(audition.startTime, "HH:mm:ss").format("h:mm A")} - {moment(audition.endTime, "HH:mm:ss").format("h:mm A")}</p>
                     </Card.Text>
                     <Card.Text className="light-text">
                       {audition.description}

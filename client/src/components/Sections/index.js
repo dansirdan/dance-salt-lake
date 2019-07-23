@@ -14,7 +14,7 @@ export function Jumbotron({ children }) {
 
 export function Section({ children, className }) {
   return (
-    <section className="section-wrapper">
+    <section className="container">
       <div className={className}>
        {children}
 

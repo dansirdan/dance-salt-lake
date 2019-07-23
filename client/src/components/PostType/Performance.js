@@ -61,26 +61,26 @@ function Performance(props) {
 
   const initialValues = {
 
-    UserId: "1",
-    title: "performance",
-    date: "2019-07-13",
-    startTime: "15:00",
-    length: "90",
+    UserId: "5",
+    title: "",
+    date: "",
+    startTime: "",
+    length: "",
 
-    address: "519 E 4th Ave",
-    city: "Salt Lake City",
-    state: "Utah",
-    zip: "84103",
+    address: "",
+    city: "",
+    state: "",
+    zip: "",
 
     lat: "",
     lng: "",
 
-    price: "90",
+    price: "",
     payment: "",
 
-    description: "asdf",
-    photoLink: "http://lorempixel.com/640/480",
-    url: "http://asdf.com"
+    description: "",
+    photoLink: "",
+    url: ""
   }
 
   const handleQuery = (values, setValues, cb) => {

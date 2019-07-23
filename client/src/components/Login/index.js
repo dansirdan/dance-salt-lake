@@ -7,8 +7,8 @@ import history from "../../history";
 class Login extends Component {
   // Definining State to Hold Info
   state = {
-    email: "dmont@gmail.com",
-    password: "111111"
+    email: "",
+    password: ""
   }
 
   // Method to call Auth Login function
@@ -39,12 +39,14 @@ class Login extends Component {
                 value={this.state.email}
                 onChange={this.handleInputChange}
                 name="email"
+                type="email"
                 placeholder="Email (required)"
               />
               <Input
                 value={this.state.password}
                 onChange={this.handleInputChange}
                 name="password"
+                type="password"
                 placeholder="Password (required)"
               />
               {/* <Dropdown.Item as="div"> */}

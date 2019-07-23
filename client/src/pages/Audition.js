@@ -122,41 +122,42 @@ class Audition extends Component {
                 filter={this.handleFilterUpdate}
               />
             </Col>
-            <Col className="justify-content-center event-page" lg="5" md="12git ">
-              {!auditions.length ? (
-                <h5 className="text-center">No Auditions to Display</h5>
-              ) : (
-                  <List>
-                    {auditions.map(audition => {
-                      return (
-                        <AuditionListItem
-                          key={audition.id}
-                          title={audition.title}
-                          lookingFor={audition.lookingFor}
-                          description={audition.description}
-                          text={audition.text}
-                          address={audition.address}
-                          gig={audition.gig}
-                          photoLink={audition.photoLink}
-                          length={audition.length}
-                          payment={audition.payment}
-                          startTime={audition.startTime}
-                          endTime={audition.endTime}
-                          date={audition.date}
-                          link={audition.link}
-                          onClick={() => this.handleShow(audition.id)}
-                        />
-                      )
-                    })}
-                  </List>
-                )
-              }
-              <Row className="justify-content-lg-center">
-                <SpaceBanner />
-              </Row>
+            <Col className="justify-content-center" lg="8" md="12">
+              <div className="event-page">
+                {!auditions.length ? (
+                  <h5 className="text-center">No Auditions to Display</h5>
+                ) : (
+                    <List>
+                      {auditions.map(audition => {
+                        return (
+                          <AuditionListItem
+                            key={audition.id}
+                            title={audition.title}
+                            lookingFor={audition.lookingFor}
+                            description={audition.description}
+                            text={audition.text}
+                            address={audition.address}
+                            gig={audition.gig}
+                            photoLink={audition.photoLink}
+                            length={audition.length}
+                            payment={audition.payment}
+                            startTime={audition.startTime}
+                            endTime={audition.endTime}
+                            date={audition.date}
+                            link={audition.link}
+                            onClick={() => this.handleShow(audition.id)}
+                          />
+                        )
+                      })}
+                    </List>
+                  )
+                }
+                <Row className="justify-content-lg-center">
+                  <SpaceBanner />
+                </Row>
+              </div>
             </Col>
           </Row>
-
 
         </Container>
         <MoreInfo

@@ -57,18 +57,18 @@ function Register(props) {
   });
 
   const initialValues = {
-    name: 'Daniel',
-    logo: 'https://scontent.faus1-1.fna.fbcdn',
-    website: 'https://www.facebook.com/dmonteton',
-    address: '8 E Hillside Ave',
-    city: "Salt Lake City",
-    state: "Utah",
-    zip: "84103",
-    lat: "",
-    lng: "",
-    phone: '3032049046',
-    email: 'dmont@gmail.com',
-    password: '111111'
+    name: '',
+    logo: '',
+    website: '',
+    address: '',
+    city: '',
+    state: '',
+    zip: '',
+    lat: '',
+    lng: '',
+    phone: '',
+    email: '',
+    password: ''
   }
 
   const handleRegister = (userData, login) => {
@@ -79,20 +79,6 @@ function Register(props) {
       })
     }).catch(err => console.log(err));
   }
-
-
-  // const handleRegister = (userData) => {
-  //   API.auth("signup", userData).then(function (data) {
-  //     console.log(data);
-  //   }).catch(err => console.log(err));
-  // }
-
-  // handleInputChange = event => {
-  //   const { name, value } = event.target;
-  //   this.setState({
-  //     [name]: value
-  //   });
-  // };
 
   const handleQuery = (values, setValues, login) => {
 

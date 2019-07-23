@@ -4,7 +4,7 @@ import { AuthConsumer } from '../AuthContext';
 import API from "../../utils/API";
 import axios from "axios";
 import moment from "moment";
-import { Formik, Field } from "formik";
+import { Formik } from "formik";
 import * as yup from "yup";
 
 
@@ -67,28 +67,23 @@ function Audition(props) {
 
   const initialValues = {
 
-    UserId: "1",
-    title: "Audition",
+    UserId: "5",
+    title: "",
     date: "",
-    startTime: "15:00",
-    endTime: "16:00",
-
-    address: "519 E 4th Ave",
-    city: "Salt Lake City",
-    state: "Utah",
-    zip: "84103",
-
+    startTime: "",
+    endTime: "",
+    address: "",
+    city: "",
+    state: "",
+    zip: "",
     lat: "",
     lng: "",
-
     numberOf: "",
     lookingFor: "",
-
     contract: "",
-
-    description: "asdf",
-    photoLink: "http://lorempixel.com/640/480",
-    url: "http://asdf.com"
+    description: "",
+    photoLink: "",
+    url: ""
   }
 
   const handleQuery = (values, setValues, cb) => {
@@ -246,6 +241,9 @@ function Audition(props) {
                     required
                     name="city"
                     placeholder="City"
+                    type="text"
+                    onChange={handleChange}
+                    onBlur={handleBlur}
                     isInvalid={!!errors.city}
                     isValid={touched.city && !errors.city}
                   />

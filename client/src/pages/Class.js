@@ -118,7 +118,8 @@ class Class extends Component {
                 filter={this.handleFilterUpdate}
               />
             </Col>
-            <Col className="justify-content-center event-page" event-page lg="5">
+            <Col className="justify-content-center" lg="8" md="12">
+              <div className="event-page">
               {!classes.length ? (
                 <h5 className="text-center">No Classes to Display</h5>
               ) : (
@@ -150,6 +151,7 @@ class Class extends Component {
               <Row className="justify-content-lg-center">
                 <SpaceBanner />
               </Row>
+              </div>
             </Col>
           </Row>
 
