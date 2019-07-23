@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import { Form, Col, InputGroup, Button } from "react-bootstrap";
 import { AuthConsumer } from '../AuthContext';
 import API from "../../utils/API";
