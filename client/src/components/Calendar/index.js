@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import { Container, Row } from "react-bootstrap";
-import { Section } from "../Sections";
 import Calendar from "react-calendar";
 import Filter from "../Filters";
 import moment from "moment";
@@ -38,8 +37,7 @@ class CalendarSection extends Component {
   render() {
 
     return (
-      /* <Section> */
-        <Container>
+      <Container>
           <div className="calendar-section_content">
             <Row className="justify-content-around align-items-center">
 
@@ -63,8 +61,6 @@ class CalendarSection extends Component {
             </Row>
           </div>
         </Container>
-      /* </Section> */
-
     )
   }
 }

@@ -114,7 +114,7 @@ class Audition extends Component {
       <>
         <Container fluid>
           <Row>
-            <Col lg="3" md="12" className="calendar-wrapper">
+            <Col lg="4" md="12" className="calendar-wrapper">
               <CalendarSection
                 path="auditions"
                 data={this.state.allAuditions}

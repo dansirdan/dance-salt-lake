@@ -101,7 +101,7 @@ class Performance extends Component {
       <>
         <Container fluid>
           <Row>
-            <Col lg="3" className="calendar-wrapper">
+            <Col lg="4" className="calendar-wrapper">
               <CalendarSection
                 data={performances}
                 active={this.state.activeDates}

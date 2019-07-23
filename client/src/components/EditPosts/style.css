@@ -1,0 +1,7 @@
+.modal-delete .btn {
+  margin-right: 1rem;
+}
+.modal-delete {
+  display: flex;
+  justify-content: center;
+}

@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import { Row, Col } from "react-bootstrap"
 import { Container } from "../components/Grid";
+import {Audition} from "../components/PostType"
 
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 class About extends Component {
 
   // lifecycle method to handle Large Logo
@@ -13,7 +13,7 @@ class About extends Component {
   render() {
     return (
       <div className="about-section">
-        
+        <Audition />
         <Container>
           <Row className="justify-content-md-center">
 
@@ -47,12 +47,14 @@ class About extends Component {
               <h2 className="">Daniel Mont-Eton</h2>
               <br />
               <p className="text-black">
-               I am deeply passionate about people and technology. My experience from the dance world has shaped me into a highly creative, collaborative, and adaptive developer. I enjoy resolving coding errors, creating exciting and interactive user interfaces, and love that I still get to collaborate with people who are just as excited about Web Development as I am.
- I am a retired professional dancer with 10 years of experience in person to person collaboration, choreography, teaching, and performance. I have toured internationally in partnership with the US Department of State and the Ririe-Woodbury Dance Company, to Mongolia and South Korea. I have also taught extensively to all ages, abilities, and communities. Stepping into my new career as a Full Stack Web Developer has allowed me to see the many similarities between choreography and coding; between art and technology.
-            </p>
+                I am deeply passionate about people and technology. My experience from the dance world has shaped me into a highly creative, collaborative, and adaptive developer. I enjoy resolving coding errors, creating exciting and interactive user interfaces, and love that I still get to collaborate with people who are just as excited about Web Development as I am.
+                </p> 
+                <p> 
+                I am a retired professional dancer with 10 years of experience in person to person collaboration, choreography, teaching, and performance. I have toured internationally in partnership with the US Department of State and the Ririe-Woodbury Dance Company, to Mongolia and South Korea. I have also taught extensively to all ages, abilities, and communities. Stepping into my new career as a Full Stack Web Developer has allowed me to see the many similarities between choreography and coding; between art and technology.
+                </p>
               <hr className="my-4" />
               <p className="text-black">
-                Lorem laboris Lorem non in. Lorem laboris Lorem non in.
+                <a href="https://github.com/dansirdan">View my work</a>
             </p>
             </Col>
             <Col md="1" />
@@ -66,13 +68,14 @@ class About extends Component {
               <h2 className="">Jessica Bramwell</h2>
               <br />
               <p className="text-black">
-                Lorem laboris Lorem non in. Lorem laboris Lorem non in. Lorem laboris Lorem non in.
-                Lorem laboris Lorem non in.
-                Lorem laboris Lorem non in.
+              I’m passionate about the tools and technology that bring good businesses to good people. Having an opportunity to apply my web development skills to a project that fills an important need and serves my local arts community has been an incredibly rewarding experience. 
+            </p>
+              <p className="text-black">
+              I’ve always gained the greatest satisfaction out of supporting the projects and passions of others. Through the technical skills I’ve gained as a web developer I’m able to not just offer encouragement and enthusiasm but real world solutions and tangible results. This project is the first of many. I look forward to the next opportunity to serve the vast and dynamic community of creators and entrepreneurs. 
             </p>
               <hr className="my-4" />
               <p className="text-black">
-                Lorem laboris Lorem non in. Lorem laboris Lorem non in.
+                <a href="https://github.com/JessiBramwell">View my work</a>
             </p>
             </Col>
             <Col md="1" />

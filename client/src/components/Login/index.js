@@ -1,6 +1,6 @@
 import React, { Component } from "react";
-import { Input, FormBtn } from "../Form";
-import { Dropdown, Button } from 'react-bootstrap';
+import { Input } from "../Form";
+import { Button } from 'react-bootstrap';
 import { AuthConsumer } from "../AuthContext"
 import history from "../../history";
 
@@ -48,6 +48,7 @@ class Login extends Component {
                 name="password"
                 type="password"
                 placeholder="Password (required)"
+                autocomplete="current-password"
               />
               {/* <Dropdown.Item as="div"> */}
               <Button

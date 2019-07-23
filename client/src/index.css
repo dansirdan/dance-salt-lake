@@ -41,6 +41,9 @@ h6 {
   font-weight: 600;
   font-size: 1rem;
 }
+a {
+  color: #5692c1;
+}
 ul, li {
   display: block;
 }

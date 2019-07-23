@@ -9,7 +9,7 @@ import * as yup from "yup";
 
 
 function Audition(props) {
-
+  
   const today = moment().format("L");
 
   const schema = yup.object().shape({
@@ -65,9 +65,9 @@ function Audition(props) {
 
   });
 
-  const initialValues = {
+    const initialValues = {
 
-    UserId: "5",
+    UserId: props.user,
     title: "",
     date: "",
     startTime: "",
@@ -120,12 +120,13 @@ function Audition(props) {
       });
   }
 
+
   return (
 
     <AuthConsumer>
       {({ user }) => (
 
-        <Formik
+        <Formik  
           validationSchema={schema}
           initialValues={initialValues}
           onSubmit={(values, { setSubmitting, setValues, resetForm }) => {
@@ -153,9 +154,9 @@ function Audition(props) {
                   required
                   hidden
                   name="UserId"
-                  value={user.id}
-                  type="number"
+                  value={values.UserId}
                   onChange={handleChange}
+                  type="number"                  
                 />
                 <Form.Group as={Col} md="12">
                   <Form.Label>Post Title</Form.Label>
@@ -340,7 +341,7 @@ function Audition(props) {
                         as="select"
                         required
                         name="contract"
-                        value={values.contract.contract}
+                        value={values.contract}
                         onChange={handleChange}
                         onBlur={handleBlur}
                         isInvalid={!!errors.contract}

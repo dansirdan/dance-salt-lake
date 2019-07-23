@@ -6,7 +6,7 @@ import EditModal from "../EditModal";
 import CopyModal from "../CopyModal";
 import moment from "moment";
 import API from "../../utils/API";
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import "./style.css";
 
 class EditPosts extends Component {
@@ -295,9 +295,9 @@ class EditPosts extends Component {
                                 <td><span className="light-text">{moment(klass.date).format("MMM Do")}</span></td>
                                 <td><span className="light-text">{moment(klass.startTime, "HH:mm:ss").format("h:mm A")}</span></td>
                                 <td>
-                                  <li><Button onClick={() => this.handleClick("edit", { id: klass.id, editType: "classes" })}><FontAwesomeIcon icon="edit" /></Button></li>
-                                  <li><Button onClick={() => this.handleClick("copy", { id: klass.id, editType: "classes" })}><FontAwesomeIcon icon="copy" /></Button></li>
-                                  <li><Button onClick={() => this.handleClick("delete", { id: klass.id, editType: "classes" })}><FontAwesomeIcon icon="trash" /></Button></li>
+                                  <li><button as="a" onClick={() => this.handleClick("edit", { id: klass.id, editType: "classes" })}><FontAwesomeIcon icon="edit" /></button></li>
+                                  <li><button as="a" onClick={() => this.handleClick("copy", { id: klass.id, editType: "classes" })}><FontAwesomeIcon icon="copy" /></button></li>
+                                  <li><button as="a" onClick={() => this.handleClick("delete", { id: klass.id, editType: "classes" })}><FontAwesomeIcon icon="trash" /></button></li>
                                 </td>
                               </tr>
                             )
@@ -331,9 +331,9 @@ class EditPosts extends Component {
                                 <td><span className="light-text">{moment(performance.date).format("MMM Do")}</span></td>
                                 <td><span className="light-text">{moment(performance.startTime, "HH:mm:ss").format("h:mm A")}</span></td>
                                 <td>
-                                  <li><Button onClick={() => this.handleClick("edit", { id: performance.id, editType: "performances" })}><FontAwesomeIcon icon="edit" /></Button></li>
-                                  <li><Button onClick={() => this.handleClick("copy", { id: performance.id, editType: "performances" })}><FontAwesomeIcon icon="copy" /></Button></li>
-                                  <li><Button onClick={() => this.handleClick("delete", { id: performance.id, editType: "performances" })}><FontAwesomeIcon icon="trash" /></Button></li>
+                                  <li><button as="a" onClick={() => this.handleClick("edit", { id: performance.id, editType: "performances" })}><FontAwesomeIcon icon="edit" /></button></li>
+                                  <li><button as="a" onClick={() => this.handleClick("copy", { id: performance.id, editType: "performances" })}><FontAwesomeIcon icon="copy" /></button></li>
+                                  <li><button as="a" onClick={() => this.handleClick("delete", { id: performance.id, editType: "performances" })}><FontAwesomeIcon icon="trash" /></button></li>
                                 </td>
                               </tr>
                             )
@@ -370,9 +370,9 @@ class EditPosts extends Component {
                                 <td><span className="light-text">{moment(audition.date).format("MMM Do")}</span></td>
                                 <td><span className="light-text">{moment(audition.startTime, "HH:mm:ss").format("h:mm A")}</span></td>
                                 <td>
-                                  <li><a onClick={() => this.handleClick("edit", { id: audition.id, editType: "auditions" })}><FontAwesomeIcon icon="edit" /></a></li>
-                                  <li><a onClick={() => this.handleClick("copy", { id: audition.id, editType: "auditions" })}><FontAwesomeIcon icon="copy" /></a></li>
-                                  <li><a onClick={() => this.handleClick("delete", { id: audition.id, editType: "auditions" })}><FontAwesomeIcon icon="trash" /></a></li>
+                                  <li><button as="a" onClick={() => this.handleClick("edit", { id: audition.id, editType: "auditions" })}><FontAwesomeIcon icon="edit" /></button></li>
+                                  <li><button as="a" onClick={() => this.handleClick("copy", { id: audition.id, editType: "auditions" })}><FontAwesomeIcon icon="copy" /></button></li>
+                                  <li><button as="a" onClick={() => this.handleClick("delete", { id: audition.id, editType: "auditions" })}><FontAwesomeIcon icon="trash" /></button></li>
                                 </td>
                               </tr>
                             )
@@ -409,8 +409,8 @@ class EditPosts extends Component {
                                 <td><span className="light-text">{space.squareFootage}</span></td>
                                 <td><span className="light-text">{space.numPeople}</span></td>
                                 <td>
-                                  <li><Button onClick={() => this.handleClick("edit", { id: space.id, editType: "space" })}><FontAwesomeIcon icon="edit" /></Button></li>
-                                  <li><Button onClick={() => this.handleClick("delete", { id: space.id, editType: "space" })}><FontAwesomeIcon icon="trash" /></Button></li>
+                                  <li><button as="a" onClick={() => this.handleClick("edit", { id: space.id, editType: "space" })}><FontAwesomeIcon icon="edit" /></button></li>
+                                  <li><button as="a" onClick={() => this.handleClick("delete", { id: space.id, editType: "space" })}><FontAwesomeIcon icon="trash" /></button></li>
                                 </td>
                               </tr>
                             )
@@ -432,16 +432,16 @@ class EditPosts extends Component {
           size="sm"
           show={this.state.deleteShow}
           onHide={() => this.handleClose()}
-          aria-labelledby="example-modal-sizes-title-sm"
+          aria-labelledby="modal-delete"
         >
           <Modal.Header closeButton>
-            <Modal.Title id="example-modal-sizes-title-sm">
+            <Modal.Title id="modal-delete">
               <h3>are you sure?</h3>
             </Modal.Title>
           </Modal.Header>
-          <Modal.Body>
-            <Button onClick={() => this.deleteData(this.state.deleteData)}><span className="light-text">delete</span></Button>
-            <Button onClick={() => this.handleClose()}><span className="light-text">cancel</span></Button>
+          <Modal.Body className="modal-delete">
+            <Button onClick={() => this.deleteData(this.state.deleteData)}><span>delete</span></Button>
+            <Button onClick={() => this.handleClose()}><span>cancel</span></Button>
           </Modal.Body>
         </Modal>
         <EditModal

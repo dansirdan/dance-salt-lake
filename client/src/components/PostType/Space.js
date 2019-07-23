@@ -56,7 +56,7 @@ function Space(props) {
 
   const initialValues = {
 
-    UserId: "1",
+    UserId: props.user,
     name: "",
     email: "",
     rate: "",
@@ -143,7 +143,7 @@ function Space(props) {
                   required
                   hidden
                   name="UserId"
-                  value={user.id}
+                  value={values.UserId}
                   type="number"
                   onChange={handleChange}
                 />

@@ -23,7 +23,7 @@ module.exports = function (sequelize, DataTypes) {
     },
     master: {
       type: DataTypes.BOOLEAN,
-      allowNull: false,
+      allowNull: true,
       defaultValue: false
     },
     payment: {
