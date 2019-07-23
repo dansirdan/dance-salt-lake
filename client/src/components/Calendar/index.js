@@ -38,7 +38,7 @@ class CalendarSection extends Component {
   render() {
 
     return (
-      <Section>
+      /* <Section> */
         <Container>
           <div className="calendar-section_content">
             <Row className="justify-content-around align-items-center">
@@ -63,7 +63,7 @@ class CalendarSection extends Component {
             </Row>
           </div>
         </Container>
-      </Section>
+      /* </Section> */
 
     )
   }

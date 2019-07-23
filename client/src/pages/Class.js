@@ -107,18 +107,18 @@ class Class extends Component {
     const classes = this.state.queryResults;
 
     return (
-      <>         
+      <>
         <Container fluid>
-          <Row className="event-pager">
-            <Col lg="4" className="wrapper">
+          <Row>
+            <Col lg="3" className="calendar-wrapper">
               <CalendarSection
                 path="classes"
                 data={this.state.allClasses}
                 active={this.state.activeDates}
                 filter={this.handleFilterUpdate}
-              />            
+              />
             </Col>
-            <Col className="justify-content-center" lg="5">
+            <Col className="justify-content-center event-page" event-page lg="5">
               {!classes.length ? (
                 <h5 className="text-center">No Classes to Display</h5>
               ) : (
@@ -147,12 +147,12 @@ class Class extends Component {
                   </List>
                 )
               }
+              <Row className="justify-content-lg-center">
+                <SpaceBanner />
+              </Row>
             </Col>
           </Row>
 
-          <Row className="justify-content-lg-center">
-            <SpaceBanner />
-          </Row>
 
         </Container>
         <MoreInfo

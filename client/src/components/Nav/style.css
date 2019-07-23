@@ -76,11 +76,10 @@ nav .nav-item {
 /* FOOTER */
 footer {
   text-align: center;
-  margin-top: 5rem;
   height: 100%;
   padding: 1rem;
   padding-top: 1.5rem;
-  background-color: #eee;
+  background-color: #eeeeee4f;
   border-top: 1px solid #ddd;
 }
 

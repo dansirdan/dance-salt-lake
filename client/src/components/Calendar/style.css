@@ -1,8 +1,11 @@
 .event-page {
-  margin-top: 8rem;
+  margin: 8rem 6rem 0;
+  height: 80vh;
 }
-.event-page .wrapper {
-  margin: 0 4rem;
+.calendar-wrapper {
+  padding: 8rem 3rem 2rem;
+  background-color: #eeeeee4f;
+  border-right: 1px solid #eee;
 }
 .filter {
   margin-top: 3rem;
@@ -76,9 +79,9 @@
 }
 .react-calendar__tile {
   position: relative;
-  height: 3.5rem;
-  width: 3.5rem;
-  font-size: 1.3rem;
+  height: 3rem;
+  width: 3rem;
+  font-size: 1rem;
   color: #222;
 }
 /* EVENT STYLING */

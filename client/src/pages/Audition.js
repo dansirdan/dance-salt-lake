@@ -113,8 +113,8 @@ class Audition extends Component {
     return (
       <>
         <Container fluid>
-          <Row className="event-page">
-            <Col lg="4" className="wrapper">
+          <Row>
+            <Col lg="3" className="calendar-wrapper">
               <CalendarSection
                 path="auditions"
                 data={this.state.allAuditions}
@@ -122,7 +122,7 @@ class Audition extends Component {
                 filter={this.handleFilterUpdate}
               />
             </Col>
-            <Col className="justify-content-center" lg="5">
+            <Col className="justify-content-center event-page" lg="5">
               {!auditions.length ? (
                 <h5 className="text-center">No Auditions to Display</h5>
               ) : (
@@ -151,12 +151,12 @@ class Audition extends Component {
                   </List>
                 )
               }
+              <Row className="justify-content-lg-center">
+                <SpaceBanner />
+              </Row>
             </Col>
           </Row>
 
-          <Row className="justify-content-lg-center">
-            <SpaceBanner />
-          </Row>
 
         </Container>
         <MoreInfo

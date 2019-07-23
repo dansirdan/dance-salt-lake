@@ -100,15 +100,15 @@ class Performance extends Component {
     return (
       <>
         <Container fluid>
-          <Row className="event-page">
-            <Col lg="4" className="wrapper">
-            <CalendarSection
-              data={performances}
-              active={this.state.activeDates}
-              filter={this.handleDateUpdate}
-            />
+          <Row>
+            <Col lg="3" className="calendar-wrapper">
+              <CalendarSection
+                data={performances}
+                active={this.state.activeDates}
+                filter={this.handleDateUpdate}
+              />
             </Col>
-            <Col className="justify-content-center" lg="5">
+            <Col className="justify-content-center event-page" lg="5">
               {!performances.length ? (
                 <h5 className="text-center">No Performances to Display</h5>
               ) : (
@@ -134,12 +134,12 @@ class Performance extends Component {
                   </List>
                 )
               }
+              <Row className="justify-content-lg-center">
+                <SpaceBanner />
+              </Row>
             </Col>
           </Row>
 
-          <Row className="justify-content-lg-center">
-            <SpaceBanner />
-          </Row>
 
         </Container>
         <MoreInfo
