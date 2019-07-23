@@ -114,7 +114,7 @@ class Audition extends Component {
       <>
         <Container fluid>
           <Row>
-            <Col lg="3" className="calendar-wrapper">
+            <Col lg="3" md="12" className="calendar-wrapper">
               <CalendarSection
                 path="auditions"
                 data={this.state.allAuditions}
@@ -122,7 +122,7 @@ class Audition extends Component {
                 filter={this.handleFilterUpdate}
               />
             </Col>
-            <Col className="justify-content-center event-page" lg="5">
+            <Col className="justify-content-center event-page" lg="5" md="12git ">
               {!auditions.length ? (
                 <h5 className="text-center">No Auditions to Display</h5>
               ) : (

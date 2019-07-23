@@ -50,6 +50,7 @@
 .calendar-placeholder {
   width: 100%;
   max-width: 400px;
+  /* min-width: 360px; */
   border: 1px solid #eee;
 }
 .calendar-section_content .form-check {
