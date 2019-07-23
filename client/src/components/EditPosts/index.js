@@ -246,8 +246,6 @@ class EditPosts extends Component {
                 <Tab.Pane eventKey="welcome">
                   <Container>
                     <Row className="justify-content-around align-items-center">
-                      <Col md='2' />
-                      <Col md='2' />
                       <Col className="text-center" md='8'>
                         <h3>Welcome Back, {this.props.user.name}</h3>
                         <hr className="my-4" />
