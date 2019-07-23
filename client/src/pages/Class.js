@@ -107,7 +107,7 @@ class Class extends Component {
     const classes = this.state.queryResults;
 
     return (
-      <>         
+      <>
         <CalendarSection
           path="classes"
           data={this.state.allClasses}

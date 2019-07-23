@@ -25,10 +25,16 @@ class Class extends Component {
     API.getPosts("classes")
       .then(res => {
         console.log(res);
-        for (let i = 0; i < 2; i++) {
-          twoClasses.push(res.data[i]);
-        };
-        this.setState({ classData: twoClasses });
+
+        if (res.data.length === 0) {
+          console.log("no classes");
+        } else {
+          for (let i = 0; i < res.data.length && i < 2; i++) {
+            // const element = res.data[i];
+            twoClasses.push(res.data[i]);
+          }
+          this.setState({ classData: twoClasses });
+        }
       })
       .catch(err => console.log(err));
   }

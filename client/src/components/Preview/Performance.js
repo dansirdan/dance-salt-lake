@@ -35,21 +35,27 @@ class Perfomance extends Component {
   // stores a random performance from the database and displays it
   // TO DO:
   // 1. test with multiple performances in the DB
-  componentWillMount() {
+  componentDidMount() {
     let RNG;
     let randomPerformance;
     let showPerf = [];
 
     API.getPosts("performances")
       .then(res => {
-        RNG = Math.floor(Math.random() * res.data.length);
-        randomPerformance = res.data[RNG]
-        API.getSinglePost("performances", randomPerformance.id)
-          .then(res => {
-            showPerf.push(res.data)
-            this.setState({ performanceData: showPerf })
-          })
-          .catch(err => console.log(err));
+        if (res.data.length === 0) {
+          console.log("no performances")
+        } else {
+
+          RNG = Math.floor(Math.random() * res.data.length);
+          randomPerformance = res.data[RNG]
+          API.getSinglePost("performances", randomPerformance.id)
+            .then(res => {
+              showPerf.push(res.data)
+              this.setState({ performanceData: showPerf })
+            })
+            .catch(err => console.log(err));
+
+        }
       })
       .catch(err => console.log(err));
   }

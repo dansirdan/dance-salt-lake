@@ -38,7 +38,7 @@ class MoreInfo extends Component {
   }
 
   handleTitle = () => {
-    const { title, level } = this.props.moreInfo
+    const { title, level, style, master } = this.props.moreInfo
 
     switch (this.props.page) {
       case "Audition":
@@ -47,7 +47,7 @@ class MoreInfo extends Component {
         )
       case "Class":
         return (
-          <h3><b>{title}</b> / {level}</h3>
+          <h3><b>{title}</b> / {style} / {level}</h3>
         )
       case "Performance":
         return (
@@ -68,6 +68,7 @@ class MoreInfo extends Component {
       zip,
       length,
       contract,
+      price,
       payment,
       startTime,
       endTime,
@@ -111,12 +112,12 @@ class MoreInfo extends Component {
               <Row>
                 <Col md='7'>
                   <br />
-                 <a href={`mailto:bramibly@gamil.com`} className="btn btn-primary">Contact</a> 
+                  <a href={`mailto:bramibly@gamil.com`} className="btn btn-primary">Contact</a>
                 </Col>
                 <Col>
                   <br />
                   <li><span className="light-text">{address}</span></li>
-                  <li><span className="light-text">{city}, {state} {zip}</span></li> 
+                  <li><span className="light-text">{city}, {state} {zip}</span></li>
                 </Col>
               </Row>
             </Container >
@@ -148,7 +149,6 @@ class MoreInfo extends Component {
                       <tr>
                         <th><span className="accent-text">TIME</span></th>
                         <th><span className="accent-text">DATE</span></th>
-                        <th><span className="accent-text">PRICE</span></th>
                         <th><span className="accent-text">PAYMENT</span></th>
                       </tr>
                     </thead>
@@ -156,7 +156,7 @@ class MoreInfo extends Component {
                       <tr>
                         <td><span className="light-text">{moment(startTime, "HH:mm:ss").format("h:mm A")} - {moment(endTime, "HH:mm:ss").format("h:mm A")}</span></td>
                         <td><span className="light-text">{moment(date).format("MMM Do")}</span></td>
-                        <td><span className="light-text">{payment}</span></td>
+                        {/* <td><span className="light-text">{payment}</span></td> */}
                         <td>
                           <li><span className="light-text">Check</span></li>
                           <li><span className="light-text">Cash</span></li>
@@ -173,7 +173,7 @@ class MoreInfo extends Component {
               <Row>
                 <Col md='7'>
                   <br />
-                  <Link className="btn btn-primary" to={url}>Contact</Link >
+                  <a href={`mailto:bramibly@gamil.com`} className="btn btn-primary">Contact</a>
                 </Col>
                 <Col>
                   <br />
@@ -211,6 +211,7 @@ class MoreInfo extends Component {
                   <li className="accent-text">TIME</li>
                   <p><span className="light-text">{moment(startTime, "HH:mm:ss").format("h:mm A")}</span></p>
                   <li className="accent-text">MISC</li>
+                  <p><span className="light-text">${price}</span></p>
                 </Col>
                 <Col>
                   <GoogleMapTWO />
@@ -219,9 +220,7 @@ class MoreInfo extends Component {
               <Row>
                 <Col md='7'>
                   <br />
-                  <Link className="btn btn-primary" to={url}>
-                    Contact
-                  </Link >
+                  <a href={`mailto:bramibly@gamil.com`} className="btn btn-primary">Contact</a>
                 </Col>
                 <Col>
                   <br />
