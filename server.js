@@ -4,15 +4,7 @@ const session = require("express-session");
 const passport = require("./config/passport");
 const path = require("path");
 const routes = require("./routes");
-const aws = require("aws-sdk");
 require("dotenv").config();
-
-// let s3 = new aws.S3({
-//   accessKeyId: process.env.S3_Key,
-//   secretAccessKey: process.env.GOOGLE_API
-// })
-
-console.log(process.env.GOOGLE_API)
 
 const PORT = process.env.PORT || 3001;
 const db = require("./models");
