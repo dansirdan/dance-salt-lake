@@ -411,7 +411,7 @@ function Class(props) {
                 </Form.Group>
 
                 <Form.Group as={Col} md="12">
-                  <Form.Label>Image link</Form.Label>
+                  <Form.Label>Website</Form.Label>
                   <Form.Control
                     required
                     name="url"
