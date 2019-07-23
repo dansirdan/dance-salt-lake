@@ -13,90 +13,111 @@ class CopyEvent extends Component {
     this.handlePostCopy = this.handlePostCopy.bind(this);
     this.state = {
       copyMode: false,
-      userId: '',
-      lookingFor: '',
-      auditionsNotes: '',
-      gig: '',
-      title: '',
-      description: '',
-      photoLink: '',
-      length: '',
-      date: '',
-      time: '',
-      address: '',
-      payment: '',
-      url: '',
-      instructorName: '',
-      value: '',
-      level: '',
-      style: '',
-      price: '',
-      special: '',
-      rate: '',
-      numPeople: '',
-      name: '',
-      squareFootage: '',
-      lat: '',
-      lng: ''
+      UserId: "",
+      address: "",
+      city: "",
+      contract: "",
+      date: "",
+      description: "",
+      email: "",
+      endTime: "",
+      instructorName: "",
+      lat: "",
+      length: "",
+      level: "",
+      lng: "",
+      lookingFor: "",
+      master: "",
+      name: "",
+      numberOf: "",
+      numPeople: "",
+      payment: "",
+      photoLink: "",
+      price: "",
+      rate: "",
+      startTime: "",
+      state: "",
+      style: "",
+      squareFootage: "",
+      title: "",
+      url: "",
+      zip: ""
     }
+
   }
 
   componentDidMount() {
     console.log(this.props);
-    switch (this.props.editType) {
+
+    const {
+      eventData,
+      editType
+    } = this.props;
+
+    switch (editType) {
       case "auditions":
         this.setState({
-          title: this.props.eventData.title,
-          lookingFor: this.props.eventData.lookingFor,
-          description: this.props.eventData.description,
-          text: this.props.eventData.auditionsNotes,
-          address: this.props.eventData.address,
-          lat: this.props.eventData.lat,
-          lng: this.props.eventData.lng,
-          gig: this.props.eventData.gig,
-          photoLink: this.props.eventData.photoLink,
-          link: this.props.eventData.url,
-          length: this.props.eventData.length,
-          payment: this.props.eventData.payment,
-          time: this.props.eventData.time,
-          date: this.props.eventData.date,
-          url: this.props.eventData.url
+          UserId: eventData.UserId,
+          address: eventData.address,
+          city: eventData.city,
+          contract: eventData.contract,
+          date: eventData.date,
+          description: eventData.description,
+          endTime: eventData.endTime,
+          lat: eventData.lat,
+          length: eventData.length,
+          lng: eventData.lng,
+          lookingFor: eventData.lookingFor,
+          numberOf: eventData.numberOf,
+          photoLink: eventData.photoLink,
+          startTime: eventData.startTime,
+          state: eventData.state,
+          title: eventData.title,
+          url: eventData.url,
+          zip: eventData.zip
         })
         break;
       case "classes":
         this.setState({
-          title: this.props.eventData.title,
-          style: this.props.eventData.style,
-          master: this.props.eventData.value,
-          description: this.props.eventData.description,
-          address: this.props.eventData.address,
-          lat: this.props.eventData.lat,
-          lng: this.props.eventData.lng,
-          instructorName: this.props.eventData.instructorName,
-          photoLink: this.props.eventData.photoLink,
-          length: this.props.eventData.length,
-          level: this.props.eventData.level,
-          payment: this.props.eventData.payment,
-          time: this.props.eventData.time,
-          date: this.props.eventData.date,
-          url: this.props.eventData.url
+          UserId: eventData.UserId,
+          title: eventData.title,
+          instructorName: eventData.instructorName,
+          style: eventData.style,
+          level: eventData.level,
+          master: eventData.value,
+          payment: eventData.payment,
+          date: eventData.date,
+          startTime: eventData.startTime,
+          endTime: eventData.endTime,
+          address: eventData.address,
+          city: eventData.city,
+          state: eventData.state,
+          zip: eventData.zip,
+          lat: eventData.lat,
+          lng: eventData.lng,
+          description: eventData.description,
+          photoLink: eventData.photoLink,
+          url: eventData.url
         })
         break;
       case "performances":
         this.setState({
-          title: this.props.eventData.title,
-          description: this.props.eventData.description,
-          address: this.props.eventData.address,
-          lat: this.props.eventData.lat,
-          lng: this.props.eventData.lng,
-          price: this.props.eventData.price,
-          photoLink: this.props.eventData.photoLink,
-          length: this.props.eventData.length,
-          payment: this.props.eventData.payment,
-          time: this.props.eventData.time,
-          date: this.props.eventData.date,
-          url: this.props.eventData.url,
-          special: this.props.eventData.special
+          UserId: eventData.UserId,
+          title: eventData.title,
+          date: eventData.date,
+          startTime: eventData.startTime,
+          length: eventData.length,
+          address: eventData.address,
+          city: eventData.city,
+          state: eventData.state,
+          zip: eventData.zip,
+          lat: eventData.lat,
+          lng: eventData.lng,
+          price: eventData.price,
+          payment: eventData.payment,
+          description: eventData.description,
+          photoLink: eventData.photoLink,
+          url: eventData.url
         })
         break;
       default:
@@ -124,61 +145,67 @@ class CopyEvent extends Component {
     switch (this.props.editType) {
       case "auditions":
         copy = {
-          UserId: this.props.user.id,
-          title: this.state.title,
-          lookingFor: this.state.lookingFor,
-          description: this.state.description,
-          text: this.state.auditionsNotes,
+          UserId: this.state.UserId,
           address: this.state.address,
-          lat: this.state.lat,
-          lng: this.state.lng,
-          gig: this.state.gig,
-          photoLink: this.state.photoLink,
-          link: this.state.url,
-          length: this.state.length,
-          payment: this.state.payment,
-          time: this.state.time,
+          city: this.state.city,
+          contract: this.state.contract,
           date: this.state.date,
-          url: this.state.url
+          description: this.state.description,
+          endTime: this.state.endTime,
+          lat: this.state.lat,
+          length: this.state.length,
+          lng: this.state.lng,
+          lookingFor: this.state.lookingFor,
+          numberOf: this.state.numberOf,
+          photoLink: this.state.photoLink,
+          startTime: this.state.startTime,
+          state: this.state.state,
+          title: this.state.title,
+          url: this.state.url,
+          zip: this.state.zip
         }
         break;
       case "classes":
         copy = {
-          UserId: this.props.user.id,
+          UserId: this.state.UserId,
           title: this.state.title,
-          style: this.state.style,
-          master: 1,
-          // for testing purposes
-          description: this.state.description,
-          address: this.state.address,
-          // lat: this.state.lat,
-          // lng: this.state.lng,
           instructorName: this.state.instructorName,
-          photoLink: this.state.photoLink,
-          length: this.state.length,
+          style: this.state.style,
           level: this.state.level,
+          master: this.state.value,
           payment: this.state.payment,
-          time: this.state.time,
           date: this.state.date,
+          startTime: this.state.startTime,
+          endTime: this.state.endTime,
+          address: this.state.address,
+          city: this.state.city,
+          state: this.state.state,
+          zip: this.state.zip,
+          lat: this.state.lat,
+          lng: this.state.lng,
+          description: this.state.description,
+          photoLink: this.state.photoLink,
           url: this.state.url
         }
         break;
       case "performances":
         copy = {
-          UserId: this.props.user.id,
+          UserId: this.state.UserId,
           title: this.state.title,
-          description: this.state.description,
+          date: this.state.date,
+          startTime: this.state.startTime,
+          length: this.state.length,
           address: this.state.address,
+          city: this.state.city,
+          state: this.state.state,
+          zip: this.state.zip,
           lat: this.state.lat,
           lng: this.state.lng,
           price: this.state.price,
-          photoLink: this.state.photoLink,
-          length: this.state.length,
           payment: this.state.payment,
-          time: this.state.time,
-          date: this.state.date,
-          url: this.state.url,
-          special: this.state.special
+          description: this.state.description,
+          photoLink: this.state.photoLink,
+          url: this.state.url
         }
         break;
 
@@ -194,11 +221,10 @@ class CopyEvent extends Component {
       .catch(err => {
         console.log(err)
       })
-
-    // WORKING! Run after the API post above
   }
 
   render() {
+    const { editType } = this.props;
     return (
       <Container fluid>
         <Row>
@@ -220,12 +246,24 @@ class CopyEvent extends Component {
                   </Col>
                   <Col>
                     <Input
-                      value={this.state.time}
+                      value={this.state.startTime}
                       onChange={this.handleInputChange}
                       name="time"
                       type="time"
                     />
                   </Col>
+                  {editType !== "performances" ?
+                    <Col>
+                      <Input
+                        value={this.state.endTime}
+                        onChange={this.handleInputChange}
+                        name="time"
+                        type="time"
+                      />
+                    </Col>
+                    :
+                    <></>
+                  }
                   <Button onClick={this.handlePostCopy}>Submit</Button>
                 </>
               )

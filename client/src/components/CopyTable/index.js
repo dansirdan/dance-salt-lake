@@ -13,7 +13,8 @@ export function CopyClass(props) {
               <tr>
                 <th><p className="accent-text">Class</p></th>
                 <th><p className="accent-text">Date</p></th>
-                <th><p className="accent-text">Time</p></th>
+                <th><p className="accent-text">Start Time</p></th>
+                <th><p className="accent-text">End Time</p></th>
               </tr>
             </thead>
             <tbody>
@@ -23,6 +24,7 @@ export function CopyClass(props) {
                     <td><span className="light-text">{`${klass.style} / ${klass.level} / ${klass.instructorName}`}</span></td>
                     <td><span className="light-text">{moment(klass.date).format("MMM Do")}</span></td>
                     <td><span className="light-text">{moment(klass.startTime, "HH:mm:ss").format("h:mm A")}</span></td>
+                    <td><span className="light-text">{moment(klass.endTime, "HH:mm:ss").format("h:mm A")}</span></td>
                   </tr>
                 )
               })
@@ -51,6 +53,7 @@ export function CopyAudition(props) {
                 <th><p className="accent-text">Title</p></th>
                 <th><p className="accent-text">Date</p></th>
                 <th><p className="accent-text">Time</p></th>
+                <th><p className="accent-text">End Time</p></th>
               </tr>
             </thead>
             <tbody>
@@ -60,6 +63,7 @@ export function CopyAudition(props) {
                     <td><span className="light-text">{audition.title}</span></td>
                     <td><span className="light-text">{moment(audition.date).format("MMM Do")}</span></td>
                     <td><span className="light-text">{moment(audition.startTime, "HH:mm:ss").format("h:mm A")}</span></td>
+                    <td><span className="light-text">{moment(audition.endTime, "HH:mm:ss").format("h:mm A")}</span></td>
                   </tr>
                 )
               })
