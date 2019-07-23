@@ -74,7 +74,7 @@ function Class(props) {
     instructorName: "",
     style: "",
     level: "",
-    master: "",
+    master: false,
 
     payment: "",
 
