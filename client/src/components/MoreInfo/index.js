@@ -37,7 +37,7 @@ class MoreInfo extends Component {
   }
 
   handleTitle = () => {
-    const { title, level, style, master } = this.props.moreInfo
+    const { title, level, style } = this.props.moreInfo
 
     switch (this.props.page) {
       case "Audition":
@@ -68,13 +68,13 @@ class MoreInfo extends Component {
       length,
       contract,
       price,
-      payment,
+      // payment,
       startTime,
       endTime,
       date,
       // photoLink,
       instructorName,
-      url
+      // url
     } = this.props.moreInfo;
 
     switch (this.props.page) {

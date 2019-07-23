@@ -5,9 +5,6 @@ import { Container, Row, Col } from "react-bootstrap";
 import { AuthConsumer } from '../components/AuthContext';
 
 class UsersHome extends Component {
-  constructor(props, context) {
-    super(props, context);
-  }
 
   componentWillMount() {
     this.props.handleLogo();

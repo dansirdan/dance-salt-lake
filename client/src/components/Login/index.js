@@ -48,7 +48,7 @@ class Login extends Component {
                 name="password"
                 type="password"
                 placeholder="Password (required)"
-                autocomplete="current-password"
+                autoComplete="current-password"
               />
               {/* <Dropdown.Item as="div"> */}
               <Button
