@@ -30,13 +30,18 @@
 .class-preview .card {
   border-bottom: 1px solid #eee
 }
+.class-preview .card:last-child {
+  border-bottom: none;
+}
 .class-preview .details {
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
-.class-description {
-  margin: 1rem;
+.class-preview a {
+    color: inherit;
+    text-decoration: none;
+    background-color: transparent;
 }
 /* PERFORMANCE */
 .performance-preview p {

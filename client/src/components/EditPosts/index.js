@@ -432,16 +432,16 @@ class EditPosts extends Component {
           size="sm"
           show={this.state.deleteShow}
           onHide={() => this.handleClose()}
-          aria-labelledby="example-modal-sizes-title-sm"
+          aria-labelledby="modal-delete"
         >
           <Modal.Header closeButton>
-            <Modal.Title id="example-modal-sizes-title-sm">
+            <Modal.Title id="modal-delete">
               <h3>are you sure?</h3>
             </Modal.Title>
           </Modal.Header>
-          <Modal.Body>
-            <Button onClick={() => this.deleteData(this.state.deleteData)}><span className="light-text">delete</span></Button>
-            <Button onClick={() => this.handleClose()}><span className="light-text">cancel</span></Button>
+          <Modal.Body className="modal-delete">
+            <Button onClick={() => this.deleteData(this.state.deleteData)}><span>delete</span></Button>
+            <Button onClick={() => this.handleClose()}><span>cancel</span></Button>
           </Modal.Body>
         </Modal>
         <EditModal

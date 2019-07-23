@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Link } from "react-router-dom";
 import { Container } from "../Grid";
 import Thumbnail from "../Thumbnail";
 import { Card, Row, Col } from "react-bootstrap";
@@ -66,7 +67,7 @@ class Class extends Component {
         {this.state.classData.length > 0 ? this.state.classData.map(klass => {
           return (
             <Card key={klass.id}>
-              <Card.Body as="a" onClick={() => this.handleShow(klass.id)}>
+              <Card.Body as={Link} to="/class">
                 <Container>
                   <Row className="justify-content-xs-center">
                     <Col lg="4" md="3" xs="6">
@@ -76,7 +77,7 @@ class Class extends Component {
                       <div className="details no-margin">
                         <div>
                           <h6>{klass.title}</h6>
-                          <p className="accent-text">{klass.instructorName} Lastname</p>
+                          <p className="accent-text">{klass.instructorName}</p>
                           <p>{moment(klass.date).format("MMM Do, h:mm A")}</p>
                         </div>
                       </div>
