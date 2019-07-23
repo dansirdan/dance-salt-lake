@@ -25,9 +25,8 @@ function Class(props) {
       .required('Required'),
     level: yup.string()
       .required('Required'),
-    master: yup.boolean()
-      .required('Required'),
-
+    master: yup.boolean(),
+  
     date: yup.date()
       .min(today)
       .required('Required'),
@@ -70,7 +69,7 @@ function Class(props) {
 
   const initialValues = {
 
-    UserId: "5",
+    UserId: props.user,
     title: "",
     instructorName: "",
     style: "",
@@ -116,6 +115,7 @@ function Class(props) {
 
         const payload = { ...values, lat: cityLat, lng: cityLng };
 
+        setValues(payload)
         API.newPost("classes", payload)
           .then(res => {
             console.log(res.data);
@@ -139,6 +139,8 @@ function Class(props) {
           validationSchema={schema}
           initialValues={initialValues}
           onSubmit={(values, { setSubmitting, setValues, resetForm }) => {
+            console.log(values);
+            
             handleQuery(values, setValues, () => {
               setTimeout(() => {
                 resetForm(initialValues)
@@ -163,7 +165,7 @@ function Class(props) {
                   required
                   hidden
                   name="UserId"
-                  value={user.id}
+                  value={values.UserId}
                   type="number"
                   onChange={handleChange}
                 />
@@ -212,7 +214,7 @@ function Class(props) {
                     onChange={handleChange}
                     onBlur={handleBlur}
                   />
-                  {errors.instructorName && touched.instructorName && <div className="input-feedback">{errors.instructorName}</div>}
+                  {errors.style && touched.style && <div className="input-feedback">{errors.style}</div>}
                 </Form.Group>
 
                 <Form.Group as={Col} md="12">
@@ -365,6 +367,7 @@ function Class(props) {
                     required
                     name="zip"
                     value={values.zip}
+                    type="text"
                     onBlur={handleBlur}
                     onChange={handleChange}
                     isInvalid={!!errors.zip}

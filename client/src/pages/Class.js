@@ -110,7 +110,7 @@ class Class extends Component {
       <>
         <Container fluid>
           <Row>
-            <Col lg="3" className="calendar-wrapper">
+            <Col lg="4" className="calendar-wrapper">
               <CalendarSection
                 path="classes"
                 data={this.state.allClasses}

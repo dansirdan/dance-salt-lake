@@ -6,7 +6,7 @@ import EditModal from "../EditModal";
 import CopyModal from "../CopyModal";
 import moment from "moment";
 import API from "../../utils/API";
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import "./style.css";
 
 class EditPosts extends Component {

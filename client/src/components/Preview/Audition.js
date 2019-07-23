@@ -90,7 +90,7 @@ class Audition extends Component {
                 <Accordion.Collapse eventKey={index.toString()}>
                   <Card.Body>
                     <Card.Text>
-                      <p>{moment(audition.startTime, "HH:mm:ss").format("h:mm A")} - {moment(audition.endTime, "HH:mm:ss").format("h:mm A")}</p>
+                     {moment(audition.startTime, "HH:mm:ss").format("h:mm A")} - {moment(audition.endTime, "HH:mm:ss").format("h:mm A")}
                     </Card.Text>
                     <Card.Text className="light-text">
                       {audition.description}

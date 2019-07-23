@@ -61,7 +61,7 @@ function Performance(props) {
 
   const initialValues = {
 
-    UserId: "5",
+    UserId: props.user,
     title: "",
     date: "",
     startTime: "",
@@ -149,7 +149,7 @@ function Performance(props) {
                   required
                   hidden
                   name="UserId"
-                  value={user.id}
+                  value={values.UserId}
                   type="number"
                   onChange={handleChange}
                 />
@@ -376,7 +376,7 @@ function Performance(props) {
                     required
                     name="description"
                     value={values.description}
-                    type="textarea"
+                    as="textarea"
                     onChange={handleChange}
                     onBlur={handleBlur}
                     isInvalid={!!errors.description}
