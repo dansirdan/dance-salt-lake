@@ -52,7 +52,7 @@ export function CopyAudition(props) {
               <tr>
                 <th><p className="accent-text">Title</p></th>
                 <th><p className="accent-text">Date</p></th>
-                <th><p className="accent-text">Time</p></th>
+                <th><p className="accent-text">Start Time</p></th>
                 <th><p className="accent-text">End Time</p></th>
               </tr>
             </thead>
