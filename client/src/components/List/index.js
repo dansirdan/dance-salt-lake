@@ -66,6 +66,7 @@ export function AuditionListItem({
   title,
   lookingFor,
   description,
+  startTime,
   // text,
   // address,
   // gig,
@@ -105,6 +106,7 @@ export function AuditionListItem({
 export function PerformanceListItem({
   title,
   description,
+  startTime,
   // address,
   photoLink = "https://placehold.it/300x300",
   // length,
