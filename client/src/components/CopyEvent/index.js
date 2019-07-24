@@ -248,7 +248,7 @@ class CopyEvent extends Component {
                     <Input
                       value={this.state.startTime}
                       onChange={this.handleInputChange}
-                      name="time"
+                      name="startTime"
                       type="time"
                     />
                   </Col>
@@ -257,7 +257,7 @@ class CopyEvent extends Component {
                       <Input
                         value={this.state.endTime}
                         onChange={this.handleInputChange}
-                        name="time"
+                        name="endTime"
                         type="time"
                       />
                     </Col>

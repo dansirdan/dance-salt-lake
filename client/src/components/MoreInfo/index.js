@@ -8,7 +8,7 @@ import {
   Image,
   Table
 } from "react-bootstrap";
-import fakeAvatar from "./placeholderA.png";
+// import fakeAvatar from "./placeholderA.png";
 import GoogleMapTWO from "../GoogleMapTWO";
 import moment from "moment";
 import "./style.css";
@@ -72,9 +72,9 @@ class MoreInfo extends Component {
       startTime,
       endTime,
       date,
-      // photoLink,
+      photoLink,
       instructorName,
-      // url
+      url
     } = this.props.moreInfo;
 
     switch (this.props.page) {
@@ -130,7 +130,7 @@ class MoreInfo extends Component {
                 <Col>
                   <Row>
                     <Col md='3'>
-                      <Image className="profile" src={fakeAvatar} roundedCircle fluid />
+                      <Image className="profile" src={photoLink} roundedCircle fluid />
                     </Col>
                     <Col md='9'>
                       <li><p className="accent-text">w/ {<b>{instructorName}</b>}</p></li>
@@ -192,7 +192,7 @@ class MoreInfo extends Component {
                 <Col>
                   <Row>
                     <Col md='3'>
-                      <Image className="profile" src={fakeAvatar} roundedCircle fluid />
+                      <Image className="profile" src={photoLink} roundedCircle fluid />
                     </Col>
                     <Col md='9'>
                       <p className="accent-text">DESCRIPTION</p>
