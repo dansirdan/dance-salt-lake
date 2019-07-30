@@ -130,7 +130,7 @@ class MoreInfo extends Component {
                 <Col>
                   <Row>
                     <Col md='3'>
-                      <Image className="profile" src={photoLink} roundedCircle fluid />
+                      <Image className="profile" src={photoLink} fluid />
                     </Col>
                     <Col md='9'>
                       <li><p className="accent-text">w/ {<b>{instructorName}</b>}</p></li>
@@ -192,7 +192,7 @@ class MoreInfo extends Component {
                 <Col>
                   <Row>
                     <Col md='3'>
-                      <Image className="profile" src={photoLink} roundedCircle fluid />
+                      <Image className="profile" src={photoLink} fluid />
                     </Col>
                     <Col md='9'>
                       <p className="accent-text">DESCRIPTION</p>
