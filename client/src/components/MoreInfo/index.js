@@ -9,7 +9,7 @@ import {
   Table
 } from "react-bootstrap";
 // import fakeAvatar from "./placeholderA.png";
-import GoogleMapTWO from "../GoogleMapTWO";
+import SimpleMap from "../GoogleMap";
 import moment from "moment";
 import "./style.css";
 
@@ -38,6 +38,7 @@ class MoreInfo extends Component {
 
   handleTitle = () => {
     const { title, level, style } = this.props.moreInfo
+    console.log(this.props)
 
     switch (this.props.page) {
       case "Audition":
@@ -74,7 +75,9 @@ class MoreInfo extends Component {
       date,
       photoLink,
       instructorName,
-      url
+      // url,
+      lat,
+      lng
     } = this.props.moreInfo;
 
     switch (this.props.page) {
@@ -104,7 +107,10 @@ class MoreInfo extends Component {
                 <Col sm='8' md='5'>
                   <li className="accent-text">LOCATION</li>
                   <div>
-                    <GoogleMapTWO />
+                    <SimpleMap
+                      lat={lat}
+                      lng={lng}
+                    />
                   </div>
                 </Col>
               </Row>
@@ -130,7 +136,7 @@ class MoreInfo extends Component {
                 <Col>
                   <Row>
                     <Col md='3'>
-                      <Image className="profile" src={photoLink} roundedCircle fluid />
+                      <Image className="profile" src={photoLink} fluid />
                     </Col>
                     <Col md='9'>
                       <li><p className="accent-text">w/ {<b>{instructorName}</b>}</p></li>
@@ -166,7 +172,10 @@ class MoreInfo extends Component {
                   </Table>
                 </Col>
                 <Col>
-                  <GoogleMapTWO />
+                  <SimpleMap
+                    lat={lat}
+                    lng={lng}
+                  />
                 </Col>
               </Row>
               <Row>
@@ -192,7 +201,7 @@ class MoreInfo extends Component {
                 <Col>
                   <Row>
                     <Col md='3'>
-                      <Image className="profile" src={photoLink} roundedCircle fluid />
+                      <Image className="profile" src={photoLink} fluid />
                     </Col>
                     <Col md='9'>
                       <p className="accent-text">DESCRIPTION</p>
@@ -213,7 +222,10 @@ class MoreInfo extends Component {
                   <p><span className="light-text">${price}</span></p>
                 </Col>
                 <Col>
-                  <GoogleMapTWO />
+                  <SimpleMap
+                    lat={lat}
+                    lng={lng}
+                  />
                 </Col>
               </Row>
               <Row>

@@ -42,7 +42,7 @@ class EditForm extends Component {
   }
 
   componentDidMount() {
-    console.log(this.props);
+    // console.log(this.props);
     switch (this.props.editType) {
       case "auditions":
         this.setState({
@@ -193,7 +193,7 @@ class EditForm extends Component {
       default:
         break;
     }
-    console.log(edit);
+    // console.log(edit);
     // API.newPost(this.state.editType, this.props.user.id, edit)
   }
 
