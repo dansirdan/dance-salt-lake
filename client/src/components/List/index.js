@@ -45,7 +45,7 @@ export function ClassListItem({
               <span className="badge">{master}</span>
             </div>
             <div className="no-margin">
-              <h6>{moment(date).format("MMM Do YYYY")} {moment(startTime).format("h:mm A")}</h6>
+              <h6>{moment(date).format("MMM Do YYYY")} {moment(startTime, "HH:mm:ss").format("h:mm A")}</h6>
               <p>Style: {style}</p>
             </div>
             <p>Instructed by {instructorName}</p>
@@ -88,7 +88,7 @@ export function AuditionListItem({
           <Col size="xs-8 sm-9">
             <div className="audition-list_title">
               <h3>{title}</h3>
-              <h6>{moment(date).format("MMM Do YYYY")} {moment(startTime).format("h:mm A")}</h6>
+              <h6>{moment(date).format("MMM Do YYYY")} {moment(startTime, "HH:mm:ss").format("h:mm A")}</h6>
             </div>
             <p>Looking for: {lookingFor}</p>
             <p>{description}</p>
@@ -126,7 +126,7 @@ export function PerformanceListItem({
           <Col size="xs-8 sm-9">
             <h3>{title}</h3>
             {/* <h5>Presenting Company/Artist: </h5> */}
-            <h6>{moment(date).format("MMM Do YYYY")} {moment(startTime).format("h:mm A")}</h6>
+            <h6>{moment(date).format("MMM Do YYYY")} {moment(startTime, "HH:mm:ss").format("h:mm A")}</h6>
             <p>Description: {description}</p>
           </Col>
 

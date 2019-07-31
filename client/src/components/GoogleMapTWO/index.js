@@ -1,38 +1,40 @@
 import React, { Component } from "react";
-import { Map, Marker, GoogleApiWrapper } from 'google-maps-react';
+import GoogleMapReact from 'google-map-react';
 import "./style.css";
 
-export class MapContainer extends Component {
+const Marker = ({ text }) => <div>{text}</div>;
+
+class SimpleMap extends Component {
+  static defaultProps = {
+    center: {
+      lat: 59.95,
+      lng: 30.33
+    },
+    zoom: 11
+  };
 
   render() {
-
-    const style = {
-      width: "90%",
-      height: "100%"
-    }
-
+    console.log(this.props)
     return (
-      <Map
-        google={this.props.google}
-        style={style}
-        initialCenter={{
-          lat: 40.763186,
-          lng: -111.895334,
-        }}
-        zoom={14}
-      >
-        <Marker
-          position={{
-            lat: 40.763186,
-            lng: -111.895334
+      // Important! Always set the container height explicitly
+      <div style={{ height: '200px', width: '100%' }}>
+        <GoogleMapReact
+          bootstrapURLKeys={{ key: "AIzaSyBwWAv336FT-ttOosMGCDcROKAsq_rhkbA" }}
+          defaultCenter={{
+            lat: this.props.lat,
+            lng: this.props.lng
           }}
-          name={'Current location'} />
-
-      </Map>
+          defaultZoom={this.props.zoom}
+        >
+          <Marker
+            lat={this.props.lat}
+            lng={this.props.lng}
+            text="My Marker"
+          />
+        </GoogleMapReact>
+      </div>
     );
   }
 }
 
-export default GoogleApiWrapper({
-  apiKey: process.env.GOOGLE_API
-})(MapContainer)
+export default SimpleMap;
