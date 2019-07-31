@@ -3,7 +3,7 @@ const auditionController = require("../../controllers/auditionController");
 
 router.route("/")
   .get(auditionController.findAll)
-  .post(auditionController.create)
+  .post(auditionController.updateOrCreate)
  
 router.route("/:id")
   .get(auditionController.findOne)

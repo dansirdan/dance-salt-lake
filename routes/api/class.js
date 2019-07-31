@@ -3,7 +3,7 @@ const classController = require("../../controllers/classController");
 
 router.route("/")
   .get(classController.findAll)
-  .post(classController.create)
+  .post(classController.updateOrCreate)
 
 router.route("/:id")
   .get(classController.findOne)

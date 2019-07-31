@@ -22,6 +22,7 @@ export default {
   user: function () {
     return axios.get("/api/auth/user")
   },
+
   newPost: function (postType, post) {
     console.log("newPost", postType, post);
 
@@ -30,7 +31,7 @@ export default {
   deletePost: function (postType, postId) {
     return axios.delete("/api/" + postType + "/" + postId)
   },
-  updatePost: function (postType, postId) {
-    return axios.put("/api/" + postType + "/" + postId)
+  updatePost: function (postType, postId, post) {
+    return axios.put("/api/" + postType + "/" + postId, post)
   }
 }
