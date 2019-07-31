@@ -54,7 +54,7 @@ function Space(props) {
 
   });
 
-  const initialValues = {
+  let initialValues = {
 
     UserId: props.user,
     name: "",
@@ -76,6 +76,8 @@ function Space(props) {
     photoLink: "",
     url: ""
   }
+
+  if (props.modalData) initialValues = props.modalData;
 
   const handleQuery = (values, setValues, cb) => {
 
@@ -122,7 +124,7 @@ function Space(props) {
             handleQuery(values, setValues, () => {
               setTimeout(() => {
                 resetForm(initialValues)
-                props.clearPostType();
+                props.clear();
                 setSubmitting(false);
               }, 500)
             });

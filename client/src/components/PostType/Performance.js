@@ -59,7 +59,7 @@ function Performance(props) {
 
   });
 
-  const initialValues = {
+  let initialValues = {
 
     UserId: props.user,
     title: "",
@@ -82,6 +82,8 @@ function Performance(props) {
     photoLink: "",
     url: ""
   }
+
+  if (props.modalData) initialValues = props.modalData;
 
   const handleQuery = (values, setValues, cb) => {
 
@@ -128,7 +130,7 @@ function Performance(props) {
             handleQuery(values, setValues, () => {
               setTimeout(() => {
                 resetForm(initialValues)
-                props.clearPostType();
+                props.clear();
                 setSubmitting(false);
               }, 500)
             });

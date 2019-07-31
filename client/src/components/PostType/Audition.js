@@ -8,7 +8,8 @@ import { Formik } from "formik";
 import * as yup from "yup";
 
 
-function Audition(props) {
+function Audition(props) {  
+
   
   const today = moment().format("L");
 
@@ -65,7 +66,7 @@ function Audition(props) {
 
   });
 
-    const initialValues = {
+    let initialValues = {
 
     UserId: props.user,
     title: "",
@@ -86,6 +87,8 @@ function Audition(props) {
     url: ""
   }
 
+  if (props.modalData) initialValues = props.modalData;
+
   const handleQuery = (values, setValues, cb) => {
 
     let location = (({ address, city, state, zip }) => ({ address, city, state, zip }))(values);
@@ -103,7 +106,6 @@ function Audition(props) {
 
         cityLat = parseFloat(response.data.results[0].geometry.location.lat);
         cityLng = parseFloat(response.data.results[0].geometry.location.lng);
-
         const payload = { ...values, lat: cityLat, lng: cityLng };
 
         setValues(payload)
@@ -122,6 +124,7 @@ function Audition(props) {
 
 
   return (
+   
 
     <AuthConsumer>
       {({ user }) => (
@@ -133,7 +136,7 @@ function Audition(props) {
             handleQuery(values, setValues, () => {
               setTimeout(() => {
                 resetForm(initialValues)
-                props.clearPostType();
+                props.clear();
                 setSubmitting(false);
               }, 500)
             });

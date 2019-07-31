@@ -67,7 +67,7 @@ function Class(props) {
 
   });
 
-  const initialValues = {
+  let initialValues = {
 
     UserId: props.user,
     title: "",
@@ -94,6 +94,8 @@ function Class(props) {
     photoLink: "",
     url: ""
   }
+
+  if (props.modalData) initialValues = props.modalData;
 
   const handleQuery = (values, setValues, cb) => {
 
@@ -144,7 +146,7 @@ function Class(props) {
             handleQuery(values, setValues, () => {
               setTimeout(() => {
                 resetForm(initialValues)
-                props.clearPostType();
+                props.clear();
                 setSubmitting(false);
               }, 500)
             });

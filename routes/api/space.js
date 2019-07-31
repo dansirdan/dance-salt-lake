@@ -3,7 +3,7 @@ const spaceController = require("../../controllers/spaceController");
 
 router.route("/")
   .get(spaceController.findAll)
-  .post(spaceController.create)
+  .post(spaceController.updateOrCreate)
 
 router.route("/:id")
   .get(spaceController.findOne)

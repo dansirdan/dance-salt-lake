@@ -21,6 +21,22 @@ module.exports = {
       .then(data => res.json(data))
       .catch(err => res.status(422).json(err));
   },
+  updateOrCreate: function (req, res) {
+
+    if (req.body.id) {
+
+      db.Space
+        .findOne({ where: { id: req.body.id } })
+        .then(data => data.update(req.body))
+        .catch(err => res.status(422).json(err));
+    } else {
+
+      db.Space
+        .create(req.body)
+        .then(data => res.json(data))
+        .catch(err => res.status(422).json(err));
+    }
+  },
 
   // ============= Un-tested =============
   findOne: function (req, res) {
