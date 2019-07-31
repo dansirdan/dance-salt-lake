@@ -47,7 +47,7 @@ class CopyEvent extends Component {
   }
 
   componentDidMount() {
-    console.log(this.props);
+    // console.log(this.props);
 
     const {
       eventData,
@@ -212,10 +212,10 @@ class CopyEvent extends Component {
       default:
         break;
     }
-    console.log(copy);
+    // console.log(copy);
     API.newPost(this.props.editType, copy)
       .then(res => {
-        console.log(res.data)
+        // console.log(res.data)
         this.props.updateCopyTable({ editType: this.props.editType, id: res.data.id })
       })
       .catch(err => {

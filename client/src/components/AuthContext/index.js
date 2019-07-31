@@ -24,7 +24,7 @@ class AuthProvider extends Component {
       console.log("this ran")
       API.user()
         .then(dbUser => {
-          console.log(dbUser.data)
+          // console.log(dbUser.data)
           if (!dbUser.data.email || !dbUser.data.id) {
             console.log("No sessions user");
           } else {
@@ -41,10 +41,10 @@ class AuthProvider extends Component {
 
     API.auth("login", user)
       .then(res => {
-        console.log(res);
+        // console.log(res);
         API.user()
           .then(dbUser => {
-            console.log(dbUser.data)
+            // console.log(dbUser.data)
             this.setState({ isAuth: true, loggedOut: false, user: dbUser.data })
             cb()
             // return (
@@ -65,7 +65,7 @@ class AuthProvider extends Component {
 
     API.user()
       .then((res, req) => {
-        console.log(res)
+        // console.log(res)
         this.setState({
           isAuth: false,
           loggedOut: true
