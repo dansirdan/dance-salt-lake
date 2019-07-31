@@ -9,7 +9,7 @@ import {
   Table
 } from "react-bootstrap";
 // import fakeAvatar from "./placeholderA.png";
-import SimpleMap from "../GoogleMapTWO";
+import SimpleMap from "../GoogleMap";
 import moment from "moment";
 import "./style.css";
 
