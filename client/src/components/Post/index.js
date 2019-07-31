@@ -24,16 +24,16 @@ class Post extends Component {
   renderInputs = () => {
     switch (this.state.postType) {
       case "auditions":
-        return <Audition user={this.props.user.id} clearPostType={this.handleClear} />;
+        return <Audition user={this.props.user.id} clear={this.handleClear} />;
 
       case "classes":
-        return <Class user={this.props.user.id} clearPostType={this.handleClear} />;
+        return <Class user={this.props.user.id} clear={this.handleClear} />;
 
       case "performances":
-        return <Performance user={this.props.user.id} clearPostType={this.handleClear} />;
+        return <Performance user={this.props.user.id} clear={this.handleClear} />;
 
       case "space":
-        return <Space user={this.props.user.id} clearPostType={this.handleClear} />;
+        return <Space user={this.props.user.id} clear={this.handleClear} />;
 
       default:
         break

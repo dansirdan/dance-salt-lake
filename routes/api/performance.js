@@ -3,7 +3,7 @@ const performanceController = require("../../controllers/performanceController")
 
 router.route("/")
   .get(performanceController.findAll)
-  .post(performanceController.create)
+  .post(performanceController.updateOrCreate)
 
 router.route("/:id")
   .get(performanceController.findOne)

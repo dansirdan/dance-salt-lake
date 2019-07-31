@@ -289,9 +289,9 @@ class EditPosts extends Component {
                           {(classes.length > 0) ? classes.map(klass => {
                             return (
                               <tr key={klass.id}>
-                                <td><span className="light-text">{klass.instructorName}</span></td>
                                 <td><span className="light-text">{klass.style}</span></td>
                                 <td><span className="light-text">{klass.level}</span></td>
+                                <td><span className="light-text">{klass.instructorName}</span></td>
                                 <td><span className="light-text">{moment(klass.date).format("MMM Do")}</span></td>
                                 <td><span className="light-text">{moment(klass.startTime, "HH:mm:ss").format("h:mm A")}</span></td>
                                 <td className="edit-buttons">
