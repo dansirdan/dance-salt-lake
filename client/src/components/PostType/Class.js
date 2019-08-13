@@ -69,7 +69,7 @@ function Class(props) {
 
   let initialValues = {
 
-    UserId: props.user.id,
+    UserId: props.user,
     title: "",
     instructorName: "",
     style: "",

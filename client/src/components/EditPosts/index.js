@@ -449,6 +449,7 @@ class EditPosts extends Component {
           onHide={this.handleClose}
           modalData={this.state.modalData}
           editType={this.state.editType}
+          user={this.props.user}
         />
         <CopyModal
           user={this.props.user}

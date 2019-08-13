@@ -66,9 +66,14 @@ function Audition(props) {
 
   });
 
+  // Working:
+  // 
+  // Can inject data here, but most break it out a parent above in <Post/>
+  // console.log(props.address, props.logo, props.etc);
+
   let initialValues = {
 
-    UserId: props.user.id,
+    UserId: props.user,
     title: "",
     date: "",
     startTime: "",

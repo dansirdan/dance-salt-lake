@@ -29,7 +29,10 @@ module.exports = {
         name: req.user.name,
         logo: req.user.logo,
         website: req.user.website,
-        address: req.user.address
+        address: req.user.address,
+        city: req.user.city,
+        state: req.user.state,
+        zip: req.user.zip
       });
     }
   }

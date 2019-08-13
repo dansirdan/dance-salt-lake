@@ -56,7 +56,7 @@ function Space(props) {
 
   let initialValues = {
 
-    UserId: props.user.id,
+    UserId: props.user,
     name: "",
     email: "",
     rate: "",

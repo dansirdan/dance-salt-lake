@@ -24,16 +24,49 @@ class Post extends Component {
   renderInputs = () => {
     switch (this.state.postType) {
       case "auditions":
-        return <Audition user={this.props.user} clear={this.handleClear} />;
+        // console.log(this.props.user)
+        return <Audition
+          user={this.props.user.id}
+          website={this.props.user.website}
+          address={this.props.user.address}
+          city={this.props.user.city}
+          state={this.props.user.state}
+          zip={this.props.user.zip}
+          clear={this.handleClear}
+        />;
 
       case "classes":
-        return <Class user={this.props.user} clear={this.handleClear} />;
+        return <Class
+          user={this.props.user.id}
+          website={this.props.user.website}
+          address={this.props.user.address}
+          city={this.props.user.city}
+          state={this.props.user.state}
+          zip={this.props.user.zip}
+          clear={this.handleClear}
+        />;
 
       case "performances":
-        return <Performance user={this.props.user} clear={this.handleClear} />;
+        return <Performance
+          user={this.props.user.id}
+          website={this.props.user.website}
+          address={this.props.user.address}
+          city={this.props.user.city}
+          state={this.props.user.state}
+          zip={this.props.user.zip}
+          clear={this.handleClear}
+        />;
 
       case "space":
-        return <Space user={this.props.user} clear={this.handleClear} />;
+        return <Space
+          user={this.props.user.id}
+          website={this.props.user.website}
+          address={this.props.user.address}
+          city={this.props.user.city}
+          state={this.props.user.state}
+          zip={this.props.user.zip}
+          clear={this.handleClear}
+        />;
 
       default:
         break
