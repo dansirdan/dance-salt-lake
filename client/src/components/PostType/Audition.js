@@ -8,9 +8,9 @@ import { Formik } from "formik";
 import * as yup from "yup";
 
 
-function Audition(props) {  
+function Audition(props) {
 
-  
+
   const today = moment().format("L");
 
   const schema = yup.object().shape({
@@ -66,9 +66,9 @@ function Audition(props) {
 
   });
 
-    let initialValues = {
+  let initialValues = {
 
-    UserId: props.user,
+    UserId: props.user.id,
     title: "",
     date: "",
     startTime: "",
@@ -124,12 +124,12 @@ function Audition(props) {
 
 
   return (
-   
+
 
     <AuthConsumer>
       {({ user }) => (
 
-        <Formik  
+        <Formik
           validationSchema={schema}
           initialValues={initialValues}
           onSubmit={(values, { setSubmitting, setValues, resetForm }) => {
@@ -159,7 +159,7 @@ function Audition(props) {
                   name="UserId"
                   value={values.UserId}
                   onChange={handleChange}
-                  type="number"                  
+                  type="number"
                 />
                 <Form.Group as={Col} md="12">
                   <Form.Label>Post Title</Form.Label>
@@ -341,21 +341,21 @@ function Audition(props) {
                 <Form.Group as={Col} md="12">
                   <Form.Label>Contract:</Form.Label>
                   <Form.Control
-                        as="select"
-                        required
-                        name="contract"
-                        value={values.contract}
-                        onChange={handleChange}
-                        onBlur={handleBlur}
-                        isInvalid={!!errors.contract}
-                        isValid={touched.contract && !errors.contract}
-                      >
-                        <option>Contract Type:</option>
-                        <option value="1-6 Month Contract">1-6 Month Contract</option>
-                        <option value="6-12 Month Contract">6-12 Month Contract</option>
-                        <option value="1-2 Year Contract">1-2 Year Contract</option>
-                      </Form.Control>
-                      {errors.contract && touched.contract && <div className="input-feedback">{errors.contract}</div>}
+                    as="select"
+                    required
+                    name="contract"
+                    value={values.contract}
+                    onChange={handleChange}
+                    onBlur={handleBlur}
+                    isInvalid={!!errors.contract}
+                    isValid={touched.contract && !errors.contract}
+                  >
+                    <option>Contract Type:</option>
+                    <option value="1-6 Month Contract">1-6 Month Contract</option>
+                    <option value="6-12 Month Contract">6-12 Month Contract</option>
+                    <option value="1-2 Year Contract">1-2 Year Contract</option>
+                  </Form.Control>
+                  {errors.contract && touched.contract && <div className="input-feedback">{errors.contract}</div>}
                 </Form.Group>
 
                 <Form.Group as={Col} md="12">

@@ -1,6 +1,11 @@
 module.exports = function (sequelize, DataTypes) {
 
   var Space = sequelize.define("Space", {
+    // active: {
+    //   type: DataTypes.BOOLEAN,
+    //   allowNull: false,
+    //   defaultValue: true
+    // },
     name: {
       type: DataTypes.STRING,
       allowNull: false,

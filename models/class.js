@@ -1,6 +1,11 @@
 module.exports = function (sequelize, DataTypes) {
 
   const Class = sequelize.define("Class", {
+    // active: {
+    //   type: DataTypes.BOOLEAN,
+    //   allowNull: false,
+    //   defaultValue: true
+    // },
     title: {
       type: DataTypes.STRING,
       allowNull: false,

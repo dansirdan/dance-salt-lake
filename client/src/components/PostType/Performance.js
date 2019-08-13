@@ -61,7 +61,7 @@ function Performance(props) {
 
   let initialValues = {
 
-    UserId: props.user,
+    UserId: props.user.id,
     title: "",
     date: "",
     startTime: "",

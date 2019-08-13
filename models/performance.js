@@ -1,6 +1,11 @@
 module.exports = function (sequelize, DataTypes) {
 
   var Performance = sequelize.define("Performance", {
+    // active: {
+    //   type: DataTypes.BOOLEAN,
+    //   allowNull: false,
+    //   defaultValue: true
+    // },
     title: {
       type: DataTypes.STRING,
       allowNull: false,

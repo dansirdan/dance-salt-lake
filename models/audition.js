@@ -1,6 +1,11 @@
 module.exports = function (sequelize, DataTypes) {
 
   var Audition = sequelize.define("Audition", {
+    // active: {
+    //   type: DataTypes.BOOLEAN,
+    //   allowNull: false,
+    //   defaultValue: true
+    // },
     title: {
       type: DataTypes.STRING,
       allowNull: false,

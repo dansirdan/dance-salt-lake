@@ -26,7 +26,7 @@ function Class(props) {
     level: yup.string()
       .required('Required'),
     master: yup.boolean(),
-  
+
     date: yup.date()
       .min(today)
       .required('Required'),
@@ -69,7 +69,7 @@ function Class(props) {
 
   let initialValues = {
 
-    UserId: props.user,
+    UserId: props.user.id,
     title: "",
     instructorName: "",
     style: "",
@@ -142,7 +142,7 @@ function Class(props) {
           initialValues={initialValues}
           onSubmit={(values, { setSubmitting, setValues, resetForm }) => {
             console.log(values);
-            
+
             handleQuery(values, setValues, () => {
               setTimeout(() => {
                 resetForm(initialValues)

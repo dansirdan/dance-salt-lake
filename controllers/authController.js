@@ -28,7 +28,8 @@ module.exports = {
         id: req.user.id,
         name: req.user.name,
         logo: req.user.logo,
-        website: req.user.website
+        website: req.user.website,
+        address: req.user.address
       });
     }
   }
