@@ -27,6 +27,7 @@ class Post extends Component {
         // console.log(this.props.user)
         return <Audition
           user={this.props.user.id}
+          email={this.props.user.email}
           website={this.props.user.website}
           address={this.props.user.address}
           city={this.props.user.city}
@@ -38,6 +39,7 @@ class Post extends Component {
       case "classes":
         return <Class
           user={this.props.user.id}
+          email={this.props.user.email}
           website={this.props.user.website}
           address={this.props.user.address}
           city={this.props.user.city}
@@ -49,6 +51,7 @@ class Post extends Component {
       case "performances":
         return <Performance
           user={this.props.user.id}
+          email={this.props.user.email}
           website={this.props.user.website}
           address={this.props.user.address}
           city={this.props.user.city}
@@ -60,6 +63,7 @@ class Post extends Component {
       case "space":
         return <Space
           user={this.props.user.id}
+          email={this.props.user.email}
           website={this.props.user.website}
           address={this.props.user.address}
           city={this.props.user.city}

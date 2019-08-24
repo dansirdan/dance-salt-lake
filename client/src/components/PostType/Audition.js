@@ -111,7 +111,7 @@ function Audition(props) {
 
         cityLat = parseFloat(response.data.results[0].geometry.location.lat);
         cityLng = parseFloat(response.data.results[0].geometry.location.lng);
-        const payload = { ...values, lat: cityLat, lng: cityLng };
+        const payload = { ...values, lat: cityLat, lng: cityLng, email: props.email };
 
         setValues(payload)
         API.newPost("auditions", payload)

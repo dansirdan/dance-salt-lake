@@ -171,7 +171,7 @@ export function SpaceListItem({
             <p>{description}</p>
           </Col>
           <Col size="sm-1">
-            <FormBtn href="mailto:{email}">Contact</FormBtn>
+            <FormBtn href={`mailto:${email}`}>Contact</FormBtn>
           </Col>
 
         </Row>

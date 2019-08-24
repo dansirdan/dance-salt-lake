@@ -99,6 +99,15 @@ module.exports = function (sequelize, DataTypes) {
         isUrl: true
       }
     },
+    email: {
+      type: DataTypes.STRING,
+      allowNull: false,
+      validate: {
+        len: [6],
+        isEmail: true,
+        notEmpty: true
+      }
+    }
   });
 
   Audition.associate = (models) => {

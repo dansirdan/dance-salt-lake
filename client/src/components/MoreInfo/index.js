@@ -75,7 +75,7 @@ class MoreInfo extends Component {
       date,
       photoLink,
       instructorName,
-      // url,
+      email,
       lat,
       lng
     } = this.props.moreInfo;
@@ -117,7 +117,7 @@ class MoreInfo extends Component {
               <Row>
                 <Col md='7'>
                   <br />
-                  <a href={`mailto:bramibly@gamil.com`} className="btn btn-primary">Contact</a>
+                  <a href={`mailto:${email}`} className="btn btn-primary">Contact</a>
                 </Col>
                 <Col>
                   <br />
@@ -181,7 +181,7 @@ class MoreInfo extends Component {
               <Row>
                 <Col md='7'>
                   <br />
-                  <a href={`mailto:bramibly@gamil.com`} className="btn btn-primary">Contact</a>
+                  <a href={`mailto:${email}`} className="btn btn-primary">Contact</a>
                 </Col>
                 <Col>
                   <br />
@@ -231,7 +231,7 @@ class MoreInfo extends Component {
               <Row>
                 <Col md='7'>
                   <br />
-                  <a href={`mailto:bramibly@gamil.com`} className="btn btn-primary">Contact</a>
+                  <a href={`mailto:${email}`} className="btn btn-primary">Contact</a>
                 </Col>
                 <Col>
                   <br />

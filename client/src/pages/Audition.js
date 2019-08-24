@@ -57,7 +57,10 @@ class Audition extends Component {
     // single query of an audition's id to populate state and then show more info.
 
     API.getSinglePost("auditions", id)
-      .then(res => this.setState({ moreInfo: res.data, show: true }))
+      .then(res => {
+        console.log(res.data);
+        this.setState({ moreInfo: res.data, show: true })
+      })
       .catch(err => console.log(err));
   };
 
